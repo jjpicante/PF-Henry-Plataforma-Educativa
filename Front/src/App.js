@@ -1,6 +1,6 @@
 import './App.css';
 import { Route, Routes } from 'react-router-dom'
-import Landing from './Components/Login/login';
+import Landing from './Components/Landing/landing';
 import HomeStudent from './Components/Home/homeStudent';
 import HomeTeacher from './Components/Home/homeTeacher';
 import SearchBar from './Components/SearchBar/searchBar';
@@ -22,7 +22,7 @@ function App() {
 
         <Route exact path="/Aulas" element={<SearchBar />} />
 
-        <Route exact path="/login" element={<Landing />} />
+        <Route exact path="/" element={<Landing />} />
 
       </Routes>
     </div>
