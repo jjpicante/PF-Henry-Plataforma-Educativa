@@ -5,10 +5,11 @@ module.exports = (sequelize) => {
 
   sequelize.define("Profesores", {
     id: {
-      type: DataTypes.UUID,
+      //type: DataTypes.UUID,
+      type: DataTypes.INTEGER,
       primaryKey: true,
-      defaultValue: DataTypes.UUIDV4,
-      allowNull: false,
+      //defaultValue: DataTypes.UUIDV4,
+      autoIncrement: true
     },
     name: {
       type: DataTypes.STRING,
@@ -38,5 +39,8 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+  },
+  {
+    timestamps: false
   });
 };
