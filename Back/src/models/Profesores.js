@@ -2,7 +2,7 @@ const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
   // defino el modelo
-  sequelize.define("alumnos", {
+  sequelize.define("profesores", {
     id: {
       type: DataTypes.UUID,
       primaryKey: true,
