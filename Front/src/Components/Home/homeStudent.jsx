@@ -5,30 +5,30 @@ import "react-calendar/dist/Calendar.css";
 
 const HomeStudent = () => {
 
-
     const [date, setDate] = useState(new Date());
 
     const onChange = date => {
         setDate(date);
     }
 
-        return (
+    return (
 
-            <div>
+        <div>
 
+        <div><Navbar></Navbar></div>
 
-              
-                    <h1>Calendario</h1>
-                     <Calendar
-                        onChange={onChange}
-                        value={date}
-                    />
-                
+        <div>
+            <h1>Calendario</h1>
+            <Calendar
+                onChange={onChange}
+                value={date}
+            />
 
-            </div>
+        </div>
 
-        )
-    }
+        </div>
+    )
+}
 
 
 export default HomeStudent;
