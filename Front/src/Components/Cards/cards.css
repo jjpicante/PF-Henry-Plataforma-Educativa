@@ -1,0 +1,14 @@
+.cards{
+    background-color: transparent;
+    backdrop-filter: blur(3px);
+    display:flex;
+    border: solid black;
+    border-radius: 20px;
+    width: 450px;
+    height: 350px;
+    flex-direction: column;
+    margin: 20px;
+    align-items: center;
+    padding: 10px;
+    position: relative;
+    }
