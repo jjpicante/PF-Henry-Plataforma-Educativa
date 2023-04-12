@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Navigate } from 'react-router-dom';
-import Navbar from '../NavBar/NavBar';
+import Navbar from '../NavBar/navBar';
 
 
 
