@@ -14,7 +14,6 @@ module.exports = (sequelize) => {
       allowNull: false,
       unique: true,
     },
-    //poque pais en el admin?
     pais: {
       type: DataTypes.STRING,
       allowNull: false,
