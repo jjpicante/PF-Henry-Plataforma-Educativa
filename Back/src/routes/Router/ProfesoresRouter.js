@@ -9,7 +9,6 @@ profesores.get("/", async(req, res) => {
     if (!respuesta.error)
     return res.status(200).json(respuesta)
     return res.status(500).json(respuesta)
-
 });
 
 module.exports = profesores;

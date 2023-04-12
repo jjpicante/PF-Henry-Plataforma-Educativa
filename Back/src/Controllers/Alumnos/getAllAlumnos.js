@@ -5,9 +5,7 @@ const getAllAlumnos = async () => {
     try {      
         const alumnos = await Alumnos.findAll({
             include: {
-                model: Aula,
-                attributes: ['Name'],
-                through: {attributes:[]}
+                all: true
             }
         });
 

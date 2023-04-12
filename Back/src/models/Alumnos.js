@@ -4,9 +4,10 @@ module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define("alumnos", {
     id: {
-      type: DataTypes.UUID,
+      //type: DataTypes.UUID,
+      type: DataTypes.INTEGER,
       primaryKey: true,
-      defaultValue: DataTypes.UUIDV4,
+      //defaultValue: DataTypes.UUIDV4,
       allowNull: false,
     },
     name: {

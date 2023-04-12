@@ -4,6 +4,7 @@ const { getAllAlumnos } = require("../../Controllers/Alumnos/getAllAlumnos");
 const alumnos = Router();
 
 alumnos.get("/", async(req, res) => {
+    console.log('hola');
     const respuesta = await getAllAlumnos();
     if (!respuesta.error)
     return res.status(200).json(respuesta)
