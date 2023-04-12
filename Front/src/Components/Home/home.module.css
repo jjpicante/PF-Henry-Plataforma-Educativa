@@ -1,0 +1,34 @@
+.calendar{
+
+    /* position: fixed;
+    top:200px;
+    left: 1150px;
+    border: 2px solid black;
+    padding: 8px;
+    margin-bottom: 16px;
+    width: 700px; 
+    height: 300px; 
+    box-shadow: 2px 2px 30px black;
+    background: rgb(173, 173, 173); */
+ 
+    display: flex;
+   justify-content: center;
+    
+}
+
+
+.p{
+    font-size: 24px;
+    display: flex;
+   justify-content: center;
+   padding-top: 200px;
+   font-style: italic;
+}
+
+.title{
+    display: flex;
+    justify-content: left;
+    padding-top: 50px;
+    padding-left: 50px;
+    font-size: 25px;
+}

@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router-dom'
 import Landing from './Components/Login/login';
 import HomeStudent from './Components/Home/homeStudent';
 import HomeTeacher from './Components/Home/homeTeacher';
-
+import SearchBar from './Components/SearchBar/searchBar';
 
 
 function App() {
@@ -18,7 +18,9 @@ function App() {
           {userType === "student" ? <HomeStudent /> : <HomeTeacher />}
         </Route> */}
 
-        <Route exact path='/home' element={<HomeStudent/>}/>
+        <Route exact path='/home' element={<HomeStudent />} />
+
+        <Route exact path="/Aulas" element={<SearchBar />} />
 
         <Route exact path="/login" element={<Landing />} />
 
