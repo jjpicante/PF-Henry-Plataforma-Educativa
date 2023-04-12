@@ -1,3 +1,19 @@
+.container{
+    background-color: rgb(1, 99, 116);
+    height: 1490px;
+}
+
+.container2{
+    background-color: rgb(203, 211, 218);
+    position: fixed;
+    top: 100px;
+    left: 100px;
+    right: 100px;
+    bottom: 60px;
+    
+
+}
+
 .calendar{
 
     /* position: fixed;

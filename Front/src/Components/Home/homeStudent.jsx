@@ -14,25 +14,28 @@ const HomeStudent = () => {
 
     return (
 
-        <div>
+        <div className={style.container}>
 
             <div><Navbar></Navbar></div>
 
-            <div className={style.title}>
-                <h1>¡Bienvenido/a a tu curso virtual XXX!</h1>
+            <div className={style.container2}>
+
+                <div className={style.title}>
+                    <h1>¡Bienvenido/a a tu curso virtual XXX!</h1>
+                </div>
+
+                <div className={style.p}><p>Calendario</p></div>
+
+                <div className={style.calendar}>
+
+                    <Calendar
+                        onChange={onChange}
+                        value={date}
+                    />
+
+                </div>
+
             </div>
-
-            <div className={style.p}><p>Calendario</p></div>
-
-            <div className={style.calendar}>
-
-                <Calendar
-                    onChange={onChange}
-                    value={date}
-                />
-
-            </div>
-
         </div>
     )
 }
