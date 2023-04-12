@@ -314,3 +314,37 @@ export const profesors =
         }
     ]
 
+export const materias = [
+    {
+        "id": 1,
+        "nombre": "Matemática"
+    },
+    {
+        "id": 2,
+        "nombre": "Biología"
+    },
+    {
+        "id": 3,
+        "nombre": "Historia"
+    },
+    {
+        "id": 4,
+        "nombre": "Geografía"
+    },
+    {
+        "id": 5,
+        "nombre": "Educación Tecnológica"
+    },
+    {
+        "id": 6,
+        "nombre": "Formación Ética y Ciudadana"
+    },
+    {
+        "id": 7,
+        "nombre": "Lengua y Literatura"
+    },
+    {
+        "id": 8,
+        "nombre": "Educación Física"
+    }
+]
