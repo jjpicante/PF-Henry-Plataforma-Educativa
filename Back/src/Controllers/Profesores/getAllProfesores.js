@@ -1,4 +1,4 @@
-const  {Profesores, Aula}  = require('../../db')
+const  {Profesores}  = require('../../db')
 
 
 const getAllProfesores = async () => {  
