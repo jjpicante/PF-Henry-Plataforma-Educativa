@@ -39,7 +39,7 @@ sequelize.models = Object.fromEntries(capsEntries);
 // Para relacionarlos hacemos un destructuring
 const { Alumnos } = sequelize.models;
 const { Aulas } = sequelize.models;
-const { Instituciones } = sequelize.models;
+const { Admin } = sequelize.models;
 const { Materias } = sequelize.models;
 const { Profesores } = sequelize.models;
 
