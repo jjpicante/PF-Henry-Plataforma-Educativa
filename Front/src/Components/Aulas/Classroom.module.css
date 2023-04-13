@@ -1,0 +1,9 @@
+.cardsContent{
+    background-color: rgb(1, 99, 116);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
