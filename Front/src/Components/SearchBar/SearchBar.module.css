@@ -1,0 +1,27 @@
+.SearchBar{
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    padding-top: 200px;
+    padding-left: 100px;
+}
+
+.input{
+    font-size: 25px;
+    border-radius: 10px;
+    padding-left: 15px;
+    padding-top: 15px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+}
+
+.button{
+    font-size: 25px;
+    border-radius: 10px;
+    padding-left: 15px;
+    padding-top: 15px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+    margin-left: 10px;
+    background-color: rgb(255, 115, 0);
+}

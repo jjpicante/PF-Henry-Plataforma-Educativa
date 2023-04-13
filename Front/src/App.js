@@ -4,6 +4,7 @@ import Landing from './Components/Login/login';
 import HomeStudent from './Components/Home/homeStudent';
 import HomeTeacher from './Components/Home/homeTeacher';
 import SearchBar from './Components/SearchBar/searchBar';
+import Classroom from './Components/Classroom/Classroom';
 
 
 function App() {
@@ -20,7 +21,7 @@ function App() {
 
         <Route exact path='/home' element={<HomeStudent />} />
 
-        <Route exact path="/Aulas" element={<SearchBar />} />
+        <Route exact path="/Cursos" element={<Classroom />} />
 
         <Route exact path="/login" element={<Landing />} />
 
