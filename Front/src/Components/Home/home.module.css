@@ -9,8 +9,8 @@
     background-color: rgb(203, 211, 218);
     position: fixed;
     top: 100px;
-    left: 100px;
-    right: 100px;
+    left: 30px;
+    right: 30px;
     bottom: 60px;
     height: 1500px;
     border-radius: 50px;
@@ -37,14 +37,14 @@
 
 
     position: fixed;
-    top: 700px;
-    left: 1260px;
+    top: 300px;
+    left: 500px;
 
 
 }
 
 .scale {
-    scale: 300%;
+    scale: 150%;
     width: 600px;
     height: 310px;
 }
@@ -57,20 +57,20 @@
 
 
 .input {
-    font-size: 25px;
-    font-size: 25px;
+    
+    font-size: 10px;
     position: fixed;
-    bottom: 100px;
-    right: 820px;
+    bottom: 10px;
+    right: 400px;
     border-radius: 10px;
     padding: 8px;
 }
 
 .button {
-    font-size: 25px;
+    font-size: 10px;
     position: fixed;
-    bottom: 100px;
-    right: 612px;
+    bottom: 10px;
+    right: 290px;
     border-radius: 10px;
     padding: 8px;
     background-color: rgb(255, 115, 0);
@@ -81,5 +81,5 @@
     justify-content: left;
     padding-top: 20px;
     padding-left: 60px;
-    font-size: 25px;
+    font-size: 15px;
 }
