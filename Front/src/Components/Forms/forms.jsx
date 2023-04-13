@@ -1,50 +1,110 @@
 import "./form.css";
 
+import { useState } from "react";
+import { validate, validateSubmit } from "./validations";
+
 function Form() {
+  //Estados
+  const [studentData, setStudentData] = useState({
+    name: "",
+    lastname: "",
+    email: "",
+    age: "",
+    course: "",
+  });
+  const [errorMessage, setErrorMessage] = useState({
+    name: "",
+    lastname: "",
+    email: "",
+    age: "",
+    course: "",
+  });
+
+  const inputHandler = (ev) => {
+    setStudentData({
+      ...studentData,
+      [ev.target.name]: ev.target.value,
+    });
+    setErrorMessage(
+      validate({
+        ...studentData,
+        [ev.target.name]: ev.target.value,
+      })
+    );
+  };
+
+  const submitHandler = (ev) => {
+    ev.preventDefault();
+
+    if (!studentData.course)
+      setErrorMessage({
+        ...errorMessage,
+        course: "You have to choose a course",
+      });
+    if (validateSubmit(studentData, errorMessage)) {
+      alert("The form has been filled successfully");
+      console.log(studentData);
+    } else {
+      alert("Theres been a mistake, take a look a the form");
+    }
+  };
+
+  const courseHandler = (ev) => {
+    setStudentData({ ...studentData, course: ev.target.value });
+    setErrorMessage({ ...errorMessage, course: "" });
+  };
+
   return (
     <>
       <div className="Main">
         <div className="formBox">
           <h1 className="formTitle">Form</h1>
 
-          <form>
-            <div className="nameBox">
-              <input type="text" placeholder="Name" />
-            </div>
-            <p className="errorText">mensaje error</p>
+          <form onSubmit={submitHandler} autoComplete="off">
+            <input
+              type="text"
+              placeholder="Name"
+              name="name"
+              onChange={inputHandler}
+              value={studentData.name}
+            />
+            <p className="errorText">{errorMessage.name}</p>
 
-            <div className="nameBox">
-              <input type="text" placeholder="Last name" />
-            </div>
-            <p className="errorText">mensaje error</p>
+            <input
+              type="text"
+              name="lastname"
+              placeholder="Last name"
+              onChange={inputHandler}
+            />
+            <p className="errorText">{errorMessage.lastname}</p>
 
-            <div className="nameBox">
-              <input type="text" placeholder="Email" />
-            </div>
-            <p className="errorText">mensaje error</p>
+            <input
+              type="text"
+              name="email"
+              placeholder="Email"
+              onChange={inputHandler}
+            />
+            <p className="errorText">{errorMessage.email}</p>
 
-            <div className="nameBox">
-              <input type="text" placeholder="Age" />
-            </div>
-            <p className="errorText">mensaje error</p>
+            <input
+              type="text"
+              name="age"
+              placeholder="Age"
+              onChange={inputHandler}
+            />
+            <p className="errorText">{errorMessage.age}</p>
 
             <div>
-              <select>
-                <option>Courses</option>
-                <option>1ero</option>
-                <option>2do</option>
-                <option>3ero</option>
+              <select onChange={courseHandler}>
+                <option value="">Courses</option>
+                <option value="1ero">1ero</option>
+                <option value="2do">2do</option>
+                <option value="3ero">3ero</option>
               </select>
             </div>
-            <p className="errorText">mensaje error</p>
+            <p className="errorText">{errorMessage.course}</p>
 
-            <div className="send">
-              <input
-                className="submitButton"
-                type="submit"
-                placeholder="Send"
-              />
-            </div>
+            <input type="submit" />
           </form>
         </div>
       </div>
