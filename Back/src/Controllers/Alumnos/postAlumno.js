@@ -21,12 +21,12 @@ const postAlumno = async (
 
     const newProfesor = {
       name: name.toLowerCase(),
-      apellido: apellido,
-      nacionalidad: nacionalidad,
+      apellido: apellido.toLowerCase(),
+      nacionalidad: nacionalidad.toLowerCase(),
       datebirth: datebirth,
-      email: email,
-      username: username,
-      password: password,
+      email: email.toLowerCase(),
+      username: username.toLowerCase(),
+      password: password.toLowerCase(),
     };
 
     Alumnos.create(newProfesor);
