@@ -15,7 +15,7 @@ const getAlumnos = async (username) => {
         message: "No se encontró el Alumno con el username solicitado",
       };
   } catch (error) {
-    return { error: "Error al buscar un Profesor" };
+    return { error: "Error al buscar un Alumno" };
   }
 };
 

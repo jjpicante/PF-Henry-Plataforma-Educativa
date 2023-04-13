@@ -9,7 +9,7 @@ const deleteAlumno = async (username) => {
     });
     return { message: `Alumnos eliminado con éxito` };
   } catch (error) {
-    return { error: "No se pudo eliminar el profesor solicitado" };
+    return { error: "No se pudo eliminar el Alumno solicitado" };
   }
 };
 

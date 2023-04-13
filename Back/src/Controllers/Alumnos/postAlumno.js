@@ -20,7 +20,7 @@ const postAlumno = async (
       };
 
     const newProfesor = {
-      name: name,
+      name: name.toLowerCase(),
       apellido: apellido,
       nacionalidad: nacionalidad,
       datebirth: datebirth,
