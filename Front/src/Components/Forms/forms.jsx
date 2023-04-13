@@ -2,6 +2,7 @@ import "./form.css";
 
 import { useState } from "react";
 import { validate, validateSubmit } from "./validations";
+import Navbar from "../NavBar/navBar";
 
 function Form() {
   //Estados
@@ -56,6 +57,7 @@ function Form() {
 
   return (
     <>
+    <Navbar></Navbar>
       <div className="Main">
         <div className="formBox">
           <h1 className="formTitle">Form</h1>
@@ -100,6 +102,9 @@ function Form() {
                 <option value="1ero">1ero</option>
                 <option value="2do">2do</option>
                 <option value="3ero">3ero</option>
+                <option value="4to">4to</option>
+                <option value="5to">5to</option>
+                <option value="6to">6to</option>
               </select>
             </div>
             <p className="errorText">{errorMessage.course}</p>
