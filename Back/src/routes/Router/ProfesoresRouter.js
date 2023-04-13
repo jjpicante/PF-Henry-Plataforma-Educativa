@@ -7,9 +7,11 @@ const {
   deleteProfesor,
 } = require("../../Controllers/Profesores/deleteProfesor");
 const { getProfesor } = require("../../Controllers/Profesores/getPofesor");
+
 const {
   filterProfesor,
 } = require("../../Controllers/Profesores/filterProfesor");
+
 
 const profesores = Router();
 
@@ -27,6 +29,7 @@ profesores.get("/getprofesor", async (req, res) => {
   if (!respuesta.error) return res.status(200).json(respuesta);
   return res.status(503).json(respuesta);
 });
+
 
 profesores.get("/filterprofesor", async (req, res) => {
   const criterios = req.query;

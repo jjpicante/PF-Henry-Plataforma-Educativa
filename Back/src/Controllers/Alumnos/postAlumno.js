@@ -1,6 +1,6 @@
-const { Profesores } = require("../../db");
+const { Alumnos } = require("../../db");
 
-const postProfesor = async (
+const postAlumno = async (
   name,
   apellido,
   nacionalidad,
@@ -11,7 +11,7 @@ const postProfesor = async (
 ) => {
   try {
     if (
-      await Profesores.findOne({
+      await Alumnos.findOne({
         where: { username: username.toLowerCase() },
       })
     )
@@ -19,21 +19,22 @@ const postProfesor = async (
         error: `No se pudo completar la carga. Ya existe el username ${username}`,
       };
 
-    const newProfesor = await Profesores.create({
-
+    const newProfesor = {
       name: name.toLowerCase(),
       apellido: apellido.toLowerCase(),
       nacionalidad: nacionalidad.toLowerCase(),
-      datebirth,
+      datebirth: datebirth,
       email: email.toLowerCase(),
       username: username.toLowerCase(),
       password: password.toLowerCase(),
+    };
 
-    });
-    return { message: "Profesor creado con éxito" };
+    Alumnos.create(newProfesor);
+
+    return { message: "Alumno creado con éxito" };
   } catch (error) {
-    return { error: "No se pudo agregar el profesor solicitado" };
+    return { error: "No se pudo agregar el Alumno solicitado" };
   }
 };
 
-module.exports = { postProfesor };
+module.exports = { postAlumno };
