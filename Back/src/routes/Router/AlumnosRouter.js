@@ -3,6 +3,7 @@ const { getAllAlumnos } = require("../../Controllers/Alumnos/getAllAlumnos");
 const { postAlumno } = require("../../Controllers/Alumnos/postAlumno");
 const { deleteAlumno } = require("../../Controllers/Alumnos/deleteAlumno");
 const { getAlumnos } = require("../../Controllers/Alumnos/getAlumno");
+const { filterAlumnos } = require("../../Controllers/Alumnos/alumnofilter");
 
 const alumnos = Router();
 
@@ -18,6 +19,17 @@ alumnos.get("/getalumno", async (req, res) => {
   if (!username)
     return res.status(400).json({ message: "No se ingresó un username" });
   const respuesta = await getAlumnos(username);
+  if (!respuesta.error) return res.status(200).json(respuesta);
+  return res.status(503).json(respuesta);
+});
+
+alumnos.get("/filtro", async (req, res) => {
+  const criterios = req.query;
+  if (Object.keys(criterios).length === 0)
+    return res
+      .status(400)
+      .json({ message: "No se ingresó correctamente el filtro" });
+  const respuesta = await filterAlumnos(criterios);
   if (!respuesta.error) return res.status(200).json(respuesta);
   return res.status(503).json(respuesta);
 });

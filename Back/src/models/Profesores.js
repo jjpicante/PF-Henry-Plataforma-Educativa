@@ -11,9 +11,9 @@ module.exports = (sequelize) => {
         primaryKey: true,
         autoIncrement: true,
         // type: DataTypes.UUID,
-        //   primaryKey: true,
-        //   defaultValue: DataTypes.UUIDV4,
-        //   allowNull: false,
+        // primaryKey: true,
+        // defaultValue: DataTypes.UUIDV4,
+        // allowNull: false,
       },
       name: {
         type: DataTypes.STRING,
