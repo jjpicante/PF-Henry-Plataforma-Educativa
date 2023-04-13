@@ -7,13 +7,12 @@ module.exports = (sequelize) => {
     "Profesores",
     {
       id: {
+
+        //type: DataTypes.UUID,
         type: DataTypes.INTEGER,
         primaryKey: true,
+        //defaultValue: DataTypes.UUIDV4,
         autoIncrement: true,
-        // type: DataTypes.UUID,
-        // primaryKey: true,
-        // defaultValue: DataTypes.UUIDV4,
-        // allowNull: false,
       },
       name: {
         type: DataTypes.STRING,
@@ -38,6 +37,9 @@ module.exports = (sequelize) => {
       username: {
         type: DataTypes.STRING,
         allowNull: false,
+
+        unique: true,
+
       },
       password: {
         type: DataTypes.STRING,

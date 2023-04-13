@@ -20,13 +20,15 @@ const postProfesor = async (
       };
 
     const newProfesor = await Profesores.create({
-      name,
-      apellido,
-      nacionalidad,
+
+      name: name.toLowerCase(),
+      apellido: apellido.toLowerCase(),
+      nacionalidad: nacionalidad.toLowerCase(),
       datebirth,
-      email,
-      username,
-      password,
+      email: email.toLowerCase(),
+      username: username.toLowerCase(),
+      password: password.toLowerCase(),
+
     });
     return { message: "Profesor creado con éxito" };
   } catch (error) {
