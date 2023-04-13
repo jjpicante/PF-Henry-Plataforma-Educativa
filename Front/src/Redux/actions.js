@@ -1,8 +1,9 @@
 import {
     GET_STUDENTS,
-    GET_PROFESORS
+    GET_PROFESORS,
+    GET_MATERIAS
 } from "./actionsTypes"
-import { profesors, students } from "./Base de datos HC"
+import { profesors, students, materias } from "./Base de datos HC"
 
 
 export const getStudents = ()=>{
@@ -16,5 +17,12 @@ export const getProfesors = () =>{
     return{
         type: GET_PROFESORS,
         payload: profesors
+    }
+}
+
+export const getMaterias = () =>{
+    return{
+        type: GET_MATERIAS,
+        payload: materias
     }
 }

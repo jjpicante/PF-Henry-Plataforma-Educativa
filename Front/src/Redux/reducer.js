@@ -1,13 +1,15 @@
 import {
     GET_STUDENTS,
-    GET_PROFESORS
+    GET_PROFESORS,
+    GET_MATERIAS
 } from "./actionsTypes"
 
 
 
 const initialState = {
     students: [],
-    profesors: []
+    profesors: [],
+    materias: [],
 }
 
 
@@ -24,6 +26,11 @@ export default function reducer(state = initialState, { type, payload }) {
                 ...state,
                 profesors: payload,
             }
+        case GET_MATERIAS:
+            return {
+                ...state,
+                materias: payload,
+            }    
         default:
             return { ...state, }
     }
