@@ -1,30 +1,42 @@
-import React, {useState} from "react";
-import {useDispatch} from "react-redux";
-import style from "./SearchBar.module.css"
+// import React, { useState } from 'react';
+// import { materias } from '../../Redux/Base de datos HC'; // importa tu array de materias
 
-const SearchBar = () => {
+// function SearchBar() {
 
-const dispatch = useDispatch()
-const [subject, setsubject] = useState("")
+//   const [subject, setSubject] = useState('');
+//   const materiasFiltradas = materias.filter(materia =>
+//     materia.nombre.toLowerCase().includes(subject.toLowerCase())
+//   );
 
-const handleChangeSubject = (event) => {
+//   const handleChange = event => {
+//     setSubject(event.target.value);
+//   };
 
-    setsubject(event.target.value);
-}
+//   return (
+//     <div>
+//       <input type="text" placeholder="Buscar materia" value={subject} onChange={handleChange} />
+//       {materiasFiltradas.length === 0 ? "No se encontraron matrias" : materiasFiltradas.map(materia => (
+//         <div key={materia.id}>
+//           <h2>{materia.nombre}</h2>
+//         </div>
+//       ))}
+//     </div>
+//   );
+// }
 
-const handleSubmitSubject = (event) => {
-    event.preventDefault()
-    dispatch()
-}
+// export default SearchBar;
 
-return(
-    <div className={style.SearchBar}>
-        <input type="search" value={subject} onChange={handleChangeSubject} className={style.input} placeholder="Buscar Asignatura"></input>
-        <button className={style.button}>Buscar</button>
+import React from 'react';
+
+function SearchBar({ value, onChange }) {
+
+  return (
+    <div>
+      <input type="text" placeholder="Buscar materia" value={value} onChange={onChange} />
     </div>
-)
-
-
+  );
 }
 
 export default SearchBar;
+
+
