@@ -1,20 +1,23 @@
-.container{
-    background-color: rgb(1, 99, 116);
-    height: 1490px;
+.container {
+    background-color: rgb(6, 124, 124);
+    width: 100%;
+    height: 100%;
+    position: absolute;
 }
 
-.container2{
+.container2 {
     background-color: rgb(203, 211, 218);
     position: fixed;
     top: 100px;
     left: 100px;
     right: 100px;
     bottom: 60px;
-    
+    height: 1500px;
+    border-radius: 50px;
 
 }
 
-.calendar{
+.calendar {
 
     /* position: fixed;
     top:200px;
@@ -26,25 +29,57 @@
     height: 300px; 
     box-shadow: 2px 2px 30px black;
     background: rgb(173, 173, 173); */
- 
-    display: flex;
-   justify-content: center;
-    
+
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+
+
+
+    position: fixed;
+    top: 700px;
+    left: 1260px;
+
+
+}
+
+.scale {
+    scale: 300%;
+    width: 600px;
+    height: 310px;
+}
+
+.form {
+    position: fixed;
+    bottom: 100px;
+    right: 600px;
 }
 
 
-.p{
-    font-size: 24px;
-    display: flex;
-   justify-content: center;
-   padding-top: 200px;
-   font-style: italic;
+.input {
+    font-size: 25px;
+    font-size: 25px;
+    position: fixed;
+    bottom: 100px;
+    right: 820px;
+    border-radius: 10px;
+    padding: 8px;
 }
 
-.title{
+.button {
+    font-size: 25px;
+    position: fixed;
+    bottom: 100px;
+    right: 612px;
+    border-radius: 10px;
+    padding: 8px;
+    background-color: rgb(255, 115, 0);
+}
+
+.title {
     display: flex;
     justify-content: left;
-    padding-top: 50px;
-    padding-left: 50px;
+    padding-top: 20px;
+    padding-left: 60px;
     font-size: 25px;
 }

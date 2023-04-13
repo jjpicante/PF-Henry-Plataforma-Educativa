@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {useDispatch} from "react-redux";
-
+import style from "./SearchBar.module.css"
 
 const SearchBar = () => {
 
@@ -18,9 +18,9 @@ const handleSubmitSubject = (event) => {
 }
 
 return(
-    <div>
-        <label>Buscar Asignatura:</label><input type="search" value={subject} onChange={handleChangeSubject}></input>
-        <button>Buscar</button>
+    <div className={style.SearchBar}>
+        <input type="search" value={subject} onChange={handleChangeSubject} className={style.input} placeholder="Buscar Asignatura"></input>
+        <button className={style.button}>Buscar</button>
     </div>
 )
 
