@@ -1,20 +1,28 @@
 import React, { useState } from 'react';
-import Navbar from '../NavBar/navBar';
-import './landing.css'
-
-
+//import { useDispatch } from 'react-redux';
+import './landing.css';
 
 function Login() {
+  //const dispatch = useDispatch();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
   const handleLogin = (event) => {
     event.preventDefault();
-    // funcion que valide el login del usuario y de ahi lo redirija dependiendo de su token
-    if (username === "juan" && password === "carlos") {
-      // Redirije a /home encaso de pasar el login
-      console.log("te logeaste rey")
+    const userData = {
+      name: "John",
+      role: "student" // replace with the actual user data from the database
+    };
+    //buscan en la base de datos si el usuario existe
+    //const userData = EscuelaDB.find((user) => user.name === username)
+    //si el usuario existe compara las contraseñas
+    if (userData) {
+      // if(userData.password === password)
+      // update the user state in the context
+      //dispatch({ type: 'SET_USER_ROLE', payload: userData.role });
+      // redirect the user based on their role
+      window.location.href = "/home";
     } else {
       setErrorMessage("Usuario o contraseña invalido.");
     }
@@ -22,7 +30,6 @@ function Login() {
 
   return (
     <div id="landing">
-      <Navbar />
       <div id="login-box">
         <form className='form' onSubmit={handleLogin}>
           <h2>Iniciar Sesion</h2>
@@ -41,5 +48,6 @@ function Login() {
     </div>
   );
 }
+
 
 export default Login;
