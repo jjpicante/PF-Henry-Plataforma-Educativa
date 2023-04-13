@@ -1,8 +1,8 @@
-import { NavLink } from "react-router-dom";
+import style from "./CardAsignature.module.css"
 
 export default function CardAsignature({ name, id }) {
   return (
-    <div classname="card">
+    <div className={style.cards}>
       <h1>{name}</h1>
     </div>
   );
