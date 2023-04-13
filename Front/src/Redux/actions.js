@@ -5,14 +5,14 @@ import {
 import { profesors, students } from "./Base de datos HC"
 
 
-const getStudents = ()=>{
+export const getStudents = ()=>{
     return{
         type: GET_STUDENTS,
         payload: students
     }
 }
 
-const getProfesors = () =>{
+export const getProfesors = () =>{
     return{
         type: GET_PROFESORS,
         payload: profesors
