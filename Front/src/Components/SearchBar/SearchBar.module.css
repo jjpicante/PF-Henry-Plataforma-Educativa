@@ -2,21 +2,22 @@
     display: flex;
     align-items: center;
     justify-content: left;
-    padding-top: 200px;
+    padding-top: 100px;
     padding-left: 100px;
+    margin-bottom: 100px;
 }
 
 .input{
-    font-size: 25px;
+    font-size: 20px;
     border-radius: 10px;
     padding-left: 15px;
     padding-top: 15px;
-    padding-right: 15px;
+    padding-right: 200px;
     padding-bottom: 15px;
 }
 
 .button{
-    font-size: 25px;
+    font-size: 20px;
     border-radius: 10px;
     padding-left: 15px;
     padding-top: 15px;
