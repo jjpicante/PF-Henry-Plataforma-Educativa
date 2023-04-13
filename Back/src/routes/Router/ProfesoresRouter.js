@@ -2,7 +2,8 @@ const { Router } = require("express");
 const { getAllProfesores } = require("../../Controllers/Profesores/getAllProfesores");
 const {postProfesor} = require('../../Controllers/Profesores/postProfesor');
 const {deleteProfesor} = require('../../Controllers/Profesores/deleteProfesor');
-const {getProfesor} = require('../../Controllers/Profesores/getPofesor')
+const {getProfesor} = require('../../Controllers/Profesores/getPofesor');
+const {filterProfesor} = require('../../Controllers/Profesores/filterProfesor')
 
 
 const profesores = Router();
@@ -20,6 +21,17 @@ profesores.get('/getprofesor', async(req, res) => {
     if (!username)
         return res.status(400).json({message: 'No se ingresó un username'})
     const respuesta = await getProfesor(username);
+    if (!respuesta.error)
+        return res.status(200).json(respuesta)
+    return res.status(503).json(respuesta)
+})
+
+
+profesores.get('/filterprofesor', async(req, res) => {
+    const criterios = req.query;
+    if (Object.keys(criterios).length === 0)
+        return res.status(400).json({message: 'Faltan ingresar datos'})
+    const respuesta = await filterProfesor(criterios);
     if (!respuesta.error)
         return res.status(200).json(respuesta)
     return res.status(503).json(respuesta)
