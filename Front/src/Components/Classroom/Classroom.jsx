@@ -1,23 +1,35 @@
 import SearchBar from "../SearchBar/searchBar";
-import Navbar from "../NavBar/navBar";
+import CardAsignature from "../Cards/cards";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getMaterias } from "../../Redux/actions";
 import style from "./Classroom.module.css"
-
+import Navbar from "../NavBar/navBar";
 
 const Classroom = () => {
+  const dispatch = useDispatch();
+  const asignatures = useSelector((state) => state.materias);
+  console.log(asignatures);
 
-    return (
-        <div className={style.fondo}>
+  useEffect(() => {
+    dispatch(getMaterias());
+  }, [dispatch]);
 
-            <div>
-                <Navbar></Navbar>
-            </div>
-
-            <div>
-                <SearchBar></SearchBar>
-            </div>
-
-        </div>
-    )
-}
+  return (
+    <div className={style.fondo}>
+      <div>
+        <Navbar></Navbar>
+      </div>
+      <div>
+        <SearchBar></SearchBar>
+      </div>
+      <div className={style.cardsContent}>
+        {asignatures?.map((elem) => {
+          return <CardAsignature name={elem.nombre} />;
+        })}
+      </div>
+    </div>
+  );
+};
 
 export default Classroom;
