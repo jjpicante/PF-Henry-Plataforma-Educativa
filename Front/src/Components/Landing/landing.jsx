@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-//import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import './landing.css';
 
 function Login() {
-  //const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -18,10 +18,10 @@ function Login() {
     //const userData = EscuelaDB.find((user) => user.name === username)
     //si el usuario existe compara las contraseñas
     if (userData) {
-      // if(userData.password === password)
-      // update the user state in the context
-      //dispatch({ type: 'SET_USER_ROLE', payload: userData.role });
-      // redirect the user based on their role
+      if (userData.password === password)
+        // hacer update del estado con el rol del login
+        dispatch({ type: 'SET_USER_ROLE', payload: userData.role });
+      //despues de hacer el update lo redirige al home
       window.location.href = "/home";
     } else {
       setErrorMessage("Usuario o contraseña invalido.");
