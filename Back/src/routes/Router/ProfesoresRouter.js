@@ -3,10 +3,15 @@ const { getAllProfesores } = require("../../Controllers/Profesores/getAllProfeso
 const { postProfesor } = require("../../Controllers/Profesores/postProfesor");
 const { deleteProfesor } = require("../../Controllers/Profesores/deleteProfesor");
 const { getProfesor } = require("../../Controllers/Profesores/getPofesor");
+<<<<<<< HEAD
+const { filterProfesor } = require("../../Controllers/Profesores/filterProfesor");
+const { updateProfesor } = require("../../Controllers/Profesores/updateProfesor");
+=======
 
 const {
   filterProfesor,
 } = require("../../Controllers/Profesores/filterProfesor");
+>>>>>>> 98263e5cc8c68e4fe7d205f714a5df20a0cbbcee
 
 
 const profesores = Router();
@@ -46,6 +51,21 @@ profesores.post("/", async (req, res) => {
     username,
     password
   );
+  if (!respuesta.error) return res.status(200).json(respuesta);
+  return res.status(503).json(respuesta);
+});
+
+profesores.put("/:currentUsername", async (req, res) => {
+  const { currentUsername } = req.params;
+  const changes = req.body;
+
+  if (!currentUsername)
+    return res.status(400).json({ message: "No se envió Username a modificar" });
+
+  if (Object.keys(changes).length === 0)
+    return res.status(400).json({ message: "No se ingresaron modificaciones a realizar" });
+
+  const respuesta = await updateProfesor(currentUsername, changes);
   if (!respuesta.error) return res.status(200).json(respuesta);
   return res.status(503).json(respuesta);
 });
