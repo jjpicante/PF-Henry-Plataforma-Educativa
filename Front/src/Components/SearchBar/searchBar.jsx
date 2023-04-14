@@ -26,17 +26,20 @@
 
 // export default SearchBar;
 
-import React from 'react';
+import React from "react";
+import style from "./SearchBar.module.css";
 
 function SearchBar({ value, onChange }) {
-
   return (
-    <div>
-      <input type="text" placeholder="Buscar materia" value={value} onChange={onChange} />
+    <div className={style.SearchBarContainer}>
+      <input
+        type="text"
+        placeholder="Buscar materia"
+        value={value}
+        onChange={onChange}
+      />
     </div>
   );
 }
 
 export default SearchBar;
-
-
