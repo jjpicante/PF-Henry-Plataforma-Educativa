@@ -9,8 +9,13 @@ function Navbar() {
   const dispatch = useDispatch();
 
   const handleLogout = () => {
+    // Eliminar la información del usuario del localStorage
+    localStorage.removeItem('userData');
     dispatch(clearUserRole());
   }
+
+   // Obtener el valor del rol del usuario desde localStorage
+   const userRole = localStorage.getItem('userRole');
 
   return (
     <nav>
@@ -18,7 +23,11 @@ function Navbar() {
         <ul>
           <li><Link to="/Home">Area Personal</Link></li>
           <li><Link to="/Aulas">Mis Aulas</Link></li>
-          <li><Link to="/Cursos">Mis Cursos</Link></li>
+          
+          {userRole === 'profesor' && (
+            <li><Link to="/Cursos">Mis Cursos</Link></li>
+          )}
+
           <li><Link to="/form">Formulario</Link></li>
           <li><Link to="/" onClick={handleLogout}>Log Out</Link></li>
         </ul>
