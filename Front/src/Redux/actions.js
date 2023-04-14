@@ -2,6 +2,8 @@ import {
     GET_STUDENTS,
     GET_PROFESORS,
     GET_MATERIAS,
+    GET_MATERIAS_BY_ID,
+    CLEAN_DETAIL,
     SET_USER_ROLE,
     CLEAR_USER_ROLE
 } from "./actionsTypes"
@@ -26,6 +28,20 @@ export const getMaterias = () => {
     return {
         type: GET_MATERIAS,
         payload: materias
+    }
+}
+
+export const getMateriasById = (id) => {
+    return {
+        type: GET_MATERIAS_BY_ID,
+        payload: materias.filter(elem => elem.id === Number(id))
+    }
+}
+
+export const cleanDetail = () => {
+    return {
+        type: CLEAN_DETAIL,
+        payload: []
     }
 }
 
