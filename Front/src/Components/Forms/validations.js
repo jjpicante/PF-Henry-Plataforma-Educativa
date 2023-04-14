@@ -14,7 +14,7 @@ const validate = (inputs) => {
     if (inputs.name.length > 35)
       errors.name = "The length of the name must be less than 35 characters";
     if (specialChars.test(inputs.name))
-      errors.subjectName = "The name cannot have special characters!";
+      errors.name = "The name cannot have special characters!";
   }
 
   //Last name
@@ -26,7 +26,7 @@ const validate = (inputs) => {
       errors.lastname =
         "The length of the last name must be less than 35 characters";
     if (specialChars.test(inputs.lastname))
-      errors.subjectName = "The name cannot have special characters!";
+      errors.lastname = "The name cannot have special characters!";
   }
 
   //Email
