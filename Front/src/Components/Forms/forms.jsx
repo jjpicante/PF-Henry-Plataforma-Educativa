@@ -44,9 +44,17 @@ function Form() {
       });
     if (validateSubmit(studentData, errorMessage)) {
       alert("The form has been filled successfully");
-      console.log(studentData);
     } else {
-      alert("Theres been a mistake, take a look a the form");
+      for (const property in studentData) {
+        if (!studentData[property])
+          setErrorMessage({
+            ...errorMessage,
+            [property]: "This field is required!",
+          });
+      }
+      alert(
+        "Theres been a mistake, take a look a the form. **All fields are required!**"
+      );
     }
   };
 
@@ -57,7 +65,7 @@ function Form() {
 
   return (
     <>
-    <Navbar></Navbar>
+      <Navbar></Navbar>
       <div className="Main">
         <div className="formBox">
           <h1 className="formTitle">Form</h1>
