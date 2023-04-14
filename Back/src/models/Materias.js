@@ -6,15 +6,20 @@ module.exports = (sequelize) => {
     "Materias",
     {
       id: {
-        type: DataTypes.UUID,
-        primaryKey: true,
-        defaultValue: DataTypes.UUIDV4,
-        allowNull: false,
-        // type: DataTypes.INTEGER,
+        // type: DataTypes.UUID,
         // primaryKey: true,
-        // autoIncrement: true,
+        // defaultValue: DataTypes.UUIDV4,
+        // allowNull: false,
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
       },
       name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true,
+      },
+      temas: {
         type: DataTypes.STRING,
         allowNull: false,
         unique: true,
