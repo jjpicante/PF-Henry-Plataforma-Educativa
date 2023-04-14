@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { getMateriasById, cleanDetail } from "../../Redux/actions";
+import style from "./Detail.module.css"
 
 export default function Detail() {
   const dispatch = useDispatch();
@@ -11,10 +12,28 @@ export default function Detail() {
   useEffect(() => {
     dispatch(getMateriasById(id));
     return () => {
-    dispatch(cleanDetail());
-        }; 
+      dispatch(cleanDetail());
+    };
   }, [dispatch, id]);
 
-console.log(materiaById)
-
+  return (
+    <div className={style.fondo}>
+      {materiaById[0] ? (
+        <div className={style.topDiv}>
+          <div className={style.materia}>
+            <h1>{materiaById[0].nombre}</h1>
+            <h2>{materiaById[0].año}</h2>
+          </div>
+          <div>
+            <h2>Temas</h2>
+            {materiaById[0].temas?.map((e, i) => {
+              return <h3 key={i}>{i+1}- {e}</h3>;
+            })}
+          </div>
+        </div>
+      ) : (
+        <p>Cargando...</p>
+      )}
+    </div>
+  );
 }
