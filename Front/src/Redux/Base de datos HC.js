@@ -317,34 +317,453 @@ export const profesors =
 export const materias = [
     {
         "id": 1,
-        "nombre": "Matemática"
+        "nombre": "Matemática",
+        "año": "1ro",
+        "temas": [
+            "Números naturales",
+            "Fracciones",
+            "Decimales",
+            "Geometría básica"
+        ]
     },
     {
         "id": 2,
-        "nombre": "Biología"
+        "nombre": "Matemática",
+        "año": "2do",
+        "temas": [
+            "Ecuaciones de primer grado",
+            "Polígonos",
+            "Potencias y raíces",
+            "Medidas de tendencia central"
+        ]
     },
     {
         "id": 3,
-        "nombre": "Historia"
+        "nombre": "Matemática",
+        "año": "3ro",
+        "temas": [
+            "Ecuaciones de segundo grado",
+            "Ángulos",
+            "Probabilidad",
+            "Estadística descriptiva"
+        ]
     },
     {
         "id": 4,
-        "nombre": "Geografía"
+        "nombre": "Matemática",
+        "año": "4to",
+        "temas": [
+            "Funciones",
+            "Trigonometría",
+            "Geometría analítica",
+            "Estadística inferencial"
+        ]
     },
     {
         "id": 5,
-        "nombre": "Educación Tecnológica"
+        "nombre": "Matemática",
+        "año": "5to",
+        "temas": [
+            "Derivadas",
+            "Integrales",
+            "Matrices",
+            "Combinatoria"
+        ]
     },
     {
         "id": 6,
-        "nombre": "Formación Ética y Ciudadana"
+        "nombre": "Matemática",
+        "año": "6to",
+        "temas": [
+            "Álgebra lineal",
+            "Cálculo multivariable",
+            "Teoría de conjuntos",
+            "Teoría de números"
+        ]
     },
     {
         "id": 7,
-        "nombre": "Lengua y Literatura"
+        "nombre": "Biología",
+        "año": "1ro",
+        "temas": [
+            "Introducción a la biología",
+            "Métodos científicos",
+            "Células y su estructura",
+            "Funciones vitales de los seres vivos"
+        ]
     },
     {
         "id": 8,
-        "nombre": "Educación Física"
+        "nombre": "Biología",
+        "año": "2do",
+        "temas": [
+            "Reproducción celular",
+            "Tejidos animales y vegetales",
+            "Sistemas del cuerpo humano",
+            "Ecosistemas y medio ambiente"
+        ]
+    },
+    {
+        "id": 9,
+        "nombre": "Biología",
+        "año": "3ro",
+        "temas": [
+            "Biodiversidad",
+            "Clasificación de los seres vivos",
+            "Genética",
+            "Evolución"
+        ]
+    },
+    {
+        "id": 10,
+        "nombre": "Biología",
+        "año": "4to",
+        "temas": [
+            "Biología molecular",
+            "Fisiología animal",
+            "Microbiología",
+            "Ecología y conservación"
+        ]
+    },
+    {
+        "id": 11,
+        "nombre": "Biología",
+        "año": "5to",
+        "temas": [
+            "Biología celular avanzada",
+            "Biología molecular avanzada",
+            "Fisiología vegetal",
+            "Biología marina"
+        ]
+    },
+    {
+        "id": 12,
+        "nombre": "Biología",
+        "año": "6to",
+        "temas": [
+            "Biología molecular avanzada",
+            "Biología del desarrollo",
+            "Biotecnología",
+            "Neurociencia"
+        ]
+    },
+    {
+        "id": 13,
+        "nombre": "Historia",
+        "año": "1ro",
+        "temas": [
+            "Introducción a la historia",
+            "Prehistoria",
+            "Las primeras civilizaciones",
+            "La Edad Media"
+        ]
+    },
+    {
+        "id": 14,
+        "nombre": "Historia",
+        "año": "2do",
+        "temas": [
+            "El Renacimiento",
+            "La Reforma y Contrarreforma",
+            "El absolutismo",
+            "La Ilustración"
+        ]
+    },
+    {
+        "id": 15,
+        "nombre": "Historia",
+        "año": "3ro",
+        "temas": [
+            "Revolución francesa",
+            "Revoluciones liberales del siglo XIX",
+            "Imperialismo y colonialismo",
+            "Primera Guerra Mundial"
+        ]
+    },
+    {
+        "id": 16,
+        "nombre": "Historia",
+        "año": "4to",
+        "temas": [
+            "Revolución rusa",
+            "Entreguerras",
+            "Segunda Guerra Mundial",
+            "Guerra Fría"
+        ]
+    },
+    {
+        "id": 17,
+        "nombre": "Historia",
+        "año": "5to",
+        "temas": [
+            "Descolonización",
+            "Procesos revolucionarios latinoamericanos",
+            "Movimientos sociales y culturales del siglo XX",
+            "Globalización"
+        ]
+    },
+    {
+        "id": 18,
+        "nombre": "Historia",
+        "año": "6to",
+        "temas": [
+            "Historia económica y social contemporánea",
+            "Historia política contemporánea",
+            "Historia cultural contemporánea",
+            "Historia de la ciencia y la tecnología"
+        ]
+    },
+    {
+        "id": 19, "nombre": "Geografía", "año": "1ro", "temas": ["Geografía física", "Geografía humana", "Geografía económica"]
+    },
+    {
+        "id": 20,
+        "nombre": "Geografía",
+        "año": "2do",
+        "temas": ["Climas y biomas", "Población y migraciones", "Actividades económicas"]
+    },
+    {
+        "id": 21,
+        "nombre": "Geografía",
+        "año": "3ro",
+        "temas": ["Recursos naturales", "Problemas ambientales", "Globalización"]
+    },
+    {
+        "id": 22,
+        "nombre": "Geografía",
+        "año": "4to",
+        "temas": ["Desarrollo humano sostenible", "Geografía política", "Geografía de Argentina"]
+    },
+    {
+        "id": 23,
+        "nombre": "Geografía",
+        "año": "5to",
+        "temas": ["Geografía de América", "Geografía de Europa", "Geografía de Asia"]
+    },
+    {
+        "id": 24,
+        "nombre": "Geografía",
+        "año": "6to",
+        "temas": ["Geografía de Oceanía y Antártida", "Geografía de África", "Geografía comparada"]
+    },
+    {
+        "id": 25,
+        "nombre": "Educación Tecnológica",
+        "año": "1ro",
+        "temas": ["Introducción a la informática", "Ofimática", "Tecnología digital y comunicación"]
+    },
+    {
+        "id": 26,
+        "nombre": "Educación Tecnológica",
+        "año": "2do",
+        "temas": ["Programación básica", "Diseño asistido por computadora", "Redes de computadoras"]
+    },
+    {
+        "id": 27,
+        "nombre": "Educación Tecnológica",
+        "año": "3ro",
+        "temas": ["Desarrollo web", "Sistemas operativos", "Bases de datos"]
+    },
+    {
+        "id": 28,
+        "nombre": "Educación Tecnológica",
+        "año": "4to",
+        "temas": ["Programación avanzada", "Inteligencia artificial", "Seguridad informática"]
+    },
+    {
+        "id": 29,
+        "nombre": "Educación Tecnológica",
+        "año": "5to",
+        "temas": ["Aplicaciones móviles", "Robótica", "Tecnologías emergentes"]
+    },
+    {
+        "id": 30,
+        "nombre": "Educación Tecnológica",
+        "año": "6to",
+        "temas": ["Gestión de proyectos tecnológicos", "Emprendimiento digital", "Innovación y desarrollo tecnológico"]
+    },
+    {
+        "id": 31,
+        "nombre": "Formación Ética y Ciudadana",
+        "año": "1ro",
+        "temas": [
+            "La identidad personal y social",
+            "Los derechos humanos y la igualdad",
+            "La democracia como forma de gobierno",
+            "La ciudadanía y la participación política",
+            "La ética y los valores en la vida cotidiana",
+            "La diversidad cultural y el diálogo intercultural"
+        ]
+    },
+    {
+        "id": 32,
+        "nombre": "Formación Ética y Ciudadana",
+        "año": "2do",
+        "temas": [
+            "El ser humano y la naturaleza",
+            "La responsabilidad individual y social",
+            "La libertad y la responsabilidad",
+            "La igualdad y la justicia",
+            "La democracia y la ciudadanía",
+            "La ética y los valores en la vida social"
+        ]
+    },
+    {
+        "id": 33,
+        "nombre": "Formación Ética y Ciudadana",
+        "año": "3ro",
+        "temas": [
+            "La libertad y la responsabilidad personal y social",
+            "La identidad y la alteridad",
+            "La convivencia democrática y el Estado de derecho",
+            "La diversidad cultural y la interculturalidad",
+            "La ética y los valores en el ámbito laboral",
+            "El desarrollo sustentable y la responsabilidad social"
+        ]
+    },
+    {
+        "id": 34,
+        "nombre": "Formación Ética y Ciudadana",
+        "año": "4to",
+        "temas": [
+            "La dignidad humana y los derechos humanos",
+            "La democracia, la participación y el compromiso ciudadano",
+            "La justicia y la equidad",
+            "La convivencia y la resolución pacífica de conflictos",
+            "La ética y la responsabilidad social",
+            "La identidad, la diversidad cultural y la interculturalidad"
+        ]
+    },
+    {
+        "id": 35,
+        "nombre": "Formación Ética y Ciudadana",
+        "año": "5to",
+        "temas": [
+            "La dignidad humana y los derechos humanos",
+            "La democracia, la participación y el compromiso ciudadano",
+            "La justicia y la equidad",
+            "La convivencia y la resolución pacífica de conflictos",
+            "La ética y la responsabilidad social",
+            "La identidad, la diversidad cultural y la interculturalidad"
+        ]
+    },
+    {
+        "id": 36,
+        "nombre": "Formación Ética y Ciudadana",
+        "año": "6to",
+        "temas": [
+            "La libertad, la responsabilidad y la autonomía",
+            "Los derechos humanos y la ciudadanía global",
+            "La justicia, la equidad y el bien común",
+            "La participación y la convivencia democráticas",
+            "La ética, la responsabilidad social y el compromiso ciudadano",
+            "La identidad, la diversidad cultural y la interculturalidad"
+        ]
+    },
+    {
+        "id": 37, "nombre": "Lengua y Literatura", "año": "1ro", "temas": ["La comunicación", "La lengua y los textos", "La literatura: géneros y textos literarios"]
+    },
+    {
+        "id": 38,
+        "nombre": "Lengua y Literatura",
+        "año": "2do",
+        "temas": ["La lengua y la construcción del sentido", "La literatura: narrativa y poesía"]
+    },
+    {
+        "id": 39,
+        "nombre": "Lengua y Literatura",
+        "año": "3ro",
+        "temas": ["La lengua en el discurso periodístico", "La literatura: teatro y novela"]
+    },
+    {
+        "id": 40,
+        "nombre": "Lengua y Literatura",
+        "año": "4to",
+        "temas": ["La lengua y el discurso político", "La literatura: la poesía en la sociedad"]
+    },
+    {
+        "id": 41,
+        "nombre": "Lengua y Literatura",
+        "año": "5to",
+        "temas": ["La lengua y los medios digitales", "La literatura: narrativa y novela"]
+    },
+    {
+        "id": 42,
+        "nombre": "Lengua y Literatura",
+        "año": "6to",
+        "temas": ["La lengua y los procesos de comunicación complejos", "La literatura: textos literarios contemporáneos"]
+    },
+    {
+        "id": 43, "nombre": "Educación Física", "año": "1ro", "temas": ["Actividades físicas recreativas y deportivas", "Hábitos saludables", "Conocimiento y cuidado del cuerpo"]
+    },
+    {
+        "id": 44,
+        "nombre": "Educación Física",
+        "año": "2do",
+        "temas": [
+            "Actividades físicas recreativas y deportivas",
+            "Hábitos saludables",
+            "Conocimiento y cuidado del cuerpo",
+            "Práctica deportiva y juego",
+            "Respeto a las reglas y fair play"
+        ]
+    },
+    {
+        "id": 45,
+        "nombre": "Educación Física",
+        "año": "3ro",
+        "temas": [
+            "Actividades físicas recreativas y deportivas",
+            "Hábitos saludables",
+            "Conocimiento y cuidado del cuerpo",
+            "Práctica deportiva y juego",
+            "Respeto a las reglas y fair play",
+            "Relación entre actividad física y calidad de vida"
+        ]
+    },
+    {
+        "id": 46,
+        "nombre": "Educación Física",
+        "año": "4to",
+        "temas": [
+            "Actividades físicas recreativas y deportivas",
+            "Hábitos saludables",
+            "Conocimiento y cuidado del cuerpo",
+            "Práctica deportiva y juego",
+            "Respeto a las reglas y fair play",
+            "Relación entre actividad física y calidad de vida",
+            "Estrategias de entrenamiento y mejora del rendimiento"
+        ]
+    },
+    {
+        "id": 47,
+        "nombre": "Educación Física",
+        "año": "5to",
+        "temas": [
+            "Actividades físicas recreativas y deportivas",
+            "Hábitos saludables",
+            "Conocimiento y cuidado del cuerpo",
+            "Práctica deportiva y juego",
+            "Respeto a las reglas y fair play",
+            "Relación entre actividad física y calidad de vida",
+            "Estrategias de entrenamiento y mejora del rendimiento",
+            "Actividad física en el medio natural y de aventura"
+        ]
+    },
+    {
+        "id": 48,
+        "nombre": "Educación Física",
+        "año": "6to",
+        "temas": [
+            "Actividades físicas recreativas y deportivas",
+            "Hábitos saludables",
+            "Conocimiento y cuidado del cuerpo",
+            "Práctica deportiva y juego",
+            "Respeto a las reglas y fair play",
+            "Relación entre actividad física y calidad de vida",
+            "Estrategias de entrenamiento y mejora del rendimiento",
+            "Actividad física en el medio natural y de aventura",
+            "Actividad física y deportiva en el ámbito social y comunitario"
+        ]
     }
 ]

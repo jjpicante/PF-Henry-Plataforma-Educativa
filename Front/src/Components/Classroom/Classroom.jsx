@@ -89,7 +89,7 @@ const Classroom = () => {
 
       <div className={style.cardsContent}>
         {materiasFiltradas.map((elem) => {
-          return <CardAsignature key={elem.id} name={elem.nombre} />;
+          return <CardAsignature key={elem.id} name={elem.nombre} year={elem.año}/>;
         })}
       </div>
     </div>
