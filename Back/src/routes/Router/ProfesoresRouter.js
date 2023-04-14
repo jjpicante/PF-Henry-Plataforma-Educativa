@@ -3,8 +3,16 @@ const { getAllProfesores } = require("../../Controllers/Profesores/getAllProfeso
 const { postProfesor } = require("../../Controllers/Profesores/postProfesor");
 const { deleteProfesor } = require("../../Controllers/Profesores/deleteProfesor");
 const { getProfesor } = require("../../Controllers/Profesores/getPofesor");
+<<<<<<< HEAD
 const { filterProfesor } = require("../../Controllers/Profesores/filterProfesor");
 const { updateProfesor } = require("../../Controllers/Profesores/updateProfesor");
+=======
+
+const {
+  filterProfesor,
+} = require("../../Controllers/Profesores/filterProfesor");
+>>>>>>> 98263e5cc8c68e4fe7d205f714a5df20a0cbbcee
+
 
 const profesores = Router();
 
@@ -21,6 +29,7 @@ profesores.get("/getprofesor", async (req, res) => {
   if (!respuesta.error) return res.status(200).json(respuesta);
   return res.status(503).json(respuesta);
 });
+
 
 profesores.get("/filterprofesor", async (req, res) => {
   const criterios = req.query;
