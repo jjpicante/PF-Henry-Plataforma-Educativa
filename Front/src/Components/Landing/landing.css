@@ -2,6 +2,7 @@
   background-image: url(./img/aula.gif);
   height: 59.3rem;
   width: 100%;
+  position: absolute;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
