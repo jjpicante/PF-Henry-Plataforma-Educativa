@@ -1,10 +1,18 @@
 const { Alumnos } = require("../../db");
 
 const filterAlumnos = async (criterios) => {
-  console.log(criterios);
   try {
+    const where = {};
+    let minusculas = JSON.stringify(criterios).toLowerCase();
+    let criteriosM = JSON.parse(minusculas);
+    console.log(criteriosM);
+
+    for (const key in criteriosM) {
+      where[key] = criteriosM[key];
+    }
+
     const filtro = await Alumnos.findAll({
-      where: criterios,
+      where,
       include: {
         all: true,
       },
