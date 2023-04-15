@@ -32,7 +32,8 @@ alumnos.get("/filtro", async (req, res) => {
 });
 
 alumnos.post("/", async (req, res) => {
-  const { name, apellido, nacionalidad, datebirth, email, username, password } = req.body;
+  const { name, apellido, nacionalidad, datebirth, email, username, password, division, anio } =
+    req.body;
   const respuesta = await postAlumno(
     name,
     apellido,
@@ -40,7 +41,9 @@ alumnos.post("/", async (req, res) => {
     datebirth,
     email,
     username,
-    password
+    password,
+    division,
+    anio
   );
   if (!respuesta.error) return res.status(200).json(respuesta);
   return res.status(503).json(respuesta);

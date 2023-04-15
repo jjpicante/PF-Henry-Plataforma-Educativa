@@ -1,4 +1,5 @@
-const { Alumnos } = require("../../db");
+const { Op } = require("sequelize");
+const { Alumnos, Aulas } = require("../../db");
 
 const postAlumno = async (
   name,
@@ -7,7 +8,9 @@ const postAlumno = async (
   datebirth,
   email,
   username,
-  password
+  password,
+  division,
+  anio
 ) => {
   try {
     if (
@@ -18,8 +21,18 @@ const postAlumno = async (
       return {
         error: `No se pudo completar la carga. Ya existe el username ${username}`,
       };
+    if (
+      apellido === null &&
+      nacionalidad === null &&
+      datebirth === null &&
+      email === null &&
+      username === null &&
+      password === null
+    ) {
+      return { error: "Te faltaron datos a completar!" };
+    }
 
-    const newProfesor = {
+    const newAlumno = {
       name: name.toLowerCase(),
       apellido: apellido.toLowerCase(),
       nacionalidad: nacionalidad.toLowerCase(),
@@ -29,7 +42,15 @@ const postAlumno = async (
       password: password.toLowerCase(),
     };
 
-    Alumnos.create(newProfesor);
+    const alumnodb = await Alumnos.create(newAlumno);
+    const foundAula = await Aulas.findOne({
+      where: { [Op.and]: [{ anio: anio }, { division: division }] },
+    });
+    if (!foundAula) {
+      return { error: "El año o division indicado no se encuentran" };
+    }
+
+    alumnodb.setAula(foundAula);
 
     return { message: "Alumno creado con éxito" };
   } catch (error) {
