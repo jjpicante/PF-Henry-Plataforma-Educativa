@@ -14,15 +14,17 @@ module.exports = (sequelize) => {
         primaryKey: true,
         autoIncrement: true,
       },
-      name: {
+      namemateria: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true,
+      },
+      anio: {
+        type: DataTypes.STRING,
+        allowNull: false,
       },
       temas: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true,
       },
     },
     {

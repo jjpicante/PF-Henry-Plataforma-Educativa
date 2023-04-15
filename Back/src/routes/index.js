@@ -2,7 +2,9 @@ const { Router } = require("express");
 const alumnos = require("./Router/AlumnosRouter");
 const profesores = require("./Router/ProfesoresRouter");
 const admin = require("./Router/AdminRouter");
+const materias = require("./Router/MateriasRouter");
 const aula = require("./Router/Aulas");
+
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 
@@ -13,6 +15,7 @@ const router = Router();
 
 router.use("/Alumnos", alumnos);
 router.use("/Profesores", profesores);
+router.use("/Materias", materias);
 router.use("/Admin", admin);
 
 router.use("/Aulas", aula);

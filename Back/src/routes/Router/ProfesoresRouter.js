@@ -3,33 +3,24 @@ const { getAllProfesores } = require("../../Controllers/Profesores/getAllProfeso
 const { postProfesor } = require("../../Controllers/Profesores/postProfesor");
 const { deleteProfesor } = require("../../Controllers/Profesores/deleteProfesor");
 const { getProfesor } = require("../../Controllers/Profesores/getPofesor");
-<<<<<<< HEAD
 const { filterProfesor } = require("../../Controllers/Profesores/filterProfesor");
 const { updateProfesor } = require("../../Controllers/Profesores/updateProfesor");
-=======
-
-const {
-  filterProfesor,
-} = require("../../Controllers/Profesores/filterProfesor");
->>>>>>> 98263e5cc8c68e4fe7d205f714a5df20a0cbbcee
-
 
 const profesores = Router();
 
 profesores.get("/", async (req, res) => {
-  const respuesta = await getAllProfesores();
+  const respuesta = await getAllProfesores(req.query);
   if (!respuesta.error) return res.status(200).json(respuesta);
   return res.status(503).json(respuesta);
 });
 
 profesores.get("/getprofesor", async (req, res) => {
-  const username = req.query.username.toLocaleLowerCase();
+  const username = req.query.username.toLowerCase();
   if (!username) return res.status(400).json({ message: "No se ingresó un username" });
   const respuesta = await getProfesor(username);
   if (!respuesta.error) return res.status(200).json(respuesta);
   return res.status(503).json(respuesta);
 });
-
 
 profesores.get("/filterprofesor", async (req, res) => {
   const criterios = req.query;
@@ -41,7 +32,18 @@ profesores.get("/filterprofesor", async (req, res) => {
 });
 
 profesores.post("/", async (req, res) => {
-  const { name, apellido, nacionalidad, datebirth, email, username, password } = req.body;
+  const {
+    name,
+    apellido,
+    nacionalidad,
+    datebirth,
+    email,
+    username,
+    password,
+    nameMateria,
+    anio,
+    temas,
+  } = req.body;
   const respuesta = await postProfesor(
     name,
     apellido,
@@ -49,7 +51,10 @@ profesores.post("/", async (req, res) => {
     datebirth,
     email,
     username,
-    password
+    password,
+    nameMateria,
+    anio,
+    temas
   );
   if (!respuesta.error) return res.status(200).json(respuesta);
   return res.status(503).json(respuesta);
