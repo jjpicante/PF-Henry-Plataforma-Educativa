@@ -12,7 +12,7 @@ const Items = ({ currentItems }) => {
                 key={elem.id}
                 id={elem.id}
                 name={elem.nombre}
-                year={elem.año}
+                year={elem.anio}
               />
             );
           })}

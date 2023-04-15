@@ -16,7 +16,7 @@ alumnos.get("/", async (req, res) => {
 
 alumnos.get("/getalumno", async (req, res) => {
   const username = req.query.username.toLocaleLowerCase();
-  if (!username) return res.status(400).json({ message: "No se ingresó un username" });
+  if (!username) return res.status(400).json({ message: "No se ingreso un username" });
   const respuesta = await getAlumnos(username);
   if (!respuesta.error) return res.status(200).json(respuesta);
   return res.status(503).json(respuesta);
@@ -25,7 +25,7 @@ alumnos.get("/getalumno", async (req, res) => {
 alumnos.get("/filtro", async (req, res) => {
   const criterios = req.query;
   if (Object.keys(criterios).length === 0)
-    return res.status(400).json({ message: "No se ingresó correctamente el filtro" });
+    return res.status(400).json({ message: "No se ingreso correctamente el filtro" });
   const respuesta = await filterAlumnos(criterios);
   if (!respuesta.error) return res.status(200).json(respuesta);
   return res.status(503).json(respuesta);

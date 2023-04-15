@@ -67,7 +67,7 @@
 
      const tileContent = ({ date, view }) => {
          if (view === "month") {
-             // Buscar si hay algún evento en esta fecha
+             // Buscar si hay algun evento en esta fecha
              const event = events.find(event => {
                  return event.date.toDateString() === date.toDateString();
              });
@@ -92,7 +92,7 @@
              <div className={style.container2}>
 
                  <div className={style.title}>
-                     <h1>Área Personal</h1>
+                     <h1>area Personal</h1>
                  </div>
 
                  {/* <div className={style.p}><p>Calendario</p></div> */}
@@ -109,7 +109,7 @@
                          <input type="text" name="title" required  className={style.input} placeholder="Titulo del Evento"/>
                      
                      {/* <label>
-                         Descripción:
+                         Descripcion:
                          <textarea name="description" required></textarea>
                      </label>  */}
                      <button type="submit" className={style.button}>Agregar evento</button>

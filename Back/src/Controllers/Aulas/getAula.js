@@ -1,15 +1,15 @@
 const { Aulas } = require("../../db");
 const { Op } = require("sequelize");
 
-const getAula = async (año, division) => {
+const getAula = async (anio, division) => {
   try {
-    const verifed = Number(año);
-    if (!Number.isNaN(verifed) && año !== null) {
-      return { message: "Introduzca un numero en la seccion año" };
+    const verifed = Number(anio);
+    if (!Number.isNaN(verifed) && anio !== null) {
+      return { message: "Introduzca un numero en la seccion anio" };
     }
 
     const aula = await Aulas.findOne({
-      where: { [Op.and]: [{ anio: año }, { division: division }] },
+      where: { [Op.and]: [{ anio: anio }, { division: division }] },
       include: {
         all: true,
       },
@@ -18,7 +18,7 @@ const getAula = async (año, division) => {
     if (aula) return aula.toJSON();
     else
       return {
-        message: "No se encontró el aula con el año y division solicitado",
+        message: "No se encontro el aula con el anio y division solicitado",
       };
   } catch (error) {
     return { error: "Error al buscar un aula" };
