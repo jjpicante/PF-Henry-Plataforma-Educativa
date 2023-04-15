@@ -41,11 +41,11 @@ const postProfesor = async (
       return { error: "La materia indicada no se encuentra" };
     }
 
-    profesordb.setMateria(foundMateria);
+    profesordb.setMaterias(foundMateria);
 
     return { message: "Profesor creado con éxito" };
   } catch (error) {
-    return { error: "No se pudo agregar el profesor solicitado" }; //!LO CREA BIEN, PERO DEVUELVE ESTE MENSAJE
+    return { error: "No se pudo agregar el profesor solicitado" };
   }
 };
 
