@@ -37,45 +37,39 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getMaterias } from "../../Redux/actions";
-import style from "./Classroom.module.css"
+import style from "./Classroom.module.css";
 import Navbar from "../NavBar/navBar";
 import SearchBar from "../SearchBar/searchBar";
-import CardAsignature from "../Cards/cards";
+// import CardAsignature from "../Cards/cards";
 import { useState } from "react";
+import Paginate from "../Paginado/paginado";
 
 const Classroom = () => {
   const dispatch = useDispatch();
   const asignatures = useSelector((state) => state.materias);
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState("");
 
   useEffect(() => {
     dispatch(getMaterias());
   }, [dispatch]);
 
-  const handleChange = event => {
+  const handleChange = (event) => {
     setQuery(event.target.value);
   };
 
-  const materiasFiltradas = asignatures.filter(materia =>
+  const materiasFiltradas = asignatures.filter((materia) =>
     materia.nombre.toLowerCase().includes(query.toLowerCase())
   );
 
   return (
     <div className={style.fondo}>
-      <div>
-        <Navbar></Navbar>
-      </div>
-      <div>
-        <SearchBar value={query} onChange={handleChange}></SearchBar>
-      </div>
-      <div className={style.cardsContent}>
-        {materiasFiltradas.map((elem) => {
-          return <CardAsignature key={elem.id} name={elem.nombre} />;
-        })}
-      </div>
+      <Navbar></Navbar>
+
+      <SearchBar value={query} onChange={handleChange}></SearchBar>
+
+      <Paginate itemsPerPage={2} data={materiasFiltradas} />
     </div>
   );
 };
 
 export default Classroom;
-
