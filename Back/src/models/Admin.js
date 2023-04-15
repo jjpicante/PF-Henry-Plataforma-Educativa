@@ -34,6 +34,10 @@ module.exports = (sequelize) => {
         allowNull: false,
         unique: true,
       },
+      rol: {
+        type: DataTypes.STRING,
+        defaultValue: "admin",
+      },
     },
     {
       timestamps: false,

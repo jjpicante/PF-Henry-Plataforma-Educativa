@@ -43,6 +43,10 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      rol: {
+        type: DataTypes.STRING,
+        defaultValue: "profesor",
+      },
     },
     {
       timestamps: false,
