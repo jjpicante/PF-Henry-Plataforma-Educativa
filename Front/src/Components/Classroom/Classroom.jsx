@@ -63,9 +63,28 @@ const Classroom = () => {
 
   return (
     <div className={style.fondo}>
+      {/* Iconos */}
+      <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+      ></link>
+
       <Navbar></Navbar>
 
-      <SearchBar value={query} onChange={handleChange}></SearchBar>
+      <div className={style.topDiv}>
+        <SearchBar value={query} onChange={handleChange}></SearchBar>
+
+        {/* Boton agregativo */}
+        <Link to="/formSubject">
+          <button
+            type="submit"
+            className={style.agregarBoton}
+            title="Add subject"
+          >
+            <i className="fa fa-plus"></i>
+          </button>
+        </Link>
+      </div>
 
       <Paginate itemsPerPage={2} data={materiasFiltradas} />
     </div>
