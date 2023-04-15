@@ -1,0 +1,13 @@
+.cards{
+    background-color: rgb(203, 211, 218) ;
+    display:flex;
+    border: solid black;
+    border-radius: 20px;
+    width: 450px;
+    height: 350px;
+    flex-direction: column;
+    margin: 20px;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    }
