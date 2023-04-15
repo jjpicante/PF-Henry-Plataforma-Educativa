@@ -10,10 +10,20 @@ const getAllMaterias = async (query) => {
     }
     let size = 10;
 
-    const materias = await Materias.findAll({
-      limit: size,
-      offset: page * size,
-    });
+    if (Object.keys(query).length) {
+      var materias = await Materias.findAll({
+        where: { namemateria: query.name },
+        include: {
+          all: true,
+        },
+      });
+    } else {
+      var materias = await Materias.findAll({
+        limit: size,
+        offset: page * size,
+      });
+    }
+
     const totalCount = await Materias.count();
     const pageCount = Math.ceil(totalCount / size);
     return { materias, pageCount };
