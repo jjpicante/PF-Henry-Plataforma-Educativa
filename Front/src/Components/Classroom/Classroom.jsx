@@ -40,8 +40,9 @@ import { getMaterias } from "../../Redux/actions";
 import style from "./Classroom.module.css";
 import Navbar from "../NavBar/navBar";
 import SearchBar from "../SearchBar/searchBar";
-import CardAsignature from "../Cards/cards";
+// import CardAsignature from "../Cards/cards";
 import { useState } from "react";
+import Paginate from "../Paginado/paginado";
 import { Link } from "react-router-dom";
 
 const Classroom = () => {
@@ -69,9 +70,8 @@ const Classroom = () => {
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
       ></link>
 
-      <div>
-        <Navbar></Navbar>
-      </div>
+      <Navbar></Navbar>
+
       <div className={style.topDiv}>
         <SearchBar value={query} onChange={handleChange}></SearchBar>
 
@@ -87,11 +87,7 @@ const Classroom = () => {
         </Link>
       </div>
 
-      <div className={style.cardsContent}>
-        {materiasFiltradas.map((elem) => {
-          return <CardAsignature key={elem.id} id={elem.id} name={elem.nombre} year={elem.año}/>;
-        })}
-      </div>
+      <Paginate itemsPerPage={6} data={materiasFiltradas} />
     </div>
   );
 };
