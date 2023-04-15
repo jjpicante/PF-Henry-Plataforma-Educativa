@@ -9,6 +9,7 @@ const { deleteMateria } = require("../../Controllers/Materias/deleteMateria");
 const materias = Router();
 
 materias.get("/", async (req, res) => {
+  console.log(req.query);
   const respuesta = await getAllMaterias(req.query);
   if (!respuesta.error) return res.status(200).json(respuesta);
   return res.status(503).json(respuesta);

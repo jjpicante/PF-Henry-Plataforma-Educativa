@@ -12,10 +12,20 @@ const getAllMaterias = async (query) => {
     if (!Number.isNaN(SizeN) && SizeN > 0 && SizeN < 3) {
       size = SizeN;
     }
-    const materias = await Materias.findAndCountAll({
-      limit: size,
-      offset: page * size,
-    });
+
+    if (Object.keys(query).length) {
+      var materias = await Materias.findOne({
+        where: { namemateria: query.name },
+        include: {
+          all: true,
+        },
+      });
+    } else {
+      var materias = await Materias.findAndCountAll({
+        limit: size,
+        offset: page * size,
+      });
+    }
 
     return materias;
   } catch (error) {
