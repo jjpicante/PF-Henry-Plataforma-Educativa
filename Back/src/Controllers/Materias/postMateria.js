@@ -4,7 +4,7 @@ const postMateria = async (namemateria, anio, temas) => {
   try {
     if (
       await Materias.findOne({
-        where: { namemateria: namemateria.toLowerCase(), anio: anio.toLowerCase() },
+        where: { namemateria: namemateria.toLowerCase(), anio: anio },
       })
     )
       return {
@@ -13,11 +13,12 @@ const postMateria = async (namemateria, anio, temas) => {
 
     const newMateria = await Materias.create({
       namemateria: namemateria.toLowerCase(),
-      anio: anio.toLowerCase(),
-      temas: temas.toLowerCase(),
+      anio: anio,
+      temas: temas,
     });
     return { message: "Materia creada con éxito" };
   } catch (error) {
+    console.log(error);
     return { error: "No se pudo agregar la materia solicitada." };
   }
 };

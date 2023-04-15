@@ -40,7 +40,7 @@ profesores.post("/", async (req, res) => {
     email,
     username,
     password,
-    nameMateria,
+    namemateria,
     anio,
     temas,
   } = req.body;
@@ -52,7 +52,7 @@ profesores.post("/", async (req, res) => {
     email,
     username,
     password,
-    nameMateria,
+    namemateria,
     anio,
     temas
   );

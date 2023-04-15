@@ -1,4 +1,4 @@
-const { DataTypes } = require("sequelize");
+const { DataTypes, Sequelize } = require("sequelize");
 
 module.exports = (sequelize) => {
   // defino el modelo
@@ -6,13 +6,13 @@ module.exports = (sequelize) => {
     "Materias",
     {
       id: {
-        // type: DataTypes.UUID,
-        // primaryKey: true,
-        // defaultValue: DataTypes.UUIDV4,
-        // allowNull: false,
-        type: DataTypes.INTEGER,
+        type: DataTypes.UUID,
         primaryKey: true,
-        autoIncrement: true,
+        defaultValue: DataTypes.UUIDV4,
+        allowNull: false,
+        // type: DataTypes.INTEGER,
+        // primaryKey: true,
+        // autoIncrement: true,
       },
       namemateria: {
         type: DataTypes.STRING,
@@ -23,7 +23,7 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
       temas: {
-        type: DataTypes.STRING,
+        type: DataTypes.ARRAY(DataTypes.STRING),
         allowNull: false,
       },
     },

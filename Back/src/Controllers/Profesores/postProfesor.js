@@ -40,8 +40,7 @@ const postProfesor = async (
     if (!foundMateria) {
       return { error: "La materia indicada no se encuentra" };
     }
-
-    profesordb.setMateria(foundMateria);
+    profesordb.setMaterias(foundMateria);
 
     return { message: "Profesor creado con éxito" };
   } catch (error) {
