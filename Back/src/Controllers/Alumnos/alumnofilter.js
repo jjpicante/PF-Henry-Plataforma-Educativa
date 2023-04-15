@@ -5,7 +5,6 @@ const filterAlumnos = async (criterios) => {
     const where = {};
     let minusculas = JSON.stringify(criterios).toLowerCase();
     let criteriosM = JSON.parse(minusculas);
-    console.log(criteriosM);
 
     for (const key in criteriosM) {
       where[key] = criteriosM[key];
