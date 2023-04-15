@@ -43,6 +43,7 @@ import SearchBar from "../SearchBar/searchBar";
 import CardAsignature from "../Cards/cards";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import Paginate from "../Paginado/paginado";
 
 const Classroom = () => {
   const dispatch = useDispatch();
@@ -87,11 +88,7 @@ const Classroom = () => {
         </Link>
       </div>
 
-      <div className={style.cardsContent}>
-        {materiasFiltradas.map((elem) => {
-          return <CardAsignature key={elem.id} id={elem.id} name={elem.nombre} year={elem.año}/>;
-        })}
-      </div>
+      <Paginate itemsPerPage={2} data={materiasFiltradas} query={query} />
     </div>
   );
 };
