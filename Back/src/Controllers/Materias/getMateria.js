@@ -9,7 +9,7 @@ const getMateria = async (id) => {
       },
     });
 
-    if (materia) return materia.toJSON(); //hola
+    if (materia) return materia.toJSON();
     else return { message: "No se encontró la materia con el id solicitado" };
   } catch (error) {
     return { error: "Error al buscar una materia" };
