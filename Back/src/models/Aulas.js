@@ -14,7 +14,7 @@ module.exports = (sequelize) => {
         // primaryKey: true,
         // autoIncrement: true,
       },
-      año: {
+      anio: {
         type: DataTypes.DATE,
         allowNull: false,
         unique: true,

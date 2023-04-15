@@ -6,12 +6,12 @@ module.exports = (sequelize) => {
     "alumnos",
     {
       id: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true,
-        // type: DataTypes.UUID,
+        // type: DataTypes.INTEGER,
         // primaryKey: true,
-        // defaultValue: DataTypes.UUIDV4,
+        // autoIncrement: true,
+        type: DataTypes.UUID,
+        primaryKey: true,
+        defaultValue: DataTypes.UUIDV4,
       },
       name: {
         type: DataTypes.STRING,
@@ -41,6 +41,10 @@ module.exports = (sequelize) => {
       password: {
         type: DataTypes.STRING,
         allowNull: false,
+      },
+      rol: {
+        type: DataTypes.STRING,
+        defaultValue: "student",
       },
     },
     {
