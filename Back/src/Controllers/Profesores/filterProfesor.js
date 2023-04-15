@@ -19,7 +19,7 @@ const filterProfesor = async (criterios) => {
     if (filtro.length > 0) {
       const arreglo = filtro.map((profesor) => profesor.toJSON());
       return arreglo;
-    } else return { message: "No se encontró el profesor con el filtro solicitado" };
+    } else return { message: "No se encontro el profesor con el filtro solicitado" };
   } catch (error) {
     return { error: "Error al filtrar un Profesor" };
   }

@@ -14,7 +14,7 @@ function Login() {
       {
           "id": 1,
           "nombre": "Diego",
-          "apellido": "González",
+          "apellido": "Gonzalez",
           "nacionalidad": "Argentina",
           "fecha_nacimiento": "1985-12-14",
           "email": "diego.gonzalez@example.com",
@@ -24,7 +24,7 @@ function Login() {
       },
       {
         "id": 2,
-        "Nombre": "André",
+        "Nombre": "Andre",
         "Apellido": "Garcia",
         "Nacionalidad": "Brasileño",
         "Fecha_nacimiento": "2007-07-30",

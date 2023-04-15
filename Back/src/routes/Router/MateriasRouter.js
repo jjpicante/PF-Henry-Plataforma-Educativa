@@ -16,7 +16,7 @@ materias.get("/", async (req, res) => {
 
 materias.get("/getmateria", async (req, res) => {
   const { id } = req.params;
-  if (!id) return res.status(400).json({ message: "No se ingresó una materia" });
+  if (!id) return res.status(400).json({ message: "No se ingreso una materia" });
   const respuesta = await getMateria(id);
   if (!respuesta.error) return res.status(200).json(respuesta);
   return res.status(503).json(respuesta);
@@ -44,7 +44,7 @@ materias.put("/:id", async (req, res) => {
   const { id } = req.params;
   const changes = req.body;
 
-  if (!id) return res.status(400).json({ message: "No se envió Id de Materia a modificar" });
+  if (!id) return res.status(400).json({ message: "No se envio Id de Materia a modificar" });
 
   if (Object.keys(changes).length === 0)
     return res.status(400).json({ message: "No se ingresaron modificaciones a realizar" });

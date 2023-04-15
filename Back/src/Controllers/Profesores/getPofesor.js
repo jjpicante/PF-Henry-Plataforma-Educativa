@@ -10,7 +10,7 @@ const getProfesor = async (username) => {
     });
 
     if (profesor) return profesor.toJSON();
-    else return { message: "No se encontró el profesor con el username solicitado" };
+    else return { message: "No se encontro el profesor con el username solicitado" };
   } catch (error) {
     return { error: "Error al buscar un Profesor" };
   }
