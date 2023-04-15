@@ -15,7 +15,7 @@ materias.get("/", async (req, res) => {
 });
 
 materias.get("/getmateria", async (req, res) => {
-  const { id } = req.query;
+  const { id } = req.params;
   if (!id) return res.status(400).json({ message: "No se ingresó una materia" });
   const respuesta = await getMateria(id);
   if (!respuesta.error) return res.status(200).json(respuesta);
