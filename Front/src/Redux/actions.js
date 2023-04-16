@@ -36,9 +36,10 @@ export const getMaterias = (page) => {
 };
 
 export const getMateriasById = (id) => {
-  return {
-    type: GET_MATERIAS_BY_ID,
-    payload: materias.filter((elem) => elem.id === Number(id)),
+  return async function (dispatch) {
+    const response = await axios.get("http://localhost:3001/Materias/getmateria/" + id);
+    const materiaById = response.data;
+    dispatch({ type: GET_MATERIAS_BY_ID, payload: materiaById });
   };
 };
 
