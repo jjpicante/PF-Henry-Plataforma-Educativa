@@ -1,49 +1,3 @@
-// import Navbar from "../NavBar/navBar";
-// import React, { useState } from "react";
-// import Calendar from "react-calendar";
-// import "react-calendar/dist/Calendar.css";
-// import style from "./home.module.css"
-
-// const HomeStudent = () => {
-
-//     const [date, setDate] = useState(new Date());
-
-//     const onChange = date => {
-//         setDate(date);
-//     }
-
-//     return (
-
-//         <div className={style.container}>
-
-//             <div><Navbar></Navbar></div>
-
-//             <div className={style.container2}>
-
-//                 <div className={style.title}>
-//                     <h1>¡Bienvenido/a a tu curso virtual XXX!</h1>
-//                 </div>
-
-//                 <div className={style.p}><p>Calendario</p></div>
-
-//                 <div className={style.calendar}>
-
-//                     <Calendar
-//                         onChange={onChange}
-//                         value={date}
-//                         className={style.scale}
-//                     />
-
-//                 </div>
-
-//             </div>
-//         </div>
-//     )
-// }
-
-
-// export default HomeStudent;
-
 import React, { useEffect, useState } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
@@ -61,12 +15,11 @@ const HomeStudent = () => {
     const onSubmit = event => {
         event.preventDefault();
         // Obtener los datos del formulario
-        const { title, description } = event.target.elements;
+        const { title } = event.target.elements;
         // Crear un nuevo evento
         const newEvent = {
             date: date,
             title: title.value,
-            // description: description.value,
         };
         // Agregar el evento al arreglo de eventos
         setEvents([...events, newEvent]);
@@ -129,7 +82,7 @@ const HomeStudent = () => {
             <div className={style.container2}>
 
                 <div className={style.title}>
-                    <h1>area Personal</h1>
+                    <h1>Área Personal</h1>
                 </div>
 
                 {/* <div className={style.p}><p>Calendario</p></div> */}
