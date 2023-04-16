@@ -10,7 +10,7 @@ const getAllMaterias = async (query) => {
     }
     let size = 2;
 
-    if (Object.keys(query).length) {
+    if (query.name && query.name !== undefined) {
       var materias = await Materias.findAll({
         where: { namemateria: query.name },
         include: {
@@ -33,15 +33,16 @@ const getAllMaterias = async (query) => {
 };
 
 const getMateriasByName = async (name) => {
-
-  const materiaName = await Materias.findAll({ where: { namemateria: { [Op.iLike]: `%${name}%` } } });
+  const materiaName = await Materias.findAll({
+    where: { namemateria: { [Op.iLike]: `%${name}%` } },
+  });
   if (!materiaName.length) {
-      throw Error("No se encontraron materias con ese nombre");
+    throw Error("No se encontraron materias con ese nombre");
   }
   return materiaName;
-}
+};
 
 module.exports = {
   getAllMaterias,
-  getMateriasByName
+  getMateriasByName,
 };

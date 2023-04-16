@@ -2,12 +2,11 @@ import style from "../Classroom/Classroom.module.css";
 import CardAsignature from "../Cards/cards";
 
 const Items = ({ currentItems }) => {
-  console.log(currentItems.length);
   return (
     <>
       <div className={style.cardsContent}>
         {currentItems.length === undefined
-          ? console.log("no")
+          ? console.log("Loading...")
           : currentItems?.map((elem) => {
               return (
                 <CardAsignature

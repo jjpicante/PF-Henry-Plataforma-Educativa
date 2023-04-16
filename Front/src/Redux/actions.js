@@ -26,9 +26,9 @@ export const getProfesors = () => {
   };
 };
 
-export const getMaterias = () => {
+export const getMaterias = (page) => {
   return async function (dispatch) {
-    const response = await axios.get("http://localhost:3001/Materias");
+    const response = await axios.get(`http://localhost:3001/Materias?page=` + page);
     const materias = response.data;
     dispatch({ type: GET_MATERIAS, payload: materias });
   };

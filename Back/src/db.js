@@ -44,7 +44,7 @@ Admin.hasMany(Profesores);
 Profesores.belongsTo(Admin);
 
 Profesores.belongsToMany(Aulas, { through: "ProfesorAula" });
-Profesores.belongsToMany(Aulas, { through: "ProfesorAula" });
+Aulas.belongsToMany(Profesores, { through: "ProfesorAula" });
 
 Materias.belongsToMany(Aulas, { through: "MateriasAula" });
 Aulas.belongsToMany(Materias, { through: "MateriasAula" });

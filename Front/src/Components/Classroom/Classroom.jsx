@@ -18,7 +18,6 @@ const Classroom = () => {
     dispatch(getMaterias());
   }, [dispatch]);
 
-
   return (
     <div className={style.fondo}>
       {/* Iconos */}
