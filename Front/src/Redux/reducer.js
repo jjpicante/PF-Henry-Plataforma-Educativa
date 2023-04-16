@@ -12,6 +12,7 @@ const initialState = {
   students: [],
   profesors: [],
   materias: {},
+  pageCount: "",
   materiaById: [],
   userRole: null,
 };
@@ -31,7 +32,8 @@ export default function reducer(state = initialState, { type, payload }) {
     case GET_MATERIAS:
       return {
         ...state,
-        materias: payload,
+        materias: payload.materias,
+        pageCount: payload.pageCount,
       };
     case GET_MATERIAS_BY_ID:
       return {

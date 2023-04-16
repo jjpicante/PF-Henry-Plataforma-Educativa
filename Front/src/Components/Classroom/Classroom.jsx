@@ -40,35 +40,20 @@ import { getMaterias } from "../../Redux/actions";
 import style from "./Classroom.module.css";
 import Navbar from "../NavBar/navBar";
 import SearchBar from "../SearchBar/searchBar";
-import CardAsignature from "../Cards/cards";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Paginate from "../Paginado/paginado";
-import axios from "axios";
-import Items from "../Paginado/items";
-import ReactPaginate from "react-paginate";
 
 const Classroom = () => {
   const dispatch = useDispatch();
   const asignatures = useSelector((state) => state.materias);
+  const pageCount1 = useSelector((state) => state.pageCount);
   const [query, setQuery] = useState("");
   const [pageNumber, setPageNumber] = useState(0);
-  const [pageCount, setPageCount] = useState(0);
-  const [data, setData] = useState([]);
 
   useEffect(() => {
-    async function data() {
-      try {
-        let response = await axios.get(`http://localhost:3001/Materias?page=${pageNumber}`);
-        setData(response.data.materias);
-        setPageCount(response.data.pageCount);
-        console.log(response.data.pageCount);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    data();
-  }, [pageNumber, dispatch]);
+    dispatch(getMaterias());
+  }, [dispatch]);
 
   const handleChange = (event) => {
     setQuery(event.target.value);
@@ -95,18 +80,7 @@ const Classroom = () => {
           </button>
         </Link>
       </div>
-      <ReactPaginate
-        previousLabel={"previous"}
-        nextLabel={"next"}
-        breakLabel={"..."}
-        pageCount={pageCount}
-        marginPagesDisplayed={2}
-        pageRangeDisplayed={5}
-        onPageChange={(selectedPage) => setPageNumber(selectedPage.selected)}
-        containerClassName={"pagination"}
-        activeClassName={"active"}
-      ></ReactPaginate>
-      <Items currentItems={data}></Items>
+      <Paginate pageCount1={pageCount1} asignatures={asignatures}></Paginate>
     </div>
   );
 };
