@@ -43,25 +43,18 @@ export const getMateriasById = (id) => {
 };
 
 export const getMateriasByName = (name) => {
-
   return async function (dispatch) {
-    try{
-    const result = await axios.get(`http://localhost:3001/Materias?name=${name}`);
-    console.log(result);
-    if(result.data.materias.length > 0){
-      console.log(result);
-      dispatch({type: GET_MATERIAS_BY_NAME, payload: result.data.materias})
-      
+    try {
+      const result = await axios.get(`http://localhost:3001/Materias?name=${name}`);
+      if (result.data.materias.length > 0) {
+        dispatch({ type: GET_MATERIAS_BY_NAME, payload: result.data.materias });
+      } else {
+        window.alert("No hay materias con ese nombre");
+      }
+    } catch (error) {
+      console.log(error);
     }
-    else {
-      window.alert('No hay materias con ese nombre')
-    }  
-  }
-  catch (error) {
-    console.log(error)
-  } 
   };
-  
 };
 
 export const cleanDetail = () => {
@@ -80,12 +73,12 @@ export const setUserRole = (role) => ({
   payload: role,
 });
 
-export const loginFailed=(message) => {
+export const loginFailed = (message) => {
   return {
     type: LOGIN_FAILED,
     payload: message,
-  }
-}
+  };
+};
 
 export const postlogin = (username, password) => {
   return async function (dispatch) {

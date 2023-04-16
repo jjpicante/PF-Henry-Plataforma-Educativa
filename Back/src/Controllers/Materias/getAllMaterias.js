@@ -1,4 +1,5 @@
 const { Materias } = require("../../db");
+const { Op } = require("sequelize");
 
 const getAllMaterias = async (query) => {
   try {
@@ -12,7 +13,7 @@ const getAllMaterias = async (query) => {
 
     if (query.name && query.name !== undefined) {
       var materias = await Materias.findAll({
-        where: { namemateria: query.name },
+        where: { namemateria: { [Op.iLike]: `%${query.name}%` } },
         include: {
           all: true,
         },
@@ -28,21 +29,11 @@ const getAllMaterias = async (query) => {
     const pageCount = Math.ceil(totalCount / size);
     return { materias, pageCount };
   } catch (error) {
+    console.log(error);
     return { error: "Error al importar Materias desde la Base de Datos" };
   }
 };
 
-const getMateriasByName = async (name) => {
-  const materiaName = await Materias.findAll({
-    where: { namemateria: { [Op.iLike]: `%${name}%` } },
-  });
-  if (!materiaName.length) {
-    throw Error("No se encontraron materias con ese nombre");
-  }
-  return materiaName;
-};
-
 module.exports = {
   getAllMaterias,
-  getMateriasByName,
 };
