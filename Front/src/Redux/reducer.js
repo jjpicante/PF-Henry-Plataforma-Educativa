@@ -7,6 +7,7 @@ import {
   CLEAN_DETAIL,
   SET_USER_ROLE,
   CLEAR_USER_ROLE,
+  LOGIN_FAILED,
 } from "./actionsTypes";
 
 const initialState = {
@@ -42,10 +43,10 @@ export default function reducer(state = initialState, { type, payload }) {
         materiaById: payload,
       };
     case GET_MATERIAS_BY_NAME:
-      return{
+      return {
         ...state,
-        materias:payload
-      }  
+        materias: payload
+      }
     case CLEAN_DETAIL:
       return {
         ...state,
@@ -60,6 +61,11 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
         userRole: null,
+      };
+    case LOGIN_FAILED:
+      return {
+        ...state,
+        userRole: '',
       };
     default:
       return { ...state };
