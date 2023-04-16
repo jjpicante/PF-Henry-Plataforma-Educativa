@@ -8,7 +8,6 @@ export default function Detail() {
   const dispatch = useDispatch();
   const { id } = useParams();
   const materiaById = useSelector((state) => state.materiaById);
-
   useEffect(() => {
     dispatch(getMateriasById(id));
     return () => {
@@ -18,15 +17,15 @@ export default function Detail() {
 
   return (
     <div className={style.fondo}>
-      {materiaById[0] ? (
+      {materiaById ? (
         <div className={style.topDiv}>
           <div className={style.materia}>
-            <h1>{materiaById[0].nombre}</h1>
-            <h2>{materiaById[0].anio}</h2>
+            <h1>{materiaById?.namemateria}</h1>
+            <h2>{materiaById?.anio}</h2>
           </div>
           <div>
             <h2>Temas</h2>
-            {materiaById[0].temas?.map((e, i) => {
+            {materiaById?.temas?.map((e, i) => {
               return <h3 key={i}>{i+1}- {e}</h3>;
             })}
           </div>

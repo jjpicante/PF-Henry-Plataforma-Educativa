@@ -9,6 +9,7 @@ import {
   SET_USER_ROLE,
   CLEAR_USER_ROLE,
   LOGIN_FAILED,
+  POST_ALUMNO,
 } from "./actionsTypes";
 import { profesors, students, materias } from "./Base de datos HC";
 import axios from "axios";
@@ -27,6 +28,15 @@ export const getProfesors = () => {
   };
 };
 
+export const postAlumno = (form) => {
+  return async function (dispatch) {
+    const response = await axios.post('http://localhost:3001/Alumnos/', form)
+    dispatch({
+      type: POST_ALUMNO,
+    })
+  }
+}
+
 export const getMaterias = (page) => {
   return async function (dispatch) {
     const response = await axios.get(`http://localhost:3001/Materias?page=` + page);
@@ -36,9 +46,10 @@ export const getMaterias = (page) => {
 };
 
 export const getMateriasById = (id) => {
-  return {
-    type: GET_MATERIAS_BY_ID,
-    payload: materias.filter((elem) => elem.id === Number(id)),
+  return async function (dispatch) {
+    const response = await axios.get("http://localhost:3001/Materias/getmateria/" + id);
+    const materiaById = response.data;
+    dispatch({ type: GET_MATERIAS_BY_ID, payload: materiaById });
   };
 };
 

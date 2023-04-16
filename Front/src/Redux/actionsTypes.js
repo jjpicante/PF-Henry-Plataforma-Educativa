@@ -7,4 +7,5 @@ export const CLEAN_DETAIL = 'CLEAN_DETAIL';
 export const SET_USER_ROLE = 'SET_USER_ROLE';
 export const CLEAR_USER_ROLE = 'CLEAR_USER_ROLE';   
 export const LOGIN_FAILED = 'LOGIN_FAILED';
+export const POST_ALUMNO = 'POST_ALUMNO';
 
