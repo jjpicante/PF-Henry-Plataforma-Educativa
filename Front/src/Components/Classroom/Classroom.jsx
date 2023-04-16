@@ -49,7 +49,6 @@ const Classroom = () => {
   const asignatures = useSelector((state) => state.materias);
   const pageCount1 = useSelector((state) => state.pageCount);
   const [query, setQuery] = useState("");
-  const [pageNumber, setPageNumber] = useState(0);
 
   useEffect(() => {
     dispatch(getMaterias());
