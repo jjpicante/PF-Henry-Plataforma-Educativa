@@ -9,7 +9,7 @@ function Navbar() {
   const dispatch = useDispatch();
 
   const handleLogout = () => {
-    // Eliminar la información del usuario del localStorage
+    // Eliminar la informacion del usuario del localStorage
     localStorage.removeItem('userData');
     dispatch(clearUserRole());
   }

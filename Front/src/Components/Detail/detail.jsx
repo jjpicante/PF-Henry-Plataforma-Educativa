@@ -22,7 +22,7 @@ export default function Detail() {
         <div className={style.topDiv}>
           <div className={style.materia}>
             <h1>{materiaById[0].nombre}</h1>
-            <h2>{materiaById[0].año}</h2>
+            <h2>{materiaById[0].anio}</h2>
           </div>
           <div>
             <h2>Temas</h2>

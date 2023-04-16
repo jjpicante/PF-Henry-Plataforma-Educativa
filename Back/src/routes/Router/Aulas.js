@@ -16,7 +16,7 @@ aula.get("/", async (req, res) => {
 aula.get("/getAula", async (req, res) => {
   const { anio } = req.query;
   const { division } = req.query;
-  if (!aula) return res.status(400).json({ message: "No se ingresó un aula" });
+  if (!aula) return res.status(400).json({ message: "No se ingreso un aula" });
   const respuesta = await getAula(anio, division);
   if (!respuesta.error) return res.status(200).json(respuesta);
   return res.status(503).json(respuesta);
@@ -25,7 +25,7 @@ aula.get("/getAula", async (req, res) => {
 // alumnos.get("/filtro", async (req, res) => {
 //   const criterios = req.query;
 //   if (Object.keys(criterios).length === 0)
-//     return res.status(400).json({ message: "No se ingresó correctamente el filtro" });
+//     return res.status(400).json({ message: "No se ingreso correctamente el filtro" });
 //   const respuesta = await filterAula(criterios);
 //   if (!respuesta.error) return res.status(200).json(respuesta);
 //   return res.status(503).json(respuesta);
