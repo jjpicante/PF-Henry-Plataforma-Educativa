@@ -44,23 +44,35 @@ import CardAsignature from "../Cards/cards";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Paginate from "../Paginado/paginado";
+import axios from "axios";
+import Items from "../Paginado/items";
+import ReactPaginate from "react-paginate";
 
 const Classroom = () => {
   const dispatch = useDispatch();
   const asignatures = useSelector((state) => state.materias);
   const [query, setQuery] = useState("");
+  const [pageNumber, setPageNumber] = useState(0);
+  const [pageCount, setPageCount] = useState(0);
+  const [data, setData] = useState([]);
 
   useEffect(() => {
-    dispatch(getMaterias());
-  }, [dispatch]);
+    async function data() {
+      try {
+        let response = await axios.get(`http://localhost:3001/Materias?page=${pageNumber}`);
+        setData(response.data.materias);
+        setPageCount(response.data.pageCount);
+        console.log(response.data.pageCount);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    data();
+  }, [pageNumber, dispatch]);
 
   const handleChange = (event) => {
     setQuery(event.target.value);
   };
-
-  const materiasFiltradas = asignatures.filter((materia) =>
-    materia.nombre.toLowerCase().includes(query.toLowerCase())
-  );
 
   return (
     <div className={style.fondo}>
@@ -78,17 +90,23 @@ const Classroom = () => {
 
         {/* Boton agregativo */}
         <Link to="/formSubject">
-          <button
-            type="submit"
-            className={style.agregarBoton}
-            title="Add subject"
-          >
+          <button type="submit" className={style.agregarBoton} title="Add subject">
             <i className="fa fa-plus"></i>
           </button>
         </Link>
       </div>
-
-      <Paginate itemsPerPage={2} data={materiasFiltradas} query={query} />
+      <ReactPaginate
+        previousLabel={"previous"}
+        nextLabel={"next"}
+        breakLabel={"..."}
+        pageCount={pageCount}
+        marginPagesDisplayed={2}
+        pageRangeDisplayed={5}
+        onPageChange={(selectedPage) => setPageNumber(selectedPage.selected)}
+        containerClassName={"pagination"}
+        activeClassName={"active"}
+      ></ReactPaginate>
+      <Items currentItems={data}></Items>
     </div>
   );
 };

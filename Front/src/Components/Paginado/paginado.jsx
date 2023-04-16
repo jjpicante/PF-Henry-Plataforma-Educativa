@@ -2,6 +2,8 @@ import ReactPaginate from "react-paginate";
 import { useEffect, useState } from "react";
 import Items from "./items";
 
+//habria que borrar esta?
+
 const Paginate = ({ itemsPerPage, route, data, query }) => {
   //States
   const [currentItems, setCurrentItems] = useState();
@@ -17,9 +19,7 @@ const Paginate = ({ itemsPerPage, route, data, query }) => {
 
     // const fetchData = async () => {
     //   try {
-    //     let response = await axios.get(
-    //       `/${route}?page=${pageNumber}&size=${itemsPerPage}`
-    //     );
+    //     let response = await axios.get(`/${route}?page=${pageNumber}&size=${itemsPerPage}`);
     //     setCurrentItems(response.data);
     //     setPageCount(response.data.pageCount);
     //   } catch (error) {
@@ -30,9 +30,11 @@ const Paginate = ({ itemsPerPage, route, data, query }) => {
 
     //El harcodeo en cuestion
     // if (query) setPageNumber(0);
-    const endOffset = itemOffset + itemsPerPage;
-    setCurrentItems(data.slice(itemOffset, endOffset));
-    setPageCount(Math.ceil(data.length / itemsPerPage));
+    if (data.length > 0) {
+      const endOffset = itemOffset + itemsPerPage;
+      setCurrentItems(data.slice(itemOffset, endOffset));
+      setPageCount(Math.ceil(data.length / itemsPerPage));
+    }
   }, [itemOffset, itemsPerPage, data]);
 
   const handlePageClick = (ev) => {
