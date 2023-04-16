@@ -2,15 +2,16 @@ const { Materias } = require("../../db");
 
 const getAllMaterias = async (query) => {
   try {
+    console.log(Object.keys(query.page).length, Object.keys(query), console.log(query.page));
     const PageN = Number.parseInt(query.page) || 0;
 
     let page = 0;
     if (!Number.isNaN(PageN) && PageN > 0) {
       page = PageN;
     }
-    let size = 3;
+    let size = 2;
 
-    if (Object.keys(query).length) {
+    if (query.name && query.name !== undefined) {
       var materias = await Materias.findAll({
         where: { namemateria: query.name },
         include: {
