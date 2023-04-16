@@ -36,9 +36,9 @@ const getMateriasByName = async (name) => {
 
   const materiaName = await Materias.findAll({ where: { namemateria: { [Op.iLike]: `%${name}%` } } });
   if (!materiaName.length) {
-      throw Error("No se encontraron paises con ese nombre");
+      throw Error("No se encontraron materias con ese nombre");
   }
-  return countryName;
+  return materiaName;
 }
 
 module.exports = {
