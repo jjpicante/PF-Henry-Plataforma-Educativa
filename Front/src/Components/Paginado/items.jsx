@@ -6,7 +6,7 @@ const Items = ({ currentItems }) => {
     <>
       <div className={style.cardsContent}>
         {currentItems.length === undefined
-          ? console.log("no")
+          ? console.log("Loading...")
           : currentItems?.map((elem) => {
               return (
                 <CardAsignature

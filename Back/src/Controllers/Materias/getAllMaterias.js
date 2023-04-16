@@ -2,7 +2,6 @@ const { Materias } = require("../../db");
 
 const getAllMaterias = async (query) => {
   try {
-    console.log(Object.keys(query.page).length, Object.keys(query), console.log(query.page));
     const PageN = Number.parseInt(query.page) || 0;
 
     let page = 0;
@@ -34,15 +33,16 @@ const getAllMaterias = async (query) => {
 };
 
 const getMateriasByName = async (name) => {
-
-  const materiaName = await Materias.findAll({ where: { namemateria: { [Op.iLike]: `%${name}%` } } });
+  const materiaName = await Materias.findAll({
+    where: { namemateria: { [Op.iLike]: `%${name}%` } },
+  });
   if (!materiaName.length) {
-      throw Error("No se encontraron materias con ese nombre");
+    throw Error("No se encontraron materias con ese nombre");
   }
   return materiaName;
-}
+};
 
 module.exports = {
   getAllMaterias,
-  getMateriasByName
+  getMateriasByName,
 };
