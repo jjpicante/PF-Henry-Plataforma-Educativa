@@ -52,12 +52,11 @@
      const onSubmit = event => {
          event.preventDefault();
          // Obtener los datos del formulario
-         const { title, description } = event.target.elements;
+         const { title } = event.target.elements;
          // Crear un nuevo evento
          const newEvent = {
              date: date,
              title: title.value,
-             // description: description.value,
          };
          // Agregar el evento al arreglo de eventos
          setEvents([...events, newEvent]);

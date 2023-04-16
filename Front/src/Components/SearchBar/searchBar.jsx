@@ -1,45 +1,42 @@
-// import React, { useState } from 'react';
-// import { materias } from '../../Redux/Base de datos HC'; // importa tu array de materias
+ import React, { useState } from 'react';
+ import { useDispatch } from 'react-redux';
+ import { getMateriasByName, getMaterias } from '../../Redux/actions';
 
-// function SearchBar() {
 
-//   const [subject, setSubject] = useState('');
-//   const materiasFiltradas = materias.filter(materia =>
-//     materia.nombre.toLowerCase().includes(subject.toLowerCase())
-//   );
+ function SearchBar() {
 
-//   const handleChange = event => {
-//     setSubject(event.target.value);
-//   };
 
-//   return (
-//     <div>
-//       <input type="text" placeholder="Buscar materia" value={subject} onChange={handleChange} />
-//       {materiasFiltradas.length === 0 ? "No se encontraron matrias" : materiasFiltradas.map(materia => (
-//         <div key={materia.id}>
-//           <h2>{materia.nombre}</h2>
-//         </div>
-//       ))}
-//     </div>
-//   );
-// }
+   const dispatch = useDispatch()
+   const [name, setName] = useState("")
 
-// export default SearchBar;
 
-import React from "react";
-import style from "./SearchBar.module.css";
 
-function SearchBar({ value, onChange }) {
-  return (
-    <div className={style.SearchBarContainer}>
-      <input
-        type="text"
-        placeholder="Buscar materia"
-        value={value}
-        onChange={onChange}
-      />
-    </div>
-  );
-}
+   const handleChange = event => {
+     setName(event.target.value);
 
-export default SearchBar;
+   };
+
+
+   const handleSubmit = (event) => {
+     event.preventDefault()
+    dispatch(getMateriasByName(name))
+   }
+
+   const handleInput = (event) => {
+     if (event.target.value === '') {
+       dispatch(getMaterias());
+     }
+   }
+
+   return (
+     <div>
+       <input type="search" placeholder="Buscar materia" value={name} onChange={handleChange} onInput={handleInput}/>
+       <button onClick={(event) => { handleSubmit(event) }}>Buscar</button>
+     </div>
+   );
+ }
+
+ export default SearchBar;
+
+
+
