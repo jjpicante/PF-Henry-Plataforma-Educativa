@@ -15,11 +15,11 @@ const postLogin = async (password, username) => {
     } else if (profesor) {
       return profesor.rol;
     } else {
-      return { message: "Userario o password invalidos" };
+      return { message: "Usuario o password invalidos" };
     }
   } catch (error) {
     console.log(error);
-    return { error: "No se pudo agregar la materia solicitada." };
+    return { error: "Algo Fallo. Contacte con un administrador" };
   }
 };
 
