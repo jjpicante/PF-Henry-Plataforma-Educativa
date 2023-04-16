@@ -8,7 +8,7 @@ const getAllMaterias = async (query) => {
     if (!Number.isNaN(PageN) && PageN > 0) {
       page = PageN;
     }
-    let size = 3;
+    let size = 2;
 
     if (Object.keys(query).length) {
       var materias = await Materias.findAll({
@@ -32,6 +32,16 @@ const getAllMaterias = async (query) => {
   }
 };
 
+const getMateriasByName = async (name) => {
+
+  const materiaName = await Materias.findAll({ where: { namemateria: { [Op.iLike]: `%${name}%` } } });
+  if (!materiaName.length) {
+      throw Error("No se encontraron paises con ese nombre");
+  }
+  return countryName;
+}
+
 module.exports = {
   getAllMaterias,
+  getMateriasByName
 };
