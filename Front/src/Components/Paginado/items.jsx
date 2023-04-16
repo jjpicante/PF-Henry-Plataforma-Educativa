@@ -9,7 +9,12 @@ const Items = ({ currentItems }) => {
         {currentItems &&
           currentItems.map((elem) => {
             return (
-              <CardAsignature key={elem.id} id={elem.id} name={elem.namemateria} year={elem.anio} />
+              <CardAsignature
+                key={elem.id}
+                id={elem.id}
+                name={elem.nombre}
+                year={elem.anio}
+              />
             );
           })}
       </div>

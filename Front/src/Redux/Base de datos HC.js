@@ -3,9 +3,9 @@ export const students =
     [
         {
             "id": 1,
-            "Nombre": "Lucía",
-            "Apellido": "Sánchez",
-            "Nacionalidad": "Española",
+            "Nombre": "Lucia",
+            "Apellido": "Sanchez",
+            "Nacionalidad": "Espaniola",
             "Fecha_nacimiento": "2005-09-14",
             "email": "lucia.sanchez@example.com",
             "username": "luciasanchez",
@@ -15,7 +15,7 @@ export const students =
         {
             "id": 2,
             "Nombre": "Pablo",
-            "Apellido": "González",
+            "Apellido": "Gonzalez",
             "Nacionalidad": "Mexicana",
             "Fecha_nacimiento": "2007-03-19",
             "email": "pablo.gonzalez@example.com",
@@ -26,7 +26,7 @@ export const students =
         {
             "id": 3,
             "Nombre": "Carmen",
-            "Apellido": "Rodríguez",
+            "Apellido": "Rodriguez",
             "Nacionalidad": "Colombiana",
             "Fecha_nacimiento": "2006-11-30",
             "email": "carmen.rodriguez@example.com",
@@ -37,8 +37,8 @@ export const students =
         {
             "id": 4,
             "Nombre": "Diego",
-            "Apellido": "Hernández",
-            "Nacionalidad": "Español",
+            "Apellido": "Hernandez",
+            "Nacionalidad": "Espaniol",
             "Fecha_nacimiento": "2008-06-18",
             "email": "diego.hernandez@example.com",
             "username": "diegohernandez",
@@ -48,7 +48,7 @@ export const students =
         {
             "id": 5,
             "Nombre": "Ana",
-            "Apellido": "Martínez",
+            "Apellido": "Martinez",
             "Nacionalidad": "Argentina",
             "Fecha_nacimiento": "2009-12-03",
             "email": "ana.martinez@example.com",
@@ -59,7 +59,7 @@ export const students =
         {
             "id": 6,
             "Nombre": "Santiago",
-            "Apellido": "López",
+            "Apellido": "Lopez",
             "Nacionalidad": "Uruguayo",
             "Fecha_nacimiento": "2005-07-21",
             "email": "santiago.lopez@example.com",
@@ -70,7 +70,7 @@ export const students =
         {
             "id": 7,
             "Nombre": "Carla",
-            "Apellido": "Gómez",
+            "Apellido": "Gomez",
             "Nacionalidad": "Venezolana",
             "Fecha_nacimiento": "2010-02-12",
             "email": "carla.gomez@example.com",
@@ -92,7 +92,7 @@ export const students =
         {
             "id": 9,
             "Nombre": "Lautaro",
-            "Apellido": "Díaz",
+            "Apellido": "Diaz",
             "Nacionalidad": "Argentina",
             "Fecha_nacimiento": "2005-11-23",
             "email": "lautaro.diaz@example.com",
@@ -103,7 +103,7 @@ export const students =
         {
             "id": 10,
             "Nombre": "Camila",
-            "Apellido": "Fernández",
+            "Apellido": "Fernandez",
             "Nacionalidad": "Uruguaya",
             "Fecha_nacimiento": "2006-04-02",
             "email": "camila.fernandez@example.com",
@@ -113,8 +113,8 @@ export const students =
         },
         {
             "id": 11,
-            "Nombre": "Nicolás",
-            "Apellido": "López",
+            "Nombre": "Nicolas",
+            "Apellido": "Lopez",
             "Nacionalidad": "Colombiano",
             "Fecha_nacimiento": "2009-10-10",
             "email": "nicolas.lopez@example.com",
@@ -125,7 +125,7 @@ export const students =
         {
             "id": 12,
             "Nombre": "Florencia",
-            "Apellido": "García",
+            "Apellido": "Garcia",
             "Nacionalidad": "Chilena",
             "Fecha_nacimiento": "2008-05-14",
             "email": "florencia.garcia@example.com",
@@ -135,8 +135,8 @@ export const students =
         },
         {
             "id": 13,
-            "Nombre": "Tomás",
-            "Apellido": "Gutiérrez",
+            "Nombre": "Tomas",
+            "Apellido": "Gutierrez",
             "Nacionalidad": "Mexicano",
             "Fecha_nacimiento": "2005-12-19",
             "email": "tomas.gutierrez@example.com",
@@ -191,7 +191,7 @@ export const students =
         {
             "id": 18,
             "Nombre": "Ana",
-            "Apellido": "González",
+            "Apellido": "Gonzalez",
             "Nacionalidad": "Mexicana",
             "Fecha_nacimiento": "2006-01-20",
             "email": "ana.gonzalez@example.com",
@@ -212,7 +212,7 @@ export const students =
         },
         {
             "id": 20,
-            "Nombre": "André",
+            "Nombre": "Andre",
             "Apellido": "Garcia",
             "Nacionalidad": "Brasileño",
             "Fecha_nacimiento": "2007-07-30",
@@ -228,7 +228,7 @@ export const profesors =
         {
             "id": 1,
             "nombre": "Diego",
-            "apellido": "González",
+            "apellido": "Gonzalez",
             "nacionalidad": "Argentina",
             "fecha_nacimiento": "1985-12-14",
             "email": "diego.gonzalez@example.com",
@@ -239,8 +239,8 @@ export const profesors =
         {
             "id": 2,
             "nombre": "Ana",
-            "apellido": "Martínez",
-            "nacionalidad": "Española",
+            "apellido": "Martinez",
+            "nacionalidad": "Espaniola",
             "fecha_nacimiento": "1982-06-29",
             "email": "ana.martinez@example.com",
             "username": "ana.martinez",
@@ -261,7 +261,7 @@ export const profesors =
         {
             "id": 4,
             "nombre": "Marcela",
-            "apellido": "Gutiérrez",
+            "apellido": "Gutierrez",
             "nacionalidad": "Mexicana",
             "fecha_nacimiento": "1988-03-02",
             "email": "marcela.gutierrez@example.com",
@@ -293,7 +293,7 @@ export const profesors =
         {
             "id": 7,
             "nombre": "Juan",
-            "apellido": "Rodríguez",
+            "apellido": "Rodriguez",
             "nacionalidad": "Mexicana",
             "fecha_nacimiento": "1981-09-12",
             "email": "juan.rodriguez@example.com",
@@ -303,8 +303,8 @@ export const profesors =
         },
         {
             "id": 8,
-            "nombre": "Sofía",
-            "apellido": "García",
+            "nombre": "Sofia",
+            "apellido": "Garcia",
             "nacionalidad": "Argentina",
             "fecha_nacimiento": "1976-02-28",
             "email": "sofia.garcia@example.com",
@@ -317,52 +317,52 @@ export const profesors =
 export const materias = [
     {
         "id": 1,
-        "nombre": "Matemática",
-        "año": "1ro",
+        "nombre": "Matematica",
+        "anio": "1ro",
         "temas": [
-            "Números naturales",
+            "Numeros naturales",
             "Fracciones",
             "Decimales",
-            "Geometría básica"
+            "Geometria basica"
         ]
     },
     {
         "id": 2,
-        "nombre": "Matemática",
-        "año": "2do",
+        "nombre": "Matematica",
+        "anio": "2do",
         "temas": [
             "Ecuaciones de primer grado",
-            "Polígonos",
-            "Potencias y raíces",
+            "Poligonos",
+            "Potencias y raices",
             "Medidas de tendencia central"
         ]
     },
     {
         "id": 3,
-        "nombre": "Matemática",
-        "año": "3ro",
+        "nombre": "Matematica",
+        "anio": "3ro",
         "temas": [
             "Ecuaciones de segundo grado",
-            "Ángulos",
+            "angulos",
             "Probabilidad",
-            "Estadística descriptiva"
+            "Estadistica descriptiva"
         ]
     },
     {
         "id": 4,
-        "nombre": "Matemática",
-        "año": "4to",
+        "nombre": "Matematica",
+        "anio": "4to",
         "temas": [
             "Funciones",
-            "Trigonometría",
-            "Geometría analítica",
-            "Estadística inferencial"
+            "Trigonometria",
+            "Geometria analitica",
+            "Estadistica inferencial"
         ]
     },
     {
         "id": 5,
-        "nombre": "Matemática",
-        "año": "5to",
+        "nombre": "Matematica",
+        "anio": "5to",
         "temas": [
             "Derivadas",
             "Integrales",
@@ -372,32 +372,32 @@ export const materias = [
     },
     {
         "id": 6,
-        "nombre": "Matemática",
-        "año": "6to",
+        "nombre": "Matematica",
+        "anio": "6to",
         "temas": [
-            "Álgebra lineal",
-            "Cálculo multivariable",
-            "Teoría de conjuntos",
-            "Teoría de números"
+            "algebra lineal",
+            "Calculo multivariable",
+            "Teoria de conjuntos",
+            "Teoria de numeros"
         ]
     },
     {
         "id": 7,
-        "nombre": "Biología",
-        "año": "1ro",
+        "nombre": "Biologia",
+        "anio": "1ro",
         "temas": [
-            "Introducción a la biología",
-            "Métodos científicos",
-            "Células y su estructura",
+            "Introduccion a la biologia",
+            "Metodos cientificos",
+            "Celulas y su estructura",
             "Funciones vitales de los seres vivos"
         ]
     },
     {
         "id": 8,
-        "nombre": "Biología",
-        "año": "2do",
+        "nombre": "Biologia",
+        "anio": "2do",
         "temas": [
-            "Reproducción celular",
+            "Reproduccion celular",
             "Tejidos animales y vegetales",
             "Sistemas del cuerpo humano",
             "Ecosistemas y medio ambiente"
@@ -405,54 +405,54 @@ export const materias = [
     },
     {
         "id": 9,
-        "nombre": "Biología",
-        "año": "3ro",
+        "nombre": "Biologia",
+        "anio": "3ro",
         "temas": [
             "Biodiversidad",
-            "Clasificación de los seres vivos",
-            "Genética",
-            "Evolución"
+            "Clasificacion de los seres vivos",
+            "Genetica",
+            "Evolucion"
         ]
     },
     {
         "id": 10,
-        "nombre": "Biología",
-        "año": "4to",
+        "nombre": "Biologia",
+        "anio": "4to",
         "temas": [
-            "Biología molecular",
-            "Fisiología animal",
-            "Microbiología",
-            "Ecología y conservación"
+            "Biologia molecular",
+            "Fisiologia animal",
+            "Microbiologia",
+            "Ecologia y conservacion"
         ]
     },
     {
         "id": 11,
-        "nombre": "Biología",
-        "año": "5to",
+        "nombre": "Biologia",
+        "anio": "5to",
         "temas": [
-            "Biología celular avanzada",
-            "Biología molecular avanzada",
-            "Fisiología vegetal",
-            "Biología marina"
+            "Biologia celular avanzada",
+            "Biologia molecular avanzada",
+            "Fisiologia vegetal",
+            "Biologia marina"
         ]
     },
     {
         "id": 12,
-        "nombre": "Biología",
-        "año": "6to",
+        "nombre": "Biologia",
+        "anio": "6to",
         "temas": [
-            "Biología molecular avanzada",
-            "Biología del desarrollo",
-            "Biotecnología",
+            "Biologia molecular avanzada",
+            "Biologia del desarrollo",
+            "Biotecnologia",
             "Neurociencia"
         ]
     },
     {
         "id": 13,
         "nombre": "Historia",
-        "año": "1ro",
+        "anio": "1ro",
         "temas": [
-            "Introducción a la historia",
+            "Introduccion a la historia",
             "Prehistoria",
             "Las primeras civilizaciones",
             "La Edad Media"
@@ -461,20 +461,20 @@ export const materias = [
     {
         "id": 14,
         "nombre": "Historia",
-        "año": "2do",
+        "anio": "2do",
         "temas": [
             "El Renacimiento",
             "La Reforma y Contrarreforma",
             "El absolutismo",
-            "La Ilustración"
+            "La Ilustracion"
         ]
     },
     {
         "id": 15,
         "nombre": "Historia",
-        "año": "3ro",
+        "anio": "3ro",
         "temas": [
-            "Revolución francesa",
+            "Revolucion francesa",
             "Revoluciones liberales del siglo XIX",
             "Imperialismo y colonialismo",
             "Primera Guerra Mundial"
@@ -483,287 +483,287 @@ export const materias = [
     {
         "id": 16,
         "nombre": "Historia",
-        "año": "4to",
+        "anio": "4to",
         "temas": [
-            "Revolución rusa",
+            "Revolucion rusa",
             "Entreguerras",
             "Segunda Guerra Mundial",
-            "Guerra Fría"
+            "Guerra Fria"
         ]
     },
     {
         "id": 17,
         "nombre": "Historia",
-        "año": "5to",
+        "anio": "5to",
         "temas": [
-            "Descolonización",
+            "Descolonizacion",
             "Procesos revolucionarios latinoamericanos",
             "Movimientos sociales y culturales del siglo XX",
-            "Globalización"
+            "Globalizacion"
         ]
     },
     {
         "id": 18,
         "nombre": "Historia",
-        "año": "6to",
+        "anio": "6to",
         "temas": [
-            "Historia económica y social contemporánea",
-            "Historia política contemporánea",
-            "Historia cultural contemporánea",
-            "Historia de la ciencia y la tecnología"
+            "Historia economica y social contemporanea",
+            "Historia politica contemporanea",
+            "Historia cultural contemporanea",
+            "Historia de la ciencia y la tecnologia"
         ]
     },
     {
-        "id": 19, "nombre": "Geografía", "año": "1ro", "temas": ["Geografía física", "Geografía humana", "Geografía económica"]
+        "id": 19, "nombre": "Geografia", "anio": "1ro", "temas": ["Geografia fisica", "Geografia humana", "Geografia economica"]
     },
     {
         "id": 20,
-        "nombre": "Geografía",
-        "año": "2do",
-        "temas": ["Climas y biomas", "Población y migraciones", "Actividades económicas"]
+        "nombre": "Geografia",
+        "anio": "2do",
+        "temas": ["Climas y biomas", "Poblacion y migraciones", "Actividades economicas"]
     },
     {
         "id": 21,
-        "nombre": "Geografía",
-        "año": "3ro",
-        "temas": ["Recursos naturales", "Problemas ambientales", "Globalización"]
+        "nombre": "Geografia",
+        "anio": "3ro",
+        "temas": ["Recursos naturales", "Problemas ambientales", "Globalizacion"]
     },
     {
         "id": 22,
-        "nombre": "Geografía",
-        "año": "4to",
-        "temas": ["Desarrollo humano sostenible", "Geografía política", "Geografía de Argentina"]
+        "nombre": "Geografia",
+        "anio": "4to",
+        "temas": ["Desarrollo humano sostenible", "Geografia politica", "Geografia de Argentina"]
     },
     {
         "id": 23,
-        "nombre": "Geografía",
-        "año": "5to",
-        "temas": ["Geografía de América", "Geografía de Europa", "Geografía de Asia"]
+        "nombre": "Geografia",
+        "anio": "5to",
+        "temas": ["Geografia de America", "Geografia de Europa", "Geografia de Asia"]
     },
     {
         "id": 24,
-        "nombre": "Geografía",
-        "año": "6to",
-        "temas": ["Geografía de Oceanía y Antártida", "Geografía de África", "Geografía comparada"]
+        "nombre": "Geografia",
+        "anio": "6to",
+        "temas": ["Geografia de Oceania y Antartida", "Geografia de africa", "Geografia comparada"]
     },
     {
         "id": 25,
-        "nombre": "Educación Tecnológica",
-        "año": "1ro",
-        "temas": ["Introducción a la informática", "Ofimática", "Tecnología digital y comunicación"]
+        "nombre": "Educacion Tecnologica",
+        "anio": "1ro",
+        "temas": ["Introduccion a la informatica", "Ofimatica", "Tecnologia digital y comunicacion"]
     },
     {
         "id": 26,
-        "nombre": "Educación Tecnológica",
-        "año": "2do",
-        "temas": ["Programación básica", "Diseño asistido por computadora", "Redes de computadoras"]
+        "nombre": "Educacion Tecnologica",
+        "anio": "2do",
+        "temas": ["Programacion basica", "Diseño asistido por computadora", "Redes de computadoras"]
     },
     {
         "id": 27,
-        "nombre": "Educación Tecnológica",
-        "año": "3ro",
+        "nombre": "Educacion Tecnologica",
+        "anio": "3ro",
         "temas": ["Desarrollo web", "Sistemas operativos", "Bases de datos"]
     },
     {
         "id": 28,
-        "nombre": "Educación Tecnológica",
-        "año": "4to",
-        "temas": ["Programación avanzada", "Inteligencia artificial", "Seguridad informática"]
+        "nombre": "Educacion Tecnologica",
+        "anio": "4to",
+        "temas": ["Programacion avanzada", "Inteligencia artificial", "Seguridad informatica"]
     },
     {
         "id": 29,
-        "nombre": "Educación Tecnológica",
-        "año": "5to",
-        "temas": ["Aplicaciones móviles", "Robótica", "Tecnologías emergentes"]
+        "nombre": "Educacion Tecnologica",
+        "anio": "5to",
+        "temas": ["Aplicaciones moviles", "Robotica", "Tecnologias emergentes"]
     },
     {
         "id": 30,
-        "nombre": "Educación Tecnológica",
-        "año": "6to",
-        "temas": ["Gestión de proyectos tecnológicos", "Emprendimiento digital", "Innovación y desarrollo tecnológico"]
+        "nombre": "Educacion Tecnologica",
+        "anio": "6to",
+        "temas": ["Gestion de proyectos tecnologicos", "Emprendimiento digital", "Innovacion y desarrollo tecnologico"]
     },
     {
         "id": 31,
-        "nombre": "Formación Ética y Ciudadana",
-        "año": "1ro",
+        "nombre": "Formacion etica y Ciudadana",
+        "anio": "1ro",
         "temas": [
             "La identidad personal y social",
             "Los derechos humanos y la igualdad",
             "La democracia como forma de gobierno",
-            "La ciudadanía y la participación política",
-            "La ética y los valores en la vida cotidiana",
-            "La diversidad cultural y el diálogo intercultural"
+            "La ciudadania y la participacion politica",
+            "La etica y los valores en la vida cotidiana",
+            "La diversidad cultural y el dialogo intercultural"
         ]
     },
     {
         "id": 32,
-        "nombre": "Formación Ética y Ciudadana",
-        "año": "2do",
+        "nombre": "Formacion etica y Ciudadana",
+        "anio": "2do",
         "temas": [
             "El ser humano y la naturaleza",
             "La responsabilidad individual y social",
             "La libertad y la responsabilidad",
             "La igualdad y la justicia",
-            "La democracia y la ciudadanía",
-            "La ética y los valores en la vida social"
+            "La democracia y la ciudadania",
+            "La etica y los valores en la vida social"
         ]
     },
     {
         "id": 33,
-        "nombre": "Formación Ética y Ciudadana",
-        "año": "3ro",
+        "nombre": "Formacion etica y Ciudadana",
+        "anio": "3ro",
         "temas": [
             "La libertad y la responsabilidad personal y social",
             "La identidad y la alteridad",
-            "La convivencia democrática y el Estado de derecho",
+            "La convivencia democratica y el Estado de derecho",
             "La diversidad cultural y la interculturalidad",
-            "La ética y los valores en el ámbito laboral",
+            "La etica y los valores en el ambito laboral",
             "El desarrollo sustentable y la responsabilidad social"
         ]
     },
     {
         "id": 34,
-        "nombre": "Formación Ética y Ciudadana",
-        "año": "4to",
+        "nombre": "Formacion etica y Ciudadana",
+        "anio": "4to",
         "temas": [
             "La dignidad humana y los derechos humanos",
-            "La democracia, la participación y el compromiso ciudadano",
+            "La democracia, la participacion y el compromiso ciudadano",
             "La justicia y la equidad",
-            "La convivencia y la resolución pacífica de conflictos",
-            "La ética y la responsabilidad social",
+            "La convivencia y la resolucion pacifica de conflictos",
+            "La etica y la responsabilidad social",
             "La identidad, la diversidad cultural y la interculturalidad"
         ]
     },
     {
         "id": 35,
-        "nombre": "Formación Ética y Ciudadana",
-        "año": "5to",
+        "nombre": "Formacion etica y Ciudadana",
+        "anio": "5to",
         "temas": [
             "La dignidad humana y los derechos humanos",
-            "La democracia, la participación y el compromiso ciudadano",
+            "La democracia, la participacion y el compromiso ciudadano",
             "La justicia y la equidad",
-            "La convivencia y la resolución pacífica de conflictos",
-            "La ética y la responsabilidad social",
+            "La convivencia y la resolucion pacifica de conflictos",
+            "La etica y la responsabilidad social",
             "La identidad, la diversidad cultural y la interculturalidad"
         ]
     },
     {
         "id": 36,
-        "nombre": "Formación Ética y Ciudadana",
-        "año": "6to",
+        "nombre": "Formacion etica y Ciudadana",
+        "anio": "6to",
         "temas": [
-            "La libertad, la responsabilidad y la autonomía",
-            "Los derechos humanos y la ciudadanía global",
-            "La justicia, la equidad y el bien común",
-            "La participación y la convivencia democráticas",
-            "La ética, la responsabilidad social y el compromiso ciudadano",
+            "La libertad, la responsabilidad y la autonomia",
+            "Los derechos humanos y la ciudadania global",
+            "La justicia, la equidad y el bien comun",
+            "La participacion y la convivencia democraticas",
+            "La etica, la responsabilidad social y el compromiso ciudadano",
             "La identidad, la diversidad cultural y la interculturalidad"
         ]
     },
     {
-        "id": 37, "nombre": "Lengua y Literatura", "año": "1ro", "temas": ["La comunicación", "La lengua y los textos", "La literatura: géneros y textos literarios"]
+        "id": 37, "nombre": "Lengua y Literatura", "anio": "1ro", "temas": ["La comunicacion", "La lengua y los textos", "La literatura: generos y textos literarios"]
     },
     {
         "id": 38,
         "nombre": "Lengua y Literatura",
-        "año": "2do",
-        "temas": ["La lengua y la construcción del sentido", "La literatura: narrativa y poesía"]
+        "anio": "2do",
+        "temas": ["La lengua y la construccion del sentido", "La literatura: narrativa y poesia"]
     },
     {
         "id": 39,
         "nombre": "Lengua y Literatura",
-        "año": "3ro",
-        "temas": ["La lengua en el discurso periodístico", "La literatura: teatro y novela"]
+        "anio": "3ro",
+        "temas": ["La lengua en el discurso periodistico", "La literatura: teatro y novela"]
     },
     {
         "id": 40,
         "nombre": "Lengua y Literatura",
-        "año": "4to",
-        "temas": ["La lengua y el discurso político", "La literatura: la poesía en la sociedad"]
+        "anio": "4to",
+        "temas": ["La lengua y el discurso politico", "La literatura: la poesia en la sociedad"]
     },
     {
         "id": 41,
         "nombre": "Lengua y Literatura",
-        "año": "5to",
+        "anio": "5to",
         "temas": ["La lengua y los medios digitales", "La literatura: narrativa y novela"]
     },
     {
         "id": 42,
         "nombre": "Lengua y Literatura",
-        "año": "6to",
-        "temas": ["La lengua y los procesos de comunicación complejos", "La literatura: textos literarios contemporáneos"]
+        "anio": "6to",
+        "temas": ["La lengua y los procesos de comunicacion complejos", "La literatura: textos literarios contemporaneos"]
     },
     {
-        "id": 43, "nombre": "Educación Física", "año": "1ro", "temas": ["Actividades físicas recreativas y deportivas", "Hábitos saludables", "Conocimiento y cuidado del cuerpo"]
+        "id": 43, "nombre": "Educacion Fisica", "anio": "1ro", "temas": ["Actividades fisicas recreativas y deportivas", "Habitos saludables", "Conocimiento y cuidado del cuerpo"]
     },
     {
         "id": 44,
-        "nombre": "Educación Física",
-        "año": "2do",
+        "nombre": "Educacion Fisica",
+        "anio": "2do",
         "temas": [
-            "Actividades físicas recreativas y deportivas",
-            "Hábitos saludables",
+            "Actividades fisicas recreativas y deportivas",
+            "Habitos saludables",
             "Conocimiento y cuidado del cuerpo",
-            "Práctica deportiva y juego",
+            "Practica deportiva y juego",
             "Respeto a las reglas y fair play"
         ]
     },
     {
         "id": 45,
-        "nombre": "Educación Física",
-        "año": "3ro",
+        "nombre": "Educacion Fisica",
+        "anio": "3ro",
         "temas": [
-            "Actividades físicas recreativas y deportivas",
-            "Hábitos saludables",
+            "Actividades fisicas recreativas y deportivas",
+            "Habitos saludables",
             "Conocimiento y cuidado del cuerpo",
-            "Práctica deportiva y juego",
+            "Practica deportiva y juego",
             "Respeto a las reglas y fair play",
-            "Relación entre actividad física y calidad de vida"
+            "Relacion entre actividad fisica y calidad de vida"
         ]
     },
     {
         "id": 46,
-        "nombre": "Educación Física",
-        "año": "4to",
+        "nombre": "Educacion Fisica",
+        "anio": "4to",
         "temas": [
-            "Actividades físicas recreativas y deportivas",
-            "Hábitos saludables",
+            "Actividades fisicas recreativas y deportivas",
+            "Habitos saludables",
             "Conocimiento y cuidado del cuerpo",
-            "Práctica deportiva y juego",
+            "Practica deportiva y juego",
             "Respeto a las reglas y fair play",
-            "Relación entre actividad física y calidad de vida",
+            "Relacion entre actividad fisica y calidad de vida",
             "Estrategias de entrenamiento y mejora del rendimiento"
         ]
     },
     {
         "id": 47,
-        "nombre": "Educación Física",
-        "año": "5to",
+        "nombre": "Educacion Fisica",
+        "anio": "5to",
         "temas": [
-            "Actividades físicas recreativas y deportivas",
-            "Hábitos saludables",
+            "Actividades fisicas recreativas y deportivas",
+            "Habitos saludables",
             "Conocimiento y cuidado del cuerpo",
-            "Práctica deportiva y juego",
+            "Practica deportiva y juego",
             "Respeto a las reglas y fair play",
-            "Relación entre actividad física y calidad de vida",
+            "Relacion entre actividad fisica y calidad de vida",
             "Estrategias de entrenamiento y mejora del rendimiento",
-            "Actividad física en el medio natural y de aventura"
+            "Actividad fisica en el medio natural y de aventura"
         ]
     },
     {
         "id": 48,
-        "nombre": "Educación Física",
-        "año": "6to",
+        "nombre": "Educacion Fisica",
+        "anio": "6to",
         "temas": [
-            "Actividades físicas recreativas y deportivas",
-            "Hábitos saludables",
+            "Actividades fisicas recreativas y deportivas",
+            "Habitos saludables",
             "Conocimiento y cuidado del cuerpo",
-            "Práctica deportiva y juego",
+            "Practica deportiva y juego",
             "Respeto a las reglas y fair play",
-            "Relación entre actividad física y calidad de vida",
+            "Relacion entre actividad fisica y calidad de vida",
             "Estrategias de entrenamiento y mejora del rendimiento",
-            "Actividad física en el medio natural y de aventura",
-            "Actividad física y deportiva en el ámbito social y comunitario"
+            "Actividad fisica en el medio natural y de aventura",
+            "Actividad fisica y deportiva en el ambito social y comunitario"
         ]
     }
 ]

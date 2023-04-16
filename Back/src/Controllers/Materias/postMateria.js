@@ -8,7 +8,7 @@ const postMateria = async (namemateria, anio, temas) => {
       })
     )
       return {
-        error: `No se pudo completar la carga. Ya existe ${namemateria} de ${anio} año.`,
+        error: `No se pudo completar la carga. Ya existe ${namemateria} de ${anio} anio.`,
       };
 
     const newMateria = await Materias.create({
@@ -16,7 +16,7 @@ const postMateria = async (namemateria, anio, temas) => {
       anio: anio,
       temas: temas,
     });
-    return { message: "Materia creada con éxito" };
+    return { message: "Materia creada con exito" };
   } catch (error) {
     console.log(error);
     return { error: "No se pudo agregar la materia solicitada." };

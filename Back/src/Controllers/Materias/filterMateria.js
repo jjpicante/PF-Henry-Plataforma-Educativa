@@ -19,7 +19,7 @@ const filterMateria = async (criterios) => {
     if (filtro.length > 0) {
       const arreglo = filtro.map((materia) => materia.toJSON());
       return arreglo;
-    } else return { message: "No se encontró la materia con el filtro solicitado" };
+    } else return { message: "No se encontro la materia con el filtro solicitado" };
   } catch (error) {
     return { error: "Error al filtrar una Materia" };
   }

@@ -47,12 +47,12 @@ const postAlumno = async (
       where: { [Op.and]: [{ anio: anio }, { division: division }] },
     });
     if (!foundAula) {
-      return { error: "El año o division indicado no se encuentran" };
+      return { error: "El anio o division indicado no se encuentran" };
     }
 
     alumnodb.setAula(foundAula);
 
-    return { message: "Alumno creado con éxito" };
+    return { message: "Alumno creado con exito" };
   } catch (error) {
     return { error: "No se pudo agregar el Alumno solicitado" };
   }

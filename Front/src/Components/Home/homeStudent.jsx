@@ -85,7 +85,7 @@ const HomeStudent = () => {
 
     const tileContent = ({ date, view }) => {
         if (view === "month") {
-            // Buscar si hay algún evento en esta fecha
+            // Buscar si hay algun evento en esta fecha
             const event = events.find(event => {
                 // Convertir la fecha del evento y la fecha actual a formato de cadena (string)
                 const eventDateStr = new Date(event.date).toDateString();
@@ -129,7 +129,7 @@ const HomeStudent = () => {
             <div className={style.container2}>
 
                 <div className={style.title}>
-                    <h1>Área Personal</h1>
+                    <h1>area Personal</h1>
                 </div>
 
                 {/* <div className={style.p}><p>Calendario</p></div> */}
@@ -146,7 +146,7 @@ const HomeStudent = () => {
                     <input type="text" name="title" required className={style.input} placeholder="Titulo del Evento" />
 
                     {/* <label>
-                         Descripción:
+                         Descripcion:
                          <textarea name="description" required></textarea>
                      </label>  */}
                     <button type="submit" className={style.button}>Agregar evento</button>

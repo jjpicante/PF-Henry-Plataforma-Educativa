@@ -16,7 +16,7 @@ profesores.get("/", async (req, res) => {
 
 profesores.get("/getprofesor", async (req, res) => {
   const username = req.query.username.toLowerCase();
-  if (!username) return res.status(400).json({ message: "No se ingresó un username" });
+  if (!username) return res.status(400).json({ message: "No se ingreso un username" });
   const respuesta = await getProfesor(username);
   if (!respuesta.error) return res.status(200).json(respuesta);
   return res.status(503).json(respuesta);
@@ -65,7 +65,7 @@ profesores.put("/:currentUsername", async (req, res) => {
   const changes = req.body;
 
   if (!currentUsername)
-    return res.status(400).json({ message: "No se envió Username a modificar" });
+    return res.status(400).json({ message: "No se envio Username a modificar" });
 
   if (Object.keys(changes).length === 0)
     return res.status(400).json({ message: "No se ingresaron modificaciones a realizar" });

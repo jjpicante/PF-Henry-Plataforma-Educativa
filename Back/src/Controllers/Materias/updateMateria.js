@@ -9,7 +9,7 @@ const updateMaterias = async (id, changes) => {
       criteriosMinuscula[keyMinuscula] = valueMinuscula;
     }
 
-    //Faltaría validar cuando se quiere editar un usuario que no existe, pero desde el front no habria posibilidad de hacer eso.
+    //Faltaria validar cuando se quiere editar un usuario que no existe, pero desde el front no habria posibilidad de hacer eso.
     console.log(criteriosMinuscula);
     if (
       await Materias.findOne({
@@ -17,7 +17,7 @@ const updateMaterias = async (id, changes) => {
       })
     )
       return {
-        error: `Error. La materia ${criteriosMinuscula.namemateria} de ${criteriosMinuscula.anio} año ya existe.`,
+        error: `Error. La materia ${criteriosMinuscula.namemateria} de ${criteriosMinuscula.anio} anio ya existe.`,
       };
 
     const update = await Materias.findOne({

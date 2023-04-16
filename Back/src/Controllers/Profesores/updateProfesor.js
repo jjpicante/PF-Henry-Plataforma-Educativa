@@ -9,7 +9,7 @@ const updateProfesor = async (currentUsername, changes) => {
       criteriosMinuscula[keyMinuscula] = valueMinuscula;
     }
 
-    //Faltaría validar cuando se quiere editar un usuario que no existe, pero desde el front no habria posibilidad de hacer eso.
+    //Faltaria validar cuando se quiere editar un usuario que no existe, pero desde el front no habria posibilidad de hacer eso.
 
     if (
       criteriosMinuscula.username &&

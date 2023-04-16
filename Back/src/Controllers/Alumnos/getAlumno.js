@@ -12,7 +12,7 @@ const getAlumnos = async (username) => {
     if (alumno) return alumno.toJSON();
     else
       return {
-        message: "No se encontró el Alumno con el username solicitado",
+        message: "No se encontro el Alumno con el username solicitado",
       };
   } catch (error) {
     return { error: "Error al buscar un Alumno" };

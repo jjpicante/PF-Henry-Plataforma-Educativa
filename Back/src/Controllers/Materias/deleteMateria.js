@@ -5,7 +5,7 @@ const deleteMateria = async (id) => {
     await Materias.destroy({
       where: { id },
     });
-    return { message: `Materia eliminada con éxito` };
+    return { message: `Materia eliminada con exito` };
   } catch (error) {
     return { error: "No se pudo eliminar la materia solicitada." };
   }
