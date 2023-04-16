@@ -8,6 +8,7 @@ import {
   CLEAN_DETAIL,
   SET_USER_ROLE,
   CLEAR_USER_ROLE,
+  LOGIN_FAILED,
 } from "./actionsTypes";
 import { profesors, students, materias } from "./Base de datos HC";
 import axios from "axios";
@@ -78,3 +79,27 @@ export const setUserRole = (role) => ({
   type: SET_USER_ROLE,
   payload: role,
 });
+
+export const loginFailed=(message) => {
+  return {
+    type: LOGIN_FAILED,
+    payload: message,
+  }
+}
+
+export const postlogin = (username, password) => {
+  return async function (dispatch) {
+    try {
+      const response = await axios.post("http://localhost:3001/login", {
+        username,
+        password,
+      });
+      const userData = response.data;
+      dispatch(setUserRole(userData.rol));
+      return userData;
+    } catch (error) {
+      console.log(error);
+      dispatch(loginFailed("Invalid credentials"));
+    }
+  };
+};
