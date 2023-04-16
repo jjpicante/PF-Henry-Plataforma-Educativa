@@ -43,17 +43,18 @@ const postAlumno = async (
     };
 
     const alumnodb = await Alumnos.create(newAlumno);
-    const foundAula = await Aulas.findOne({
-      where: { [Op.and]: [{ anio: anio }, { division: division }] },
-    });
-    if (!foundAula) {
-      return { error: "El anio o division indicado no se encuentran" };
-    }
-
-    alumnodb.setAula(foundAula);
+  /*    const foundAula = await Aulas.findOne({
+       where: { [Op.and]: [{ anio: anio }, { division: division }] },
+     });
+     if (!foundAula) {
+       return { error: "El anio o division indicado no se encuentran" };
+     }
+ 
+     alumnodb.setAula(foundAula); */
 
     return { message: "Alumno creado con exito" };
   } catch (error) {
+    console.log(error)
     return { error: "No se pudo agregar el Alumno solicitado" };
   }
 };

@@ -1,32 +1,40 @@
 import "./form.css";
-
 import { useState } from "react";
-import { validate, validateSubmit } from "./validations";
+import { useDispatch } from "react-redux";
+import { validate } from "./validations";
+import { postAlumno } from "../../Redux/actions";
 import Navbar from "../NavBar/navBar";
 
 function Form() {
+  const dispatch = useDispatch();
   //Estados
   const [studentData, setStudentData] = useState({
     name: "",
-    lastname: "",
+    apellido: "",
     email: "",
-    age: "",
-    course: "",
+    datebirth: "",
+    nacionalidad: "",
+    username: "",
+    password: "",
   });
-  const [errorMessage, setErrorMessage] = useState({
+  const [errorMessdatebirth, setErrorMessdatebirth] = useState({
     name: "",
-    lastname: "",
+    apellido: "",
     email: "",
-    age: "",
-    course: "",
+    datebirth: "",
+    nacionalidad: "",
+    username: "",
+    password: "",
   });
+  console.log(studentData);
+  console.log(errorMessdatebirth);
 
   const inputHandler = (ev) => {
     setStudentData({
       ...studentData,
       [ev.target.name]: ev.target.value,
     });
-    setErrorMessage(
+    setErrorMessdatebirth(
       validate({
         ...studentData,
         [ev.target.name]: ev.target.value,
@@ -36,31 +44,50 @@ function Form() {
 
   const submitHandler = (ev) => {
     ev.preventDefault();
-
-    if (!studentData.course)
-      setErrorMessage({
-        ...errorMessage,
-        course: "You have to choose a course",
+    dispatch(postAlumno(studentData));
+    alert("Alumno creado");
+    setStudentData({
+      name: "",
+      apellido: "",
+      email: "",
+      datebirth: "",
+      nacionalidad: "",
+      username: "",
+      password: "",
+    });
+    /* if (!studentData.nacionalidad)
+      setErrorMessdatebirth({
+        ...errorMessdatebirth,
+        nacionalidad: "You have to choose a nacionalidad",
       });
-    if (validateSubmit(studentData, errorMessage)) {
+    if (validateSubmit(studentData, errorMessdatebirth)) {
       alert("The form has been filled successfully");
     } else {
       for (const property in studentData) {
         if (!studentData[property])
-          setErrorMessage({
-            ...errorMessage,
+          setErrorMessdatebirth({
+            ...errorMessdatebirth,
             [property]: "This field is required!",
           });
       }
       alert(
         "Theres been a mistake, take a look a the form. **All fields are required!**"
       );
-    }
+    }*/
   };
 
-  const courseHandler = (ev) => {
-    setStudentData({ ...studentData, course: ev.target.value });
-    setErrorMessage({ ...errorMessage, course: "" });
+  const nacionalidadHandler = (ev) => {
+    setStudentData({ ...studentData, nacionalidad: ev.target.value });
+    setErrorMessdatebirth({ ...errorMessdatebirth, nacionalidad: "" });
+  };
+
+  const hasErrors = () => {
+    if (Object.values(errorMessdatebirth).some((error) => error !== ""))
+      return Object.values(errorMessdatebirth).some((error) => error !== "");
+    else {
+      console.log(Object.values(studentData))
+      return !Object.values(studentData).some((student) => student !== "");
+    }
   };
 
   return (
@@ -70,54 +97,69 @@ function Form() {
         <div className="formBox">
           <h1 className="formTitle">Form</h1>
 
-          <form onSubmit={submitHandler} autoComplete="off">
+          <form onSubmit={(ev) => submitHandler(ev)} autoComplete="off">
             <input
               type="text"
               placeholder="Name"
               name="name"
-              onChange={inputHandler}
+              onChange={(ev) => inputHandler(ev)}
               value={studentData.name}
             />
-            <p className="errorText">{errorMessage.name}</p>
+            <p className="errorText">{errorMessdatebirth.name}</p>
 
             <input
               type="text"
-              name="lastname"
-              placeholder="Last name"
-              onChange={inputHandler}
+              name="apellido"
+              placeholder="apellido"
+              onChange={(ev) => inputHandler(ev)}
+              value={studentData.apellido}
             />
-            <p className="errorText">{errorMessage.lastname}</p>
+            <p className="errorText">{errorMessdatebirth.apellido}</p>
 
             <input
               type="text"
               name="email"
-              placeholder="Email"
-              onChange={inputHandler}
+              placeholder="email"
+              onChange={(ev) => inputHandler(ev)}
+              value={studentData.email}
             />
-            <p className="errorText">{errorMessage.email}</p>
+            <p className="errorText">{errorMessdatebirth.email}</p>
 
             <input
               type="text"
-              name="age"
-              placeholder="Age"
-              onChange={inputHandler}
+              name="datebirth"
+              placeholder="datebirth"
+              onChange={(ev) => inputHandler(ev)}
+              value={studentData.datebirth}
             />
-            <p className="errorText">{errorMessage.age}</p>
+            <p className="errorText">{errorMessdatebirth.datebirth}</p>
 
-            <div>
-              <select onChange={courseHandler}>
-                <option value="">Courses</option>
-                <option value="1ero">1ero</option>
-                <option value="2do">2do</option>
-                <option value="3ero">3ero</option>
-                <option value="4to">4to</option>
-                <option value="5to">5to</option>
-                <option value="6to">6to</option>
-              </select>
-            </div>
-            <p className="errorText">{errorMessage.course}</p>
+            <input
+              type="text"
+              name="nacionalidad"
+              placeholder="nacionalidad"
+              onChange={(ev) => inputHandler(ev)}
+              value={studentData.nacionalidad}
+            />
+            <p className="errorText">{errorMessdatebirth.nacionalidad}</p>
 
-            <input type="submit" />
+            <input
+              type="text"
+              name="username"
+              placeholder="username"
+              onChange={(ev) => inputHandler(ev)}
+              value={studentData.username}
+            />
+            <p className="errorText">{errorMessdatebirth.datebirth}</p>
+            <input
+              type="text"
+              name="password"
+              placeholder="password"
+              onChange={(ev) => inputHandler(ev)}
+              value={studentData.password}
+            />
+
+            <input type="submit" value="Crear alumno" disabled={hasErrors()} />
           </form>
         </div>
       </div>

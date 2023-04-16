@@ -9,6 +9,7 @@ import {
   SET_USER_ROLE,
   CLEAR_USER_ROLE,
   LOGIN_FAILED,
+  POST_ALUMNO,
 } from "./actionsTypes";
 import { profesors, students, materias } from "./Base de datos HC";
 import axios from "axios";
@@ -26,6 +27,15 @@ export const getProfesors = () => {
     payload: profesors,
   };
 };
+
+export const postAlumno = (form) => {
+  return async function (dispatch) {
+    const response = await axios.post('http://localhost:3001/Alumnos/', form)
+    dispatch({
+      type: POST_ALUMNO,
+    })
+  }
+}
 
 export const getMaterias = (page) => {
   return async function (dispatch) {

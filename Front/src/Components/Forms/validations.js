@@ -18,15 +18,15 @@ const validate = (inputs) => {
   }
 
   //Last name
-  if (!inputs.lastname) {
+  if (!inputs.apellido) {
   } else {
-    if (numbers.test(inputs.lastname))
-      errors.lastname = "The last name must not include numbers!";
-    if (inputs.lastname.length > 35)
-      errors.lastname =
+    if (numbers.test(inputs.apellido))
+      errors.apellido = "The last name must not include numbers!";
+    if (inputs.apellido.length > 35)
+      errors.apellido =
         "The length of the last name must be less than 35 characters";
-    if (specialChars.test(inputs.lastname))
-      errors.lastname = "The last name cannot have special characters!";
+    if (specialChars.test(inputs.apellido))
+      errors.apellido = "The last name cannot have special characters!";
   }
 
   //Email
@@ -38,13 +38,13 @@ const validate = (inputs) => {
       errors.email = "The email exceeded the 35 available characters";
   }
 
-  //Age
-  if (!inputs.age) {
+  //datebirth
+  /* if (!inputs.datebirth) {
   } else {
-    if (inputs.age <= 0) errors.age = "The age has to be above 0";
-    if (/\D/.test(inputs.age))
-      errors.age = "Please only enter numeric characters for the age!";
-  }
+    if (inputs.datebirth <= 0) errors.datebirth = "The datebirth has to be above 0";
+    if (/\D/.test(inputs.datebirth))
+      errors.datebirth = "Please only enter numeric characters for the datebirth!";
+  } */
 
   //Subject
   if (!inputs.subjectName) {

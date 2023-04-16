@@ -34,6 +34,8 @@ alumnos.get("/filtro", async (req, res) => {
 alumnos.post("/", async (req, res) => {
   const { name, apellido, nacionalidad, datebirth, email, username, password, division, anio } =
     req.body;
+
+    console.log(req.body);
   const respuesta = await postAlumno(
     name,
     apellido,
@@ -65,7 +67,7 @@ alumnos.put("/:currentusername", async (req, res) => {
     res.status(400).json({ message: "No se ingresaron modificaciones a realizar" });
   }
   const respuesta = await updateAlumno(currentusername, changes);
-  if (!respuesta.erro) res.status(200).json(respuesta);
+  if (!respuesta.error) res.status(200).json(respuesta);
   res.status(503).json(respuesta);
 });
 

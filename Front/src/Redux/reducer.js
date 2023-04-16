@@ -8,6 +8,7 @@ import {
   SET_USER_ROLE,
   CLEAR_USER_ROLE,
   LOGIN_FAILED,
+  POST_ALUMNO,
 } from "./actionsTypes";
 
 const initialState = {
@@ -26,6 +27,10 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         students: payload,
       };
+    case POST_ALUMNO:
+      return {
+        ...state,
+      }
     case GET_PROFESORS:
       return {
         ...state,
