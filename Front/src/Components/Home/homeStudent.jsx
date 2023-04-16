@@ -36,28 +36,31 @@ const HomeStudent = () => {
         setEvents(updatedEvents);
       };
 
-    const tileContent = ({ date, view }) => {
+      const tileContent = ({ date, view }) => {
         if (view === "month") {
-            // Buscar si hay algun evento en esta fecha
-            const event = events.find(event => {
-                // Convertir la fecha del evento y la fecha actual a formato de cadena (string)
-                const eventDateStr = new Date(event.date).toDateString();
-                const currentDateStr = new Date(date).toDateString();
-                // Comparar las cadenas de fecha para determinar si hay un evento en esta fecha
-                return eventDateStr === currentDateStr;
-            });
-            // Si hay un evento, renderizar una marca o etiqueta
-            if (event) {
-                return (
-                    <div className="event-marker">
-                        <div>{event.title}</div>
-            <button onClick={() => onDelete(event)}>Eliminar</button>
-          </div>
-
-                );
-            }
+          // Buscar todos los eventos en esta fecha
+          const eventsOnDate = events.filter((event) => {
+            // Convertir la fecha del evento y la fecha actual a formato de cadena (string)
+            const eventDateStr = new Date(event.date).toDateString();
+            const currentDateStr = new Date(date).toDateString();
+            // Comparar las cadenas de fecha para determinar si hay un evento en esta fecha
+            return eventDateStr === currentDateStr;
+          });
+          // Si hay eventos, renderizar una marca o etiqueta para cada uno
+          if (eventsOnDate.length > 0) {
+            return (
+              <div className="event-marker">
+                {eventsOnDate.map((event) => (
+                  <div key={event.title}>
+                    {event.title}
+                    <button onClick={() => onDelete(event)}>X</button>
+                  </div>
+                ))}
+              </div>
+            );
+          }
         }
-    }
+      };
 
     useEffect(() => {
         // Guardar los eventos en el almacenamiento local
