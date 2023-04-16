@@ -8,7 +8,7 @@ const getAllMaterias = async (query) => {
     if (!Number.isNaN(PageN) && PageN > 0) {
       page = PageN;
     }
-    let size = 10;
+    let size = 3;
 
     if (Object.keys(query).length) {
       var materias = await Materias.findAll({

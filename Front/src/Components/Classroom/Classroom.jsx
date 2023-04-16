@@ -40,7 +40,6 @@ import { getMaterias } from "../../Redux/actions";
 import style from "./Classroom.module.css";
 import Navbar from "../NavBar/navBar";
 import SearchBar from "../SearchBar/searchBar";
-import CardAsignature from "../Cards/cards";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Paginate from "../Paginado/paginado";
@@ -48,7 +47,9 @@ import Paginate from "../Paginado/paginado";
 const Classroom = () => {
   const dispatch = useDispatch();
   const asignatures = useSelector((state) => state.materias);
+  const pageCount1 = useSelector((state) => state.pageCount);
   const [query, setQuery] = useState("");
+  const [pageNumber, setPageNumber] = useState(0);
 
   useEffect(() => {
     dispatch(getMaterias());
@@ -57,10 +58,6 @@ const Classroom = () => {
   const handleChange = (event) => {
     setQuery(event.target.value);
   };
-
-  const materiasFiltradas = asignatures.filter((materia) =>
-    materia.nombre.toLowerCase().includes(query.toLowerCase())
-  );
 
   return (
     <div className={style.fondo}>
@@ -78,17 +75,12 @@ const Classroom = () => {
 
         {/* Boton agregativo */}
         <Link to="/formSubject">
-          <button
-            type="submit"
-            className={style.agregarBoton}
-            title="Add subject"
-          >
+          <button type="submit" className={style.agregarBoton} title="Add subject">
             <i className="fa fa-plus"></i>
           </button>
         </Link>
       </div>
-
-      <Paginate itemsPerPage={2} data={materiasFiltradas} query={query} />
+      <Paginate pageCount1={pageCount1} asignatures={asignatures}></Paginate>
     </div>
   );
 };
