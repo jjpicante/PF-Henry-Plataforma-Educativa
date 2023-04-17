@@ -1,10 +1,9 @@
 import ReactPaginate from "react-paginate";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Items from "./items";
 import { useDispatch } from "react-redux";
 import { getMaterias } from "../../Redux/actions";
-
-//habria que borrar esta?
+import style from "./Paginate.module.css";
 
 const Paginate = ({ asignatures, pageCount1 }) => {
   const dispatch = useDispatch();
@@ -18,16 +17,16 @@ const Paginate = ({ asignatures, pageCount1 }) => {
   return (
     <>
       <ReactPaginate
-        previousLabel={"previous"}
-        nextLabel={"next"}
+        className={`${style.pagination} pagination`}
+        activeClassName={style.active}
+        previousLabel={"🢀"}
+        nextLabel={"🢂"}
         breakLabel={"..."}
         pageCount={pageCount1}
         marginPagesDisplayed={2}
         pageRangeDisplayed={5}
         onPageChange={(selectedPage) => handleChange(selectedPage.selected)}
-        containerClassName={"pagination"}
-        activeClassName={"active"}
-      ></ReactPaginate>
+      />
       <Items currentItems={asignatures} />
     </>
   );

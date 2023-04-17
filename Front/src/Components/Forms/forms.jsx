@@ -126,7 +126,7 @@ function Form() {
             <p className="errorText">{errorMessdatebirth.email}</p>
 
             <input
-              type="text"
+              type="date"
               name="datebirth"
               placeholder="datebirth"
               onChange={(ev) => inputHandler(ev)}
@@ -152,7 +152,7 @@ function Form() {
             />
             <p className="errorText">{errorMessdatebirth.datebirth}</p>
             <input
-              type="text"
+              type="password"
               name="password"
               placeholder="password"
               onChange={(ev) => inputHandler(ev)}
