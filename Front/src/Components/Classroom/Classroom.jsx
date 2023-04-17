@@ -5,7 +5,7 @@ import style from "./Classroom.module.css";
 import Navbar from "../NavBar/navBar";
 import SearchBar from "../SearchBar/searchBar";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import Paginate from "../Paginado/paginado";
 
 const Classroom = () => {
@@ -33,11 +33,11 @@ const Classroom = () => {
         <SearchBar></SearchBar>
 
         {/* Boton agregativo */}
-        <Link to="/formSubject">
+        {/* <NavLink to="/formSubject">
           <button type="submit" className={style.agregarBoton} title="Add subject">
-            <i className="fa fa-plus"></i>
+            {<i className="fa fa-plus"></i>}
           </button>
-        </Link>
+        </NavLink> */}
       </div>
       <Paginate pageCount1={pageCount1} asignatures={asignatures}></Paginate>
     </div>
