@@ -33,11 +33,11 @@ const Classroom = () => {
         <SearchBar></SearchBar>
 
         {/* Boton agregativo */}
-        <NavLink to="/formSubject">
+        {/* <NavLink to="/formSubject">
           <button type="submit" className={style.agregarBoton} title="Add subject">
             {<i className="fa fa-plus"></i>}
           </button>
-        </NavLink>
+        </NavLink> */}
       </div>
       <Paginate pageCount1={pageCount1} asignatures={asignatures}></Paginate>
     </div>
