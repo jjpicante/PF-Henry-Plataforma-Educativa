@@ -2,18 +2,18 @@ import Navbar from "../NavBar/navBar";
 import { useState, useEffect } from "react";
 import styles from "./Carrito.module.css";
 import axios from "axios";
-const URL = "http://localhost:3001/Meses?username=pmartinez";
+const URL = "http://localhost:3001/Meses?username=juanperez";
 
 const Carrito = () => {
   const storagedCartas = JSON.parse(localStorage.getItem("mes") || "[]");
   const storagedTotal = JSON.parse(localStorage.getItem("total") || 0);
 
-  const [mesesTotal, setmesesTotal] =useState(storagedCartas);
+  const [mesesTotal, setmesesTotal] = useState(storagedCartas);
   const [totalPagar, setTotalPagar] = useState(storagedTotal);
   const [estadoDeCuenta, setestadoDeCuenta] = useState({});
-  
-  const meses = Object.keys(estadoDeCuenta).slice(2)
-  const precio = 1200
+
+  const meses = Object.keys(estadoDeCuenta).slice(2);
+  const precio = 1200;
   console.log(estadoDeCuenta);
 
   useEffect(() => {
@@ -62,19 +62,25 @@ const Carrito = () => {
         <div className={styles.container}>
           <div>
             <ul className={styles.cartas}>
-              <p className={styles.selecc}>Selecciona los mesesTotal a pagar</p>
+              <p className={styles.selecc}>Selecciona los meses a pagar</p>
               {mesesTotalSeleccionables.map((mes) => (
                 <li className={styles.carta} key={mes.nombre}>
-                  <label className={styles.palabra} htmlFor={mes.id}>
-                    {mes.nombre} - ${mes.precio}
-                    <input
-                      className={styles.checkbox}
-                      type="checkbox"
-                      id={mes.id}
-                      checked={mes.seleccionado}
-                      onChange={() => handleAgregarCarta(mes)}
-                    />
-                  </label>
+                  {estadoDeCuenta[mes.nombre] === false ? (
+                    <label className={styles.palabra} htmlFor={mes.id}>
+                      {mes.nombre} - ${mes.precio}
+                      <input
+                        className={styles.checkbox}
+                        type="checkbox"
+                        id={mes.id}
+                        checked={mes.seleccionado}
+                        onChange={() => handleAgregarCarta(mes)}
+                      />
+                    </label>
+                  ) : (
+                    <label className={styles.palabraPagado} htmlFor={mes.id}>
+                      {mes.nombre} - ${mes.precio}
+                    </label>
+                  )}
                 </li>
               ))}
             </ul>
