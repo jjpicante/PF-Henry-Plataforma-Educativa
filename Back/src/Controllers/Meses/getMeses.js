@@ -4,9 +4,7 @@ const getMeses = async (username) => {
   try {
     const cuotas = await Meses.findOne({
       where: { username: username },
-      include: {
-        all: true,
-      },
+      attributes: { exclude: ["id", "username"] },
     });
 
     if (cuotas) return cuotas.toJSON();
