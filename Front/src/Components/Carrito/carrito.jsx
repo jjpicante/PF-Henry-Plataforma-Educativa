@@ -1,5 +1,5 @@
 import Navbar from "../NavBar/navBar";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./Carrito.module.css";
 
 const Carrito = () => {
@@ -16,9 +16,17 @@ const Carrito = () => {
     { nombre: "Noviembre", precio: 1200 },
     { nombre: "Diciembre", precio: 1200 },
   ];
+  const storagedCartas = JSON.parse(localStorage.getItem("mes") || "[]");
+  const storagedTotal = JSON.parse(localStorage.getItem("total") || 0);
 
-  const [cartasSeleccionadas, setCartasSeleccionadas] = useState([]);
-  const [totalPagar, setTotalPagar] = useState(0);
+  const [cartasSeleccionadas, setCartasSeleccionadas] =
+    useState(storagedCartas);
+  const [totalPagar, setTotalPagar] = useState(storagedTotal);
+
+  useEffect(() => {
+    localStorage.setItem("mes", JSON.stringify(cartasSeleccionadas));
+    localStorage.setItem("total", JSON.stringify(totalPagar));
+  }, [cartasSeleccionadas, totalPagar]);
 
   const mesesSeleccionables = meses.map((mes) => ({
     nombre: mes.nombre,
@@ -26,7 +34,7 @@ const Carrito = () => {
     id: `checkbox-${mes.nombre}`,
     precio: mes.precio,
   }));
-  
+
   const handleAgregarCarta = (mes) => {
     const nuevasCartas = mesesSeleccionables.map((mesSeleccionado) =>
       mesSeleccionado.nombre === mes.nombre
@@ -47,34 +55,37 @@ const Carrito = () => {
       <div className={styles.carrito}>
         <h2>Mensualidades</h2>
         <div className={styles.container}>
-        <div>
-          <ul className={styles.cartas}>
-            <p className={styles.selecc}>Selecciona los meses a pagar</p>
-            {mesesSeleccionables.map((mes) => (
-              <li className={styles.carta} key={mes.nombre}>
-                <label htmlFor={mes.id}>
-                  {mes.nombre} - ${mes.precio}
-                  <input
-                    className={styles.checkbox}
-                    type="checkbox"
-                    id={mes.id}
-                    checked={mes.seleccionado}
-                    onChange={() => handleAgregarCarta(mes)}
-                  />
-                </label>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className={styles.detallePago}>
-              <h1>Total</h1>
-              <div className={styles.containerMesesTotal}>{cartasSeleccionadas?.map((carta, i) => (
-                <p className={styles.palabraTotal}key={i}>{carta}</p>
-              ))}</div>
-              <h3 className={styles.total}>Monto total: ${totalPagar}</h3>
-              <button className={styles.botonPago}>Ir al pago</button>
-        </div>
-
+          <div>
+            <ul className={styles.cartas}>
+              <p className={styles.selecc}>Selecciona los meses a pagar</p>
+              {mesesSeleccionables.map((mes) => (
+                <li className={styles.carta} key={mes.nombre}>
+                  <label htmlFor={mes.id}>
+                    {mes.nombre} - ${mes.precio}
+                    <input
+                      className={styles.checkbox}
+                      type="checkbox"
+                      id={mes.id}
+                      checked={mes.seleccionado}
+                      onChange={() => handleAgregarCarta(mes)}
+                    />
+                  </label>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className={styles.detallePago}>
+            <h1>Total</h1>
+            <div className={styles.containerMesesTotal}>
+              {cartasSeleccionadas?.map((carta, i) => (
+                <p className={styles.palabraTotal} key={i}>
+                  {carta}
+                </p>
+              ))}
+            </div>
+            <h3 className={styles.total}>Monto total: ${totalPagar}</h3>
+            <button className={styles.botonPago}>Ir al pago</button>
+          </div>
         </div>
       </div>
     </>
