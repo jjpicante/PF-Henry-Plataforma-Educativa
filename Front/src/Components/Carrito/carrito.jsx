@@ -1,47 +1,52 @@
 import Navbar from "../NavBar/navBar";
 import { useState, useEffect } from "react";
 import styles from "./Carrito.module.css";
+import axios from "axios";
+const URL = "http://localhost:3001/Meses?username=pmartinez";
 
 const Carrito = () => {
-  const meses = [
-    { nombre: "Febrero", precio: 1200 },
-    { nombre: "Marzo", precio: 1200 },
-    { nombre: "Abril", precio: 1200 },
-    { nombre: "Mayo", precio: 1200 },
-    { nombre: "Junio", precio: 1200 },
-    { nombre: "Julio", precio: 1200 },
-    { nombre: "Agosto", precio: 1200 },
-    { nombre: "Septiembre", precio: 1200 },
-    { nombre: "Octubre", precio: 1200 },
-    { nombre: "Noviembre", precio: 1200 },
-    { nombre: "Diciembre", precio: 1200 },
-  ];
   const storagedCartas = JSON.parse(localStorage.getItem("mes") || "[]");
   const storagedTotal = JSON.parse(localStorage.getItem("total") || 0);
 
-  const [cartasSeleccionadas, setCartasSeleccionadas] =
-    useState(storagedCartas);
+  const [mesesTotal, setmesesTotal] =useState(storagedCartas);
   const [totalPagar, setTotalPagar] = useState(storagedTotal);
+  const [estadoDeCuenta, setestadoDeCuenta] = useState({});
+  
+  const meses = Object.keys(estadoDeCuenta).slice(2)
+  const precio = 1200
+  console.log(estadoDeCuenta);
 
   useEffect(() => {
-    localStorage.setItem("mes", JSON.stringify(cartasSeleccionadas));
+    localStorage.setItem("mes", JSON.stringify(mesesTotal));
     localStorage.setItem("total", JSON.stringify(totalPagar));
-  }, [cartasSeleccionadas, totalPagar]);
+  }, [mesesTotal, totalPagar]);
 
-  const mesesSeleccionables = meses.map((mes) => ({
-    nombre: mes.nombre,
-    seleccionado: cartasSeleccionadas.includes(mes.nombre),
-    id: `checkbox-${mes.nombre}`,
-    precio: mes.precio,
+  useEffect(() => {
+    const axiosData = async () => {
+      try {
+        const response = await axios.get(URL);
+        setestadoDeCuenta(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    axiosData();
+  }, []);
+
+  const mesesTotalSeleccionables = meses.map((mes) => ({
+    nombre: mes,
+    seleccionado: mesesTotal.includes(mes),
+    id: `checkbox-${mes}`,
+    precio: precio,
   }));
 
   const handleAgregarCarta = (mes) => {
-    const nuevasCartas = mesesSeleccionables.map((mesSeleccionado) =>
+    const nuevasCartas = mesesTotalSeleccionables.map((mesSeleccionado) =>
       mesSeleccionado.nombre === mes.nombre
         ? { ...mesSeleccionado, seleccionado: !mesSeleccionado.seleccionado }
         : mesSeleccionado
     );
-    setCartasSeleccionadas(
+    setmesesTotal(
       nuevasCartas
         .filter((mesSeleccionado) => mesSeleccionado.seleccionado)
         .map((mesSeleccionado) => mesSeleccionado.nombre)
@@ -57,10 +62,10 @@ const Carrito = () => {
         <div className={styles.container}>
           <div>
             <ul className={styles.cartas}>
-              <p className={styles.selecc}>Selecciona los meses a pagar</p>
-              {mesesSeleccionables.map((mes) => (
+              <p className={styles.selecc}>Selecciona los mesesTotal a pagar</p>
+              {mesesTotalSeleccionables.map((mes) => (
                 <li className={styles.carta} key={mes.nombre}>
-                  <label htmlFor={mes.id}>
+                  <label className={styles.palabra} htmlFor={mes.id}>
                     {mes.nombre} - ${mes.precio}
                     <input
                       className={styles.checkbox}
@@ -77,7 +82,7 @@ const Carrito = () => {
           <div className={styles.detallePago}>
             <h1>Total</h1>
             <div className={styles.containerMesesTotal}>
-              {cartasSeleccionadas?.map((carta, i) => (
+              {mesesTotal?.map((carta, i) => (
                 <p className={styles.palabraTotal} key={i}>
                   {carta}
                 </p>

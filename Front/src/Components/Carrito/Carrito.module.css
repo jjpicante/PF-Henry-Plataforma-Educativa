@@ -62,6 +62,7 @@
 .palabraTotal{
   font-size:xx-large;
   margin: 5px;
+  text-transform: capitalize;
   padding-left: 2px;
   padding-right:2px 
 }
@@ -77,4 +78,8 @@
 
 .botonPago{
   width: 140px;
+}
+
+.palabra{
+  text-transform: capitalize;
 }
