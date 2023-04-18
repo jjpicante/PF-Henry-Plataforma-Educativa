@@ -1,5 +1,5 @@
 const { Op } = require("sequelize");
-const { Alumnos, Aulas } = require("../../db");
+const { Alumnos, Aulas, Meses } = require("../../db");
 
 const postAlumno = async (
   name,
@@ -42,8 +42,11 @@ const postAlumno = async (
       password: password.toLowerCase(),
     };
 
-    const alumnodb = await Alumnos.create(newAlumno);
-  /*    const foundAula = await Aulas.findOne({
+    await Alumnos.create(newAlumno);
+    //const nuevoAlumnoId = await Alumnos.findOne({ where: { username: username.toLowerCase() } });
+    await Meses.create({ username: username.toLowerCase() });
+
+    /*    const foundAula = await Aulas.findOne({
        where: { [Op.and]: [{ anio: anio }, { division: division }] },
      });
      if (!foundAula) {
@@ -54,7 +57,6 @@ const postAlumno = async (
 
     return { message: "Alumno creado con exito" };
   } catch (error) {
-    console.log(error)
     return { error: "No se pudo agregar el Alumno solicitado" };
   }
 };

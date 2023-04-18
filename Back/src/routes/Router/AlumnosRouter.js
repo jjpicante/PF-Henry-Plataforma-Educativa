@@ -35,7 +35,6 @@ alumnos.post("/", async (req, res) => {
   const { name, apellido, nacionalidad, datebirth, email, username, password, division, anio } =
     req.body;
 
-    console.log(req.body);
   const respuesta = await postAlumno(
     name,
     apellido,
@@ -58,7 +57,7 @@ alumnos.delete("/:username", async (req, res) => {
 });
 
 alumnos.put("/:currentusername", async (req, res) => {
-  const { currentusername } = req.query;
+  const { currentusername } = req.params;
   const changes = req.body;
   if (!currentusername) {
     res.status(400).json({ message: "No se envio username a modificar" });
@@ -67,8 +66,8 @@ alumnos.put("/:currentusername", async (req, res) => {
     res.status(400).json({ message: "No se ingresaron modificaciones a realizar" });
   }
   const respuesta = await updateAlumno(currentusername, changes);
-  if (!respuesta.error) res.status(200).json(respuesta);
-  res.status(503).json(respuesta);
+  if (!respuesta.error) return res.status(200).json(respuesta);
+  return res.status(503).json(respuesta);
 });
 
 module.exports = alumnos;
