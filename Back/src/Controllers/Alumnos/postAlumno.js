@@ -1,5 +1,6 @@
 const { Op } = require("sequelize");
 const { Alumnos, Aulas } = require("../../db");
+const admin = require("firebase-admin");
 
 const postAlumno = async (
   name,
@@ -15,11 +16,11 @@ const postAlumno = async (
   try {
     if (
       await Alumnos.findOne({
-        where: { username: username.toLowerCase() },
+        where: { email: email },
       })
     )
       return {
-        error: `No se pudo completar la carga. Ya existe el username ${username}`,
+        error: `No se pudo completar la carga. Ya existe el email ${email}`,
       };
     if (
       apellido === null &&
@@ -31,7 +32,6 @@ const postAlumno = async (
     ) {
       return { error: "Te faltaron datos a completar!" };
     }
-
     const newAlumno = {
       name: name.toLowerCase(),
       apellido: apellido.toLowerCase(),
@@ -42,6 +42,14 @@ const postAlumno = async (
       password: password.toLowerCase(),
     };
 
+    const userResponse = await admin.auth().createUser({
+        name:name,
+        apellido:apellido,
+        nacionalidad:nacionalidad,
+        datebirth:datebirth,
+        email:email,
+        password:password
+      });
     const alumnodb = await Alumnos.create(newAlumno);
   /*    const foundAula = await Aulas.findOne({
        where: { [Op.and]: [{ anio: anio }, { division: division }] },
@@ -51,7 +59,7 @@ const postAlumno = async (
      }
  
      alumnodb.setAula(foundAula); */
-
+     console.log(userResponse)
     return { message: "Alumno creado con exito" };
   } catch (error) {
     console.log(error)

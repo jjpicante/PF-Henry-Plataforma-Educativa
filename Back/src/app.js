@@ -6,6 +6,14 @@ const routes = require("./routes/index.js");
 
 require("./db.js");
 
+var admin = require("firebase-admin");
+
+var serviceAccount = require("../proyectofinal-1be5b-firebase-adminsdk-fwxdb-e06000b9bc.json");
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount)
+});
+
 const server = express();
 
 server.name = "API";
