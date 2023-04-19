@@ -5,6 +5,32 @@
   padding: 20px;
 }
 
+.header {
+  display: flex;
+  justify-content: space-between;
+  color: white;
+}
+
+.header h2 {
+  width: 48%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.header svg {
+  scale: 200%;
+  margin-left: 5%;
+}
+
+.carroPrecio {
+  width: 33.33%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 5%;
+}
+
 .selecc {
   font-size: x-large;
 }
