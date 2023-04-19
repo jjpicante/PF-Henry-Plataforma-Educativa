@@ -12,9 +12,9 @@ const Carrito = () => {
   const [totalPagar, setTotalPagar] = useState(storagedTotal);
   const [estadoDeCuenta, setestadoDeCuenta] = useState({});
 
-  const meses = Object.keys(estadoDeCuenta).slice(2);
+  const meses = Object.keys(estadoDeCuenta).slice(5);
+  console.log(meses);
   const precio = 1200;
-  console.log(estadoDeCuenta);
 
   useEffect(() => {
     localStorage.setItem("mes", JSON.stringify(mesesTotal));

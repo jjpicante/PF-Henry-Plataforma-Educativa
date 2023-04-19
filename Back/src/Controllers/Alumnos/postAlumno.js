@@ -44,7 +44,12 @@ const postAlumno = async (
 
     await Alumnos.create(newAlumno);
     //const nuevoAlumnoId = await Alumnos.findOne({ where: { username: username.toLowerCase() } });
-    await Meses.create({ username: username.toLowerCase() });
+    await Meses.create({
+      username: username.toLowerCase(),
+      name: name.toLowerCase(),
+      apellido: apellido.toLowerCase(),
+      email: email.toLowerCase(),
+    });
 
     /*    const foundAula = await Aulas.findOne({
        where: { [Op.and]: [{ anio: anio }, { division: division }] },
