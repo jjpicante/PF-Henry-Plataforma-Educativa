@@ -5,6 +5,7 @@ const admin = require("./Router/AdminRouter");
 const materias = require("./Router/MateriasRouter");
 const aula = require("./Router/Aulas");
 const loginrouter = require("./Router/loginrouter");
+const pasarela = require("./Router/Pasarelas");
 
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
@@ -20,5 +21,6 @@ router.use("/Materias", materias);
 router.use("/Admin", admin);
 router.use("/Login", loginrouter);
 router.use("/Aulas", aula);
+router.use("/", pasarela);
 
 module.exports = router;
