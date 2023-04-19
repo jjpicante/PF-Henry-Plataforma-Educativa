@@ -1,7 +1,7 @@
 const { auth, googleProvider } = require('../../config/firebase')
 import { signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth"
 
-const postLogin = async (email, password) => {
+const postLogin = async (email,password) => {
   try {
     await signInWithEmailAndPassword(auth, email, password)
   } catch (error) {
