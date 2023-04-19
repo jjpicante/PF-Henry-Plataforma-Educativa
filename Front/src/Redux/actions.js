@@ -91,13 +91,14 @@ export const loginFailed = (message) => {
   };
 };
 
-export const postlogin = (username, password) => {
+export const postlogin = (email, password) => {
   return async function (dispatch) {
     try {
       const response = await axios.post("http://localhost:3001/login", {
-        username,
+        email,
         password,
       });
+
       const userData = response.data;
       dispatch(setUserRole(userData.rol));
       return userData;
