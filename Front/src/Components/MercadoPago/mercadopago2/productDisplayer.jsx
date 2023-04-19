@@ -18,7 +18,7 @@ const ProductDisplayer = ({ mesesTotal, totalPagar, estadoDeCuenta }) => {
     });
     console.log(response.data);
     const pagar = response.data.body.init_point;
-    window.location.href = pagar;
+    window.open(pagar)
 
   };
   return(

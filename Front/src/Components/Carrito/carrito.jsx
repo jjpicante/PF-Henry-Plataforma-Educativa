@@ -61,7 +61,7 @@ const Carrito = () => {
       <Navbar />
       <div className={styles.carrito}>
         <div className={styles.header}>
-          <h2>Mensualidades</h2>
+          <h2>Cuotas</h2>
           {/* Icono carrito */}
           <section className={styles.carroPrecio}>
             <h3>${totalPagar}</h3>

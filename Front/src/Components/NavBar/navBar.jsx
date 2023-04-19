@@ -29,6 +29,7 @@ function Navbar() {
           )}
 
           <li><Link to="/form">Formulario</Link></li>
+          <li><Link to="/carrito">Cuotas</Link></li>
           <li><Link to="/" onClick={handleLogout}>Log Out</Link></li>
         </ul>
       </div>
