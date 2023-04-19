@@ -25,14 +25,14 @@ const updateAlumno = async (currentusername, changes) => {
     updateAlumno.set(minuscula);
     await updateAlumno.save();
 
-    //Si uno de los cambios es el username, lo actualizo en la tabla de meses
-    if (minuscula.username) {
+    //Si alguno de los cambios es el username, nombre, apellido o email, lo actualizo en la tabla de meses
+    if (minuscula.username || minuscula.name || minuscula.apellido || minuscula.email) {
       const updateMeses = await Meses.findOne({
         where: {
           username: currentusername,
         },
       });
-      updateMeses.set({ username: minuscula.username });
+      updateMeses.set(minuscula);
       await updateMeses.save();
     }
 
