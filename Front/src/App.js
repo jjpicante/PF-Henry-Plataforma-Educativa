@@ -6,22 +6,21 @@ import Form from "./Components/Forms/forms";
 import Classroom from "./Components/Classroom/Classroom";
 import FormSubject from "./Components/Forms/formSubject";
 import Detail from "./Components/Detail/detail";
+import AppStripe from "./Components/MercadoPago/stripe/appStripe";
+import MercadoPago from "./Components/MercadoPago/mercadopago2/productDisplayer";
 
 function App() {
-  
-
   return (
     <div className="App">
       <Routes>
-       
         <Route exact path="/home" element={<HomeStudent />} />
-
         <Route exact path="/Cursos" element={<Classroom />} />
-
+        <Route exact path="/MercadoPago" element={<MercadoPago />}></Route>
         <Route exact path="/Aulas" element={<Classroom />} />
         <Route exact path="/Aulas/materia/:id" element={<Detail />} />
         <Route exact path="/form" element={<Form />} />
         <Route exact path="/formsubject" element={<FormSubject />} />
+        <Route exact path="/Stripe" element={<AppStripe></AppStripe>}></Route>
 
         <Route exact path="/" element={<Landing />} />
       </Routes>
