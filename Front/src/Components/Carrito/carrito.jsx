@@ -2,7 +2,9 @@ import Navbar from "../NavBar/navBar";
 import { useState, useEffect } from "react";
 import styles from "./Carrito.module.css";
 import axios from "axios";
-const URL = "http://localhost:3001/Meses?username=juanperez";
+import ProductDisplayer from "../MercadoPago/mercadopago2/productDisplayer";
+
+const URL = "http://localhost:3001/Meses?username=pmartinez";
 
 const Carrito = () => {
   const storagedCartas = JSON.parse(localStorage.getItem("mes") || "[]");
@@ -15,7 +17,8 @@ const Carrito = () => {
   const meses = Object.keys(estadoDeCuenta).slice(2);
   const precio = 1200;
   console.log(estadoDeCuenta);
-
+  console.log(totalPagar)
+  console.log(mesesTotal)
   useEffect(() => {
     localStorage.setItem("mes", JSON.stringify(mesesTotal));
     localStorage.setItem("total", JSON.stringify(totalPagar));
@@ -111,7 +114,11 @@ const Carrito = () => {
               ))}
             </div>
             <h3 className={styles.total}>Monto total: ${totalPagar}</h3>
-            <button className={styles.botonPago}>Ir al pago</button>
+            <ProductDisplayer
+              mesesTotal={mesesTotal}
+              estadoDeCuenta={estadoDeCuenta}
+              totalPagar={totalPagar}
+            />
           </div>
         </div>
       </div>
