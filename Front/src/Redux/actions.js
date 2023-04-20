@@ -1,4 +1,3 @@
-import { errorMonitor } from "events";
 import {
   GET_STUDENTS,
   GET_PROFESORS,
@@ -11,7 +10,7 @@ import {
   LOGIN_FAILED,
   POST_ALUMNO,
 } from "./actionsTypes";
-import { profesors, students, materias } from "./Base de datos HC";
+import { profesors, students } from "./Base de datos HC";
 import axios from "axios";
 
 export const getStudents = () => {
@@ -30,12 +29,12 @@ export const getProfesors = () => {
 
 export const postAlumno = (form) => {
   return async function (dispatch) {
-    const response = await axios.post('http://localhost:3001/Alumnos/', form)
+    const response = await axios.post("http://localhost:3001/Alumnos/", form);
     dispatch({
       type: POST_ALUMNO,
-    })
-  }
-}
+    });
+  };
+};
 
 export const getMaterias = (page) => {
   return async function (dispatch) {
