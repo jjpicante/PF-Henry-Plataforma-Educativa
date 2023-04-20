@@ -8,8 +8,6 @@ import FormSubject from "./Components/Forms/formSubject";
 import Detail from "./Components/Detail/detail";
 import Carrito from "./Components/Carrito/carrito";
 import AppStripe from "./Components/MercadoPago/stripe/appStripe";
-import MercadoPago from "./Components/MercadoPago/mercadopago2/productDisplayer";
-
 
 function App() {
   return (
@@ -17,7 +15,6 @@ function App() {
       <Routes>
         <Route exact path="/home" element={<HomeStudent />} />
         <Route exact path="/Cursos" element={<Classroom />} />
-        <Route exact path="/MercadoPago" element={<MercadoPago />}></Route>
         <Route exact path="/Aulas" element={<Classroom />} />
         <Route exact path="/Aulas/materia/:id" element={<Detail />} />
         <Route exact path="/form" element={<Form />} />
