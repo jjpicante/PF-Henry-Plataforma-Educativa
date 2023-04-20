@@ -1,6 +1,8 @@
 const { Op } = require("sequelize");
 const { Alumnos, Aulas } = require("../../db");
-const { auth, db, createUserDocument, createUserWithEmailAndPassword } = require('../../config/firebase')
+const { auth } = require('../../config/firebase')
+const { createUserWithEmailAndPassword} = require("firebase/auth");
+const { createUserDocument } = require("../Firebase/createUser");
 
 
 const postAlumno = async (
@@ -44,7 +46,7 @@ const postAlumno = async (
     };
 
     // Create a user in Firebase Authentication
-    const userCredential = await auth.createUserWithEmailAndPassword(email, password);
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     const user = userCredential.user;
     console.log("User created in Firebase Authentication:", user.uid);
 
@@ -69,9 +71,9 @@ const postAlumno = async (
     return { message: "Alumno creado con exito" };
   } catch (error) {
     console.log(error);
-    if (error.code === 'auth/email-already-in-use') {
+    if (error.code === '/email-already-in-use') {
       return { error: 'El email ya está en uso. Por favor, seleccione otro.' };
-    } else if (error.code === 'auth/weak-password') {
+    } else if (error.code === '/weak-password') {
       return { error: 'La contraseña es demasiado débil. Por favor, elija una contraseña más segura.' };
     } else {
       return { error: 'No se pudo agregar el Alumno solicitado' };

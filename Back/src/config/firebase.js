@@ -18,6 +18,6 @@ const db = getFirestore(app);
 
 module.exports = {
   auth,
-  ...googleprovider,
-  ...db,
+  googleprovider,
+  db,
 }
