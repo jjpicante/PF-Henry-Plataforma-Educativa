@@ -11,4 +11,6 @@ loginrouter.post("/", async (req, res) => {
   return res.status(503).json(respuesta);
 });
 
+//ruta login con google recibe Idcliente
+
 module.exports = loginrouter;

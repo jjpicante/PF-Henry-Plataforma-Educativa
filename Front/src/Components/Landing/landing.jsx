@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import './landing.css';
 import { postlogin } from '../../Redux/actions';
-import { auth, googleProvider,createUserWithEmailAndPassword, singInWithPopup } from '../../../../Back/src/config/firebase';
+
 
 function Login() {
   const dispatch = useDispatch();
@@ -13,10 +13,9 @@ function Login() {
   const handleLogin = async (event) => {
     event.preventDefault();
 
-    console.log(auth?.currentUser?.email)
     //buscan en la base de datos si el usuario existe
+
     try {
-      await createUserWithEmailAndPassword(auth, email, password);
       // busca en la base de datos si el usuario existe
       const userData = await dispatch(postlogin(email, password));
   
@@ -33,13 +32,6 @@ function Login() {
     }
   }
 
-  const loginWithGoogle = async () => {
-    try{
-      await singInWithPopup(auth, googleProvider)
-    }catch (err){
-      setErrorMessage("Error al iniciar sesión con Google")
-    }
-  }
 
   return (
     <div id="landing">
@@ -55,8 +47,7 @@ function Login() {
             <label>Contraseña</label>
           </div>
           <button type="submit">Iniciar Sesion</button>
-
-          <button onClick={loginWithGoogle}>Iniciar Sesion Con Google</button>
+          <br></br>
         </form>
         <p style={{ color: "red" }}>{errorMessage}</p>
       </div>

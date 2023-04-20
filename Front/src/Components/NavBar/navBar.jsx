@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { clearUserRole } from '../../Redux/actions';
-import { auth, signOut } from '../../../../Back/src/config/firebase';
 import './NavBar.css';
 
 
@@ -11,7 +10,6 @@ function Navbar() {
 
   const handleLogout = async () => {
     try{
-      await signOut(auth)
     }catch (err){
       console.log(err)
     }

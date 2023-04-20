@@ -10,9 +10,9 @@ const postLogin = async (email,password) => {
   }
 };
 
-const loginGoogle = async () => {
+const loginGoogle = async (Idcliente) => {
   try {
-    await signInWithPopup(auth, googleProvider)
+    //obtener datos del usuario por idcliente y devolverlos
   } catch (error) {
     return { error: "Algo Fallo. Contacte con un administrador" }
   }
