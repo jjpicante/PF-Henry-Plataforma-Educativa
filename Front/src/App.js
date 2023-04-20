@@ -15,7 +15,7 @@ function App() {
       <Routes>
         <Route exact path="/home" element={<HomeStudent />} />
         <Route exact path="/Cursos" element={<Classroom />} />
-        <Route exact path="/Aulas" element={<Classroom />} />
+        <Route exact path="/Materias" element={<Classroom />} />
         <Route exact path="/Aulas/materia/:id" element={<Detail />} />
         <Route exact path="/form" element={<Form />} />
         <Route exact path="/formsubject" element={<FormSubject />} />

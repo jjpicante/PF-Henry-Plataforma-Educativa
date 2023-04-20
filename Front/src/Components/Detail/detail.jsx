@@ -20,7 +20,7 @@ export default function Detail() {
       {materiaById ? (
         <div className={style.topDiv}>
           <div className={style.materia}>
-            <h1>{materiaById?.namemateria}</h1>
+            <h1 className={style.nombreMateria}>{materiaById?.namemateria}</h1>
             <h2>{materiaById?.anio}</h2>
           </div>
           <div>

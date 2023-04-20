@@ -12,7 +12,7 @@
     padding: 10px;
   }
   
-  * {
+  .nombreMateria {
     text-decoration: none;
     text-transform: capitalize;
   }
