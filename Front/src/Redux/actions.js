@@ -109,7 +109,7 @@ export const verifyUserError = (message) => {
 export const postlogin = (email, password) => {
   return async function (dispatch) {
     try {
-      const response = await axios.post("http://localhost:3001/login", {
+      const response = await axios.post("http://localhost:3001/Login", {
         email,
         password,
       });

@@ -52,7 +52,7 @@ const postAlumno = async (
 
     // Create a user document in Firestore to store additional user details
     const role = "alumno"; // Set the user's role to "alumno"
-    await createUserDocument(user, name, role);
+    await createUserDocument(user, name, role, email);
 
 
     // Associate the new user with the created `Alumnos` record

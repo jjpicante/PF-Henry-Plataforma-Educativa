@@ -1,11 +1,11 @@
 const { auth, googleProvider } = require('../../config/firebase');
 const { signInWithEmailAndPassword, signInWithPopup, signOut } = require("firebase/auth");
-const { Alumnos } = require("../../models/Alumnos");
+const { Alumnos } = require("../../db");
 
 const postLogin = async (email,password) => {
   try {
   // Check if user exists in database
-  const user = await Alumnos.findOne({ where: { email } });
+  const user = await Alumnos.findOne({ where: { email: email } });
   if (!user) {
     throw new Error("User not found");
   }
@@ -13,7 +13,6 @@ const postLogin = async (email,password) => {
 
   return { success: true };
   } catch (error) {
-    console.log(error);
     return { error: "Algo Fallo. Contacte con un administrador" };
   }
 };
