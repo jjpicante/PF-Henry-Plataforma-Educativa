@@ -18,6 +18,7 @@ function Form() {
     email: "",
     datebirth: "",
     nacionalidad: "",
+    anio: "año",
     username: "",
     password: "",
   });
@@ -27,6 +28,7 @@ function Form() {
     email: "",
     datebirth: "",
     nacionalidad: "",
+    anio: "",
     username: "",
     password: "",
   });
@@ -55,6 +57,7 @@ function Form() {
       email: "",
       datebirth: "",
       nacionalidad: "",
+      anio: "año",
       username: "",
       password: "",
     });
@@ -145,6 +148,22 @@ function Form() {
               })}
             </select>
             <p className="errorText">{error.nacionalidad}</p>
+
+            <select
+              className="text"
+              type="number"
+              name="anio"
+              onChange={(ev) => inputHandler(ev)}
+              value={studentData.anio}
+            >
+              <option disabled={true}>año</option>
+              {[1, 2, 3, 4, 5, 6].map((i) => (
+                <option value={i} key={i}>
+                  {i}
+                </option>
+              ))}
+            </select>
+            <p className="errorText">{error.anio}</p>
 
             <input
               className="text"
