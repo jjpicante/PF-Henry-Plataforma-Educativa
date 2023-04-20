@@ -21,6 +21,7 @@ const ProductDisplayer = ({ mesesTotal, totalPagar, estadoDeCuenta }) => {
     console.log(response.data);
     const pagar = response.data.response.init_point;
     window.open(pagar);
+
   };
   return (
     <div className={styles.mpBtnContainer}>

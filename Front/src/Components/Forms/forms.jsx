@@ -4,6 +4,9 @@ import { useDispatch } from "react-redux";
 import { validate } from "./validations";
 import { postAlumno } from "../../Redux/actions";
 import Navbar from "../NavBar/navBar";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+
 
 function Form() {
   const dispatch = useDispatch();
@@ -26,8 +29,7 @@ function Form() {
     username: "",
     password: "",
   });
-  console.log(studentData);
-  console.log(errorMessdatebirth);
+  const [mostrarPass, setmostrarPass] = useState(false);
 
   const inputHandler = (ev) => {
     setStudentData({
@@ -85,9 +87,13 @@ function Form() {
     if (Object.values(errorMessdatebirth).some((error) => error !== ""))
       return Object.values(errorMessdatebirth).some((error) => error !== "");
     else {
-      console.log(Object.values(studentData))
+      console.log(Object.values(studentData));
       return !Object.values(studentData).some((student) => student !== "");
     }
+  };
+
+  const handleTogglePassword = () => {
+    setmostrarPass(!mostrarPass);
   };
 
   return (
@@ -99,8 +105,9 @@ function Form() {
 
           <form onSubmit={(ev) => submitHandler(ev)} autoComplete="off">
             <input
+              className="text"
               type="text"
-              placeholder="Name"
+              placeholder="nombre"
               name="name"
               onChange={(ev) => inputHandler(ev)}
               value={studentData.name}
@@ -108,6 +115,7 @@ function Form() {
             <p className="errorText">{errorMessdatebirth.name}</p>
 
             <input
+              className="text"
               type="text"
               name="apellido"
               placeholder="apellido"
@@ -117,6 +125,7 @@ function Form() {
             <p className="errorText">{errorMessdatebirth.apellido}</p>
 
             <input
+              className="text"
               type="text"
               name="email"
               placeholder="email"
@@ -126,6 +135,7 @@ function Form() {
             <p className="errorText">{errorMessdatebirth.email}</p>
 
             <input
+              className="text"
               type="date"
               name="datebirth"
               placeholder="datebirth"
@@ -135,6 +145,7 @@ function Form() {
             <p className="errorText">{errorMessdatebirth.datebirth}</p>
 
             <input
+              className="text"
               type="text"
               name="nacionalidad"
               placeholder="nacionalidad"
@@ -144,6 +155,7 @@ function Form() {
             <p className="errorText">{errorMessdatebirth.nacionalidad}</p>
 
             <input
+              className="text"
               type="text"
               name="username"
               placeholder="username"
@@ -151,14 +163,20 @@ function Form() {
               value={studentData.username}
             />
             <p className="errorText">{errorMessdatebirth.datebirth}</p>
-            <input
-              type="password"
-              name="password"
-              placeholder="password"
-              onChange={(ev) => inputHandler(ev)}
-              value={studentData.password}
-            />
-
+            <div>
+              
+      <input
+        className="pass"
+        type={mostrarPass ? "text" : "password"}
+        placeholder="password"
+        name="password"
+        id="password"
+      />
+      <button type="button" onClick={handleTogglePassword}>
+        <FontAwesomeIcon icon={mostrarPass ? faEyeSlash : faEye} />
+      </button>
+      
+    </div>
             <input type="submit" value="Crear alumno" disabled={hasErrors()} />
           </form>
         </div>

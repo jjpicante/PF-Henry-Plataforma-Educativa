@@ -6,18 +6,16 @@ mercadopago.configure({
 
 class PaymentService {
   async createSubscription(req) {
-    const url = "https://api.mercadopago.com/preapproval";
-    const meses = req.body.description.join(", ");
-    console.log(req.body.price * req.body.description.length);
+    const meses = req.body.description.join(", ")
     let preference = {
       items: [
         {
-          id: 135363,
           title: meses,
-          unit_price: req.body.price,
+          id: meses,
           quantity: req.body.description.length,
-          product_id: "hola",
-        },
+          unit_price: req.body.price
+        }
+
       ],
       external_reference: meses + req.body.surname + req.body.username,
       payer: {
@@ -51,3 +49,6 @@ class PaymentService {
 }
 
 module.exports = PaymentService;
+
+
+
