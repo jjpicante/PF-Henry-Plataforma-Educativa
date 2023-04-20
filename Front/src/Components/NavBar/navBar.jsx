@@ -52,11 +52,21 @@ function Navbar() {
               </Link>
             </li>
           )}
-          <li className={style.navItem}>
-            <Link to="/form" className={style.navLink}>
-              Formulario
-            </Link>
-          </li>
+          <li className={`${style.navItem} ${style.dropdown}`}>
+            <span className={style.miaula}>Crear</span>
+            <ul className={style.dropdownContent}>
+              <li>
+                <Link to="/formAlumno" className={style.navLink}>
+                  Alumno
+                </Link>
+              </li>
+              <li>
+                <Link to="/formProfesor" className={style.navLink}>
+                  Profesor
+                </Link>
+              </li>
+              </ul>
+              </li>
           <li className={style.navItem}>
             <Link to="/carrito" className={style.navLink}>
               Cuotas

@@ -17,7 +17,8 @@ function App() {
         <Route exact path="/Cursos" element={<Classroom />} />
         <Route exact path="/Materias" element={<Classroom />} />
         <Route exact path="/Aulas/materia/:id" element={<Detail />} />
-        <Route exact path="/form" element={<Form />} />
+        <Route exact path="/formAlumno" element={<Form />} />
+        <Route exact patch="/formProfesor"/>
         <Route exact path="/formsubject" element={<FormSubject />} />
         <Route exact path="/carrito" element={<Carrito />} />
         <Route exact path="/Stripe" element={<AppStripe></AppStripe>}></Route>
