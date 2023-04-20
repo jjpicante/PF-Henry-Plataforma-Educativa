@@ -22,7 +22,7 @@ function Navbar() {
       <div className="nav-container">
         <ul>
           <li><Link to="/Home">Area Personal</Link></li>
-          <li><Link to="/Aulas">Mis Aulas</Link></li>
+          <li><Link to="/Aulas">Mi Aula</Link></li>
           
           {userRole === 'profesor' && (
             <li><Link to="/Cursos">Mis Cursos</Link></li>
