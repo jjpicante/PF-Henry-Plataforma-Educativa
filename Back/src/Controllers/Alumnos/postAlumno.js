@@ -9,7 +9,6 @@ const postAlumno = async (
   email,
   username,
   password,
-  division,
   anio
 ) => {
   try {
