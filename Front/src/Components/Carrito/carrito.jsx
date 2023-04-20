@@ -6,7 +6,7 @@ import ProductDisplayer from "../MercadoPago/mercadopago2/productDisplayer";
 import { Link } from "react-router-dom";
 import AppStripe from "../MercadoPago/stripe/appStripe";
 
-const URL = "http://localhost:3001/Meses?username=pepito";
+const URL = "http://localhost:3001/Meses?username=juanperez";
 
 const Carrito = () => {
   const storagedCartas = JSON.parse(localStorage.getItem("mes") || "[]");
