@@ -1,0 +1,33 @@
+.mpBtnContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mpLogo {
+  order: 1;
+  width: 40%;
+  max-width: 300px;
+  margin-bottom: 10px;
+}
+
+.mpBtn {
+  order: 2;
+  background-color: #009ee3;
+  color: #fff;
+  border: none;
+  padding: 15px 20px;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.mpBtn:hover {
+  background-color: #0080cc;
+}
+
+.mpBtn:active {
+  background-color: #0066b2;
+  box-shadow: none;
+}

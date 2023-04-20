@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+import styles from "./MercadoPagoButton.module.css";
 import axios from "axios";
-import { initMercadoPago, Wallet } from '@mercadopago/sdk-react'
+import { initMercadoPago, Wallet } from "@mercadopago/sdk-react";
 
- initMercadoPago('TEST-03d431fb-a546-41fd-b409-9f0a04a7440b');
+initMercadoPago("TEST-3c99da26-96ee-4715-9784-826a780f3f38");
 
 const ProductDisplayer = ({ mesesTotal, totalPagar, estadoDeCuenta }) => {
   const [id, setid] = useState("");
@@ -16,24 +17,26 @@ const ProductDisplayer = ({ mesesTotal, totalPagar, estadoDeCuenta }) => {
       surname: estadoDeCuenta.apellido,
       username: estadoDeCuenta.username,
     });
+    console.log(response.data.response);
     console.log(response.data);
-    const pagar = response.data.body.init_point;
-    window.location.href = pagar;
-
+    const pagar = response.data.response.init_point;
+    window.open(pagar);
   };
-  return(
-    <div>
-      <button onClick={(ev)=> onsubmit(ev)}>PAGAR!</button>
+  return (
+    <div className={styles.mpBtnContainer}>
+      <button className={styles.mpBtn} onClick={(ev) => onsubmit(ev)}>
+        Pagar con MercadoPago
+      </button>
+      <img
+        src="https://logotipoz.com/wp-content/uploads/2021/10/version-horizontal-large-logo-mercado-pago.webp"
+        alt="Logo de MercadoPago"
+        className={styles.mpLogo}
+      />
     </div>
   );
-    };
-    
-    
-
-
+};
 
 export default ProductDisplayer;
-
 
 /*return(
   <div>
