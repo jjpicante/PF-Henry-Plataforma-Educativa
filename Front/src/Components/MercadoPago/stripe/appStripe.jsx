@@ -11,11 +11,18 @@ const stripePromise = loadStripe(
 );
 const CheckautForm = () => {
   const storagedCartas = JSON.parse(localStorage.getItem("mes") || "[]");
+  const storagedUsername = JSON.parse(localStorage.getItem("username") || "[]");
   const storagedTotal = JSON.parse(localStorage.getItem("total") || 0);
   const [isLoading, setIsLoading] = useState(false);
   const stripe = useStripe();
   const element = useElements();
+  const pagado = {};
 
+  for (let mes of storagedCartas) {
+    pagado[mes] = true;
+  }
+
+  console.log(pagado);
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -38,12 +45,26 @@ const CheckautForm = () => {
         //esta funcion check si esta terminada correctamente devuelve un objeto PaymentIntent
         //y signifca que el pago se realizo, tienen el PatmentIntent.status
         const check = await stripe.retrievePaymentIntent(clientSecret);
+
         console.log(check);
+        if (check.paymentIntent) {
+          //const respuesta = await axios.put(`http://localhost:3001/Meses/${storagedUsername}`, pagado)    //!ACTUALIZAR!!
+          const respuesta = await axios.put(`http://localhost:3001/Meses/juanperez`, pagado);
+          if (respuesta) {
+            window.alert("Pago realizado con éxito");
+            window.location.href = "http://localhost:3000/carrito";
+          }
+        } else window.alert("El pago no se realizó");
 
         element.getElement(CardElement).clear();
+        window.localStorage.removeItem("mes");
+        window.localStorage.removeItem("total");
       } catch (error) {
         const err = error.response.data;
-        console.log(err);
+        window.localStorage.removeItem("mes");
+        window.localStorage.removeItem("total");
+        window.alert("El pago no se realizó");
+        window.location.href = "http://localhost:3000/carrito";
       }
     }
     setIsLoading(false);
