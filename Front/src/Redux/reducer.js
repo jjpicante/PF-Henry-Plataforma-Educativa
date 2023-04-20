@@ -9,6 +9,7 @@ import {
   CLEAR_USER_ROLE,
   LOGIN_FAILED,
   POST_ALUMNO,
+  POST_PROFESOR,
 } from "./actionsTypes";
 
 const initialState = {
@@ -30,7 +31,11 @@ export default function reducer(state = initialState, { type, payload }) {
     case POST_ALUMNO:
       return {
         ...state,
-      }
+      };
+    case POST_PROFESOR:
+      return {
+        ...state,
+      };
     case GET_PROFESORS:
       return {
         ...state,
@@ -50,8 +55,8 @@ export default function reducer(state = initialState, { type, payload }) {
     case GET_MATERIAS_BY_NAME:
       return {
         ...state,
-        materias: payload
-      }
+        materias: payload,
+      };
     case CLEAN_DETAIL:
       return {
         ...state,
@@ -70,7 +75,7 @@ export default function reducer(state = initialState, { type, payload }) {
     case LOGIN_FAILED:
       return {
         ...state,
-        userRole: '',
+        userRole: "",
       };
     default:
       return { ...state };
