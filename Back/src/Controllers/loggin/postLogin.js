@@ -1,14 +1,23 @@
-const { auth, googleProvider } = require('../../config/firebase')
-import { signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth"
+const { auth, googleProvider } = require('../../config/firebase');
+const { signInWithEmailAndPassword, signInWithPopup, signOut } = require("firebase/auth");
+const { Alumnos } = require("../../models/Alumnos");
 
 const postLogin = async (email,password) => {
   try {
-    await signInWithEmailAndPassword(auth, email, password)
+  // Check if user exists in database
+  const user = await Alumnos.findOne({ where: { email } });
+  if (!user) {
+    throw new Error("User not found");
+  }
+  await signInWithEmailAndPassword(auth, email, password);
+
+  return { success: true };
   } catch (error) {
     console.log(error);
     return { error: "Algo Fallo. Contacte con un administrador" };
   }
 };
+
 
 const loginGoogle = async (Idcliente) => {
   try {

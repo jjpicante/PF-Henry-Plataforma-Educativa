@@ -1,6 +1,7 @@
 const { Op } = require("sequelize");
 const { Alumnos, Aulas } = require("../../db");
-const admin = require("firebase-admin");
+const { auth, db, createUserDocument, createUserWithEmailAndPassword } = require('../../config/firebase')
+
 
 const postAlumno = async (
   name,
@@ -42,28 +43,39 @@ const postAlumno = async (
       password: password.toLowerCase(),
     };
 
-    const userResponse = await admin.auth().createUser({
-        name:name,
-        apellido:apellido,
-        nacionalidad:nacionalidad,
-        datebirth:datebirth,
-        email:email,
-        password:password
-      });
+    // Create a user in Firebase Authentication
+    const userCredential = await auth.createUserWithEmailAndPassword(email, password);
+    const user = userCredential.user;
+    console.log("User created in Firebase Authentication:", user.uid);
+
+    // Create a user document in Firestore to store additional user details
+    const role = "alumno"; // Set the user's role to "alumno"
+    await createUserDocument(user, name, role);
+
+
+    // Associate the new user with the created `Alumnos` record
     const alumnodb = await Alumnos.create(newAlumno);
-  /*    const foundAula = await Aulas.findOne({
-       where: { [Op.and]: [{ anio: anio }, { division: division }] },
-     });
-     if (!foundAula) {
-       return { error: "El anio o division indicado no se encuentran" };
-     }
- 
-     alumnodb.setAula(foundAula); */
-     console.log(userResponse)
+    alumnodb.firebaseUserId = user.uid;
+    await alumnodb.save();
+
+    /*    const foundAula = await Aulas.findOne({
+         where: { [Op.and]: [{ anio: anio }, { division: division }] },
+       });
+       if (!foundAula) {
+         return { error: "El anio o division indicado no se encuentran" };
+       }
+   
+       alumnodb.setAula(foundAula); */
     return { message: "Alumno creado con exito" };
   } catch (error) {
-    console.log(error)
-    return { error: "No se pudo agregar el Alumno solicitado" };
+    console.log(error);
+    if (error.code === 'auth/email-already-in-use') {
+      return { error: 'El email ya está en uso. Por favor, seleccione otro.' };
+    } else if (error.code === 'auth/weak-password') {
+      return { error: 'La contraseña es demasiado débil. Por favor, elija una contraseña más segura.' };
+    } else {
+      return { error: 'No se pudo agregar el Alumno solicitado' };
+    }
   }
 };
 

@@ -5,10 +5,13 @@ import {
   GET_MATERIAS_BY_ID,
   GET_MATERIAS_BY_NAME,
   CLEAN_DETAIL,
-  SET_USER_ROLE,
-  CLEAR_USER_ROLE,
-  LOGIN_FAILED,
   POST_ALUMNO,
+  LOGIN_SUCCESS,
+  LOGIN_FAILED,
+  LOGOUT_SUCCESS,
+  LOGOUT_ERROR,
+  VERIFY_USER_SUCCESS,
+  VERIFY_USER_ERROR,
 } from "./actionsTypes";
 
 const initialState = {
@@ -57,20 +60,34 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         materiaById: payload,
       };
-    case SET_USER_ROLE:
-      return {
-        ...state,
-        userRole: payload,
-      };
-    case CLEAR_USER_ROLE:
-      return {
-        ...state,
-        userRole: null,
-      };
     case LOGIN_FAILED:
       return {
         ...state,
         userRole: '',
+      };
+    case LOGIN_SUCCESS:
+      return {
+        ...state,
+        userRole: payload.role,
+      };
+    case VERIFY_USER_SUCCESS:
+      return {
+        ...state,
+        userRole: payload.role,
+      };
+    case VERIFY_USER_ERROR:
+      return {
+        ...state,
+        userRole: '',
+      };
+    case LOGOUT_SUCCESS:
+      return {
+        ...state,
+        userRole: '',
+      };
+    case LOGOUT_ERROR:
+      return {
+        ...state,
       };
     default:
       return { ...state };

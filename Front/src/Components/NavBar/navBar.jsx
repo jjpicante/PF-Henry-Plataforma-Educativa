@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { clearUserRole } from '../../Redux/actions';
 import './NavBar.css';
 
 
@@ -14,9 +13,6 @@ function Navbar() {
       console.log(err)
     }
     // Eliminar la informacion del usuario del localStorage
-    localStorage.removeItem('userData');
-    dispatch(clearUserRole());
-    
   }
 
    // Obtener el valor del rol del usuario desde localStorage

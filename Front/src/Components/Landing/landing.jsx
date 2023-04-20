@@ -22,9 +22,6 @@ function Login() {
       if (userData && userData.message) {
         setErrorMessage(userData.message);
       } else {
-        // hacer update del estado con el rol del login
-        localStorage.setItem("userRole", userData.role);
-        // después de hacer el update lo redirige al home
         window.location.href = "/home";
       }
     } catch (error) {

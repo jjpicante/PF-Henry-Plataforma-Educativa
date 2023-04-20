@@ -6,10 +6,13 @@ import {
   GET_MATERIAS_BY_ID,
   GET_MATERIAS_BY_NAME,
   CLEAN_DETAIL,
-  SET_USER_ROLE,
-  CLEAR_USER_ROLE,
-  LOGIN_FAILED,
   POST_ALUMNO,
+  LOGIN_SUCCESS,
+  LOGIN_FAILED,
+  LOGOUT_SUCCESS,
+  LOGOUT_ERROR,
+  VERIFY_USER_SUCCESS,
+  VERIFY_USER_ERROR,
 } from "./actionsTypes";
 import { profesors, students, materias } from "./Base de datos HC";
 import axios from "axios";
@@ -75,18 +78,30 @@ export const cleanDetail = () => {
   };
 };
 
-export function clearUserRole() {
-  return { type: CLEAR_USER_ROLE };
-}
-
-export const setUserRole = (role) => ({
-  type: SET_USER_ROLE,
-  payload: role,
-});
-
 export const loginFailed = (message) => {
   return {
     type: LOGIN_FAILED,
+    payload: message,
+  };
+};
+
+export const loginSuccess = (userData) => {
+  return {
+    type: LOGIN_SUCCESS,
+    payload: userData,
+  };
+};
+
+export const verifyUserSuccess = (userData) => {
+  return {
+    type: VERIFY_USER_SUCCESS,
+    payload: userData,
+  };
+};
+
+export const verifyUserError = (message) => {
+  return {
+    type: VERIFY_USER_ERROR,
     payload: message,
   };
 };
@@ -100,11 +115,36 @@ export const postlogin = (email, password) => {
       });
 
       const userData = response.data;
-      dispatch(setUserRole(userData.rol));
+      dispatch(loginSuccess(userData));
       return userData;
     } catch (error) {
       console.log(error);
       dispatch(loginFailed("Invalid credentials"));
     }
+  };
+};
+
+export const logout = () => {
+  return async function (dispatch) {
+    try {
+      await axios.post("http://localhost:3001/logout");
+      dispatch({ type: LOGOUT_SUCCESS });
+    } catch (error) {
+      console.log(error);
+      dispatch({ type: LOGOUT_ERROR });
+    }
+  };
+};
+
+export const logoutSuccess = () => {
+  return {
+    type: LOGOUT_SUCCESS,
+  };
+};
+
+export const logoutError = (error) => {
+  return {
+    type: LOGOUT_ERROR,
+    payload: error,
   };
 };
