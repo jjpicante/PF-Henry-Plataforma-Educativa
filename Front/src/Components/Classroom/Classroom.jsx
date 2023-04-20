@@ -5,7 +5,6 @@ import style from "./Classroom.module.css";
 import Navbar from "../NavBar/navBar";
 import SearchBar from "../SearchBar/searchBar";
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
 import Paginate from "../Paginado/paginado";
 
 const Classroom = () => {
