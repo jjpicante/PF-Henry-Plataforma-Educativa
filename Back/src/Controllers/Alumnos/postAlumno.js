@@ -39,6 +39,7 @@ const postAlumno = async (
       email: email.toLowerCase(),
       username: username.toLowerCase(),
       password: password.toLowerCase(),
+      anio: anio,
     };
 
     await Alumnos.create(newAlumno);
