@@ -1,12 +1,13 @@
 import "./form.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { validate } from "./validations";
 import { postAlumno } from "../../Redux/actions";
+import axios from "axios";
 import Navbar from "../NavBar/navBar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-
+const URL = "https://restcountries.com/v3.1/all";
 
 function Form() {
   const dispatch = useDispatch();
@@ -57,16 +58,27 @@ function Form() {
       username: "",
       password: "",
     });
-    
   };
 
   const hasErrors = () => {
-    return (Object.values(error).some((error) => error !== ""))   
+    return Object.values(error).some((error) => error !== "");
   };
 
   const handleTogglePassword = () => {
     setmostrarPass(!mostrarPass);
   };
+
+  const [paises, setPaises] = useState([]);
+
+  useEffect(() => {
+    async function getPaises() {
+      const response = await axios.get("https://restcountries.com/v3.1/all");
+      const paises = response.data.map((el) => el.name.common).sort();
+      setPaises(paises);
+    }
+
+    getPaises();
+  }, []);
 
   return (
     <>
@@ -116,14 +128,22 @@ function Form() {
             />
             <p className="errorText">{error.datebirth}</p>
 
-            <input
+            <select
               className="text"
               type="text"
               name="nacionalidad"
               placeholder="nacionalidad"
               onChange={(ev) => inputHandler(ev)}
               value={studentData.nacionalidad}
-            />
+            >
+              {paises?.map((el, i) => {
+                return (
+                  <option value={el} key={i}>
+                    {el}
+                  </option>
+                );
+              })}
+            </select>
             <p className="errorText">{error.nacionalidad}</p>
 
             <input
@@ -136,19 +156,17 @@ function Form() {
             />
             <p className="errorText">{error.datebirth}</p>
             <div>
-              
-      <input
-        className="pass"
-        type={mostrarPass ? "password" : "text"}
-        placeholder="password"
-        name="password"
-        id="password"
-      />
-      <button type="button" onClick={() => handleTogglePassword()}>
-        <FontAwesomeIcon icon={mostrarPass ? faEyeSlash : faEye} />
-      </button>
-      
-    </div>
+              <input
+                className="pass"
+                type={mostrarPass ? "password" : "text"}
+                placeholder="password"
+                name="password"
+                id="password"
+              />
+              <button type="button" onClick={() => handleTogglePassword()}>
+                <FontAwesomeIcon icon={mostrarPass ? faEyeSlash : faEye} />
+              </button>
+            </div>
             <input type="submit" value="Crear alumno" disabled={hasErrors()} />
           </form>
         </div>
