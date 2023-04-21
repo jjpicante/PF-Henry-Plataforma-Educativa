@@ -181,6 +181,8 @@ function Form() {
                 placeholder="password"
                 name="password"
                 id="password"
+                onChange={(ev) => inputHandler(ev)}
+                value={studentData.password}
               />
               <button type="button" onClick={() => handleTogglePassword()}>
                 <FontAwesomeIcon icon={mostrarPass ? faEyeSlash : faEye} />
