@@ -51,7 +51,8 @@ const postAlumno = async (
       email: email.toLowerCase(),
     });
 
-    /*    const foundAula = await Aulas.findOne({
+    /* Esto funciona para que el aula se relacione al alumno    
+    const foundAula = await Aulas.findOne({
        where: { [Op.and]: [{ anio: anio }, { division: division }] },
      });
      if (!foundAula) {
