@@ -3,14 +3,22 @@ import style from "./NavBar.module.css";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { clearUserRole } from "../../Redux/actions";
+import { signOut } from "firebase/auth";
+import { auth } from "../../config/firebase";
 
 function Navbar() {
   const dispatch = useDispatch();
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
     // Eliminar la informacion del usuario del localStorage
-    localStorage.removeItem("userData");
-    dispatch(clearUserRole());
+
+    try {
+      localStorage.removeItem("userData");
+      dispatch(clearUserRole());
+      await signOut(auth);
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
   // Obtener el valor del rol del usuario desde localStorage
@@ -65,8 +73,8 @@ function Navbar() {
                   Profesor
                 </Link>
               </li>
-              </ul>
-              </li>
+            </ul>
+          </li>
           <li className={style.navItem}>
             <Link to="/carrito" className={style.navLink}>
               Cuotas

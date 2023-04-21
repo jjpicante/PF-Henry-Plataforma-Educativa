@@ -3,10 +3,13 @@ import { useDispatch } from "react-redux";
 import "./landing.css";
 import { auth, googleprovider } from "../../config/firebase";
 import { signInWithPopup, signOut } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 import { postlogin, verifiedGoogleLogIn } from "../../Redux/actions";
 
 function Login() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -22,8 +25,8 @@ function Login() {
     } catch (error) {
       console.log(error.message);
     }
-    console.log(auth.currentUser.email);
     dispatch(verifiedGoogleLogIn(auth.currentUser.email));
+    navigate("/Home", { replace: true });
   };
 
   const logout = async () => {

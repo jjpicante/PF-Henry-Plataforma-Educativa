@@ -18,12 +18,7 @@ loginrouter.post("/google", async (req, res) => {
     const userData = await googleVerifier(email);
     res.status(200).json(userData);
   } catch (error) {
-    res
-      .status(400)
-      .json({
-        error:
-          "No esta registrado en la base de datos, por favor contacte con la intitucion educativa",
-      });
+    res.status(400).json(error.message);
   }
 });
 

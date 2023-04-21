@@ -20,7 +20,6 @@ const initialState = {
   materias: {},
   pageCount: "",
   materiaById: [],
-  userData: null,
   userData: [],
 };
 

@@ -158,6 +158,6 @@ export const verifiedGoogleLogIn = (email) => async (dispatch) => {
     });
     dispatch({ type: GET_USER_DATA_GOOGLE, payload: userInfo });
   } catch (error) {
-    return alert(error.message);
+    dispatch({ type: GET_USER_DATA_GOOGLE, payload: null });
   }
 };
