@@ -46,7 +46,7 @@
   border: solid black;
   border-radius: 20%;
   width: 600px;
-  height: 600px;
+  height: 650px;
   margin-top: 90px;
   margin-left: 750px;
 }
@@ -134,4 +134,13 @@
 
 .btn-pay:hover {
   background-color: #0043a3;
+}
+
+.imgPagos{
+  height: 4rem;
+}
+
+.containerPagos{
+  display: flex;
+  padding-top: 1rem ;
 }
