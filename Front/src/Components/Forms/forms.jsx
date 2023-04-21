@@ -157,7 +157,7 @@ function Form() {
               value={studentData.anio}
             >
               <option disabled={true}>año</option>
-              {[1, 2, 3, 4, 5, 6].map((i) => (
+              {["1ro", "2do", "3ro", "4to", "5to", "6to"].map((i) => (
                 <option value={i} key={i}>
                   {i}
                 </option>

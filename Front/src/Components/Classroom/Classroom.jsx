@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { getMaterias } from "../../Redux/actions";
+import { getMateriasByAnio } from "../../Redux/actions";
 import style from "./Classroom.module.css";
 import Navbar from "../NavBar/navBar";
 import SearchBar from "../SearchBar/searchBar";
@@ -12,11 +12,13 @@ const Classroom = () => {
   const asignatures = useSelector((state) => state.materias);
   const pageCount1 = useSelector((state) => state.pageCount);
   const [pageNumber, setPageNumber] = useState(0);
+  const anio = "6to";
 
   useEffect(() => {
-    dispatch(getMaterias());
+    dispatch(getMateriasByAnio(anio));
   }, [dispatch]);
 
+  
   return (
     <div className={style.fondo}>
       {/* Iconos */}

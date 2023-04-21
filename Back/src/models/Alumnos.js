@@ -47,7 +47,7 @@ module.exports = (sequelize) => {
         defaultValue: "student",
       },
       anio: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         allowNull: false,
       },
     },
