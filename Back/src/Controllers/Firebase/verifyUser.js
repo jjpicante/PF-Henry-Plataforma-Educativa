@@ -1,18 +1,12 @@
 const { auth } = require('../../config/firebase')
 
-const verifyUser = async (req, res, next) => {
-  try {
-    const { authorization } = req.headers
-    if (!authorization) {
-      throw new Error('Authorization header is required')
-    }
-    const token = authorization.split(' ')[1]
-    const decodedToken = await auth.verifyIdToken(token)
-    req.user = decodedToken
-    next()
-  } catch (error) {
-    console.error(error)
-    res.status(401).send({ error: 'Unauthorized' })
+const verifyUser = (req, res, next) => {
+  const user = auth.currentUser;
+  if (user) {
+    req.user = user;
+    next();
+  } else {
+    res.redirect('http://localhost:3000/'); // replace '/login' with the path to your login page
   }
 }
 

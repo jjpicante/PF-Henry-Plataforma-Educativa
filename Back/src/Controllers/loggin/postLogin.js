@@ -2,21 +2,32 @@ const { auth, googleProvider } = require('../../config/firebase');
 const { signInWithEmailAndPassword, signInWithPopup, signOut } = require("firebase/auth");
 const { Alumnos } = require("../../db");
 
-const postLogin = async (email,password) => {
+const postLogin = async (email, password) => {
   try {
-  // Check if user exists in database
-  const user = await Alumnos.findOne({ where: { email: email } });
-  if (!user) {
-    throw new Error("User not found");
-  }
-  await signInWithEmailAndPassword(auth, email, password);
+    // Check if user exists in Firestore
+    const firestoreUser = await auth.getUserByEmail(email);
+    
+    // If user exists in Firestore, authenticate with email and password
+    await signInWithEmailAndPassword(auth, email, password);
 
-  return { success: true };
-  } catch (error) {
-    return { error: "Algo Fallo. Contacte con un administrador" };
+    return { success: true };
+  } catch (firestoreError) {
+    try {
+      // If user does not exist in Firestore, check if user exists in the Alumnos table
+      const dbUser = await Alumnos.findOne({ where: { email: email } });
+      if (!dbUser) {
+        return { error: "User not found" };
+      }
+      
+      // Authenticate with email and password
+      await signInWithEmailAndPassword(auth, email, password);
+
+      return { success: true };
+    } catch (dbError) {
+      return { error: "Error logging in" };
+    }
   }
 };
-
 
 const loginGoogle = async (Idcliente) => {
   try {

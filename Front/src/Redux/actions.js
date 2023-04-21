@@ -127,7 +127,7 @@ export const postlogin = (email, password) => {
 export const logout = () => {
   return async function (dispatch) {
     try {
-      await axios.post("http://localhost:3001/logout");
+      await axios.post("http://localhost:3001/Logout");
       dispatch({ type: LOGOUT_SUCCESS });
     } catch (error) {
       console.log(error);

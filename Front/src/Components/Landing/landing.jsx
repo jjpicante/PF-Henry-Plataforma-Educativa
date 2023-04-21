@@ -16,13 +16,16 @@ function Login() {
     //buscan en la base de datos si el usuario existe
 
     try {
+      if (!email || !password) {
+        setErrorMessage("Please enter both email and password");
+        return;
+      }
       // busca en la base de datos si el usuario existe
       const userData = await dispatch(postlogin(email, password));
-  
-      if (userData && userData.message) {
-        setErrorMessage(userData.message);
-      } else {
+      if(userData){
         window.location.href = "/home";
+      } else {
+        setErrorMessage("Error al iniciar sesión");
       }
     } catch (error) {
       setErrorMessage("Error al iniciar sesión");
