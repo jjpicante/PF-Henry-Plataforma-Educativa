@@ -11,6 +11,7 @@ import {
   LOGIN_FAILED,
   POST_ALUMNO,
   POST_PROFESOR,
+  GET_USER_DATA_GOOGLE,
 } from "./actionsTypes";
 
 const initialState = {
@@ -19,7 +20,8 @@ const initialState = {
   materias: {},
   pageCount: "",
   materiaById: [],
-  userRole: null,
+  userData: null,
+  userData: [],
 };
 
 export default function reducer(state = initialState, { type, payload }) {
@@ -56,7 +58,7 @@ export default function reducer(state = initialState, { type, payload }) {
     case GET_MATERIAS_BY_NAME:
       return {
         ...state,
-        materias: payload
+        materias: payload,
       };
     case GET_MATERIAS_BY_ANIO:
       return {
@@ -82,6 +84,11 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
         userRole: "",
+      };
+    case GET_USER_DATA_GOOGLE:
+      return {
+        ...state,
+        userData: payload,
       };
     default:
       return { ...state };

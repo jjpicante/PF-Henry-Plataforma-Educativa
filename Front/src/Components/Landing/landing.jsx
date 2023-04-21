@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import './landing.css';
-import { postlogin } from '../../Redux/actions';
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import "./landing.css";
+import { auth, googleprovider } from "../../config/firebase";
+import { signInWithPopup, signOut } from "firebase/auth";
+import { postlogin, verifiedGoogleLogIn } from "../../Redux/actions";
 
 function Login() {
   const dispatch = useDispatch();
@@ -9,46 +11,58 @@ function Login() {
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
-  const handleLogin = async (event) => {
+  const handleLogin = (event) => {
     event.preventDefault();
-    //buscan en la base de datos si el usuario existe
+    console.log(auth.currentUser);
+  };
+
+  const googleHandler = async () => {
     try {
-      // busca en la base de datos si el usuario existe
-      const userData = await dispatch(postlogin(username, password));
-  
-      if (userData && userData.message) {
-        setErrorMessage(userData.message);
-      } else {
-        // hacer update del estado con el rol del login
-        localStorage.setItem("userRole", userData.role);
-        // después de hacer el update lo redirige al home
-        window.location.href = "/home";
-      }
+      await signInWithPopup(auth, googleprovider);
     } catch (error) {
-      setErrorMessage("Error al iniciar sesión");
+      console.log(error.message);
     }
-  }
+    console.log(auth.currentUser.email);
+    dispatch(verifiedGoogleLogIn(auth.currentUser.email));
+  };
+
+  const logout = async () => {
+    try {
+      await signOut(auth);
+    } catch (error) {}
+  };
 
   return (
     <div id="landing">
       <div id="login-box">
-        <form className='form' onSubmit={handleLogin}>
+        <form className="form" onSubmit={handleLogin}>
           <h2>Iniciar Sesion</h2>
           <div className="user-box">
-            <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
+            <input
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
             <label>Usuario</label>
           </div>
           <div className="user-box">
-            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
             <label>Contraseña</label>
           </div>
           <button type="submit">Iniciar Sesion</button>
+          <button type="submit" onClick={googleHandler}>
+            Iniciar Sesion con Google
+          </button>
+          <button onClick={logout}>Logout</button>
         </form>
         <p style={{ color: "red" }}>{errorMessage}</p>
       </div>
     </div>
   );
 }
-
 
 export default Login;
