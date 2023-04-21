@@ -4,6 +4,7 @@ import {
   GET_MATERIAS,
   GET_MATERIAS_BY_ID,
   GET_MATERIAS_BY_NAME,
+  GET_MATERIAS_BY_ANIO,
   CLEAN_DETAIL,
   SET_USER_ROLE,
   CLEAR_USER_ROLE,
@@ -51,7 +52,12 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
         materias: payload
-      }
+      };
+    case GET_MATERIAS_BY_ANIO:
+      return {
+        ...state,
+        materias: payload
+      };
     case CLEAN_DETAIL:
       return {
         ...state,

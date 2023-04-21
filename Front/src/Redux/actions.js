@@ -4,6 +4,7 @@ import {
   GET_MATERIAS,
   GET_MATERIAS_BY_ID,
   GET_MATERIAS_BY_NAME,
+  GET_MATERIAS_BY_ANIO,
   CLEAN_DETAIL,
   SET_USER_ROLE,
   CLEAR_USER_ROLE,
@@ -66,6 +67,30 @@ export const getMateriasByName = (name) => {
     }
   };
 };
+
+
+export const getMateriasByAnio = (anio) => {
+  return async function (dispatch) {
+    // try {
+      const result = await axios.get(`http://localhost:3001/Materias/filtermateria?anio=${anio}`);
+      const materiaByAnio = result.data;
+    dispatch({ type: GET_MATERIAS_BY_ANIO, payload: materiaByAnio });
+console.log(materiaByAnio);
+
+  //     if (result) {
+  //       dispatch({ type: GET_MATERIAS_BY_ANIO, payload: result.data.materias });
+  //        console.log(result)
+  //     } else {
+  //       window.alert("No hay materias de este año");
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
+}
+}
+
+
 
 export const cleanDetail = () => {
   return {
