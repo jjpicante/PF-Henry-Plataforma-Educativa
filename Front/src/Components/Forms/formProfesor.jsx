@@ -2,17 +2,18 @@ import "./form.css";
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { validate } from "./validations";
-import { postAlumno } from "../../Redux/actions";
+import { postProfesor } from "../../Redux/actions";
 import axios from "axios";
 import Navbar from "../NavBar/navBar";
+//import SelectProfesor from "./selectProfesor";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 const URL = "https://restcountries.com/v3.1/all";
 
-function Form() {
+function FormProfesor() {
   const dispatch = useDispatch();
   //Estados
-  const [studentData, setStudentData] = useState({
+  const [profesorData, setProfesorData] = useState({
     name: "",
     apellido: "",
     email: "",
@@ -33,15 +34,16 @@ function Form() {
     password: "",
   });
   const [mostrarPass, setmostrarPass] = useState(true);
+  const [renglonUno, setRenglonUno] = useState({ anio: "Año", materia: "" });
 
   const inputHandler = (ev) => {
-    setStudentData({
-      ...studentData,
+    setProfesorData({
+      ...profesorData,
       [ev.target.name]: ev.target.value,
     });
     setError(
       validate({
-        ...studentData,
+        ...profesorData,
         [ev.target.name]: ev.target.value,
       })
     );
@@ -49,9 +51,9 @@ function Form() {
 
   const submitHandler = (ev) => {
     ev.preventDefault();
-    dispatch(postAlumno(studentData));
-    alert("Alumno creado");
-    setStudentData({
+    dispatch(postProfesor(profesorData));
+    alert("Profesor creado");
+    setProfesorData({
       name: "",
       apellido: "",
       email: "",
@@ -88,7 +90,7 @@ function Form() {
       <Navbar></Navbar>
       <div className="Main">
         <div className="formBox">
-          <h1 className="formTitle">CREAR ALUMNO</h1>
+          <h1 className="formTitle">CREAR PROFESOR</h1>
 
           <form onSubmit={(ev) => submitHandler(ev)} autoComplete="off">
             <input
@@ -97,7 +99,7 @@ function Form() {
               placeholder="nombre"
               name="name"
               onChange={(ev) => inputHandler(ev)}
-              value={studentData.name}
+              value={profesorData.name}
             />
             <p className="errorText">{error.name}</p>
 
@@ -107,7 +109,7 @@ function Form() {
               name="apellido"
               placeholder="apellido"
               onChange={(ev) => inputHandler(ev)}
-              value={studentData.apellido}
+              value={profesorData.apellido}
             />
             <p className="errorText">{error.apellido}</p>
 
@@ -117,7 +119,7 @@ function Form() {
               name="email"
               placeholder="email"
               onChange={(ev) => inputHandler(ev)}
-              value={studentData.email}
+              value={profesorData.email}
             />
             <p className="errorText">{error.email}</p>
 
@@ -127,7 +129,7 @@ function Form() {
               name="datebirth"
               placeholder="datebirth"
               onChange={(ev) => inputHandler(ev)}
-              value={studentData.datebirth}
+              value={profesorData.datebirth}
             />
             <p className="errorText">{error.datebirth}</p>
 
@@ -137,7 +139,7 @@ function Form() {
               name="nacionalidad"
               placeholder="nacionalidad"
               onChange={(ev) => inputHandler(ev)}
-              value={studentData.nacionalidad}
+              value={profesorData.nacionalidad}
             >
               {paises?.map((el, i) => {
                 return (
@@ -149,15 +151,17 @@ function Form() {
             </select>
             <p className="errorText">{error.nacionalidad}</p>
 
+            {/* ************************************************************************** */}
+
             <select
               className="text"
               type="number"
               name="anio"
               onChange={(ev) => inputHandler(ev)}
-              value={studentData.anio}
+              value={renglonUno.anio}
             >
-              <option disabled={true}>año</option>
-              {["1ro", "2do", "3ro", "4to", "5to", "6to"].map((i) => (
+              <option disabled={true}>año</option> //!CORREGIR
+              {[1, 2, 3, 4, 5, 6].map((i) => (
                 <option value={i} key={i}>
                   {i}
                 </option>
@@ -165,13 +169,15 @@ function Form() {
             </select>
             <p className="errorText">{error.anio}</p>
 
+            {/* ************************************************************************** */}
+
             <input
               className="text"
               type="text"
               name="username"
               placeholder="username"
               onChange={(ev) => inputHandler(ev)}
-              value={studentData.username}
+              value={profesorData.username}
             />
             <p className="errorText">{error.datebirth}</p>
             <div>
@@ -194,4 +200,4 @@ function Form() {
   );
 }
 
-export default Form;
+export default FormProfesor;
