@@ -32,7 +32,9 @@ function Login() {
   const logout = async () => {
     try {
       await signOut(auth);
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

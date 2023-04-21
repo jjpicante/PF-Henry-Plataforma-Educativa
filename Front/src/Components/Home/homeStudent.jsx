@@ -4,6 +4,7 @@ import "react-calendar/dist/Calendar.css";
 import style from "./home.module.css";
 import Navbar from "../NavBar/navBar";
 import { useSelector } from "react-redux";
+import Redirect from "../Redirect/redirect";
 
 const HomeStudent = () => {
   const [date, setDate] = useState(new Date());
@@ -79,7 +80,7 @@ const HomeStudent = () => {
     }
   }, []);
 
-  return (
+  return userData ? (
     <div className={style.container} style={{ overflowY: "scroll" }}>
       <div>
         <Navbar></Navbar>
@@ -118,6 +119,11 @@ const HomeStudent = () => {
         </form>
       </div>
     </div>
+  ) : (
+    <>
+      <h1>Credenciales invalidas</h1>
+      <Redirect />
+    </>
   );
 };
 
