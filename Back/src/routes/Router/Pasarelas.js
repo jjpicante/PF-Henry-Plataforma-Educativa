@@ -2,16 +2,16 @@ require("dotenv").config();
 const { Router } = require("express");
 const mercadopago = require("mercadopago");
 const { paymentStripe } = require("../../Controllers/Stripe/stripe");
-
+const { checkpayment } = require("../../Controllers/MercadoPago/checkpayment");
 const PaymentController = require("../../Controllers/MercadoPago/PaymentController");
 const PaymentService = require("../../Service/PaymentService");
 const PaymentInstance = new PaymentController(new PaymentService());
 
 const pasarela = Router();
 
-const stripe = require("stripe")(
-  "sk_test_51MyKKFEMrSvIo5TexTU8smE4X4cfznLhdNu7uJnsjqL191b60tHyHMgWjxA8B8I88qgCQEb08sspLJfhWD5FmpUu00RSlxQeQT"
-);
+//Recordar tener el stripe token en tu .env
+const stripe = require("stripe")(process.env.STRIPE_ACCES_TOKEN);
+//Recordar tener el acces token en tu .env
 mercadopago.configure({
   access_token: process.env.ACCESS_TOKEN,
 });
@@ -27,21 +27,16 @@ pasarela.post("/checkout", async (req, res) => {
   }
 });
 
-//MercadoPago
+//MercadoPago creacion del pago
 pasarela.post("/Pagar", function (req, res, next) {
   PaymentInstance.getSubscriptionLink(req, res);
 });
-
-pasarela.get("/feedback/:id", function (req, res) {
-  const { id } = req.params;
-  mercadopago.payment
-    .get(id)
-    .then(function (payment) {
-      console.log(payment);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+//Mercado pago comprobacion de pago realizado
+pasarela.post("/Notificacion", (req, res) => {
+  console.log(req.body);
+  const respuesta = checkpayment(req.body);
+  if (!respuesta.error) res.status(200).json(respuesta);
+  res.status(503).json(respuesta.error);
 });
 
 //esta funcion, no funca y si funca, basicamente a la hora de hacer el pedido funciona, pero cuand
