@@ -18,7 +18,6 @@ const Classroom = () => {
     dispatch(getMateriasByAnio(anio));
   }, [dispatch]);
 
-  
   return (
     <div className={style.fondo}>
       {/* Iconos */}
