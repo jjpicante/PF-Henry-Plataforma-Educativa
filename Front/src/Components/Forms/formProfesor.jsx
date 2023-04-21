@@ -12,14 +12,19 @@ const URL = "https://restcountries.com/v3.1/all";
 
 function FormProfesor() {
   const dispatch = useDispatch();
-  //Estados
+
+  //* ---------------------------> Estados Iniciales <---------------------------
+
   const [profesorData, setProfesorData] = useState({
     name: "",
     apellido: "",
     email: "",
     datebirth: "",
     nacionalidad: "",
-    anio: "año",
+    anio1: "año",
+    materia1: "materia",
+    anio2: "año",
+    materia2: "materia",
     username: "",
     password: "",
   });
@@ -33,8 +38,30 @@ function FormProfesor() {
     username: "",
     password: "",
   });
-  const [mostrarPass, setmostrarPass] = useState(true);
-  const [renglonUno, setRenglonUno] = useState({ anio: "Año", materia: "" });
+  const [mostrarPass, setmostrarPass] = useState(true); //!BREAKPOINT
+
+  //* ------------> Estados locales para cargar las materias de los profesores <------------
+
+  const [materias1, setMaterias1] = useState([]);
+  const [materias2, setMaterias2] = useState([]);
+  const [materias3, setMaterias3] = useState([]);
+
+  //* -------------------> Trae las materias dependiendo del año elegido <-------------------
+
+  async function traerMaterias(renglon, anio) {
+    const response = await axios.get(`http://localhost:3001/Materias/filtermateria?anio=${anio}`);
+    switch (renglon) {
+      case "anio1":
+        setMaterias1(response.data.map((elem) => elem.namemateria));
+        break;
+      case "anio2":
+        setMaterias2(response.data.map((elem) => elem.namemateria));
+        break;
+      default:
+        setMaterias3(response.data.map((elem) => elem.namemateria));
+    }
+    //console.log(materias);
+  }
 
   const inputHandler = (ev) => {
     setProfesorData({
@@ -47,6 +74,9 @@ function FormProfesor() {
         [ev.target.name]: ev.target.value,
       })
     );
+    if (ev.target.name === "anio1" || ev.target.name === "anio2" || ev.target.name === "anio3") {
+      traerMaterias(ev.target.name, ev.target.value);
+    }
   };
 
   const submitHandler = (ev) => {
@@ -102,7 +132,6 @@ function FormProfesor() {
               value={profesorData.name}
             />
             <p className="errorText">{error.name}</p>
-
             <input
               className="text"
               type="text"
@@ -112,7 +141,6 @@ function FormProfesor() {
               value={profesorData.apellido}
             />
             <p className="errorText">{error.apellido}</p>
-
             <input
               className="text"
               type="text"
@@ -122,7 +150,6 @@ function FormProfesor() {
               value={profesorData.email}
             />
             <p className="errorText">{error.email}</p>
-
             <input
               className="text"
               type="date"
@@ -132,7 +159,6 @@ function FormProfesor() {
               value={profesorData.datebirth}
             />
             <p className="errorText">{error.datebirth}</p>
-
             <select
               className="text"
               type="text"
@@ -150,27 +176,69 @@ function FormProfesor() {
               })}
             </select>
             <p className="errorText">{error.nacionalidad}</p>
-
-            {/* ************************************************************************** */}
-
+            {/* RENGLON 1 ************************************************************* */}
             <select
               className="text"
               type="number"
-              name="anio"
+              name="anio1"
               onChange={(ev) => inputHandler(ev)}
-              value={renglonUno.anio}
+              value={profesorData.anio1}
             >
-              <option disabled={true}>año</option> //!CORREGIR
-              {[1, 2, 3, 4, 5, 6].map((i) => (
+              <option disabled={true}>año</option>
+              {["1ro", "2do", "3ro", "4to", "5to", "6to"].map((i) => (
                 <option value={i} key={i}>
                   {i}
                 </option>
               ))}
             </select>
-            <p className="errorText">{error.anio}</p>
-
+            {/* <p className="errorText">{error.anio}</p> */}
+            <select
+              className="text"
+              type="number"
+              name="materia1"
+              onChange={(ev) => inputHandler(ev)}
+              value={profesorData.materia1}
+            >
+              <option disabled={true}>materia</option>
+              {materias1.map((i) => (
+                <option value={i} key={i}>
+                  {i}
+                </option>
+              ))}
+            </select>
+            {/* <p className="errorText">{error.anio}</p> */}
+            {/* RENGLON 2 ************************************************************* */}
+            <select
+              className="text"
+              type="number"
+              name="anio2"
+              onChange={(ev) => inputHandler(ev)}
+              value={profesorData.anio2}
+            >
+              <option disabled={true}>año</option>
+              {["1ro", "2do", "3ro", "4to", "5to", "6to"].map((i) => (
+                <option value={i} key={i}>
+                  {i}
+                </option>
+              ))}
+            </select>
+            {/* <p className="errorText">{error.anio}</p> */}
+            <select
+              className="text"
+              type="number"
+              name="materia2"
+              onChange={(ev) => inputHandler(ev)}
+              value={profesorData.materia2}
+            >
+              <option disabled={true}>materia</option>
+              {materias2.map((i) => (
+                <option value={i} key={i}>
+                  {i}
+                </option>
+              ))}
+            </select>
+            {/* <p className="errorText">{error.anio}</p> */}
             {/* ************************************************************************** */}
-
             <input
               className="text"
               type="text"
@@ -179,7 +247,7 @@ function FormProfesor() {
               onChange={(ev) => inputHandler(ev)}
               value={profesorData.username}
             />
-            <p className="errorText">{error.datebirth}</p>
+            <p className="errorText">{error.datebirth}</p> //!SEGUIR DESDE ACA
             <div>
               <input
                 className="pass"
