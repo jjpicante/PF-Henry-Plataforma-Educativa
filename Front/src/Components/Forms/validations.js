@@ -31,8 +31,13 @@ const validate = (inputs) => {
     if (!emailRegex.test(inputs.email)) errors.email = "El email introducido es incorrecto";
   }
 
-  //Año
-  if (inputs.anio === "año") errors.anio = "Ingresar un año.";
+  //Año-Materia
+  if (
+    inputs.materia1 === "materia" &&
+    inputs.materia1 === "materia" &&
+    inputs.materia1 === "materia"
+  )
+    errors.anio3 = "Debe elegirse al menos un par año-materia";
 
   return errors;
 };
