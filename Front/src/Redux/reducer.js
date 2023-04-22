@@ -21,8 +21,7 @@ const initialState = {
   materias: {},
   pageCount: "",
   materiaById: [],
-  userRole: null,
-  userData: "Loading",
+  userData: null,
 };
 
 export default function reducer(state = initialState, { type, payload }) {

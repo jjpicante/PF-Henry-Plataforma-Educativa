@@ -18,7 +18,6 @@ function Login() {
     event.preventDefault();
 
     //buscan en la base de datos si el usuario existe
-
     try {
       if (!email || !password) {
         setErrorMessage("Please enter both email and password");
