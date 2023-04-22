@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import './landing.css';
-import { postlogin } from '../../Redux/actions';
+import './Login.css';
+import { postlogin } from '../../../Redux/actions';
 
 
 function Login() {

@@ -47,13 +47,11 @@ function Navbar() {
               </li>
             </ul>
           </li>
-          {userRole === "profesor" && (
             <li className={style.navItem}>
               <Link to="/Cursos" className={style.navLink}>
                 Mis Cursos
               </Link>
             </li>
-          )}
           <li className={`${style.navItem} ${style.dropdown}`}>
             <span className={style.miaula}>Crear</span>
             <ul className={style.dropdownContent}>
