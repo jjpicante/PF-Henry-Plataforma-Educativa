@@ -4,11 +4,13 @@ import {
   GET_MATERIAS,
   GET_MATERIAS_BY_ID,
   GET_MATERIAS_BY_NAME,
+  GET_MATERIAS_BY_ANIO,
   CLEAN_DETAIL,
   SET_USER_ROLE,
   CLEAR_USER_ROLE,
   LOGIN_FAILED,
   POST_ALUMNO,
+  POST_PROFESOR,
 } from "./actionsTypes";
 
 const initialState = {
@@ -30,7 +32,11 @@ export default function reducer(state = initialState, { type, payload }) {
     case POST_ALUMNO:
       return {
         ...state,
-      }
+      };
+    case POST_PROFESOR:
+      return {
+        ...state,
+      };
     case GET_PROFESORS:
       return {
         ...state,
@@ -51,7 +57,12 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
         materias: payload
-      }
+      };
+    case GET_MATERIAS_BY_ANIO:
+      return {
+        ...state,
+        materias: payload,
+      };
     case CLEAN_DETAIL:
       return {
         ...state,
@@ -70,7 +81,7 @@ export default function reducer(state = initialState, { type, payload }) {
     case LOGIN_FAILED:
       return {
         ...state,
-        userRole: '',
+        userRole: "",
       };
     default:
       return { ...state };

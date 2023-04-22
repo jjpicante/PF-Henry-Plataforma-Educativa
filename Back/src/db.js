@@ -33,6 +33,7 @@ const { Aulas } = sequelize.models;
 const { Admin } = sequelize.models;
 const { Materias } = sequelize.models;
 const { Profesores } = sequelize.models;
+const { Meses } = sequelize.models;
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
@@ -48,6 +49,9 @@ Aulas.belongsToMany(Profesores, { through: "ProfesorAula" });
 
 Materias.belongsToMany(Aulas, { through: "MateriasAula" });
 Aulas.belongsToMany(Materias, { through: "MateriasAula" });
+
+// Alumnos.belongsToMany(Meses, { through: "AlumnosMeses" });
+// Meses.belongsToMany(Alumnos, { through: "AlumnosMeses" });
 
 //MUCHOS A MUCHOS esta bien?
 Profesores.belongsToMany(Materias, { through: "ProfesoresMateria" });

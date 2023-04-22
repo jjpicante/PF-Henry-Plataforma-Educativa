@@ -1,0 +1,27 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(6, 124, 124);
+    height: 1600px;
+}
+
+.containerAlumnos{
+    background-color: rgb(203, 211, 218);
+    border: solid black;
+    border-radius: 2%;
+    margin: 0 10% 0 10%;
+    display: flex;
+    flex-direction: column;
+    align-items:flex-start;
+}
+
+.alumnos{
+    display: flex;
+    width: 100%;
+    font-size: larger;
+    padding-left: 1%;
+}
+
+.titulo{
+align-items: flex-start;
+}

@@ -1,0 +1,104 @@
+.container {
+  background-image: url(https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.div1{
+background: rgb(6, 124, 124);
+padding: 2px;
+border: white solid 2px;
+}
+
+.title{
+  color: white;
+}
+
+.title2{
+font-style: italic;
+color: white;
+}
+
+.div2{
+  position: fixed;
+  top: 200px;
+  right: 100px;
+  border: 3px solid rgb(6, 124, 124);
+  border-radius: 20px;
+  height: 250px;
+  padding: 15px;
+  width: 200px;
+  background-color: rgb(248, 248, 248);
+}
+
+.img{
+  height: 110px;
+  justify-content: center;
+  border-radius: 10px;
+}
+
+.acceder{
+  position: fixed;
+  right: 165px;
+  top: 420px;
+  padding: 12px;
+  border-radius: 5px;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-weight: bold;
+  color: black;
+}
+
+.acceder:hover{
+  background: rgb(6, 124, 124) ;
+  color: white;
+}
+
+.img2{
+  height: 300px;
+position: fixed;
+left: 100px;
+border-radius: 5px;
+
+}
+
+.links{
+  background-color: rgb(4, 67, 108);
+  padding: 19px;
+  border: white solid 2px;
+}
+
+
+
+.link2{
+  position: fixed;
+  top: 140px;
+  left: 100px;
+  background: transparent;
+  color: white;
+  padding: 6px;
+  border: white solid 2px;
+}
+
+.link2:hover{
+  background: white;
+  color: black;
+}
+
+.link3{
+  position: fixed;
+  top: 140px;
+  left: 400px;
+  background: transparent;
+  color: white;
+  padding: 6px;
+  border: white solid 2px;
+}
+
+.link3:hover{
+  background: white;
+  color: black;
+}
