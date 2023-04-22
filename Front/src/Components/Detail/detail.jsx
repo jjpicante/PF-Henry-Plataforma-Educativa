@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { getMateriasById, cleanDetail } from "../../Redux/actions";
 import style from "./Detail.module.css"
+import Navbar from "../NavBar/navBar";
 
 export default function Detail() {
   const dispatch = useDispatch();
@@ -17,6 +18,7 @@ export default function Detail() {
 
   return (
     <div className={style.fondo}>
+      <Navbar/>
       {materiaById ? (
         <div className={style.topDiv}>
           <div className={style.materia}>
