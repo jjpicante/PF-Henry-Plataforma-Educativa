@@ -23,14 +23,8 @@ function Login() {
         setErrorMessage("Please enter both email and password");
         return;
       }
-      // busca en la base de datos si el usuario existe
-      const userData = await dispatch(postlogin(email, password));
-      console.log(userData)
-      if (userData) {
-       console.log("te log iaste capo")
-      } else {
-        setErrorMessage("Error al iniciar sesión");
-      }
+      dispatch(postlogin(email,password))
+      navigate("/home", {replace: true})
     } catch (error) {
       setErrorMessage("Error al iniciar sesión");
     }

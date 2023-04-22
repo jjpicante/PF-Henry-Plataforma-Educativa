@@ -154,11 +154,9 @@ export const postlogin = (email, password) => {
         email,
         password,
       });
-      console.log(response)
       const userData = response.data;
-      dispatch(loginSuccess(userData));
-      console.log(userData)
-      return userData;
+      dispatch({ type: LOGIN_SUCCESS, payload: userData});
+
     } catch (error) {
       console.log(error);
       dispatch(loginFailed("Invalid credentials"));
