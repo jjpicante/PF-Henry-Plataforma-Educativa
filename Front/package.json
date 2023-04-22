@@ -3,9 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fortawesome/free-solid-svg-icons": "^6.4.0",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "@fullcalendar/daygrid": "^6.1.5",
     "@fullcalendar/react": "^6.1.5",
     "@react-oauth/google": "^0.10.0",
+    "@mercadopago/sdk-react": "^0.0.8",
+    "@stripe/react-stripe-js": "^2.1.0",
+    "@stripe/stripe-js": "^1.52.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -20,6 +25,7 @@
     "react-scripts": "5.0.1",
     "redux": "^4.2.1",
     "redux-thunk": "^2.4.2",
+    "spinners-react": "^1.0.7",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -47,6 +53,7 @@
     ]
   },
   "devDependencies": {
+    "classnames": "^2.3.2",
     "eslint": "^8.38.0",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0"

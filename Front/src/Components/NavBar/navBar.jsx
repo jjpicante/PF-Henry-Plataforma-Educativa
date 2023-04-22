@@ -1,13 +1,14 @@
 import React from "react";
+import style from "./NavBar.module.css";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import "./NavBar.css";
 import { logout } from "../../Redux/actions";
 import { auth } from "../../config/firebase";
 import { signOut } from "firebase/auth";
 
 function Navbar() {
   const dispatch = useDispatch();
+
   const handleLogout = async () => {
     try {
       await dispatch(logout());
@@ -18,23 +19,63 @@ function Navbar() {
   };
 
   return (
-    <nav>
-      <div className="nav-container">
-        <ul>
-          <li>
-            <Link to="/Home">Area Personal</Link>
+    <nav className={style.navbar}>
+      <div className={style.navbarContainer}>
+        <ul className={style.navList}>
+          <li className={style.navItem}>
+            <Link to="/Home" className={style.navLink}>
+              Area Personal
+            </Link>
           </li>
-          <li>
-            <Link to="/Aulas">Mis Aulas</Link>
+          <li className={`${style.navItem} ${style.dropdown}`}>
+            <span className={style.miaula}>Aula</span>
+            <ul className={style.dropdownContent}>
+              <li>
+                <Link to="/alumnos" className={style.navLink}>
+                  Alumnos
+                </Link>
+              </li>
+              <li>
+                <Link to="/materias" className={style.navLink}>
+                  Materias
+                </Link>
+              </li>
+              <li>
+                <Link to="/calificaciones" className={style.navLink}>
+                  Calificaciones
+                </Link>
+              </li>
+            </ul>
           </li>
-          <li>
-            <Link to="/Cursos">Mis Cursos</Link>
+          {userRole === "profesor" && (
+            <li className={style.navItem}>
+              <Link to="/Cursos" className={style.navLink}>
+                Mis Cursos
+              </Link>
+            </li>
+          )}
+          <li className={`${style.navItem} ${style.dropdown}`}>
+            <span className={style.miaula}>Crear</span>
+            <ul className={style.dropdownContent}>
+              <li>
+                <Link to="/formAlumno" className={style.navLink}>
+                  Alumno
+                </Link>
+              </li>
+              <li>
+                <Link to="/formProfesor" className={style.navLink}>
+                  Profesor
+                </Link>
+              </li>
+              </ul>
+              </li>
+          <li className={style.navItem}>
+            <Link to="/carrito" className={style.navLink}>
+              Cuotas
+            </Link>
           </li>
-          <li>
-            <Link to="/form">Formulario</Link>
-          </li>
-          <li>
-            <Link to="/" onClick={handleLogout}>
+          <li className={style.navItem}>
+            <Link to="/" onClick={handleLogout} className={style.navLink}>
               Log Out
             </Link>
           </li>

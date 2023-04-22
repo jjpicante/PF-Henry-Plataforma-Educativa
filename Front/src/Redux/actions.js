@@ -1,10 +1,10 @@
-import { errorMonitor } from "events";
 import {
   GET_STUDENTS,
   GET_PROFESORS,
   GET_MATERIAS,
   GET_MATERIAS_BY_ID,
   GET_MATERIAS_BY_NAME,
+  GET_MATERIAS_BY_ANIO,
   CLEAN_DETAIL,
   POST_ALUMNO,
   LOGIN_SUCCESS,
@@ -14,8 +14,9 @@ import {
   VERIFY_USER_SUCCESS,
   VERIFY_USER_ERROR,
   GET_USER_DATA_GOOGLE,
+  POST_PROFESOR,
 } from "./actionsTypes";
-import { profesors, students, materias } from "./Base de datos HC";
+import { profesors, students } from "./Base de datos HC";
 import axios from "axios";
 
 export const getStudents = () => {
@@ -37,6 +38,15 @@ export const postAlumno = (form) => {
     const response = await axios.post("http://localhost:3001/Alumnos/", form);
     dispatch({
       type: POST_ALUMNO,
+    });
+  };
+};
+
+export const postProfesor = (form) => {
+  return async function (dispatch) {
+    const response = await axios.post("http://localhost:3001/Profesores/", form);
+    dispatch({
+      type: POST_PROFESOR,
     });
   };
 };
@@ -77,6 +87,30 @@ export const getMateriasByName = (name) => {
     }
   };
 };
+
+
+export const getMateriasByAnio = (anio) => {
+  return async function (dispatch) {
+    // try {
+      const result = await axios.get(`http://localhost:3001/Materias/filtermateria?anio=${anio}`);
+      const materiaByAnio = result.data;
+    dispatch({ type: GET_MATERIAS_BY_ANIO, payload: materiaByAnio });
+console.log(materiaByAnio);
+
+  //     if (result) {
+  //       dispatch({ type: GET_MATERIAS_BY_ANIO, payload: result.data.materias });
+  //        console.log(result)
+  //     } else {
+  //       window.alert("No hay materias de este año");
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
+}
+}
+
+
 
 export const cleanDetail = () => {
   return {

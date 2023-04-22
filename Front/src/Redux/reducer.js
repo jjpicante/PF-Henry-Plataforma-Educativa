@@ -4,6 +4,7 @@ import {
   GET_MATERIAS,
   GET_MATERIAS_BY_ID,
   GET_MATERIAS_BY_NAME,
+  GET_MATERIAS_BY_ANIO,
   CLEAN_DETAIL,
   POST_ALUMNO,
   LOGIN_SUCCESS,
@@ -13,6 +14,7 @@ import {
   VERIFY_USER_SUCCESS,
   VERIFY_USER_ERROR,
   GET_USER_DATA_GOOGLE,
+  POST_PROFESOR,
 } from "./actionsTypes";
 
 const initialState = {
@@ -35,6 +37,10 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
       };
+    case POST_PROFESOR:
+      return {
+        ...state,
+      };
     case GET_PROFESORS:
       return {
         ...state,
@@ -52,6 +58,11 @@ export default function reducer(state = initialState, { type, payload }) {
         materiaById: payload,
       };
     case GET_MATERIAS_BY_NAME:
+      return {
+        ...state,
+        materias: payload
+      };
+    case GET_MATERIAS_BY_ANIO:
       return {
         ...state,
         materias: payload,

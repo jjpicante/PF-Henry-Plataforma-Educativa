@@ -5,10 +5,10 @@ export default function CardAsignature({ name, year, id }) {
   return (
     <NavLink
       to={"/Aulas/materia/" + id}
-      className={style.cards}
+      className={`${style.cards} ${style.nombreMateria}`}
     >
-      <h1>{name}</h1>
-      <h2>{year}</h2>
+      <h1 className={style.nombreMateria}>{name}</h1>
+      <h2 className={style.nombreMateria}>{year}</h2>
     </NavLink>
   );
 }

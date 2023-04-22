@@ -5,6 +5,8 @@ const admin = require("./Router/AdminRouter");
 const materias = require("./Router/MateriasRouter");
 const aula = require("./Router/Aulas");
 const loginrouter = require("./Router/loginrouter");
+const meses = require("./Router/MesesRouter");
+const pasarela = require("./Router/Pasarelas");
 const logoutRouter = require("./Router/logoutRouter");
 const { verifyUser } = require("../Controllers/Firebase/verifyUser");
 
@@ -23,5 +25,7 @@ router.use("/Admin", verifyUser, admin);
 router.use("/Login", loginrouter);
 router.use("/Logout", logoutRouter);
 router.use("/Aulas", verifyUser, aula);
+router.use("/Meses", meses);
+router.use("/", pasarela);
 
 module.exports = router;

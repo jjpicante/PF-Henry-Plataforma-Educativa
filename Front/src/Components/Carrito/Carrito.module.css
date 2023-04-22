@@ -1,0 +1,146 @@
+.carrito {
+  background-color: rgb(6, 124, 124);
+  height: 1600px;
+  width: 100%;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  color: white;
+}
+
+.header h2 {
+  width: 48%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.header svg {
+  scale: 200%;
+  margin-left: 5%;
+}
+
+.carroPrecio {
+  width: 33.33%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 5%;
+}
+
+.selecc {
+  font-size: x-large;
+}
+
+.container {
+  border: solid black;
+  display: flex;
+  flex-direction: row;
+}
+
+.detallePago {
+  background-color: rgb(203, 211, 218);
+  border: solid black;
+  border-radius: 20%;
+  width: 600px;
+  height: 650px;
+  margin-top: 90px;
+  margin-left: 750px;
+}
+
+.cartas {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.carta {
+  font-size: x-large;
+  margin: 10px;
+  padding: 8px;
+  width: 140%;
+  height: 30px;
+  border: 3px solid black;
+  border-radius: 20px;
+  background-color: rgb(203, 211, 218);
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+.checkbox {
+  position: absolute;
+  height: 26px;
+  left: 435px;
+}
+
+.total {
+  position: absolute;
+  top: 730px;
+  left: 1280px;
+}
+
+.palabraTotal {
+  font-size: xx-large;
+  margin: 5px;
+  text-transform: capitalize;
+  padding-left: 2px;
+  padding-right: 2px;
+}
+
+.palabraPagado {
+  font-size: x-large;
+  margin: 5px;
+  text-transform: capitalize;
+  padding-left: 2px;
+  padding-right: 2px;
+  color: rgb(148, 147, 147);
+  text-decoration: line-through;
+}
+
+.containerMesesTotal {
+  margin-left: 46px;
+  width: 500px;
+  height: 380px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.botonPago {
+  width: 140px;
+}
+
+.palabra {
+  text-transform: capitalize;
+}
+
+/* Boton stripe */
+.btn-pay {
+  background-color: #4c00d9;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 1.2rem;
+  max-width: 200px;
+}
+
+.btn-pay:hover {
+  background-color: #0043a3;
+}
+
+.imgPagos{
+  height: 4rem;
+}
+
+.containerPagos{
+  display: flex;
+  padding-top: 1rem ;
+}
