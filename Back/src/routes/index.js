@@ -16,7 +16,7 @@ const router = Router();
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 
-router.use("/Alumnos", verifyUser, alumnos);
+router.use("/Alumnos", alumnos);
 router.use("/Profesores", verifyUser, profesores);
 router.use("/Materias", verifyUser, materias);
 router.use("/Admin", verifyUser, admin);

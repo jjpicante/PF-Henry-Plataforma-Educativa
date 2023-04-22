@@ -12,6 +12,7 @@ import {
   LOGOUT_ERROR,
   VERIFY_USER_SUCCESS,
   VERIFY_USER_ERROR,
+  GET_USER_DATA_GOOGLE,
 } from "./actionsTypes";
 
 const initialState = {
@@ -21,6 +22,7 @@ const initialState = {
   pageCount: "",
   materiaById: [],
   userRole: null,
+  userData: "Loading",
 };
 
 export default function reducer(state = initialState, { type, payload }) {
@@ -33,7 +35,7 @@ export default function reducer(state = initialState, { type, payload }) {
     case POST_ALUMNO:
       return {
         ...state,
-      }
+      };
     case GET_PROFESORS:
       return {
         ...state,
@@ -53,8 +55,8 @@ export default function reducer(state = initialState, { type, payload }) {
     case GET_MATERIAS_BY_NAME:
       return {
         ...state,
-        materias: payload
-      }
+        materias: payload,
+      };
     case CLEAN_DETAIL:
       return {
         ...state,
@@ -63,7 +65,7 @@ export default function reducer(state = initialState, { type, payload }) {
     case LOGIN_FAILED:
       return {
         ...state,
-        userRole: '',
+        userRole: "",
       };
     case LOGIN_SUCCESS:
       return {
@@ -78,16 +80,21 @@ export default function reducer(state = initialState, { type, payload }) {
     case VERIFY_USER_ERROR:
       return {
         ...state,
-        userRole: '',
+        userRole: "",
       };
     case LOGOUT_SUCCESS:
       return {
         ...state,
-        userRole: '',
+        userRole: "",
       };
     case LOGOUT_ERROR:
       return {
         ...state,
+      };
+    case GET_USER_DATA_GOOGLE:
+      return {
+        ...state,
+        userData: payload,
       };
     default:
       return { ...state };

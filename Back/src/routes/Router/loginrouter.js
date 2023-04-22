@@ -1,8 +1,8 @@
 const { Router } = require("express");
 const { postLogin } = require("../../Controllers/loggin/postLogin");
+const { googleVerifier } = require("../../Controllers/loggin/googleVerifier");
 
 const loginrouter = Router();
-
 
 loginrouter.post("/", async (req, res) => {
   const { email, password } = req.body;
@@ -12,6 +12,15 @@ loginrouter.post("/", async (req, res) => {
   return res.status(503).json(respuesta);
 });
 
-//ruta login con google recibe Idcliente
+loginrouter.post("/google", async (req, res) => {
+  const { email } = req.body;
+
+  try {
+    const userData = await googleVerifier(email);
+    res.status(200).json(userData);
+  } catch (error) {
+    res.status(400).json(error.message);
+  }
+});
 
 module.exports = loginrouter;

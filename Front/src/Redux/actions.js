@@ -13,6 +13,7 @@ import {
   LOGOUT_ERROR,
   VERIFY_USER_SUCCESS,
   VERIFY_USER_ERROR,
+  GET_USER_DATA_GOOGLE,
 } from "./actionsTypes";
 import { profesors, students, materias } from "./Base de datos HC";
 import axios from "axios";
@@ -33,16 +34,18 @@ export const getProfesors = () => {
 
 export const postAlumno = (form) => {
   return async function (dispatch) {
-    const response = await axios.post('http://localhost:3001/Alumnos/', form)
+    const response = await axios.post("http://localhost:3001/Alumnos/", form);
     dispatch({
       type: POST_ALUMNO,
-    })
-  }
-}
+    });
+  };
+};
 
 export const getMaterias = (page) => {
   return async function (dispatch) {
-    const response = await axios.get(`http://localhost:3001/Materias?page=` + page);
+    const response = await axios.get(
+      `http://localhost:3001/Materias?page=` + page
+    );
     const materias = response.data;
     dispatch({ type: GET_MATERIAS, payload: materias });
   };
@@ -50,7 +53,9 @@ export const getMaterias = (page) => {
 
 export const getMateriasById = (id) => {
   return async function (dispatch) {
-    const response = await axios.get("http://localhost:3001/Materias/getmateria/" + id);
+    const response = await axios.get(
+      "http://localhost:3001/Materias/getmateria/" + id
+    );
     const materiaById = response.data;
     dispatch({ type: GET_MATERIAS_BY_ID, payload: materiaById });
   };
@@ -59,7 +64,9 @@ export const getMateriasById = (id) => {
 export const getMateriasByName = (name) => {
   return async function (dispatch) {
     try {
-      const result = await axios.get(`http://localhost:3001/Materias?name=${name}`);
+      const result = await axios.get(
+        `http://localhost:3001/Materias?name=${name}`
+      );
       if (result.data.materias.length > 0) {
         dispatch({ type: GET_MATERIAS_BY_NAME, payload: result.data.materias });
       } else {
@@ -147,4 +154,15 @@ export const logoutError = (error) => {
     type: LOGOUT_ERROR,
     payload: error,
   };
+};
+
+export const verifiedGoogleLogIn = (email) => async (dispatch) => {
+  try {
+    const userInfo = await axios.post("http://localhost:3001/login/google", {
+      email,
+    });
+    dispatch({ type: GET_USER_DATA_GOOGLE, payload: userInfo });
+  } catch (error) {
+    dispatch({ type: GET_USER_DATA_GOOGLE, payload: null });
+  }
 };
