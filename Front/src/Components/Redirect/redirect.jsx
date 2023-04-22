@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { auth } from "../../config/firebase";
-import { signOut } from "firebase/auth";
+import { signOut, deleteUser } from "firebase/auth";
 
 function Redirect() {
   const logout = async () => {
@@ -10,8 +10,17 @@ function Redirect() {
       console.log(error);
     }
   };
+
+  const deleteUserFromFirebase = async () => {
+    try {
+      await deleteUser(auth.currentUser);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
   useEffect(() => {
     logout();
+    deleteUserFromFirebase();
     const timeout = setTimeout(() => {
       // 👇️ redirects to an external URL
       window.location.replace("http://localhost:3000");
