@@ -13,6 +13,7 @@
   }
   
   .nombreMateria {
+    color:black;
     text-decoration: none;
     text-transform: capitalize;
   }
