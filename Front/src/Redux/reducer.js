@@ -5,10 +5,14 @@ import {
   GET_MATERIAS_BY_ID,
   GET_MATERIAS_BY_NAME,
   CLEAN_DETAIL,
-  SET_USER_ROLE,
-  CLEAR_USER_ROLE,
-  LOGIN_FAILED,
   POST_ALUMNO,
+  LOGIN_SUCCESS,
+  LOGIN_FAILED,
+  LOGOUT_SUCCESS,
+  LOGOUT_ERROR,
+  VERIFY_USER_SUCCESS,
+  VERIFY_USER_ERROR,
+  GET_USER_DATA_GOOGLE,
 } from "./actionsTypes";
 
 const initialState = {
@@ -18,6 +22,7 @@ const initialState = {
   pageCount: "",
   materiaById: [],
   userRole: null,
+  userData: "Loading",
 };
 
 export default function reducer(state = initialState, { type, payload }) {
@@ -30,7 +35,7 @@ export default function reducer(state = initialState, { type, payload }) {
     case POST_ALUMNO:
       return {
         ...state,
-      }
+      };
     case GET_PROFESORS:
       return {
         ...state,
@@ -50,27 +55,46 @@ export default function reducer(state = initialState, { type, payload }) {
     case GET_MATERIAS_BY_NAME:
       return {
         ...state,
-        materias: payload
-      }
+        materias: payload,
+      };
     case CLEAN_DETAIL:
       return {
         ...state,
         materiaById: payload,
       };
-    case SET_USER_ROLE:
-      return {
-        ...state,
-        userRole: payload,
-      };
-    case CLEAR_USER_ROLE:
-      return {
-        ...state,
-        userRole: null,
-      };
     case LOGIN_FAILED:
       return {
         ...state,
-        userRole: '',
+        userRole: "",
+      };
+    case LOGIN_SUCCESS:
+      return {
+        ...state,
+        userRole: payload.role,
+      };
+    case VERIFY_USER_SUCCESS:
+      return {
+        ...state,
+        userRole: payload.role,
+      };
+    case VERIFY_USER_ERROR:
+      return {
+        ...state,
+        userRole: "",
+      };
+    case LOGOUT_SUCCESS:
+      return {
+        ...state,
+        userRole: "",
+      };
+    case LOGOUT_ERROR:
+      return {
+        ...state,
+      };
+    case GET_USER_DATA_GOOGLE:
+      return {
+        ...state,
+        userData: payload,
       };
     default:
       return { ...state };

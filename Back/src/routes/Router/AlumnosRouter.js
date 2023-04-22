@@ -32,7 +32,7 @@ alumnos.get("/filtro", async (req, res) => {
 });
 
 alumnos.post("/", async (req, res) => {
-  const { name, apellido, nacionalidad, datebirth, email, username, password, division, anio } =
+  const { name, apellido, nacionalidad, datebirth, email, username, password } =
     req.body;
 
     console.log(req.body);
@@ -44,8 +44,6 @@ alumnos.post("/", async (req, res) => {
     email,
     username,
     password,
-    division,
-    anio
   );
   if (!respuesta.error) return res.status(200).json(respuesta);
   return res.status(503).json(respuesta);
