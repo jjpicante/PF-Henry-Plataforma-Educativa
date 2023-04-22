@@ -10,6 +10,9 @@ import Detail from "./Components/Detail/detail";
 import Carrito from "./Components/Carrito/carrito";
 import AppStripe from "./Components/MercadoPago/stripe/appStripe";
 import Alumnos from "./Components/Alumnos/alumnos";
+import Login from "./Components/Landing/Login/Login";
+import Caracteristicas from "./Components/Landing/Caracteristicas/Caracteristicas";
+import Contacto from "./Components/Landing/Contacto/Contacto";
 
 function App() {
   return (
@@ -26,6 +29,9 @@ function App() {
         <Route exact path="/carrito" element={<Carrito />} />
         <Route exact path="/Stripe" element={<AppStripe></AppStripe>}></Route>
         <Route exact path="/" element={<Landing />} />
+        <Route exact path="/login" element={<Login></Login>}></Route>
+        <Route exact path="/sobreNosotros" element={<Caracteristicas></Caracteristicas>}></Route>
+        <Route exact path="/contacto" element={<Contacto></Contacto>}></Route>
       </Routes>
     </div>
   );
