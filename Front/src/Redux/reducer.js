@@ -80,7 +80,7 @@ export default function reducer(state = initialState, { type, payload }) {
     case LOGIN_SUCCESS:
       return {
         ...state,
-        userRole: payload.role,
+        userData: payload,
       };
     case VERIFY_USER_SUCCESS:
       return {

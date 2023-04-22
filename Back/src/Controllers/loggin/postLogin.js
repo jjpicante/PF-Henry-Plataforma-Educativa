@@ -10,7 +10,7 @@ const postLogin = async (email, password) => {
     // If user exists in Firestore, authenticate with email and password
     await signInWithEmailAndPassword(auth, email, password);
 
-    return { success: true };
+    return firestoreUser;
   } catch (firestoreError) {
     try {
       // If user does not exist in Firestore, check if user exists in the Alumnos table
@@ -22,7 +22,7 @@ const postLogin = async (email, password) => {
       // Authenticate with email and password
       await signInWithEmailAndPassword(auth, email, password);
 
-      return { success: true };
+      return dbUser;
     } catch (dbError) {
       return { error: "Error logging in" };
     }
