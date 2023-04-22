@@ -18,9 +18,6 @@ const postLogin = async (email, password) => {
       if (!dbUser) {
         return { error: "User not found" };
       }
-      
-      // Authenticate with email and password
-      await signInWithEmailAndPassword(auth, email, password);
 
       return dbUser;
     } catch (dbError) {

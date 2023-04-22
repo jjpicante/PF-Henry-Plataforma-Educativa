@@ -25,6 +25,7 @@ function Login() {
       }
       // busca en la base de datos si el usuario existe
       const userData = await dispatch(postlogin(email, password));
+      console.log(userData)
       if (userData) {
        console.log("te log iaste capo")
       } else {

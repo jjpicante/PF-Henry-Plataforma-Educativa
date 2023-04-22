@@ -154,7 +154,7 @@ export const postlogin = (email, password) => {
         email,
         password,
       });
-
+      console.log(response)
       const userData = response.data;
       dispatch(loginSuccess(userData));
       console.log(userData)

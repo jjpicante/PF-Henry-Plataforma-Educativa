@@ -6,6 +6,7 @@ import Navbar from "../NavBar/navBar";
 import { useSelector } from "react-redux";
 import Redirect from "../Redirect/redirect";
 
+
 const HomeStudent = () => {
   const [date, setDate] = useState(new Date());
   const [events, setEvents] = useState(
