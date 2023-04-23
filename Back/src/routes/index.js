@@ -7,6 +7,8 @@ const aula = require("./Router/Aulas");
 const loginrouter = require("./Router/loginrouter");
 const meses = require("./Router/MesesRouter");
 const pasarela = require("./Router/Pasarelas");
+const logoutRouter = require("./Router/logoutRouter");
+const { verifyUser } = require("../Controllers/Firebase/verifyUser");
 
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
@@ -17,11 +19,12 @@ const router = Router();
 // Ejemplo: router.use('/auth', authRouter);
 
 router.use("/Alumnos", alumnos);
-router.use("/Profesores", profesores);
-router.use("/Materias", materias);
-router.use("/Admin", admin);
+router.use("/Profesores", verifyUser, profesores);
+router.use("/Materias", verifyUser, materias);
+router.use("/Admin", verifyUser, admin);
 router.use("/Login", loginrouter);
-router.use("/Aulas", aula);
+router.use("/Logout", logoutRouter);
+router.use("/Aulas", verifyUser, aula);
 router.use("/Meses", meses);
 router.use("/", pasarela);
 

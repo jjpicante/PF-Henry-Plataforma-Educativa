@@ -8,6 +8,14 @@ const cors = require("cors");
 
 require("./db.js");
 
+// var admin = require("firebase-admin");
+
+// var serviceAccount = require("../proyectofinal-1be5b-firebase-adminsdk-fwxdb-e06000b9bc.json");
+
+// admin.initializeApp({
+//   credential: admin.credential.cert(serviceAccount)
+// });
+
 const server = express();
 
 server.name = "API";
@@ -19,7 +27,10 @@ server.use(morgan("dev"));
 server.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "http://localhost:3000"); // update to match the domain you will make the request from
   res.header("Access-Control-Allow-Credentials", "true");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
   res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
   next();
 });

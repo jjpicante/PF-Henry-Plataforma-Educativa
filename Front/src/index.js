@@ -6,8 +6,11 @@ import { Provider } from "react-redux";
 import store from "./Redux/store";
 import reportWebVitals from "./reportWebVitals";
 import { createRoot } from "react-dom/client";
+import { GoogleOAuthProvider } from '@react-oauth/google';
+
 
 createRoot(document.getElementById("root")).render(
+<GoogleOAuthProvider clientId="1045733294568-rki3hhtrenal255veb9j3njur3f7ccd6.apps.googleusercontent.com">
   <Provider store={store}>
     <React.StrictMode>
       <BrowserRouter>
@@ -15,6 +18,7 @@ createRoot(document.getElementById("root")).render(
       </BrowserRouter>
     </React.StrictMode>
   </Provider>
+  </GoogleOAuthProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

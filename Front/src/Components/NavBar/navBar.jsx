@@ -2,19 +2,21 @@ import React from "react";
 import style from "./NavBar.module.css";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { clearUserRole } from "../../Redux/actions";
+import { logout } from "../../Redux/actions";
+import { auth } from "../../config/firebase";
+import { signOut } from "firebase/auth";
 
 function Navbar() {
   const dispatch = useDispatch();
 
-  const handleLogout = () => {
-    // Eliminar la informacion del usuario del localStorage
-    localStorage.removeItem("userData");
-    dispatch(clearUserRole());
+  const handleLogout = async () => {
+    try {
+      await dispatch(logout());
+      await signOut(auth);
+    } catch (err) {
+      console.log(err);
+    }
   };
-
-  // Obtener el valor del rol del usuario desde localStorage
-  const userRole = localStorage.getItem("userRole");
 
   return (
     <nav className={style.navbar}>
@@ -45,13 +47,11 @@ function Navbar() {
               </li>
             </ul>
           </li>
-          {userRole === "profesor" && (
             <li className={style.navItem}>
               <Link to="/Cursos" className={style.navLink}>
                 Mis Cursos
               </Link>
             </li>
-          )}
           <li className={`${style.navItem} ${style.dropdown}`}>
             <span className={style.miaula}>Crear</span>
             <ul className={style.dropdownContent}>
