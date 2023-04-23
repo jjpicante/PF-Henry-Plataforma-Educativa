@@ -16,6 +16,7 @@ const Paginate = ({ asignatures, pageCount1 }) => {
 
   return (
     <>
+      {/* {console.log("-------->", asignatures)} */}
       <ReactPaginate
         className={`${style.pagination} pagination`}
         activeClassName={style.active}
