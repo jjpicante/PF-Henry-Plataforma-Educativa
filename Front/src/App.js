@@ -13,6 +13,8 @@ import Alumnos from "./Components/Alumnos/alumnos";
 import Login from "./Components/Landing/Login/Login";
 import Caracteristicas from "./Components/Landing/Caracteristicas/Caracteristicas";
 import Contacto from "./Components/Landing/Contacto/Contacto";
+import axios from "axios";
+axios.defaults.baseURL = "https://servidor-plataformae2.onrender.com";
 
 function App() {
   return (
@@ -21,7 +23,7 @@ function App() {
         <Route exact path="/home" element={<HomeStudent />} />
         <Route exact path="/Cursos" element={<Classroom />} />
         <Route exact path="/Materias" element={<Classroom />} />
-        <Route exact path="/alumnos" element={<Alumnos/>}/>
+        <Route exact path="/alumnos" element={<Alumnos />} />
         <Route exact path="/Aulas/materia/:id" element={<Detail />} />
         <Route exact path="/formAlumno" element={<Form />} />
         <Route exact path="/formProfesor" element={<FormProfesor />} />

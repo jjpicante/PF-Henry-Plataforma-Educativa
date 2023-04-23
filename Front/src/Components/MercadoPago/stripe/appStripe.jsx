@@ -34,7 +34,7 @@ const CheckautForm = () => {
     if (!error) {
       try {
         const { id } = paymentMethod;
-        const response = await axios.post("http://localhost:3001/checkout", {
+        const response = await axios.post("/checkout", {
           id,
           amount: storagedTotal * 100,
           description: storagedCartas,
@@ -48,8 +48,7 @@ const CheckautForm = () => {
 
         console.log(check);
         if (check.paymentIntent) {
-          //const respuesta = await axios.put(`http://localhost:3001/Meses/${storagedUsername}`, pagado)    //!ACTUALIZAR!!
-          const respuesta = await axios.put(`http://localhost:3001/Meses/juanperez`, pagado);
+          const respuesta = await axios.put(`/Meses/juanperez`, pagado);
           if (respuesta) {
             window.alert("Pago realizado con éxito");
             window.location.href = "http://localhost:3000/carrito";
