@@ -17,7 +17,7 @@ const ProductDisplayer = ({ mesesTotal, totalPagar, estadoDeCuenta }) => {
   const onsubmit = async (ev) => {
     ev.preventDefault();
     try {
-      const response = await axios.post("http://localhost:3001/Pagar", {
+      const response = await axios.post("/Pagar", {
         description: mesesTotal,
         price: totalPagar,
         name: estadoDeCuenta.name,

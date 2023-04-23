@@ -6,16 +6,15 @@ mercadopago.configure({
 
 class PaymentService {
   async createSubscription(req) {
-    const meses = req.body.description.join(", ")
+    const meses = req.body.description.join(", ");
     let preference = {
       items: [
         {
           title: meses,
           id: meses,
           quantity: req.body.description.length,
-          unit_price: req.body.price
-        }
-
+          unit_price: req.body.price,
+        },
       ],
       external_reference: meses + req.body.surname + req.body.username,
       payer: {
@@ -25,9 +24,9 @@ class PaymentService {
         username: req.body.username,
       },
       back_urls: {
-        success: "http://localhost:3001/feedback",
-        failure: "http://localhost:3001/feedback",
-        pending: "http://localhost:3001/feedback",
+        success: "https://servidor-plataformae2.onrender.com/feedback",
+        failure: "https://servidor-plataformae2.onrender.com/feedback",
+        pending: "https://servidor-plataformae2.onrender.com/feedback",
       },
       total_amoun: req.body.price * req.body.description.length,
       auto_return: "approved",
@@ -49,6 +48,3 @@ class PaymentService {
 }
 
 module.exports = PaymentService;
-
-
-
