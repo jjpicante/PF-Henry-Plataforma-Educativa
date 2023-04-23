@@ -20,6 +20,7 @@ const Classroom = () => {
 
   return (
     <div className={style.fondo}>
+      {console.log("asignatures classroom ---> ", asignatures)}
       {/* Iconos */}
       <link
         rel="stylesheet"
