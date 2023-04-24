@@ -16,15 +16,19 @@ function Login() {
 
   const handleLogin = async (event) => {
     event.preventDefault();
-    console.log(auth.currentUser);
+    
     //buscan en la base de datos si el usuario existe
     try {
       if (!email || !password) {
         setErrorMessage("Please enter both email and password");
         return;
       }
-      dispatch(postlogin(email,password))
-      navigate("/home", {replace: true})
+      const response = await dispatch(postlogin(email,password))
+      if (response.error) {
+        setErrorMessage("Invalid email or password");
+      } else {
+        navigate("/home", {replace: true})
+      }
     } catch (error) {
       setErrorMessage("Error al iniciar sesión");
     }
@@ -36,8 +40,8 @@ function Login() {
     } catch (error) {
       console.log(error.message);
     }
-    dispatch(verifiedGoogleLogIn(auth.currentUser.email));
-    navigate("/Home", { replace: true });
+    dispatch(verifiedGoogleLogIn(auth.currentUser.email))
+    navigate("/Home", { replace: true })
   };
 
   return (
