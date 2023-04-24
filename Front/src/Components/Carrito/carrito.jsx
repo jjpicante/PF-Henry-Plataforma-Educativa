@@ -1,16 +1,21 @@
 import Navbar from "../NavBar/navBar";
 import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import styles from "./Carrito.module.css";
 import axios from "axios";
 import ProductDisplayer from "../MercadoPago/mercadopago2/productDisplayer";
 import { Link } from "react-router-dom";
 //import AppStripe from "../MercadoPago/stripe/appStripe";
 
-const URL = "http://localhost:3001/Meses?username=juanperez";
 
 const Carrito = () => {
   const storagedCartas = JSON.parse(localStorage.getItem("mes") || "[]");
   const storagedTotal = JSON.parse(localStorage.getItem("total") || 0);
+  const userData = useSelector((state) => state.userData)
+  const userName = userData?.username
+  const URL = `http://localhost:3001/Meses?username=${userName}`;
+  
+  console.log("UD =>",userName);
 
   const [mesesTotal, setmesesTotal] = useState(storagedCartas);
   const [totalPagar, setTotalPagar] = useState(storagedTotal);
