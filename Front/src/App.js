@@ -14,6 +14,7 @@ import Login from "./Components/Landing/Login/Login";
 import Caracteristicas from "./Components/Landing/Caracteristicas/Caracteristicas";
 import Contacto from "./Components/Landing/Contacto/Contacto";
 import axios from "axios";
+import { MiPerfil } from "./Components/MiPerfil/miPerfil";
 /* axios.defaults.baseURL = "https://servidor-plataformae2.onrender.com"; */
    axios.defaults.baseURL = "http://localhost:3001" 
 
@@ -35,6 +36,7 @@ function App() {
         <Route exact path="/login" element={<Login></Login>}></Route>
         <Route exact path="/sobreNosotros" element={<Caracteristicas></Caracteristicas>}></Route>
         <Route exact path="/contacto" element={<Contacto></Contacto>}></Route>
+        <Route exact path="/miPerfil" element={<MiPerfil/>} />
       </Routes>
     </div>
   );
