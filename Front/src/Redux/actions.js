@@ -181,9 +181,10 @@ export const logoutError = (error) => {
 
 export const verifiedGoogleLogIn = (email) => async (dispatch) => {
   try {
-    const userInfo = await axios.post("/login/google", {
+    const response = await axios.post("/login/google", {
       email,
     });
+    const userInfo = response.data
     dispatch({ type: GET_USER_DATA_GOOGLE, payload: userInfo });
   } catch (error) {
     dispatch({ type: GET_USER_DATA_GOOGLE, payload: null });

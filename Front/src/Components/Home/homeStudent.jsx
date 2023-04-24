@@ -14,8 +14,11 @@ const HomeStudent = () => {
   );
 
   const userData = useSelector((state) => state.userData);
-  console.log(userData)
-
+  
+  console.log("home =>", userData)
+  
+  const nombre = userData?.name
+  
   const onChange = (date) => {
     setDate(date);
   };
@@ -107,6 +110,7 @@ const HomeStudent = () => {
           <div className={style.container2}>
             <div className={style.title}>
               <h1>Área Personal</h1>
+              
             </div>
 
             {/* <div className={style.p}><p>Calendario</p></div> */}
@@ -147,7 +151,7 @@ const HomeStudent = () => {
 
       <div className={style.container2}>
         <div className={style.title}>
-          <h1>Área Personal</h1>
+          <h1 className={style.nombre}>Hola, {nombre}!</h1>
         </div>
 
         {/* <div className={style.p}><p>Calendario</p></div> */}
