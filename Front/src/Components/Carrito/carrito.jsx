@@ -5,7 +5,7 @@ import styles from "./Carrito.module.css";
 import axios from "axios";
 import ProductDisplayer from "../MercadoPago/mercadopago2/productDisplayer";
 import { Link } from "react-router-dom";
-import AppStripe from "../MercadoPago/stripe/appStripe";
+//import AppStripe from "../MercadoPago/stripe/appStripe";
 
 
 const Carrito = () => {
