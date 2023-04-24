@@ -12,8 +12,10 @@
     padding: 10px;
   }
   
-  * {
+  .nombreMateria {
+    color:black;
     text-decoration: none;
+    text-transform: capitalize;
   }
   
   .cards:hover {

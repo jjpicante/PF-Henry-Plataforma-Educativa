@@ -2,12 +2,20 @@ require("dotenv").config();
 const { Sequelize } = require("sequelize");
 const fs = require("fs");
 const path = require("path");
-const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
+const { DB_USER, DB_PASSWORD, DB_HOST, /* DB_DEPLOY */ } = process.env;
 
-const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/plataformaE`, {
-  logging: false, // set to console.log to see the raw SQL queries
-  native: false, // lets Sequelize know we can use pg-native for ~30% more speed
-});
+const sequelize = new Sequelize(
+  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/plataformaE` /* DB_DEPLOY */,
+  {
+    logging: false, // set to console.log to see the raw SQL queries
+    native: false, // lets Sequelize know we can use pg-native for ~30% more speed
+    /* dialectOptions: {
+      ssl: {
+        require: true,
+      },
+    }, */
+  }
+);
 const basename = path.basename(__filename);
 
 const modelDefiners = [];
@@ -33,6 +41,7 @@ const { Aulas } = sequelize.models;
 const { Admin } = sequelize.models;
 const { Materias } = sequelize.models;
 const { Profesores } = sequelize.models;
+const { Meses } = sequelize.models;
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
@@ -48,6 +57,9 @@ Aulas.belongsToMany(Profesores, { through: "ProfesorAula" });
 
 Materias.belongsToMany(Aulas, { through: "MateriasAula" });
 Aulas.belongsToMany(Materias, { through: "MateriasAula" });
+
+// Alumnos.belongsToMany(Meses, { through: "AlumnosMeses" });
+// Meses.belongsToMany(Alumnos, { through: "AlumnosMeses" });
 
 //MUCHOS A MUCHOS esta bien?
 Profesores.belongsToMany(Materias, { through: "ProfesoresMateria" });
