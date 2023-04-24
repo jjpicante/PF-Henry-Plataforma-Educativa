@@ -14,7 +14,8 @@ import Login from "./Components/Landing/Login/Login";
 import Caracteristicas from "./Components/Landing/Caracteristicas/Caracteristicas";
 import Contacto from "./Components/Landing/Contacto/Contacto";
 import axios from "axios";
-axios.defaults.baseURL = "https://servidor-plataformae2.onrender.com";
+/* axios.defaults.baseURL = "https://servidor-plataformae2.onrender.com"; */
+   axios.defaults.baseURL = "http://localhost:3001" 
 
 function App() {
   return (
