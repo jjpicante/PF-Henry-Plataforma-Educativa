@@ -12,7 +12,7 @@ const Carrito = () => {
   const storagedCartas = JSON.parse(localStorage.getItem("mes") || "[]");
   const storagedTotal = JSON.parse(localStorage.getItem("total") || 0);
   const userData = useSelector((state) => state.userData)
-  const userName = userData?.data.username
+  const userName = userData?.username
   const URL = `http://localhost:3001/Meses?username=${userName}`;
   
   console.log("UD =>",userName);

@@ -72,6 +72,11 @@ function Navbar() {
               Cuotas
             </Link>
           </li>
+          <li className={style.miPerfil}>
+            <Link to="/miPerfil" className={style.navLink}>
+              Mi Perfil
+            </Link>
+          </li>
           <li className={style.navItem}>
             <Link to="/" onClick={handleLogout} className={style.navLink}>
               Log Out

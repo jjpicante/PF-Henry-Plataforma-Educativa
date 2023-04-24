@@ -15,8 +15,9 @@ const HomeStudent = () => {
 
   const userData = useSelector((state) => state.userData);
   
-  console.log("home =>", userData?.data.name)
-  const nombre = userData?.data.name
+  console.log("home =>", userData)
+  
+  const nombre = userData?.name
   
   const onChange = (date) => {
     setDate(date);
