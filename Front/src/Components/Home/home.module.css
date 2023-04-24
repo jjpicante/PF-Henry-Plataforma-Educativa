@@ -118,3 +118,7 @@
   h1 {
     color: #000000;
   }
+
+  .nombre{
+    text-transform: capitalize;
+  }
