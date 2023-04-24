@@ -11,7 +11,7 @@ const stripePromise = loadStripe(
 );
 const CheckautForm = () => {
   const storagedCartas = JSON.parse(localStorage.getItem("mes") || "[]");
-  const storagedUsername = JSON.parse(localStorage.getItem("username") || "[]");
+  /* const storagedUsername =  */ JSON.parse(localStorage.getItem("username") || "[]");
   const storagedTotal = JSON.parse(localStorage.getItem("total") || 0);
   const [isLoading, setIsLoading] = useState(false);
   const stripe = useStripe();

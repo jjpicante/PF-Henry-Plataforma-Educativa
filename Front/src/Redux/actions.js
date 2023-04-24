@@ -35,7 +35,7 @@ export const getProfesors = () => {
 
 export const postAlumno = (form) => {
   return async function (dispatch) {
-    const response = await axios.post("/Alumnos/", form);
+    await axios.post("/Alumnos/", form);
     dispatch({
       type: POST_ALUMNO,
     });
@@ -44,7 +44,7 @@ export const postAlumno = (form) => {
 
 export const postProfesor = (form) => {
   return async function (dispatch) {
-    const response = await axios.post("/Profesores/", form);
+    await axios.post("/Profesores/", form);
     dispatch({
       type: POST_PROFESOR,
     });

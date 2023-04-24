@@ -4,14 +4,13 @@ import { getMateriasByAnio } from "../../Redux/actions";
 import style from "./Classroom.module.css";
 import Navbar from "../NavBar/navBar";
 import SearchBar from "../SearchBar/searchBar";
-import { useState } from "react";
 import Paginate from "../Paginado/paginado";
 
 const Classroom = () => {
   const dispatch = useDispatch();
   const asignatures = useSelector((state) => state.materias);
   const pageCount1 = useSelector((state) => state.pageCount);
-  const [pageNumber, setPageNumber] = useState(0);
+  //const [pageNumber, setPageNumber] = useState(0);
   const anio = "6to";
 
   useEffect(() => {
