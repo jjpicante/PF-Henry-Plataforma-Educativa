@@ -23,7 +23,10 @@ function Redirect() {
     deleteUserFromFirebase();
     const timeout = setTimeout(() => {
       // 👇️ redirects to an external URL
-      window.location.replace("http://localhost:3000");
+      window.location.replace("/login");
+      alert(
+        "No cuentas con las credenciales necesarias para ingresar a la ruta indicada, verifica que estes logeado correctamente"
+      );
     }, 3000);
 
     return () => clearTimeout(timeout);
