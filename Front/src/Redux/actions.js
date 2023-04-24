@@ -44,10 +44,14 @@ export const postAlumno = (form) => {
 
 export const postProfesor = (form) => {
   return async function (dispatch) {
-    await axios.post("/Profesores/", form);
-    dispatch({
-      type: POST_PROFESOR,
-    });
+    try {
+      await axios.post("/Profesores/", form);
+      return dispatch({
+        type: POST_PROFESOR,
+      });
+    } catch (error) {
+      console.log("entro al catch");
+    }
   };
 };
 

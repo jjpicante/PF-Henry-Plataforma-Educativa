@@ -4,14 +4,17 @@ const { Profesores, Materias } = require("../../db");
 const postProfesor = async (
   name,
   apellido,
-  nacionalidad,
-  datebirth,
   email,
+  datebirth,
+  nacionalidad,
   username,
   password,
-  namemateria,
-  anio,
-  temas
+  anio1,
+  materia1,
+  anio2,
+  materia2,
+  anio3,
+  materia3
 ) => {
   try {
     if (
@@ -22,6 +25,8 @@ const postProfesor = async (
       return {
         error: `No se pudo completar la carga. Ya existe el username ${username}`,
       };
+
+    //* --------------------------> Creación del profesor <---------------------------
 
     const newProfesor = {
       name: name.toLowerCase(),
@@ -34,17 +39,44 @@ const postProfesor = async (
     };
 
     const profesordb = await Profesores.create(newProfesor);
-    const foundMateria = await Materias.findOne({
-      where: { [Op.and]: [{ namemateria: namemateria }, { anio: anio }, { temas: temas }] },
+
+    //* --------------------------> Carga de Materia 1 <---------------------------
+
+    const foundMateria1 = await Materias.findOne({
+      where: { [Op.and]: [{ namemateria: materia1 }, { anio: anio1 }] },
     });
-    if (!foundMateria) {
+    if (!foundMateria1) {
       return { error: "La materia indicada no se encuentra" };
     }
-    profesordb.setMaterias(foundMateria);
+    profesordb.addMaterias(foundMateria1);
+
+    //* ------------------------> Carga de Materia 2 (opcional) <-------------------------
+
+    if (anio2 && materia2 !== "materia") {
+      const foundMateria2 = await Materias.findOne({
+        where: { [Op.and]: [{ namemateria: materia2 }, { anio: anio2 }] },
+      });
+      if (!foundMateria2) {
+        return { error: "La materia indicada no se encuentra" };
+      }
+      profesordb.addMaterias(foundMateria2);
+    }
+
+    //* ------------------------> Carga de Materia 3 (opcional) <-------------------------
+
+    if (anio3 && materia3 !== "materia") {
+      const foundMateria3 = await Materias.findOne({
+        where: { [Op.and]: [{ namemateria: materia3 }, { anio: anio3 }] },
+      });
+      if (!foundMateria3) {
+        return { error: "La materia indicada no se encuentra" };
+      }
+      profesordb.addMaterias(foundMateria3);
+    }
 
     return { message: "Profesor creado con exito" };
   } catch (error) {
-    return { error: "No se pudo agregar el profesor solicitado" }; //!LO CREA BIEN, PERO DEVUELVE ESTE MENSAJE
+    return { error: "No se pudo agregar el profesor solicitado" };
   }
 };
 
