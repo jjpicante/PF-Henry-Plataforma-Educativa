@@ -4,7 +4,7 @@ import "react-calendar/dist/Calendar.css";
 import style from "./home.module.css";
 import Navbar from "../NavBar/navBar";
 import { useSelector } from "react-redux";
-import Redirect from "../Redirect/redirect";
+
 
 const HomeStudent = () => {
   const [date, setDate] = useState(new Date());
@@ -12,9 +12,9 @@ const HomeStudent = () => {
 
   const userData = useSelector((state) => state.userData);
 
+
   
   console.log("home =>", userData)
-  
   const nombre = userData?.name
   
 
@@ -85,65 +85,8 @@ const HomeStudent = () => {
     }
   }, []);
 
-  switch (userData) {
-    case "Loading":
-      return (
-        <>
-          <h1>Cargando</h1>
-        </>
-      );
-    case null:
-      return (
-        <>
-          <h1>Credenciales invalidas</h1>
-          <Redirect />
-        </>
-      );
-    //case true:
-    default:
-      return (
-        <div className={style.container} style={{ overflowY: "scroll" }}>
-          <div>
-            <Navbar></Navbar>
-          </div>
 
-          <div className={style.container2}>
-            <div className={style.title}>
-              <h1>Área Personal</h1>
-              
-            </div>
-
-            {/* <div className={style.p}><p>Calendario</p></div> */}
-            <div className={style.calendar}>
-              <Calendar
-                onChange={onChange}
-                value={date}
-                tileContent={tileContent}
-                className={style.scale}
-              />
-            </div>
-            <form onSubmit={onSubmit} className={style.form}>
-              <input
-                type="text"
-                name="title"
-                required
-                className={style.input}
-                placeholder="Titulo del Evento"
-              />
-
-              {/* <label>
-                         Descripcion:
-                         <textarea name="description" required></textarea>
-                     </label>  */}
-              <button type="submit" className={style.button}>
-                Agregar evento
-              </button>
-            </form>
-          </div>
-        </div>
-      );
-  }
-  return userData ? (
+  return (
     <div className={style.container} style={{ overflowY: "scroll" }}>
       <div>
         <Navbar></Navbar>
@@ -182,11 +125,6 @@ const HomeStudent = () => {
         </form>
       </div>
     </div>
-  ) : (
-    <>
-      <h1>Credenciales invalidas</h1>
-      <Redirect />
-    </>
   );
 };
 export default HomeStudent;

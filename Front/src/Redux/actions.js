@@ -154,7 +154,7 @@ export const postlogin = (email, password) => {
       return userData
     } catch (error) {
       console.log(error);
-      dispatch(loginFailed("Invalid credentials"));
+      dispatch(loginFailed("invalidUser"));
     }
   };
 };
@@ -192,6 +192,6 @@ export const verifiedGoogleLogIn = (email) => async (dispatch) => {
     const userInfo = response.data
     dispatch({ type: GET_USER_DATA_GOOGLE, payload: userInfo });
   } catch (error) {
-    dispatch({ type: GET_USER_DATA_GOOGLE, payload: null });
+    dispatch({ type: GET_USER_DATA_GOOGLE, payload: false });
   }
 };
