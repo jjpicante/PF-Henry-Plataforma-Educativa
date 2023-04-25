@@ -16,13 +16,27 @@ import {
   GET_USER_DATA_GOOGLE,
   POST_PROFESOR,
 } from "./actionsTypes";
-import { profesors, students } from "./Base de datos HC";
+import { profesors } from "./Base de datos HC";
 import axios from "axios";
 
 export const getStudents = () => {
-  return {
-    type: GET_STUDENTS,
-    payload: students,
+  return async function (dispatch) {
+    try {
+      const response = await axios.get("/Alumnos");
+      const cantPaginas = response.data.pageCount;
+      let alumnos = [];
+      for (let i = 0; i < cantPaginas; i++) {
+        let respuesta = await axios.get(`/Alumnos?page=` + i);
+        alumnos.push(respuesta.data.alumnos);
+      }
+      //console.log(alumnos);
+      return dispatch({
+        type: GET_STUDENTS,
+        payload: alumnos,
+      });
+    } catch (error) {
+      return dispatch({ type: "ERROR", payload: error });
+    }
   };
 };
 
@@ -151,7 +165,7 @@ export const postlogin = (email, password) => {
       });
       const userData = response.data;
       dispatch({ type: LOGIN_SUCCESS, payload: userData });
-      return userData
+      return userData;
     } catch (error) {
       console.log(error);
       dispatch(loginFailed("invalidUser"));
@@ -189,7 +203,7 @@ export const verifiedGoogleLogIn = (email) => async (dispatch) => {
     const response = await axios.post("/login/google", {
       email,
     });
-    const userInfo = response.data
+    const userInfo = response.data;
     dispatch({ type: GET_USER_DATA_GOOGLE, payload: userInfo });
   } catch (error) {
     dispatch({ type: GET_USER_DATA_GOOGLE, payload: false });
