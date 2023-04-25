@@ -18,7 +18,9 @@ const postLogin = async (email, password) => {
       if (!dbUser) {
         return { error: "User not found" };
       }
-
+      if(dbUser.password !== password){
+        return {error: "Invalid Credentials"}
+      }
       return dbUser;
     } catch (dbError) {
       return { error: "Error logging in" };

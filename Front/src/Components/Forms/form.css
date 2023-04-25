@@ -54,8 +54,29 @@ form {
   width: 100%;
 }
 
+.selected {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  height: 40px;
+  margin-bottom: 10px;
+  padding: 10px;
+  width: 100%;
+  background-color: rgb(144, 218, 192);
+}
+
 select {
   cursor: pointer;
+  margin: 0;
+}
+
+section svg {
+  scale: 300%;
+}
+
+section svg:hover {
+  cursor: pointer;
+  color: rgb(193, 0, 0);
 }
 
 input[type="submit"] {
@@ -88,6 +109,17 @@ input[type="submit"]:disabled {
 }
 
 .renglones {
+  width: 97%;
   display: flex;
-  column-gap: 3%;
+  align-items: baseline;
+  column-gap: 5%;
+}
+
+select:disabled {
+  width: 97%;
+  display: flex;
+  align-items: baseline;
+  column-gap: 5%;
+  background-color: rgb(215, 215, 215);
+  cursor: default;
 }

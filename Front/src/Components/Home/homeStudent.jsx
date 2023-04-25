@@ -5,14 +5,18 @@ import style from "./home.module.css";
 import Navbar from "../NavBar/navBar";
 import { useSelector } from "react-redux";
 
+
 const HomeStudent = () => {
   const [date, setDate] = useState(new Date());
-  const [events, setEvents] = useState(
-    JSON.parse(localStorage.getItem("events")) || []
-  );
+  const [events, setEvents] = useState(JSON.parse(localStorage.getItem("events")) || []);
 
   const userData = useSelector((state) => state.userData);
-  console.log(userData);
+
+
+  
+  console.log("home =>", userData)
+  const nombre = userData?.name
+  
 
   const onChange = (date) => {
     setDate(date);
@@ -81,6 +85,7 @@ const HomeStudent = () => {
     }
   }, []);
 
+
   return (
     <div className={style.container} style={{ overflowY: "scroll" }}>
       <div>
@@ -89,7 +94,7 @@ const HomeStudent = () => {
 
       <div className={style.container2}>
         <div className={style.title}>
-          <h1>Área Personal</h1>
+          <h1 className={style.nombre}>Hola, {nombre}!</h1>
         </div>
 
         {/* <div className={style.p}><p>Calendario</p></div> */}

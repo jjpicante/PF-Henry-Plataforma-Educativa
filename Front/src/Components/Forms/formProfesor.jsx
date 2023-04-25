@@ -5,10 +5,8 @@ import { validate } from "./validations";
 import { postProfesor } from "../../Redux/actions";
 import axios from "axios";
 import Navbar from "../NavBar/navBar";
-//import SelectProfesor from "./selectProfesor";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-const URL = "https://restcountries.com/v3.1/all";
 
 function FormProfesor() {
   const dispatch = useDispatch();
@@ -21,14 +19,14 @@ function FormProfesor() {
     email: "",
     datebirth: "",
     nacionalidad: "",
+    username: "",
+    password: "",
     anio1: "año",
     materia1: "materia",
     anio2: "año",
+    materia2: "materia",
     materia3: "materia",
     anio3: "año",
-    materia2: "materia",
-    username: "",
-    password: "",
   });
   const [error, setError] = useState({
     name: "",
@@ -36,14 +34,14 @@ function FormProfesor() {
     email: "",
     datebirth: "",
     nacionalidad: "",
+    username: "",
+    password: "",
     anio1: "año",
     materia1: "materia",
     anio2: "año",
+    materia2: "materia",
     materia3: "materia",
     anio3: "año",
-    materia2: "materia",
-    username: "",
-    password: "",
   });
   const [mostrarPass, setmostrarPass] = useState(true);
 
@@ -56,7 +54,7 @@ function FormProfesor() {
   //* -------------------> Trae las materias dependiendo del año elegido <-------------------
 
   async function traerMaterias(renglon, anio) {
-    const response = await axios.get(`/Materias/filtermateria?anio=${anio}`);
+    const response = await axios.get(`http://localhost:3001/Materias/filtermateria?anio=${anio}`);
     switch (renglon) {
       case "anio1":
         setMaterias1(response.data.map((elem) => elem.namemateria));
@@ -67,7 +65,6 @@ function FormProfesor() {
       default:
         setMaterias3(response.data.map((elem) => elem.namemateria));
     }
-    //console.log(materias);
   }
 
   const inputHandler = (ev) => {
@@ -113,6 +110,7 @@ function FormProfesor() {
 
   const submitHandler = (ev) => {
     ev.preventDefault();
+    //console.log(profesorData);
     dispatch(postProfesor(profesorData));
     alert("Profesor creado");
     setProfesorData({
@@ -121,14 +119,14 @@ function FormProfesor() {
       email: "",
       datebirth: "",
       nacionalidad: "",
+      username: "",
+      password: "",
       anio1: "año",
       materia1: "materia",
       anio2: "año",
+      materia2: "materia",
       materia3: "materia",
       anio3: "año",
-      materia2: "materia",
-      username: "",
-      password: "",
     });
   };
 
@@ -215,8 +213,8 @@ function FormProfesor() {
             <p className="errorText">{error.nacionalidad}</p>
             {/* RENGLON 1 ************************************************************* */}
             <section className="renglones">
-              <select //!BREAKPOINT
-                className="text"
+              <select
+                className={profesorData.materia1 !== "materia" ? "selected" : "text"}
                 type="number"
                 name="anio1"
                 onChange={(ev) => inputHandler(ev)}
@@ -229,11 +227,12 @@ function FormProfesor() {
                   </option>
                 ))}
               </select>
-              {/* <p className="errorText">{error.anio}</p> */}
               <select
                 className={
                   profesorData.anio1 !== "año" && profesorData.materia1 === "materia"
                     ? "errorMateria"
+                    : profesorData.anio1 !== "año" && profesorData.materia1 !== "materia"
+                    ? "selected"
                     : "text"
                 }
                 type="number"
@@ -257,11 +256,10 @@ function FormProfesor() {
               </select>
             </section>
 
-            {/* <p className="errorText">{error.anio}</p> */}
             {/* RENGLON 2 ************************************************************* */}
             <section className="renglones">
               <select
-                className="text"
+                className={profesorData.materia2 !== "materia" ? "selected" : "text"}
                 type="number"
                 name="anio2"
                 onChange={(ev) => inputHandler(ev)}
@@ -275,11 +273,12 @@ function FormProfesor() {
                   </option>
                 ))}
               </select>
-              {/* <p className="errorText">{error.anio}</p> */}
               <select
                 className={
                   profesorData.anio2 !== "año" && profesorData.materia2 === "materia"
                     ? "errorMateria"
+                    : profesorData.anio2 !== "año" && profesorData.materia2 !== "materia"
+                    ? "selected"
                     : "text"
                 }
                 type="number"
@@ -302,13 +301,33 @@ function FormProfesor() {
                   </option>
                 ))}
               </select>
-              {/* <p className="errorText">{error.anio}</p> */}
+              {/* icono eliminar */}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                className="bi bi-x-circle-fill"
+                viewBox="0 0 16 16"
+                onClick={() => {
+                  setProfesorData({
+                    ...profesorData,
+                    anio2: "año",
+                    materia2: "materia",
+                    anio3: "año",
+                    materia3: "materia",
+                  });
+                  setMaterias2([]);
+                }}
+              >
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
+              </svg>
             </section>
 
             {/* RENGLON 3 ************************************************************* */}
             <section className="renglones">
               <select
-                className="text"
+                className={profesorData.materia3 !== "materia" ? "selected" : "text"}
                 type="number"
                 name="anio3"
                 onChange={(ev) => inputHandler(ev)}
@@ -322,11 +341,12 @@ function FormProfesor() {
                   </option>
                 ))}
               </select>
-              {/* <p className="errorText">{error.anio}</p> */}
               <select
                 className={
                   profesorData.anio3 !== "año" && profesorData.materia3 === "materia"
                     ? "errorMateria"
+                    : profesorData.anio3 !== "año" && profesorData.materia3 !== "materia"
+                    ? "selected"
                     : "text"
                 }
                 type="number"
@@ -349,6 +369,24 @@ function FormProfesor() {
                   </option>
                 ))}
               </select>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                className="bi bi-x-circle-fill"
+                viewBox="0 0 16 16"
+                onClick={() => {
+                  setProfesorData({
+                    ...profesorData,
+                    anio3: "año",
+                    materia3: "materia",
+                  });
+                  setMaterias3([]);
+                }}
+              >
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
+              </svg>
             </section>
 
             <p className="errorText">{error.anio3 !== "año" && error.anio3}</p>
@@ -366,9 +404,11 @@ function FormProfesor() {
               <input
                 className="pass"
                 type={mostrarPass ? "password" : "text"}
-                placeholder="password"
                 name="password"
+                placeholder="password"
                 id="password"
+                onChange={(ev) => inputHandler(ev)}
+                value={profesorData.password}
               />
               <button type="button" onClick={() => handleTogglePassword()}>
                 <FontAwesomeIcon icon={mostrarPass ? faEyeSlash : faEye} />

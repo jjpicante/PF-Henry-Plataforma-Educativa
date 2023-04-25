@@ -1,19 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./MercadoPagoButton.module.css";
 import axios from "axios";
-import { initMercadoPago, Wallet } from "@mercadopago/sdk-react";
+import { initMercadoPago } from "@mercadopago/sdk-react";
 
 initMercadoPago("TEST-3c99da26-96ee-4715-9784-826a780f3f38");
 
 const ProductDisplayer = ({ mesesTotal, totalPagar, estadoDeCuenta }) => {
-  const storagedUsername = JSON.parse(localStorage.getItem("username") || "[]");
+  /* const storagedUsername =  */ JSON.parse(localStorage.getItem("username") || "[]");
   const pagado = {};
 
   for (let mes of mesesTotal) {
     pagado[mes] = true;
   }
 
-  const [id, setid] = useState("");
+  //const [id, setid] = useState("");
   const onsubmit = async (ev) => {
     ev.preventDefault();
     try {

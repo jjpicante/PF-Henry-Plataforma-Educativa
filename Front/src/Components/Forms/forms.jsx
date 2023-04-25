@@ -7,7 +7,6 @@ import axios from "axios";
 import Navbar from "../NavBar/navBar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-const URL = "https://restcountries.com/v3.1/all";
 
 function Form() {
   const dispatch = useDispatch();

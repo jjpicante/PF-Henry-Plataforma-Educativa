@@ -15,6 +15,7 @@ import Caracteristicas from "./Components/Landing/Caracteristicas/Caracteristica
 import Contacto from "./Components/Landing/Contacto/Contacto";
 import ProtectedRoutes from "./Components/ProtectedRoute/protectedRoute";
 import axios from "axios";
+import { MiPerfil } from "./Components/MiPerfil/miPerfil";
 /* axios.defaults.baseURL = "https://servidor-plataformae2.onrender.com"; */
 axios.defaults.baseURL = "http://localhost:3001";
 
@@ -33,12 +34,14 @@ function App() {
           <Route exact path="/formsubject" element={<FormSubject />} />
           <Route exact path="/carrito" element={<Carrito />} />
           <Route exact path="/Stripe" element={<AppStripe />} />
+          <Route exact path="/miPerfil" element={<MiPerfil/>} />
         </Route>
 
         <Route exact path="/" element={<Landing />} />
         <Route exact path="/sobreNosotros" element={<Caracteristicas />} />
         <Route exact path="/contacto" element={<Contacto />} />
         <Route exact path="/login" element={<Login />} />
+
       </Routes>
     </div>
   );

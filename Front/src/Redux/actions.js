@@ -35,7 +35,7 @@ export const getProfesors = () => {
 
 export const postAlumno = (form) => {
   return async function (dispatch) {
-    const response = await axios.post("/Alumnos/", form);
+    await axios.post("/Alumnos/", form);
     dispatch({
       type: POST_ALUMNO,
     });
@@ -44,10 +44,14 @@ export const postAlumno = (form) => {
 
 export const postProfesor = (form) => {
   return async function (dispatch) {
-    const response = await axios.post("/Profesores/", form);
-    dispatch({
-      type: POST_PROFESOR,
-    });
+    try {
+      await axios.post("/Profesores/", form);
+      return dispatch({
+        type: POST_PROFESOR,
+      });
+    } catch (error) {
+      console.log("entro al catch");
+    }
   };
 };
 
@@ -147,6 +151,7 @@ export const postlogin = (email, password) => {
       });
       const userData = response.data;
       dispatch({ type: LOGIN_SUCCESS, payload: userData });
+      return userData
     } catch (error) {
       console.log(error);
       dispatch(loginFailed("invalidUser"));
@@ -181,9 +186,10 @@ export const logoutError = (error) => {
 
 export const verifiedGoogleLogIn = (email) => async (dispatch) => {
   try {
-    const userInfo = await axios.post("/login/google", {
+    const response = await axios.post("/login/google", {
       email,
     });
+    const userInfo = response.data
     dispatch({ type: GET_USER_DATA_GOOGLE, payload: userInfo });
   } catch (error) {
     dispatch({ type: GET_USER_DATA_GOOGLE, payload: false });
