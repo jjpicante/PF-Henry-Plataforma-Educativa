@@ -13,6 +13,7 @@ import Alumnos from "./Components/Alumnos/alumnos";
 import Login from "./Components/Landing/Login/Login";
 import Caracteristicas from "./Components/Landing/Caracteristicas/Caracteristicas";
 import Contacto from "./Components/Landing/Contacto/Contacto";
+import EditarLanding from "./Components/Editar/Landing/EditarLanding";
 import ProtectedRoutes from "./Components/ProtectedRoute/protectedRoute";
 import axios from "axios";
 import { MiPerfil } from "./Components/MiPerfil/miPerfil";
@@ -34,14 +35,14 @@ function App() {
           <Route exact path="/formsubject" element={<FormSubject />} />
           <Route exact path="/carrito" element={<Carrito />} />
           <Route exact path="/Stripe" element={<AppStripe />} />
-          <Route exact path="/miPerfil" element={<MiPerfil/>} />
+          <Route exact path="/miPerfil" element={<MiPerfil />} />
+          <Route exact path="/editarUsuario" element={<EditarLanding />} />
         </Route>
 
         <Route exact path="/" element={<Landing />} />
         <Route exact path="/sobreNosotros" element={<Caracteristicas />} />
         <Route exact path="/contacto" element={<Contacto />} />
         <Route exact path="/login" element={<Login />} />
-
       </Routes>
     </div>
   );

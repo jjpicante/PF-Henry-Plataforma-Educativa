@@ -115,7 +115,7 @@ input[type="submit"]:disabled {
   column-gap: 5%;
 }
 
-select:disabled {
+.text:disabled {
   width: 97%;
   display: flex;
   align-items: baseline;
