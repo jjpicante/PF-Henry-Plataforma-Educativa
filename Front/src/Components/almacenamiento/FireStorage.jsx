@@ -73,7 +73,6 @@ const FireStorage = () => {
           </a>
         );
       })}
-      {console.log("hola")}
     </>
   );
 };
