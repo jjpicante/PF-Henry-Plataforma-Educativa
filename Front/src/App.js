@@ -17,7 +17,7 @@ import ProtectedRoutes from "./Components/ProtectedRoute/protectedRoute";
 import axios from "axios";
 import { MiPerfil } from "./Components/MiPerfil/miPerfil";
 import Disqus from "./Components/Coments/disqus";
-import FireStorage from "./Components/almacenamiento/FireStorage";
+import Firestoragev2 from "./Components/almacenamiento/Firestoragev2";
 
 /* axios.defaults.baseURL = "https://servidor-plataformae2.onrender.com"; */
 axios.defaults.baseURL = "http://localhost:3001";
@@ -42,9 +42,9 @@ function App() {
         </Route>
 
         <Route exact path="/" element={<Landing />} />
-        {/* Esto es agregado, despues hay que borrarlo */}
+        {/* Esto es agregado para probar su funcionalidad, despues hay que borrarlo */}
         <Route exact path="/Disqus" element={<Disqus />} />
-        <Route exact path="/firestorages" element={<FireStorage />} />
+        <Route exact path="/firestorages" element={<Firestoragev2 />} />
         {/* Hasta aqui */}
         <Route exact path="/sobreNosotros" element={<Caracteristicas />} />
         <Route exact path="/contacto" element={<Contacto />} />
