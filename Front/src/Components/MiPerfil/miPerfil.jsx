@@ -12,7 +12,7 @@ export function MiPerfil() {
   //Username
   const [userName, setUserName] = useState(userData?.username);
   const [editUserName, setEditUserName] = useState(true)
-  console.log(userName);
+  
   const handleChangeUserName = (e) => {
     setUserName(e.target.value);
     inputHandler(e)
@@ -84,7 +84,7 @@ export function MiPerfil() {
     return Object.values(error).some((error) => error !== "");
   };
 
-  console.log(paraEditar);
+  console.log(error);
  const [editar, setEditar] = useState(true);
  
  const handleEdit = () => {
@@ -130,6 +130,7 @@ export function MiPerfil() {
             onChange={(e) => handleChangeUserName(e)} 
         />
         <button type="button" onClick={()=> handleEditUserName()}><FontAwesomeIcon icon={faPenToSquare} /></button>
+        <p className={style.error}>{error.username}</p>
             </div>
             <div>
         <label htmlFor={email}>Email: </label>
@@ -141,6 +142,7 @@ export function MiPerfil() {
             onChange={(e) => handleChangeEmail(e)}
         />
         <button type="button" onClick={()=> handleEditEmail()}><FontAwesomeIcon icon={faPenToSquare} /></button>
+        <p className={style.error}>{error.email}</p>
             </div>
             <div>
         <label htmlFor={password}>Contraseña: </label>
@@ -156,6 +158,7 @@ export function MiPerfil() {
         </button>
         <button type="button" onClick={()=> handleEditPassword()}><FontAwesomeIcon icon={faPenToSquare} />
         </button>
+        <p className={style.error}>{error.password}</p>
             </div>
             <div>
         <label htmlFor={userData?.anio}>Año: </label>
