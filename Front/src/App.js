@@ -15,8 +15,11 @@ import Caracteristicas from "./Components/Landing/Caracteristicas/Caracteristica
 import Contacto from "./Components/Landing/Contacto/Contacto";
 import axios from "axios";
 import { MiPerfil } from "./Components/MiPerfil/miPerfil";
+import Disqus from "./Components/Coments/disqus";
+import FireStorage from "./Components/almacenamiento/FireStorage";
+
 /* axios.defaults.baseURL = "https://servidor-plataformae2.onrender.com"; */
-   axios.defaults.baseURL = "http://localhost:3001" 
+axios.defaults.baseURL = "http://localhost:3001";
 
 function App() {
   return (
@@ -33,10 +36,14 @@ function App() {
         <Route exact path="/carrito" element={<Carrito />} />
         <Route exact path="/Stripe" element={<AppStripe></AppStripe>}></Route>
         <Route exact path="/" element={<Landing />} />
+        {/* Esto es agregado, despues hay que borrarlo */}
+        <Route exact path="/Disqus" element={<Disqus />} />
+        <Route exact path="/firestorages" element={<FireStorage />} />
+        {/* Hasta aqui */}
         <Route exact path="/login" element={<Login></Login>}></Route>
         <Route exact path="/sobreNosotros" element={<Caracteristicas></Caracteristicas>}></Route>
         <Route exact path="/contacto" element={<Contacto></Contacto>}></Route>
-        <Route exact path="/miPerfil" element={<MiPerfil/>} />
+        <Route exact path="/miPerfil" element={<MiPerfil />} />
       </Routes>
     </div>
   );
