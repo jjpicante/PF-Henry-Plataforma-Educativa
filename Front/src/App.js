@@ -14,6 +14,7 @@ import Login from "./Components/Landing/Login/Login";
 import Caracteristicas from "./Components/Landing/Caracteristicas/Caracteristicas";
 import Contacto from "./Components/Landing/Contacto/Contacto";
 import ProtectedRoutes from "./Components/ProtectedRoute/protectedRoute";
+import ResetPassword from "./Components/ResetPassword/resetPassword";
 import axios from "axios";
 import { MiPerfil } from "./Components/MiPerfil/miPerfil";
 /* axios.defaults.baseURL = "https://servidor-plataformae2.onrender.com"; */
@@ -36,7 +37,8 @@ function App() {
           <Route exact path="/Stripe" element={<AppStripe />} />
           <Route exact path="/miPerfil" element={<MiPerfil/>} />
         </Route>
-
+        
+        <Route exact path="/reset-password" element={<ResetPassword />}/>
         <Route exact path="/" element={<Landing />} />
         <Route exact path="/sobreNosotros" element={<Caracteristicas />} />
         <Route exact path="/contacto" element={<Contacto />} />

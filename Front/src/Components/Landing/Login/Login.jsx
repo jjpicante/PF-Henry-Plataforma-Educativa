@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import "./Login.css";
 import { auth, googleprovider } from "../../../config/firebase";
 import { signInWithPopup, signOut } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { postlogin, verifiedGoogleLogIn } from "../../../Redux/actions";
 
 function Login() {
@@ -70,6 +70,7 @@ function Login() {
           <br></br>
         </form>
         <p style={{ color: "red" }}>{errorMessage}</p>
+        <Link to="/reset-password">¿Olvidaste tu contraseña?</Link>
       </div>
     </div>
   );
