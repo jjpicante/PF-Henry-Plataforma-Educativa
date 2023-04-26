@@ -19,12 +19,15 @@ export function MiPerfil() {
   const currentusername = userData?.username;
 
   console.log(response);
-
-  const valoresOriginales = {
-    username: userData.username,
-    email: userData.email,
-    password: userData.password,
-  };
+  useEffect(()=>{
+    setvaloresOriginales ({
+      username: userData.username,
+      email: userData.email,
+      password: userData.password,
+    })
+  },[userData])
+  const [valoresOriginales, setvaloresOriginales] = useState({})
+  console.log(valoresOriginales);
   //Username
   const [userName, setUserName] = useState(userData?.username);
   const [editUserName, setEditUserName] = useState(true);
