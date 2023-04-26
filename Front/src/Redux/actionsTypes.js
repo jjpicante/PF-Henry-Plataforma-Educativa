@@ -17,4 +17,5 @@ export const SET_USER_ROLE = "SET_USER_ROLE";
 export const CLEAR_USER_ROLE = "CLEAR_USER_ROLE";
 export const POST_PROFESOR = "POST_PROFESOR";
 export const RESET_PASSWORD = "RESET_PASSWORD"
+export const EDIT_ALUMNO = "EDIT_ALUMNO";
 

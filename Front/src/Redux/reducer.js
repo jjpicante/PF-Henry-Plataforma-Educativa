@@ -7,6 +7,7 @@ import {
   GET_MATERIAS_BY_ANIO,
   CLEAN_DETAIL,
   POST_ALUMNO,
+  EDIT_ALUMNO,
   LOGIN_SUCCESS,
   LOGIN_FAILED,
   LOGOUT_SUCCESS,
@@ -25,6 +26,7 @@ const initialState = {
   pageCount: "",
   materiaById: [],
   userData: null,
+  editResponse:null,
 };
 
 export default function reducer(state = initialState, { type, payload }) {
@@ -38,6 +40,11 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
       };
+    case EDIT_ALUMNO:
+      return{
+        ...state,
+        editResponse: payload
+      }  
     case POST_PROFESOR:
       return {
         ...state,

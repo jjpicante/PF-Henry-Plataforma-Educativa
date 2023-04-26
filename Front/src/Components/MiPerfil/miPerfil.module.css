@@ -11,3 +11,8 @@
     width: 600px;
     border: solid black 3px;
 }
+
+.error{
+    font-size: small;
+    color: red
+}
