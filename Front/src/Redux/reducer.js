@@ -95,7 +95,7 @@ export default function reducer(state = initialState, { type, payload }) {
     case LOGOUT_SUCCESS:
       return {
         ...state,
-        userData: false,
+        userData: null,
       };
     case LOGOUT_ERROR:
       return {
