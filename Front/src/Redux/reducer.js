@@ -43,7 +43,8 @@ export default function reducer(state = initialState, { type, payload }) {
     case EDIT_ALUMNO:
       return{
         ...state,
-        editResponse: payload
+        userData: payload.alumno,
+        editResponse: payload.mensaje
       }  
     case POST_PROFESOR:
       return {
