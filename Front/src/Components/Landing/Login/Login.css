@@ -15,9 +15,10 @@
   width: 400px;
   padding: 40px;
   transform: translate(-50%, -50%);
-  background: rgba(0, 0, 0, .5);
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
   box-sizing: border-box;
-  box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
   border-radius: 10px;
 }
 
@@ -52,11 +53,11 @@
   font-size: 16px;
   color: #fff;
   pointer-events: none;
-  transition: .5s;
+  transition: 0.5s;
 }
 
-.form .user-box input:focus~label,
-.form .user-box input:valid~label {
+.form .user-box input:focus ~ label,
+.form .user-box input:valid ~ label {
   top: -20px;
   left: 0;
   color: #03e9f4;
@@ -72,9 +73,9 @@
   text-decoration: none;
   text-transform: uppercase;
   overflow: hidden;
-  transition: .5s;
+  transition: 0.5s;
   margin-top: 40px;
-  letter-spacing: 4px
+  letter-spacing: 4px;
 }
 
 .form button {

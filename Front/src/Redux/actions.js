@@ -7,6 +7,7 @@ import {
   GET_MATERIAS_BY_ANIO,
   CLEAN_DETAIL,
   POST_ALUMNO,
+  EDIT_ALUMNO,
   LOGIN_SUCCESS,
   LOGIN_FAILED,
   LOGOUT_SUCCESS,
@@ -99,6 +100,19 @@ export const postProfesor = (form) => {
     } catch (error) {
       console.log("entro al catch");
     }
+  };
+};
+
+export const editAlumno = (currentusername, changes) => {
+  return (dispatch) => {
+    axios
+    .put(`/alumnos/${currentusername}`, changes)
+      .then((response) => {
+        dispatch({ type: EDIT_ALUMNO, payload: response.data });
+      })
+      .catch((error) => {
+        dispatch({ type: EDIT_ALUMNO, payload: error.response.data.error});
+      });
   };
 };
 
