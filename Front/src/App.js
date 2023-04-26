@@ -24,21 +24,35 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route element={<ProtectedRoutes />}>
+        <Route
+          element={
+            <ProtectedRoutes allowedRoles={["student", "profesor", "admin"]} />
+          }
+        >
           <Route exact path="/home" element={<HomeStudent />} />
-          <Route exact path="/Cursos" element={<Classroom />} />
           <Route exact path="/Materias" element={<Classroom />} />
           <Route exact path="/alumnos" element={<Alumnos />} />
           <Route exact path="/Aulas/materia/:id" element={<Detail />} />
+          <Route exact path="/miPerfil" element={<MiPerfil />} />
+        </Route>
+
+        <Route element={<ProtectedRoutes allowedRoles={["profesor"]} />}>
+          <Route exact path="/Cursos" element={<Classroom />} />
+        </Route>
+
+        <Route element={<ProtectedRoutes allowedRoles={["admin"]} />}>
           <Route exact path="/formAlumno" element={<Form />} />
           <Route exact path="/formProfesor" element={<FormProfesor />} />
           <Route exact path="/formsubject" element={<FormSubject />} />
-          <Route exact path="/carrito" element={<Carrito />} />
-          <Route exact path="/Stripe" element={<AppStripe />} />
-          <Route exact path="/miPerfil" element={<MiPerfil />} />
-          <Route exact path="/editarUsuario" element={<EditarLanding />} />
         </Route>
 
+        <Route element={<ProtectedRoutes allowedRoles={["student"]} />}>
+          <Route exact path="/carrito" element={<Carrito />} />
+          <Route exact path="/Stripe" element={<AppStripe />} />
+        </Route>
+        
+        
+        <Route exact path="/editarUsuario" element={<EditarLanding />} />
         <Route exact path="/" element={<Landing />} />
         <Route exact path="/sobreNosotros" element={<Caracteristicas />} />
         <Route exact path="/contacto" element={<Contacto />} />
