@@ -1,4 +1,4 @@
-const { auth, googleProvider } = require("../../config/firebase");
+const { auth } = require("../../config/firebase");
 const { signInWithEmailAndPassword } = require("firebase/auth");
 const { Alumnos, Profesores } = require("../../db");
 
@@ -42,4 +42,4 @@ const postLogin = async (email, password) => {
     }
   };
 
-  module.exports = { postLogin, loginGoogle, logOut };
+  module.exports = { postLogin };
