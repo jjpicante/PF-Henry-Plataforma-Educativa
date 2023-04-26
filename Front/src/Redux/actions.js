@@ -41,6 +41,18 @@ export const getStudents = () => {
   };
 };
 
+export const getStudent = (username) => {
+  return async function (dispatch) {
+    try {
+      const response = await axios.get(`/alumnos/getAlumno?username=${username}`);
+      const alumno = response.data;
+      return alumno;
+    } catch (error) {
+      return dispatch({ type: "ERROR", payload: error });
+    }
+  };
+};
+
 export const getProfesors = () => {
   return async function (dispatch) {
     try {

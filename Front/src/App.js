@@ -14,6 +14,7 @@ import Login from "./Components/Landing/Login/Login";
 import Caracteristicas from "./Components/Landing/Caracteristicas/Caracteristicas";
 import Contacto from "./Components/Landing/Contacto/Contacto";
 import EditarLanding from "./Components/Editar/Landing/EditarLanding";
+import Editar from "./Components/Editar/Alumno/Editar";
 import ProtectedRoutes from "./Components/ProtectedRoute/protectedRoute";
 import ResetPassword from "./Components/ResetPassword/resetPassword";
 import axios from "axios";
@@ -29,11 +30,7 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route
-          element={
-            <ProtectedRoutes allowedRoles={["student", "profesor", "admin"]} />
-          }
-        >
+        <Route element={<ProtectedRoutes allowedRoles={["student", "profesor", "admin"]} />}>
           <Route exact path="/home" element={<HomeStudent />} />
           <Route exact path="/Materias" element={<Classroom />} />
           <Route exact path="/alumnos" element={<Alumnos />} />
@@ -49,6 +46,8 @@ function App() {
           <Route exact path="/formAlumno" element={<Form />} />
           <Route exact path="/formProfesor" element={<FormProfesor />} />
           <Route exact path="/formsubject" element={<FormSubject />} />
+          <Route exact path="/editarLanding" element={<EditarLanding />} />
+          <Route exact path="/editarAlumno/:username" element={<Editar />} />
         </Route>
 
         <Route element={<ProtectedRoutes allowedRoles={["student"]} />}>
@@ -56,8 +55,8 @@ function App() {
           <Route exact path="/Stripe" element={<AppStripe />} />
           <Route exact path="/miPerfil" element={<MiPerfil />} />
         </Route>
-        
 
+        
         <Route exact path="/reset-password" element={<ResetPassword />}/>
         <Route exact path="/editarUsuario" element={<EditarLanding />} />
         <Route exact path="/" element={<Landing />} />

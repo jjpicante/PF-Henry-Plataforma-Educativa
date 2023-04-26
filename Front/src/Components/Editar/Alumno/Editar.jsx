@@ -1,8 +1,10 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
-import Navbar from "../NavBar/navBar";
+import Navbar from "../../NavBar/navBar";
+import { getStudent } from "../../../Redux/actions";
 import { validations } from "./validations";
 import style from "./Editar.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -11,22 +13,20 @@ import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 //Todo: hacer el submit, limpiar los estados iniciales, limpiar errores
 
 export default function EditarUsuarios() {
-  const userData = useSelector((state) => state.userData);
+  const dispatch = useDispatch();
+  const params = useParams();
+  const navigate = useNavigate();
+  const { username } = params;
 
-  const [usuario, setUsuario] = useState({
-    name: userData.name,
-    apellido: userData.apellido,
-    datebirth: userData.datebirth.slice(0, 10),
-    nacionalidad: userData.nacionalidad,
-    anio: userData.anio,
-    rol: userData.rol,
-  });
+  //Datos del usuario solicitado
+  const [usuario, setUsuario] = useState({});
 
   const [error, setError] = useState({
     name: "",
     apellido: "",
   });
 
+  //Por default los inputs estan deshabilitados
   const [disabled, setDisabled] = useState({
     name: true,
     apellido: true,
@@ -88,6 +88,21 @@ export default function EditarUsuarios() {
       setPaises(paises);
     }
     getPaises();
+  }, []);
+
+  useEffect(() => {
+    async function fetchStudent() {
+      const alumno = await dispatch(getStudent(username));
+      setUsuario({
+        name: alumno.name,
+        apellido: alumno.apellido,
+        datebirth: alumno.datebirth.slice(0, 10),
+        nacionalidad: alumno.nacionalidad,
+        anio: alumno.anio,
+        rol: alumno.rol,
+      });
+    }
+    fetchStudent();
   }, []);
 
   return (
@@ -173,7 +188,10 @@ export default function EditarUsuarios() {
             name="nacionalidad"
             disabled={disabled.nacionalidad}
             onChange={(ev) => inputHandler(ev)}
-            value={usuario.nacionalidad[0].toUpperCase() + usuario.nacionalidad.slice(1)}
+            value={
+              usuario.nacionalidad &&
+              usuario.nacionalidad[0].toUpperCase() + usuario.nacionalidad.slice(1)
+            }
           >
             {paises?.map((el, i) => {
               return (
@@ -209,6 +227,14 @@ export default function EditarUsuarios() {
           </button>
         </section>
 
+        <button
+          /* className={style.submitButton} */ type="button"
+          onClick={() => {
+            navigate(-1);
+          }}
+        >
+          Volver
+        </button>
         <button /* className={style.submitButton} */ type="submit" disabled={hasErrors()}>
           Confirmar Cambios
         </button>
