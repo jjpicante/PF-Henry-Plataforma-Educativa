@@ -16,7 +16,6 @@ import {
   GET_USER_DATA_GOOGLE,
   POST_PROFESOR,
 } from "./actionsTypes";
-import { profesors } from "./Base de datos HC";
 import axios from "axios";
 
 export const getStudents = () => {
@@ -41,9 +40,31 @@ export const getStudents = () => {
 };
 
 export const getProfesors = () => {
-  return {
-    type: GET_PROFESORS,
-    payload: profesors,
+  return async function (dispatch) {
+    try {
+      const response = await axios.get("/Profesores");
+      const cantPaginas = response.data.pageCount;
+      let profesores = response.data.profesor;
+      return dispatch({
+        type: GET_PROFESORS,
+        payload: profesores,
+      });
+    } catch (error) {
+      return dispatch({ type: "ERROR", payload: error });
+    }
+  };
+};
+
+export const getProfesor = (username) => {
+  return async function (dispatch) {
+    try {
+      const response = await axios.get(`/Profesores/getProfesor?username=${username}`);
+      const profesor = response.data;
+      //console.log(profesor);
+      return profesor;
+    } catch (error) {
+      return dispatch({ type: "ERROR", payload: error });
+    }
   };
 };
 
