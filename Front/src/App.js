@@ -17,7 +17,11 @@ import EditarLanding from "./Components/Editar/Landing/EditarLanding";
 import ProtectedRoutes from "./Components/ProtectedRoute/protectedRoute";
 import axios from "axios";
 import { MiPerfil } from "./Components/MiPerfil/miPerfil";
+import Disqus from "./Components/Coments/disqus";
+import Firestoragev2 from "./Components/almacenamiento/Firestoragev2";
+
 /* axios.defaults.baseURL = "https://servidor-plataformae2.onrender.com"; */
+axios.defaults.baseURL = "http://localhost:3001";
 axios.defaults.baseURL = "http://localhost:3001";
 
 function App() {
@@ -49,11 +53,16 @@ function App() {
         <Route element={<ProtectedRoutes allowedRoles={["student"]} />}>
           <Route exact path="/carrito" element={<Carrito />} />
           <Route exact path="/Stripe" element={<AppStripe />} />
+          <Route exact path="/miPerfil" element={<MiPerfil />} />
         </Route>
         
         
         <Route exact path="/editarUsuario" element={<EditarLanding />} />
         <Route exact path="/" element={<Landing />} />
+        {/* Esto es agregado para probar su funcionalidad, despues hay que borrarlo */}
+        <Route exact path="/Disqus" element={<Disqus />} />
+        <Route exact path="/firestorages" element={<Firestoragev2 />} />
+        {/* Hasta aqui */}
         <Route exact path="/sobreNosotros" element={<Caracteristicas />} />
         <Route exact path="/contacto" element={<Contacto />} />
         <Route exact path="/login" element={<Login />} />
