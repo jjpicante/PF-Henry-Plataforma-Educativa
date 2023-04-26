@@ -82,9 +82,15 @@ function Navbar() {
             </li>
           )}
 
+
           <li className={style.miPerfil}>
             <Link to="/miPerfil" className={style.navLink}>
               Mi Perfil
+            </Link>
+          </li>
+          <li /* className={style.miPerfil} */>
+            <Link to="/editarUsuario" className={style.navLink}>
+              Editar Usuario
             </Link>
           </li>
           <li className={style.navItem}>
