@@ -64,8 +64,6 @@ const postAlumno = async (
       apellido: apellido.toLowerCase(),
       email: email.toLowerCase(),
     });
-    alumnodb.firebaseUserId = user.uid;
-    await alumnodb.save();
 
   
     /* Esto funciona para que el aula se relacione al alumno    

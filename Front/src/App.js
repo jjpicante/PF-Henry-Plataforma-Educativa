@@ -16,9 +16,14 @@ import Contacto from "./Components/Landing/Contacto/Contacto";
 import EditarLanding from "./Components/Editar/Landing/EditarLanding";
 import Editar from "./Components/Editar/Alumno/Editar";
 import ProtectedRoutes from "./Components/ProtectedRoute/protectedRoute";
+import ResetPassword from "./Components/ResetPassword/resetPassword";
 import axios from "axios";
 import { MiPerfil } from "./Components/MiPerfil/miPerfil";
+import Disqus from "./Components/Coments/disqus";
+import Firestoragev2 from "./Components/almacenamiento/Firestoragev2";
+
 /* axios.defaults.baseURL = "https://servidor-plataformae2.onrender.com"; */
+axios.defaults.baseURL = "http://localhost:3001";
 axios.defaults.baseURL = "http://localhost:3001";
 
 function App() {
@@ -41,18 +46,24 @@ function App() {
           <Route exact path="/formAlumno" element={<Form />} />
           <Route exact path="/formProfesor" element={<FormProfesor />} />
           <Route exact path="/formsubject" element={<FormSubject />} />
+          <Route exact path="/editarLanding" element={<EditarLanding />} />
+          <Route exact path="/editarAlumno/:username" element={<Editar />} />
         </Route>
 
         <Route element={<ProtectedRoutes allowedRoles={["student"]} />}>
           <Route exact path="/carrito" element={<Carrito />} />
           <Route exact path="/Stripe" element={<AppStripe />} />
           <Route exact path="/miPerfil" element={<MiPerfil />} />
-          <Route exact path="/editarLanding" element={<EditarLanding />} />
-          <Route exact path="/editarAlumno/:username" element={<Editar />} />
         </Route>
 
+        
+        <Route exact path="/reset-password" element={<ResetPassword />}/>
         <Route exact path="/editarUsuario" element={<EditarLanding />} />
         <Route exact path="/" element={<Landing />} />
+        {/* Esto es agregado para probar su funcionalidad, despues hay que borrarlo */}
+        <Route exact path="/Disqus" element={<Disqus />} />
+        <Route exact path="/firestorages" element={<Firestoragev2 />} />
+        {/* Hasta aqui */}
         <Route exact path="/sobreNosotros" element={<Caracteristicas />} />
         <Route exact path="/contacto" element={<Contacto />} />
         <Route exact path="/login" element={<Login />} />

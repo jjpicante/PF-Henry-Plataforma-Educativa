@@ -16,6 +16,7 @@ import {
   VERIFY_USER_ERROR,
   GET_USER_DATA_GOOGLE,
   POST_PROFESOR,
+  RESET_PASSWORD,
 } from "./actionsTypes";
 
 const initialState = {
@@ -42,7 +43,8 @@ export default function reducer(state = initialState, { type, payload }) {
     case EDIT_ALUMNO:
       return{
         ...state,
-        editResponse: payload
+        userData: payload.alumno,
+        editResponse: payload.mensaje
       }  
     case POST_PROFESOR:
       return {
@@ -67,7 +69,7 @@ export default function reducer(state = initialState, { type, payload }) {
     case GET_MATERIAS_BY_NAME:
       return {
         ...state,
-        materias: payload
+        materias: payload,
       };
     case GET_MATERIAS_BY_ANIO:
       return {
@@ -102,7 +104,7 @@ export default function reducer(state = initialState, { type, payload }) {
     case LOGOUT_SUCCESS:
       return {
         ...state,
-        userRole: "",
+        userData: null,
       };
     case LOGOUT_ERROR:
       return {
@@ -113,6 +115,10 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         userData: payload,
       };
+    case RESET_PASSWORD:
+      return {
+        ...state,
+      }
     default:
       return { ...state };
   }
