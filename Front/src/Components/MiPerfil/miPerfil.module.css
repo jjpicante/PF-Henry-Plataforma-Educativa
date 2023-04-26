@@ -1,8 +1,13 @@
 .container{
+    display: flex;
+    flex-direction: column;
     background-color: rgb(6, 124, 124);
     height: 1600px;
+    align-items: center;
 }
 
 .containerDatos{
     background-color: rgb(203, 211, 218);
+    width: 600px;
+    border: solid black 3px;
 }
