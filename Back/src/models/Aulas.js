@@ -6,16 +6,13 @@ module.exports = (sequelize) => {
     "Aulas",
     {
       id: {
-        type: DataTypes.UUID,
+        type: DataTypes.INTEGER,
         primaryKey: true,
-        defaultValue: DataTypes.UUIDV4,
         allowNull: false,
-        // type: DataTypes.INTEGER,
-        // primaryKey: true,
-        // autoIncrement: true,
+        autoIncrement: true,
       },
       anio: {
-        type: DataTypes.DATE,
+        type: DataTypes.STRING,
         allowNull: false,
         unique: true,
       },

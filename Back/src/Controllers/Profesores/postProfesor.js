@@ -1,5 +1,5 @@
 const { Op } = require("sequelize");
-const { Profesores, Materias } = require("../../db");
+const { Profesores, Materias, Aulas } = require("../../db");
 
 const postProfesor = async (
   name,
@@ -50,6 +50,16 @@ const postProfesor = async (
     }
     profesordb.addMaterias(foundMateria1);
 
+    // Carga de Aula 1
+
+    const foundAula1 = await Aulas.findOne({
+      where: { anio: anio1 },
+    });
+    if (!foundAula1) {
+      return { error: "El aula indicada no se encuentra" };
+    }
+    profesordb.addAulas(foundAula1);
+
     //* ------------------------> Carga de Materia 2 (opcional) <-------------------------
 
     if (anio2 && materia2 !== "materia") {
@@ -60,6 +70,15 @@ const postProfesor = async (
         return { error: "La materia indicada no se encuentra" };
       }
       profesordb.addMaterias(foundMateria2);
+
+      // Carga de Aula 2
+      const foundAula2 = await Aulas.findOne({
+        where: { anio: anio2 },
+      });
+      if (!foundAula2) {
+        return { error: "El aula indicada no se encuentra" };
+      }
+      profesordb.addAulas(foundAula2);
     }
 
     //* ------------------------> Carga de Materia 3 (opcional) <-------------------------
@@ -72,6 +91,15 @@ const postProfesor = async (
         return { error: "La materia indicada no se encuentra" };
       }
       profesordb.addMaterias(foundMateria3);
+
+      // Carga de Aula 3
+      const foundAula3 = await Aulas.findOne({
+        where: { anio: anio3 },
+      });
+      if (!foundAula3) {
+        return { error: "El aula indicada no se encuentra" };
+      }
+      profesordb.addAulas(foundAula3);
     }
 
     return { message: "Profesor creado con exito" };
