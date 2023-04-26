@@ -18,16 +18,15 @@ export function MiPerfil() {
   const response = useSelector((state) => state.editResponse);
   const currentusername = userData?.username;
 
-  console.log(response);
-  useEffect(()=>{
-    setvaloresOriginales ({
+  useEffect(() => {
+    setvaloresOriginales({
       username: userData.username,
       email: userData.email,
       password: userData.password,
-    })
-  },[userData])
-  const [valoresOriginales, setvaloresOriginales] = useState({})
-  console.log(valoresOriginales);
+    });
+  }, [userData]);
+  const [valoresOriginales, setvaloresOriginales] = useState({});
+
   //Username
   const [userName, setUserName] = useState(userData?.username);
   const [editUserName, setEditUserName] = useState(true);
@@ -112,15 +111,15 @@ export function MiPerfil() {
     return propiedadesCambiadas;
   };
 
- 
-
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(
       editAlumno(currentusername, paraEditar(valoresOriginales, nuevosValores))
     );
-    window.alert(response)
-}
+    if (response) {
+      window.alert(response);
+    }
+  };
 
   const hasErrors = () => {
     return Object.values(error).some((error) => error !== "");
