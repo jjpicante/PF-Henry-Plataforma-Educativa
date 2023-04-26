@@ -7,8 +7,9 @@ import { getStudents } from "../../Redux/actions";
 export default function Alumnos() {
   const dispatch = useDispatch();
   const alumnos = useSelector((state) => state.students);
-  alumnos.sort((a, b) => (a.Apellido < b.Apellido ? -1 : a.Apellido > b.Apellido ? 1 : 0));
-  console.log(alumnos);
+  alumnos.sort((a, b) =>
+    a[0].apellido < b[0].apellido ? -1 : a[0].apellido > b[0].apellido ? 1 : 0
+  );
   useEffect(() => {
     dispatch(getStudents());
   }, [dispatch]);
@@ -18,11 +19,13 @@ export default function Alumnos() {
       <Navbar />
       <h1 className={style.titulo}>Alumnos</h1>
       <div className={style.containerAlumnos}>
-        {alumnos?.map((el, i) => (
-          <p key={i} className={style.alumnos}>
-            {i+1}- {el.Apellido}, {el.Nombre}
-          </p>
-        ))}
+        {alumnos?.map((el, i) => {
+          return (
+            <p key={i} className={style.alumnos}>
+              {i + 1}- {el[0].apellido}, {el[0].name}
+            </p>
+          );
+        })}
       </div>
     </div>
   );
