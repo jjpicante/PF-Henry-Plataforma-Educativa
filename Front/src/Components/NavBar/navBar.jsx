@@ -78,7 +78,7 @@ function Navbar() {
             </Link>
           </li>
           <li /* className={style.miPerfil} */>
-            <Link to="/editarUsuario" className={style.navLink}>
+            <Link to="/editarLanding" className={style.navLink}>
               Editar Usuario
             </Link>
           </li>

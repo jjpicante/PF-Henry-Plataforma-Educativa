@@ -14,7 +14,11 @@
 }
 
 .select {
-  /* position: absolute; */
   width: 20%;
   height: 4vh;
+}
+
+.link {
+  text-decoration: none;
+  color: black;
 }

@@ -1,7 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import axios from "axios";
 import Navbar from "../../NavBar/navBar";
 import { getStudents, getProfesors } from "../../../Redux/actions";
 import Select from "./Select.jsx";
@@ -11,14 +10,17 @@ export default function EditarUsuarios() {
   const dispatch = useDispatch();
   const alumnos = useSelector((state) => state.students);
   const profesores = useSelector((state) => state.profesors);
-  //const [renderArray, setRenderArray] = useState(select(alumnos, profesores));
+
+  //* -----------------> Se cargan todos los profesores y alumnos por default <-----------------
   const [renderUsers, setRenderUsers] = useState({
     alumnos: alumnos,
     profesores: profesores,
   });
 
+  //* ------------------> Cada filtro se establece con su nombre por default <------------------
   const [filtros, setFiltros] = useState({
     Rol: "Filtrar Rol",
+    Año: "Filtrar Año",
   });
 
   const filterHandler = (ev) => {
@@ -67,7 +69,29 @@ export default function EditarUsuarios() {
             </option>
           ))}
         </select>
-        <Select alumnos={renderUsers.alumnos} profesores={renderUsers.profesores} />
+
+        <select
+          className={style.select}
+          type="text"
+          name="Año"
+          onChange={(ev) => filterHandler(ev)}
+          value={filtros.Año}
+        >
+          <option value="Filtrar Año" disabled={true}>
+            Filtrar Año
+          </option>
+          {["Mostrar Todos", "1ro", "2do", "3ro", "4to", "5to", "6to"].map((i) => (
+            <option value={i} key={i}>
+              {i}
+            </option>
+          ))}
+        </select>
+
+        <Select
+          alumnos={renderUsers.alumnos}
+          profesores={renderUsers.profesores}
+          año={filtros.Año}
+        />
       </div>
     </div>
   );

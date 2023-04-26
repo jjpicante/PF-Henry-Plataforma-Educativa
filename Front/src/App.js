@@ -14,6 +14,7 @@ import Login from "./Components/Landing/Login/Login";
 import Caracteristicas from "./Components/Landing/Caracteristicas/Caracteristicas";
 import Contacto from "./Components/Landing/Contacto/Contacto";
 import EditarLanding from "./Components/Editar/Landing/EditarLanding";
+import Editar from "./Components/Editar/Alumno/Editar";
 import ProtectedRoutes from "./Components/ProtectedRoute/protectedRoute";
 import axios from "axios";
 import { MiPerfil } from "./Components/MiPerfil/miPerfil";
@@ -36,7 +37,8 @@ function App() {
           <Route exact path="/carrito" element={<Carrito />} />
           <Route exact path="/Stripe" element={<AppStripe />} />
           <Route exact path="/miPerfil" element={<MiPerfil />} />
-          <Route exact path="/editarUsuario" element={<EditarLanding />} />
+          <Route exact path="/editarLanding" element={<EditarLanding />} />
+          <Route exact path="/editarAlumno/:username" element={<Editar />} />
         </Route>
 
         <Route exact path="/" element={<Landing />} />
