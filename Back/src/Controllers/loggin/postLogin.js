@@ -1,5 +1,5 @@
-const { auth, googleProvider } = require('../../config/firebase');
-const { signInWithEmailAndPassword, signInWithPopup, signOut } = require("firebase/auth");
+const { auth, googleProvider } = require("../../config/firebase");
+const { signInWithEmailAndPassword } = require("firebase/auth");
 const { Alumnos, Profesores } = require("../../db");
 
 const postLogin = async (email, password) => {
@@ -41,21 +41,5 @@ const postLogin = async (email, password) => {
       }
     }
   };
-
-  const loginGoogle = async (Idcliente) => {
-    try {
-      //obtener datos del usuario por idcliente y devolverlos
-    } catch (error) {
-      return { error: "Algo Fallo. Contacte con un administrador" }
-    }
-  }
-
-  const logOut = async () => {
-    try {
-      await signOut(auth);
-    } catch (error) {
-      return { error: "Algo Fallo. Contacte con un administrador" }
-    }
-  }
 
   module.exports = { postLogin, loginGoogle, logOut };
