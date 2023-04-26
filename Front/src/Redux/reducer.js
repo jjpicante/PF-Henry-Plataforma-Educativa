@@ -60,7 +60,7 @@ export default function reducer(state = initialState, { type, payload }) {
     case GET_MATERIAS_BY_NAME:
       return {
         ...state,
-        materias: payload
+        materias: payload,
       };
     case GET_MATERIAS_BY_ANIO:
       return {
@@ -95,7 +95,7 @@ export default function reducer(state = initialState, { type, payload }) {
     case LOGOUT_SUCCESS:
       return {
         ...state,
-        userRole: "",
+        userData: false,
       };
     case LOGOUT_ERROR:
       return {
