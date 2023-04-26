@@ -1,13 +1,14 @@
 import React from "react";
 import style from "./NavBar.module.css";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../Redux/actions";
 import { auth } from "../../config/firebase";
 import { signOut } from "firebase/auth";
 
 function Navbar() {
   const dispatch = useDispatch();
+  const userData = useSelector((state) => state.userData);
 
   const handleLogout = async () => {
     try {
@@ -47,31 +48,41 @@ function Navbar() {
               </li>
             </ul>
           </li>
-          <li className={style.navItem}>
-            <Link to="/Cursos" className={style.navLink}>
-              Mis Cursos
-            </Link>
-          </li>
-          <li className={`${style.navItem} ${style.dropdown}`}>
-            <span className={style.miaula}>Crear</span>
-            <ul className={style.dropdownContent}>
-              <li>
-                <Link to="/formAlumno" className={style.navLink}>
-                  Alumno
-                </Link>
-              </li>
-              <li>
-                <Link to="/formProfesor" className={style.navLink}>
-                  Profesor
-                </Link>
-              </li>
-            </ul>
-          </li>
-          <li className={style.navItem}>
-            <Link to="/carrito" className={style.navLink}>
-              Cuotas
-            </Link>
-          </li>
+          {userData?.rol === "profesor" && (
+            <li className={style.navItem}>
+              <Link to="/Cursos" className={style.navLink}>
+                Mis Cursos
+              </Link>
+            </li>
+          )}
+
+          {userData?.rol === "admin" && (
+            <li className={`${style.navItem} ${style.dropdown}`}>
+              <span className={style.miaula}>Crear</span>
+              <ul className={style.dropdownContent}>
+                <li>
+                  <Link to="/formAlumno" className={style.navLink}>
+                    Alumno
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/formProfesor" className={style.navLink}>
+                    Profesor
+                  </Link>
+                </li>
+              </ul>
+            </li>
+          )}
+
+          {userData?.rol === "student" && (
+            <li className={style.navItem}>
+              <Link to="/carrito" className={style.navLink}>
+                Cuotas
+              </Link>
+            </li>
+          )}
+
+
           <li className={style.miPerfil}>
             <Link to="/miPerfil" className={style.navLink}>
               Mi Perfil
