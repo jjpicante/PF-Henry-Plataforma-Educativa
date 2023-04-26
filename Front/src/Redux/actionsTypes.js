@@ -16,4 +16,5 @@ export const GET_MATERIAS_BY_ANIO = 'GET_MATERIAS_BY_ANIO';
 export const SET_USER_ROLE = "SET_USER_ROLE";
 export const CLEAR_USER_ROLE = "CLEAR_USER_ROLE";
 export const POST_PROFESOR = "POST_PROFESOR";
+export const EDIT_ALUMNO = "EDIT_ALUMNO";
 
