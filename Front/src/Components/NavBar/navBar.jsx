@@ -47,11 +47,11 @@ function Navbar() {
               </li>
             </ul>
           </li>
-            <li className={style.navItem}>
-              <Link to="/Cursos" className={style.navLink}>
-                Mis Cursos
-              </Link>
-            </li>
+          <li className={style.navItem}>
+            <Link to="/Cursos" className={style.navLink}>
+              Mis Cursos
+            </Link>
+          </li>
           <li className={`${style.navItem} ${style.dropdown}`}>
             <span className={style.miaula}>Crear</span>
             <ul className={style.dropdownContent}>
@@ -65,8 +65,8 @@ function Navbar() {
                   Profesor
                 </Link>
               </li>
-              </ul>
-              </li>
+            </ul>
+          </li>
           <li className={style.navItem}>
             <Link to="/carrito" className={style.navLink}>
               Cuotas
@@ -75,6 +75,11 @@ function Navbar() {
           <li className={style.miPerfil}>
             <Link to="/miPerfil" className={style.navLink}>
               Mi Perfil
+            </Link>
+          </li>
+          <li /* className={style.miPerfil} */>
+            <Link to="/editarUsuario" className={style.navLink}>
+              Editar Usuario
             </Link>
           </li>
           <li className={style.navItem}>
