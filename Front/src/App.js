@@ -52,7 +52,6 @@ function App() {
         </Route>
         
         
-        <Route exact path="/miPerfil" element={<MiPerfil />} />
         <Route exact path="/editarUsuario" element={<EditarLanding />} />
         <Route exact path="/" element={<Landing />} />
         <Route exact path="/sobreNosotros" element={<Caracteristicas />} />
