@@ -6,11 +6,11 @@ import { doc, setDoc, collection, getDocs } from "firebase/firestore";
 import { v4 } from "uuid";
 import styles from "./FireStorage.module.css";
 
-const FireStorage = () => {
+const FireStorage = ({ visible, url }) => {
   const [fileupload, setFileupload] = useState(null);
   const [fileList, setFileList] = useState("");
   const [document, setDocument] = useState([]);
-  console.log(document);
+  console.log(url.pathname);
   const fileslist = ref(storage, "PDF/");
 
   const upload = async (e) => {
@@ -59,6 +59,9 @@ const FireStorage = () => {
     const filRef = doc(db, "archivos", nombreArchivo);
     await setDoc(filRef, { nombre: nombreArchivo, url: fileList });
     console.log("User document created in Firestore:", fileupload.name);
+    //!una vez arreglado el tema de que al hacer f5 se te deslogue, esto se agrega
+    //!para que automaticamente te devuelva a la url en la que estes y asi se pueda ver el archivo
+    // window.location = url.pathname;
   };
 
   useEffect(() => {
@@ -72,7 +75,7 @@ const FireStorage = () => {
 
   return (
     <>
-      <form onSubmit={submitHandler} className={styles.form}>
+      <form onSubmit={submitHandler} className={visible === true ? styles.form : styles.none}>
         <input type="file" onChange={upload} className={styles.input} />
         <input type="text" name="nombre" placeholder="nombra tu archivo" className={styles.input} />
         <button className={styles.button}>Enviar </button>
