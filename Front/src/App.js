@@ -15,6 +15,7 @@ import Caracteristicas from "./Components/Landing/Caracteristicas/Caracteristica
 import Contacto from "./Components/Landing/Contacto/Contacto";
 import EditarLanding from "./Components/Editar/Landing/EditarLanding";
 import ProtectedRoutes from "./Components/ProtectedRoute/protectedRoute";
+import ResetPassword from "./Components/ResetPassword/resetPassword";
 import axios from "axios";
 import { MiPerfil } from "./Components/MiPerfil/miPerfil";
 import Disqus from "./Components/Coments/disqus";
@@ -56,7 +57,8 @@ function App() {
           <Route exact path="/miPerfil" element={<MiPerfil />} />
         </Route>
         
-        
+
+        <Route exact path="/reset-password" element={<ResetPassword />}/>
         <Route exact path="/editarUsuario" element={<EditarLanding />} />
         <Route exact path="/" element={<Landing />} />
         {/* Esto es agregado para probar su funcionalidad, despues hay que borrarlo */}

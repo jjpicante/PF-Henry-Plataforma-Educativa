@@ -16,6 +16,7 @@ import {
   VERIFY_USER_ERROR,
   GET_USER_DATA_GOOGLE,
   POST_PROFESOR,
+  RESET_PASSWORD,
 } from "./actionsTypes";
 
 const initialState = {
@@ -113,6 +114,10 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         userData: payload,
       };
+    case RESET_PASSWORD:
+      return {
+        ...state,
+      }
     default:
       return { ...state };
   }

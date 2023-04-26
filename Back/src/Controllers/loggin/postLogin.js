@@ -1,14 +1,11 @@
 const { auth, googleProvider } = require("../../config/firebase");
-const { signInWithEmailAndPassword, signInWithPopup, signOut } = require("firebase/auth");
-const { Alumnos } = require("../../db");
+const { signInWithEmailAndPassword } = require("firebase/auth");
+const { Alumnos, Profesores } = require("../../db");
 
 const postLogin = async (email, password) => {
   try {
-    // Check if user exists in Firestore
-    const firestoreUser = await auth.getUserByEmail(email);
-
     // If user exists in Firestore, authenticate with email and password
-    await signInWithEmailAndPassword(auth, email, password);
+    const firestoreUser = await signInWithEmailAndPassword(auth, email, password);
 
     return firestoreUser;
   } catch (firestoreError) {
@@ -19,29 +16,30 @@ const postLogin = async (email, password) => {
         return { error: "User not found" };
       }
       if (dbUser.password !== password) {
-        return { error: "Invalid Credentials" };
+        return { error: "Invalid Credentials" }
       }
       return dbUser;
     } catch (dbError) {
-      return { error: "Error logging in" };
+      try {
+        const dbProfesor = await Profesores.findOne({ where: { email: email } });
+        if (!dbProfesor) {
+          return { error: "User not found" };
+        }
+        if (dbProfesor.password !== password) {
+          return { error: "Invalid Credentials" }
+        }
+        return dbProfesor;
+      } catch (error) {
+        // Check if the user is authenticated in Firebase
+        const currentUser = auth.currentUser;
+        if (currentUser && currentUser.email === email) {
+          return currentUser;
+        }else {
+          return { error: "Error Logging In" }
+        }
+        }
+      }
     }
-  }
-};
+  };
 
-const loginGoogle = async (Idcliente) => {
-  try {
-    //obtener datos del usuario por idcliente y devolverlos
-  } catch (error) {
-    return { error: "Algo Fallo. Contacte con un administrador" };
-  }
-};
-
-const logOut = async () => {
-  try {
-    await signOut(auth);
-  } catch (error) {
-    return { error: "Algo Fallo. Contacte con un administrador" };
-  }
-};
-
-module.exports = { postLogin, loginGoogle, logOut };
+  module.exports = { postLogin, loginGoogle, logOut };

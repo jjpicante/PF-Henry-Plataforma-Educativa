@@ -16,6 +16,7 @@ import {
   VERIFY_USER_ERROR,
   GET_USER_DATA_GOOGLE,
   POST_PROFESOR,
+  RESET_PASSWORD,
 } from "./actionsTypes";
 import axios from "axios";
 
@@ -243,4 +244,17 @@ export const verifiedGoogleLogIn = (email) => async (dispatch) => {
   } catch (error) {
     dispatch({ type: GET_USER_DATA_GOOGLE, payload: false });
   }
+};
+
+export const resetPassword = (email) => {
+  return async function (dispatch) {
+    try {
+      const response = await axios.post("/reset", { email });
+      dispatch({ type: RESET_PASSWORD });
+      window.alert("Se ha enviado un correo para restablecer la contraseña");
+    } catch (error) {
+      console.log(error);
+      window.alert("No se pudo enviar el correo para restablecer la contraseña");
+    }
+  };
 };
