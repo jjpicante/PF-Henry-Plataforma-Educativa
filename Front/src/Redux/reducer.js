@@ -6,6 +6,7 @@ import {
   GET_MATERIAS_BY_NAME,
   GET_MATERIAS_BY_ANIO,
   CLEAN_DETAIL,
+  CLEAN_RESPONSE,
   POST_ALUMNO,
   EDIT_ALUMNO,
   LOGIN_SUCCESS,
@@ -81,6 +82,11 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         materiaById: payload,
       };
+    case CLEAN_RESPONSE:
+      return {
+        ...state,
+        editResponse: payload
+      }
     case LOGIN_FAILED:
       return {
         ...state,
