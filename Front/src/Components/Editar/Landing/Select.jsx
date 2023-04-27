@@ -18,6 +18,7 @@ export default function Select({ alumnos, profesores, año }) {
             const profe = await dispatch(getProfesor(profesor.username));
             const aulas = profe.Aulas;
             newArray.push({
+              username: profesor.username,
               apellido: profesor.apellido,
               name: profesor.name,
               Rol: profesor.rol,
@@ -32,6 +33,7 @@ export default function Select({ alumnos, profesores, año }) {
             const aulas = profe.Aulas;
             if (aulas.some((elem) => elem.anio === año)) {
               newArray.push({
+                username: profesor.username,
                 apellido: profesor.apellido,
                 name: profesor.name,
                 Rol: profesor.rol,
@@ -72,13 +74,22 @@ export default function Select({ alumnos, profesores, año }) {
       setRenderArray(newArray);
     };
     fetchData();
-  }, [alumnos, profesores, dispatch, año]); //!BREAKPOINT
+  }, [alumnos, profesores, dispatch, año]);
 
   return (
     <div>
       {renderArray.map((el, i) => {
         return (
-          <Link to={`/editarAlumno/${el.username}`} key={i} className={styles.link} id={el.id}>
+          <Link
+            to={
+              el.Rol === "student"
+                ? `/editarAlumno/${el.username}`
+                : `/editarProfesor/${el.username}`
+            }
+            key={i}
+            className={styles.link}
+            id={el.id}
+          >
             <p>
               {el.apellido}, {el.name} - Rol: {el.Rol} - Año: {el.Aulas}
             </p>

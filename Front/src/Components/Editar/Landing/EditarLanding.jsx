@@ -30,11 +30,13 @@ export default function EditarUsuarios() {
     });
   };
 
+  //Al cargarse por primera vez, trae todos los datos de la DB
   useEffect(() => {
     dispatch(getStudents());
     dispatch(getProfesors());
   }, []);
 
+  //Actualiza los datos mostrados cuando se aplican filtros
   useEffect(() => {
     switch (filtros.Rol) {
       case "profesor":

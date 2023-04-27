@@ -15,6 +15,7 @@ import Caracteristicas from "./Components/Landing/Caracteristicas/Caracteristica
 import Contacto from "./Components/Landing/Contacto/Contacto";
 import EditarLanding from "./Components/Editar/Landing/EditarLanding";
 import Editar from "./Components/Editar/Alumno/Editar";
+import EditarProfesor from "./Components/Editar/Profesor/EditarProf";
 import ProtectedRoutes from "./Components/ProtectedRoute/protectedRoute";
 import ResetPassword from "./Components/ResetPassword/resetPassword";
 import axios from "axios";
@@ -39,18 +40,28 @@ function App() {
           <Route exact path="/Aulas/materia/:id" element={<Detail />} />
           <Route exact path="/miPerfil" element={<MiPerfil />} />
         </Route>
-
         <Route element={<ProtectedRoutes allowedRoles={["profesor"]} />}>
           <Route exact path="/Cursos" element={<Classroom />} />
         </Route>
 
+       
+        {/* VOLVER A METER DENTRO DE ADMIN */}
+        <Route exact path="/editarLanding" element={<EditarLanding />} />
+        <Route exact path="/editarAlumno/:username" element={<Editar />} />
+        <Route exact path="/editarProfesor/:username" element={<EditarProfesor />} />
+        {/* ************** */}
+
+
         <Route element={<ProtectedRoutes allowedRoles={["admin"]} />}></Route>
+
 
         <Route element={<ProtectedRoutes allowedRoles={["student"]} />}>
           <Route exact path="/carrito" element={<Carrito />} />
           <Route exact path="/Stripe" element={<AppStripe />} />
           <Route exact path="/miPerfil" element={<MiPerfil />} />
         </Route>
+
+        <Route exact path="/reset-password" element={<ResetPassword />} />
 
         <Route exact path="/" element={<Landing />} />
         {/* esto deberia ir en admin */}

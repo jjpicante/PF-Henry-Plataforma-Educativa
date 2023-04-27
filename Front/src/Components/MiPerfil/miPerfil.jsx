@@ -3,12 +3,7 @@ import { useState, useEffect } from "react";
 import style from "./miPerfil.module.css";
 import Navbar from "../NavBar/navBar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faEye,
-  faEyeSlash,
-  faPenToSquare,
-  faCheck,
-} from "@fortawesome/free-solid-svg-icons";
+import { faEye, faEyeSlash, faPenToSquare, faCheck } from "@fortawesome/free-solid-svg-icons";
 import validate from "./validate";
 import { cleanResponse, editAlumno } from "../../Redux/actions";
 import Swal from 'sweetalert2'
@@ -115,9 +110,11 @@ export function MiPerfil() {
 
   const submitHandler = (e) => {
     e.preventDefault();
+
     dispatch(
       editAlumno(currentusername, paraEditar(valoresOriginales, nuevosValores))
     );
+
   };
 
   const hasErrors = () => {
@@ -227,14 +224,8 @@ console.log(response);
                 <input type="text" value={userData?.anio} disabled={true} />
               </div>
               <div>
-                <label htmlFor={userData?.datebirth}>
-                  Fecha de nacimiento:{" "}
-                </label>
-                <input
-                  type="text"
-                  value={userData?.datebirth.slice(0, 10)}
-                  disabled={true}
-                />
+                <label htmlFor={userData?.datebirth}>Fecha de nacimiento: </label>
+                <input type="text" value={userData?.datebirth.slice(0, 10)} disabled={true} />
               </div>
               <div>
                 <label htmlFor={userData?.rol}>Rol: </label>

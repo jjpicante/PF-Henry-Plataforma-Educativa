@@ -156,7 +156,7 @@ export const getMateriasByAnio = (anio) => {
     const result = await axios.get(`/Materias/filtermateria?anio=${anio}`);
     const materiaByAnio = result.data;
     dispatch({ type: GET_MATERIAS_BY_ANIO, payload: materiaByAnio });
-    console.log(materiaByAnio);
+    //console.log(materiaByAnio);
 
     //     if (result) {
     //       dispatch({ type: GET_MATERIAS_BY_ANIO, payload: result.data.materias });
