@@ -3,7 +3,7 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: rgb(6, 124, 124);
+  background: linear-gradient(to bottom, #5bc5a7, #137078);
 }
 
 .formBox {
