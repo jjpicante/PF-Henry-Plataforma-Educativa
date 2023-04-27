@@ -36,7 +36,8 @@ const updateAlumno = async (currentusername, changes) => {
       await updateMeses.save();
     }
 
-    return updateAlumno;
+    return {alumno: updateAlumno,
+            mensaje: "Tus datos se modificaron con éxito"}
   } catch (error) {
     return { error: `Error al actualizar al alumno: ${currentusername}` };
   }

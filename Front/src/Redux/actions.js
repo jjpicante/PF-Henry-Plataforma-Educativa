@@ -6,7 +6,9 @@ import {
   GET_MATERIAS_BY_NAME,
   GET_MATERIAS_BY_ANIO,
   CLEAN_DETAIL,
+  CLEAN_RESPONSE,
   POST_ALUMNO,
+  EDIT_ALUMNO,
   LOGIN_SUCCESS,
   LOGIN_FAILED,
   LOGOUT_SUCCESS,
@@ -16,6 +18,7 @@ import {
   GET_USER_DATA_GOOGLE,
   POST_PROFESOR,
   GET_AULAS,
+  RESET_PASSWORD,
 } from "./actionsTypes";
 import axios from "axios";
 
@@ -34,6 +37,18 @@ export const getStudents = () => {
         type: GET_STUDENTS,
         payload: alumnos,
       });
+    } catch (error) {
+      return dispatch({ type: "ERROR", payload: error });
+    }
+  };
+};
+
+export const getStudent = (username) => {
+  return async function (dispatch) {
+    try {
+      const response = await axios.get(`/alumnos/getAlumno?username=${username}`);
+      const alumno = response.data;
+      return alumno;
     } catch (error) {
       return dispatch({ type: "ERROR", payload: error });
     }
@@ -88,6 +103,19 @@ export const postProfesor = (form) => {
     } catch (error) {
       console.log("entro al catch");
     }
+  };
+};
+
+export const editAlumno = (currentusername, changes) => {
+  return (dispatch) => {
+    axios
+      .put(`/alumnos/${currentusername}`, changes)
+      .then((response) => {
+        dispatch({ type: EDIT_ALUMNO, payload: response.data });
+      })
+      .catch((error) => {
+        dispatch({ type: EDIT_ALUMNO, payload: error.response.data.error });
+      });
   };
 };
 
@@ -155,6 +183,13 @@ export const cleanDetail = () => {
   return {
     type: CLEAN_DETAIL,
     payload: [],
+  };
+};
+
+export const cleanResponse = () => {
+  return {
+    type: CLEAN_RESPONSE,
+    payload: null,
   };
 };
 
@@ -238,4 +273,17 @@ export const verifiedGoogleLogIn = (email) => async (dispatch) => {
   } catch (error) {
     dispatch({ type: GET_USER_DATA_GOOGLE, payload: false });
   }
+};
+
+export const resetPassword = (email) => {
+  return async function (dispatch) {
+    try {
+      const response = await axios.post("/reset", { email });
+      dispatch({ type: RESET_PASSWORD });
+      window.alert("Se ha enviado un correo para restablecer la contraseña");
+    } catch (error) {
+      console.log(error);
+      window.alert("No se pudo enviar el correo para restablecer la contraseña");
+    }
+  };
 };

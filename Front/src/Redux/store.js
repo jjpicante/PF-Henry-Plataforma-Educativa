@@ -1,14 +1,17 @@
-import { applyMiddleware, compose, createStore } from 'redux';
-import reducer from './reducer';                                                  
-import thunkMiddleware from 'redux-thunk';                                        
+import { applyMiddleware, compose, createStore } from "redux";
+import rootReducer from "./reducer";
+import thunkMiddleware from "redux-thunk";
+import { persistReducer, persistStore } from "redux-persist";
+import storage from "redux-persist/lib/storage"; // defaults to localStorage for web
 
-const composeEnhancer = window._REDUX_DEVTOOLS_EXTENSION_COMPOSE_ || compose;    
+const composeEnhancer = window._REDUX_DEVTOOLS_EXTENSION_COMPOSE_ || compose;
+const persistConfig = { key: "root", storage };
 
-const store = createStore(                                                  
-    reducer,                                                                       
-    composeEnhancer(applyMiddleware(thunkMiddleware))                             
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+export const store = createStore(
+  persistedReducer,
+  composeEnhancer(applyMiddleware(thunkMiddleware))
 );
 
-
-export default store;
-
+export const persistor = persistStore(store);

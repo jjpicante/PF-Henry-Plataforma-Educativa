@@ -6,7 +6,9 @@ import {
   GET_MATERIAS_BY_NAME,
   GET_MATERIAS_BY_ANIO,
   CLEAN_DETAIL,
+  CLEAN_RESPONSE,
   POST_ALUMNO,
+  EDIT_ALUMNO,
   LOGIN_SUCCESS,
   LOGIN_FAILED,
   LOGOUT_SUCCESS,
@@ -16,6 +18,7 @@ import {
   GET_USER_DATA_GOOGLE,
   POST_PROFESOR,
   GET_AULAS,
+  RESET_PASSWORD,
 } from "./actionsTypes";
 
 const initialState = {
@@ -26,6 +29,7 @@ const initialState = {
   pageCount: "",
   materiaById: [],
   userData: null,
+  editResponse: null,
 };
 
 export default function reducer(state = initialState, { type, payload }) {
@@ -38,6 +42,12 @@ export default function reducer(state = initialState, { type, payload }) {
     case POST_ALUMNO:
       return {
         ...state,
+      };
+    case EDIT_ALUMNO:
+      return {
+        ...state,
+        userData: payload?.alumno ? payload.alumno : state.userData,
+        editResponse: payload?.mensaje ? payload.mensaje : payload,
       };
     case POST_PROFESOR:
       return {
@@ -79,6 +89,11 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         materiaById: payload,
       };
+    case CLEAN_RESPONSE:
+      return {
+        ...state,
+        editResponse: payload,
+      };
     case LOGIN_FAILED:
       return {
         ...state,
@@ -102,7 +117,7 @@ export default function reducer(state = initialState, { type, payload }) {
     case LOGOUT_SUCCESS:
       return {
         ...state,
-        userRole: "",
+        userData: null,
       };
     case LOGOUT_ERROR:
       return {
@@ -112,6 +127,10 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
         userData: payload,
+      };
+    case RESET_PASSWORD:
+      return {
+        ...state,
       };
     default:
       return { ...state };
