@@ -1,5 +1,5 @@
 .cardsContent {
-  background: linear-gradient(to bottom, #5bc5a7, #137078);
+  background: linear-gradient(to bottom, #137078, #5bc5a7);
   border-radius: 20px;
   display: flex;
   flex-direction: row;
