@@ -4,13 +4,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Navbar from "../../NavBar/navBar";
-import { getStudent, editAlumno } from "../../../Redux/actions";
-import { validations } from "./validations";
-import style from "./Editar.module.css";
+import { getProfesor, getMateriasByAnio, editAlumno } from "../../../Redux/actions";
+import { validate } from "./validations";
+import style from "./EditarProf.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 
-export default function EditarUsuarios() {
+export default function EditarProfesor() {
   const dispatch = useDispatch();
   const params = useParams();
   const navigate = useNavigate();
@@ -33,11 +33,39 @@ export default function EditarUsuarios() {
     apellido: true,
     datebirth: true,
     nacionalidad: true,
-    anio: true,
+    anio1: true,
+    anio2: true,
+    anio3: true,
+    materia1: true,
+    materia2: true,
+    materia3: true,
   });
 
   const [paises, setPaises] = useState([]);
-  const response = useSelector((state) => state.editResponse);
+
+  //* ------------> Estados locales para cargar las materias de los profesores <------------
+
+  const [materias1, setMaterias1] = useState([]);
+  const [materias2, setMaterias2] = useState([]);
+  const [materias3, setMaterias3] = useState([]);
+
+  //* -------------------> Trae las materias dependiendo del año elegido <-------------------
+
+  async function traerMaterias(renglon, anio) {
+    const response = await axios.get(`http://localhost:3001/Materias/filtermateria?anio=${anio}`);
+    switch (renglon) {
+      case "anio1":
+        setMaterias1(response.data.map((elem) => elem.namemateria));
+        break;
+      case "anio2":
+        setMaterias2(response.data.map((elem) => elem.namemateria));
+        break;
+      default:
+        setMaterias3(response.data.map((elem) => elem.namemateria));
+    }
+  }
+
+  const response = useSelector((state) => state.editResponse); //!BREAKPOINT
 
   const inputHandler = (ev) => {
     setUsuario({
@@ -45,16 +73,58 @@ export default function EditarUsuarios() {
       [ev.target.name]: ev.target.value,
     });
     setError(
-      validations({
+      validate({
         ...usuario,
         [ev.target.name]: ev.target.value,
       })
     );
+
+    //* -------------------> Si se cambia un año, en materia se reestablece "materia" por default <-------------------
+
+    if (ev.target.name === "anio1" || ev.target.name === "anio2" || ev.target.name === "anio3") {
+      switch (ev.target.name) {
+        case "anio1":
+          setUsuario({
+            ...usuario,
+            [ev.target.name]: ev.target.value,
+            materia1: "materia",
+          });
+          break;
+        case "anio2":
+          setUsuario({
+            ...usuario,
+            [ev.target.name]: ev.target.value,
+            materia2: "materia",
+          });
+          break;
+        default:
+          setUsuario({
+            ...usuario,
+            [ev.target.name]: ev.target.value,
+            materia3: "materia",
+          });
+      }
+      traerMaterias(ev.target.name, ev.target.value);
+    }
   };
 
-  //Habilita los inputs cuando se presiona en el ícono de editar
+  // Habilita los inputs cuando se presiona en el ícono de editar. Para los pares Año -Materia,
+  // los deshabilita en simultáneo
   function handleDisabled(inputName) {
-    setDisabled({ ...disabled, [inputName]: false });
+    switch (inputName) {
+      case "materia1":
+        setDisabled({ ...disabled, materia1: false, anio1: false });
+        setUsuario({ ...usuario, anio1: "año", materia1: "materia" });
+        break;
+      case "materia2":
+        setDisabled({ ...disabled, materia2: false, anio2: false });
+        break;
+      case "materia3":
+        setDisabled({ ...disabled, materia3: false, anio3: false });
+        break;
+      default:
+        setDisabled({ ...disabled, [inputName]: false });
+    }
   }
 
   //Preparacion para Submit
@@ -73,11 +143,11 @@ export default function EditarUsuarios() {
   const submitHandler = (ev) => {
     ev.preventDefault();
     console.log("submit");
-    dispatch(editAlumno(valoresOriginales.username, paraEditar(valoresOriginales, usuario)));
+    /* dispatch(editAlumno(valoresOriginales.username, paraEditar(valoresOriginales, usuario)));
     if (response) {
       window.alert(response);
     }
-    navigate(-1);
+    navigate(-1); */
   };
 
   //Bloquea el boton submit cuando no se introdujeron cambios, o cuando hay errores
@@ -98,42 +168,52 @@ export default function EditarUsuarios() {
   }, []);
 
   useEffect(() => {
-    async function fetchStudent() {
-      const alumno = await dispatch(getStudent(username));
+    async function fetchProfesor() {
+      const profesor = await dispatch(getProfesor(username));
 
       //Datos que podrán cambiar
       setUsuario({
-        name: alumno.name,
-        apellido: alumno.apellido,
-        datebirth: alumno.datebirth.slice(0, 10),
-        nacionalidad: alumno.nacionalidad,
-        anio: alumno.anio,
-        rol: alumno.rol,
-        email: alumno.email,
-        username: alumno.username,
-        password: alumno.password,
+        name: profesor.name,
+        apellido: profesor.apellido,
+        datebirth: profesor.datebirth.slice(0, 10),
+        nacionalidad: profesor.nacionalidad,
+        anio1: profesor.Materias[0].anio,
+        materia1: profesor.Materias[0].namemateria,
+        anio2: profesor.Materias[1] ? profesor.Materias[1].anio : "año",
+        materia2: profesor.Materias[1] ? profesor.Materias[1].namemateria : "materia",
+        anio3: profesor.Materias[2] ? profesor.Materias[2].anio : "año",
+        materia3: profesor.Materias[2] ? profesor.Materias[2].namemateria : "materia",
+        rol: profesor.rol,
+        email: profesor.email,
+        username: profesor.username,
+        password: profesor.password,
       });
 
       //Datos invariables
       setvaloresOriginales({
-        name: alumno.name,
-        apellido: alumno.apellido,
-        datebirth: alumno.datebirth.slice(0, 10),
-        nacionalidad: alumno.nacionalidad,
-        anio: alumno.anio,
-        rol: alumno.rol,
-        email: alumno.email,
-        username: alumno.username,
-        password: alumno.password,
+        name: profesor.name,
+        apellido: profesor.apellido,
+        datebirth: profesor.datebirth.slice(0, 10),
+        nacionalidad: profesor.nacionalidad,
+        anio1: profesor.Materias[0].anio,
+        materia1: profesor.Materias[0].namemateria,
+        anio2: profesor.Materias[1] ? profesor.Materias[1].anio : "(materia)",
+        materia2: profesor.Materias[1] ? profesor.Materias[1].namemateria : "(materia)",
+        anio3: profesor.Materias[2] ? profesor.Materias[2].anio : "(materia)",
+        materia3: profesor.Materias[2] ? profesor.Materias[2].namemateria : "(materia)",
+        rol: profesor.rol,
+        email: profesor.email,
+        username: profesor.username,
+        password: profesor.password,
       });
     }
-    fetchStudent();
+    fetchProfesor();
   }, []);
 
   return (
     <div className={style.container}>
       <Navbar />
-      <h1 className="formTitle">EDITAR USUARIO</h1>
+      <h1 className="formTitle">EDITAR PROFESOR</h1>
       <form className={style.formulario} onSubmit={(ev) => submitHandler(ev)}>
         <section>
           <h4 className={style.campo}>Nombre</h4>
@@ -169,23 +249,48 @@ export default function EditarUsuarios() {
           <p className="errorText">{error.apellido}</p>
         </section>
 
+        {/* RENGLON 1 ************************************************************* */}
         <section>
-          <h4 className={style.campo}>Año</h4>
+          <h4 className={style.campo}>Año 1</h4>
           <select
             className={style.text}
             type="text"
-            name="anio"
-            disabled={disabled.anio}
+            name="anio1"
+            disabled={disabled.anio1}
             onChange={(ev) => inputHandler(ev)}
-            value={usuario.anio}
+            value={usuario.anio1}
           >
-            {["1ro", "2do", "3ro", "4to", "5to", "6to"].map((i) => (
+            {["año", "1ro", "2do", "3ro", "4to", "5to", "6to"].map((i) => (
               <option value={i} key={i}>
                 {i}
               </option>
             ))}
           </select>
-          <button type="button" onClick={() => handleDisabled("anio")}>
+        </section>
+
+        <section>
+          <h4 className={style.campo}>Materia 1</h4>
+          <select
+            className={style.text}
+            type="text"
+            name="materia1"
+            disabled={disabled.materia1}
+            onChange={(ev) => inputHandler(ev)}
+            value={usuario.materia1}
+          >
+            <option disabled={true}>materia</option>
+
+            {materias1.length ? (
+              materias1.map((i) => (
+                <option value={i} key={i}>
+                  {i}
+                </option>
+              ))
+            ) : (
+              <option>{usuario.materia1}</option>
+            )}
+          </select>
+          <button type="button" onClick={() => handleDisabled("materia1")}>
             <FontAwesomeIcon className={style.editButton} icon={faPenToSquare} />
           </button>
         </section>
@@ -239,7 +344,6 @@ export default function EditarUsuarios() {
             name="username"
             autoComplete="off"
             disabled={true}
-            //onChange={(ev) => inputHandler(ev)}
             value={usuario.username}
           />
           <p className="errorText">{error.username}</p>
@@ -253,7 +357,6 @@ export default function EditarUsuarios() {
             name="email"
             autoComplete="off"
             disabled={true}
-            //onChange={(ev) => inputHandler(ev)}
             value={usuario.email}
           />
           <p className="errorText">{error.email}</p>
@@ -267,7 +370,6 @@ export default function EditarUsuarios() {
             name="password"
             autoComplete="off"
             disabled={true}
-            //onChange={(ev) => inputHandler(ev)}
             value={usuario.password}
           />
           <p className="errorText">{error.password}</p>
@@ -275,34 +377,24 @@ export default function EditarUsuarios() {
 
         <section>
           <h4 className={style.campo}>Rol</h4>
-          <select
-            className={style.text}
-            type="text"
-            name="rol"
-            disabled={true}
-            //onChange={(ev) => inputHandler(ev)}
-            value={usuario.rol}
-          >
+          <select className={style.text} type="text" name="rol" disabled={true} value={usuario.rol}>
             {["admin", "profesor", "student"].map((i) => (
               <option value={i} key={i}>
                 {i}
               </option>
             ))}
           </select>
-          {/* <button type="button" onClick={() => handleDisabled("rol")}>
-            <FontAwesomeIcon className={style.editButton} icon={faPenToSquare} />
-          </button> */}
         </section>
 
         <button
-          /* className={style.submitButton} */ type="button"
+          type="button"
           onClick={() => {
             navigate(-1);
           }}
         >
           Volver
         </button>
-        <button /* className={style.submitButton} */ type="submit" disabled={hasErrors()}>
+        <button type="submit" disabled={hasErrors()}>
           Confirmar Cambios
         </button>
       </form>

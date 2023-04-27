@@ -107,12 +107,12 @@ export const postProfesor = (form) => {
 export const editAlumno = (currentusername, changes) => {
   return (dispatch) => {
     axios
-    .put(`/alumnos/${currentusername}`, changes)
+      .put(`/alumnos/${currentusername}`, changes)
       .then((response) => {
         dispatch({ type: EDIT_ALUMNO, payload: response.data });
       })
       .catch((error) => {
-        dispatch({ type: EDIT_ALUMNO, payload: error.response.data.error});
+        dispatch({ type: EDIT_ALUMNO, payload: error.response.data.error });
       });
   };
 };
@@ -154,7 +154,7 @@ export const getMateriasByAnio = (anio) => {
     const result = await axios.get(`/Materias/filtermateria?anio=${anio}`);
     const materiaByAnio = result.data;
     dispatch({ type: GET_MATERIAS_BY_ANIO, payload: materiaByAnio });
-    console.log(materiaByAnio);
+    //console.log(materiaByAnio);
 
     //     if (result) {
     //       dispatch({ type: GET_MATERIAS_BY_ANIO, payload: result.data.materias });
