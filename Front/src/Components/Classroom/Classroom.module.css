@@ -1,5 +1,5 @@
 .cardsContent {
-  background-color: rgb(1, 99, 116);
+  background: linear-gradient(to bottom, #5bc5a7, #137078);
   border-radius: 20px;
   display: flex;
   flex-direction: row;
@@ -8,7 +8,7 @@
 }
 
 .fondo {
-  background-color: rgb(6, 124, 124);
+  background-color: #5bc5a7;
   width: 100%;
   height: 100%;
   position: absolute;

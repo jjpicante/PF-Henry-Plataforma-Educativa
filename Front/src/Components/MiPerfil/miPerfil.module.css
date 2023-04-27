@@ -1,15 +1,37 @@
 .container{
     display: flex;
     flex-direction: column;
-    background-color: rgb(6, 124, 124);
-    height: 1600px;
+    background: linear-gradient(to bottom, #5bc5a7, #137078);
+    height: 100vh;
     align-items: center;
 }
 
 .containerDatos{
-    background-color: rgb(203, 211, 218);
-    width: 600px;
-    border: solid black 3px;
+    background-color: white;
+    width: 750px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.3);
+    padding: 40px;
+}
+
+.datosPrincipales {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border: solid 3px #5bc5a7;
+    border-radius: 10px;
+    padding: 20px;
+    font-size: 1.5rem;
+    color: #1d1d1d;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+  }
+
+.nombre{
+    text-transform: capitalize;
 }
 
 .error{
@@ -19,14 +41,58 @@
 
 .botonChek{
     width: 50px;
-    margin-left: 465px;
+    margin-left: 650px;
 }
 
 .botonVolver{
-    margin-left:20px
+    margin-left:20px;
+    background-color: #BDBDBD;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
 }
 
 .conteinerbotones{
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+input[type="text"], input[type="password"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.1);
+}
+
+label {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+form p {
+    margin: 0;
+    font-size: 14px;
+    color: red;
+}
+
+button {
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #3F51B5;
+    color: white;
 }

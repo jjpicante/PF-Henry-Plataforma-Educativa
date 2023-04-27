@@ -1,5 +1,5 @@
 .container {
-  background-color: rgb(6, 124, 124);
+  background: linear-gradient(to bottom, #5bc5a7, #137078);
   height: 1600px;
 }
 
