@@ -1,0 +1,52 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(6, 124, 124);
+  min-height: 100vh;
+}
+
+.containerAlumnos {
+  background-color: rgb(203, 211, 218);
+  border: 2px solid black;
+  border-radius: 2%;
+  margin: 0 10%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  justify-content: center; /* agregamos esta propiedad */
+}
+
+.alumnos {
+  display: flex;
+  width: 100%;
+  font-size: 1.2rem;
+  padding-left: 1%;
+  margin-bottom: 1rem; /* reducimos el espacio entre los elementos */
+}
+
+.titulo h2 {
+  font-size: 2.8rem;
+  margin-bottom: 2rem; /* aumentamos el espacio entre el título y los elementos */
+}
+
+.materia {
+  margin-bottom: 2rem; /* aumentamos el espacio entre las materias */
+}
+
+.materia h2 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem; /* reducimos el espacio entre el título de la materia y los elementos */
+}
+
+.materia ul {
+  list-style: disc;
+  margin-left: 2rem; /* aumentamos la indentación de las listas /
+  margin-bottom: 1rem; / reducimos el espacio entre las listas */
+}
+
+.materia li {
+  margin-bottom: 0.5rem; /* reducimos el espacio entre los elementos de la lista */
+  font-size: 1.1rem;
+}

@@ -4,7 +4,20 @@ const emailRegex = /\S+@\S+\.\S+/;
 const numbers = /\d/;
 
 const validate = (inputs) => {
+  console.log(inputs, "validate");
+
   let errors = {};
+
+  //error materias
+  if (!inputs.namemateria) {
+  } else {
+    if (inputs.namemateria.length === 0) errors.namemateria = "El nombre no puede estar vacio";
+    if (numbers.test(inputs.namemateria)) errors.namemateria = "El nombre no puede incluir numeros";
+    if (inputs.namemateria.length > 35)
+      errors.namemateria = "El nombre no puede contener mas de 35 caracteres";
+    if (specialChars.test(inputs.namemateria))
+      errors.namemateria = "El nombre no puede tener caracteres especiales";
+  }
 
   //Nombre
   if (!inputs.name) {
@@ -42,6 +55,24 @@ const validate = (inputs) => {
   return errors;
 };
 
+const validateSubmit = (input, asd) => {
+  console.log(input, asd);
+
+  let errors = {};
+  if (!input.namemateria) {
+    if (input.namemateria.length === 0) errors.namemateria = "El nombre no puede estar vacio";
+  } else {
+    if (numbers.test(input.namemateria)) errors.namemateria = "El nombre no puede incluir numeros";
+    if (input.namemateria.length > 35)
+      errors.namemateria = "El nombre no puede contener mas de 35 caracteres";
+    if (specialChars.test(input.namemateria))
+      errors.namemateria = "El nombre no puede tener caracteres especiales";
+  }
+
+  return errors;
+};
+
 module.exports = {
   validate,
+  validateSubmit,
 };

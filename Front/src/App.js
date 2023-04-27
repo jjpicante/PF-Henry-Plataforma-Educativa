@@ -21,6 +21,8 @@ import axios from "axios";
 import { MiPerfil } from "./Components/MiPerfil/miPerfil";
 import Disqus from "./Components/Coments/disqus";
 import Firestoragev2 from "./Components/almacenamiento/Firestoragev2";
+import LandingAdmin from "./Components/Admin/Adminhome";
+import ListaMaterias from "./Components/Admin/ListaMaterias/listaMaterias";
 
 /* axios.defaults.baseURL = "https://servidor-plataformae2.onrender.com"; */
 axios.defaults.baseURL = "http://localhost:3001";
@@ -42,13 +44,7 @@ function App() {
           <Route exact path="/Cursos" element={<Classroom />} />
         </Route>
 
-        <Route element={<ProtectedRoutes allowedRoles={["admin"]} />}>
-          <Route exact path="/formAlumno" element={<Form />} />
-          <Route exact path="/formProfesor" element={<FormProfesor />} />
-          <Route exact path="/formsubject" element={<FormSubject />} />
-          <Route exact path="/editarLanding" element={<EditarLanding />} />
-          <Route exact path="/editarAlumno/:username" element={<Editar />} />
-        </Route>
+        <Route element={<ProtectedRoutes allowedRoles={["admin"]} />}></Route>
 
         <Route element={<ProtectedRoutes allowedRoles={["student"]} />}>
           <Route exact path="/carrito" element={<Carrito />} />
@@ -56,10 +52,15 @@ function App() {
           <Route exact path="/miPerfil" element={<MiPerfil />} />
         </Route>
 
-        
-        <Route exact path="/reset-password" element={<ResetPassword />}/>
-        <Route exact path="/editarUsuario" element={<EditarLanding />} />
         <Route exact path="/" element={<Landing />} />
+        {/* esto deberia ir en admin */}
+        <Route exact path="/Admin" element={<LandingAdmin />}></Route>
+        <Route exact path="/editarUsuario" element={<EditarLanding />} />
+        <Route exact path="/formAlumno" element={<Form />} />
+        <Route exact path="/formProfesor" element={<FormProfesor />} />
+        <Route exact path="/formsubject" element={<FormSubject />} />
+        <Route exact path="/listamaterias" element={<ListaMaterias />}></Route>
+        {/* hasta aqui */}
         {/* Esto es agregado para probar su funcionalidad, despues hay que borrarlo */}
         <Route exact path="/Disqus" element={<Disqus />} />
         <Route exact path="/firestorages" element={<Firestoragev2 />} />

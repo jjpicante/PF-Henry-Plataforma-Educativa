@@ -1,24 +1,20 @@
 const { Aulas } = require("../../db");
 const { Op } = require("sequelize");
 
-const postAula = async (anio, division) => {
+const postAula = async (anio) => {
   try {
     if (
       await Aulas.findOne({
-        where: { [Op.and]: [{ anio: anio }, { division: division }] },
+        where: { [Op.and]: [{ anio: anio }] },
       })
     ) {
       return {
-        error: `No se pudo completar la carga. Ya existe el Aula: ${(anio, division)}`,
+        error: `No se pudo completar la carga. Ya existe el Aula: ${anio}`,
       };
     }
-    const verifed = Number(anio);
-    if (Number.isNaN(verifed)) {
-      return { error: "Introdusca un numero valido" };
-    }
+
     const newAula = {
       anio: anio,
-      division: division,
     };
 
     Aulas.create(newAula);

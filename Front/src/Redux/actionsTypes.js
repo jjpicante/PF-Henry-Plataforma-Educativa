@@ -3,6 +3,7 @@ export const GET_PROFESORS = "GET_PROFESORS";
 export const GET_MATERIAS = "GET_MATERIAS";
 export const GET_MATERIAS_BY_ID = "GET_MATERIAS_BY_ID";
 export const GET_MATERIAS_BY_NAME = "GET_MATERIAS_BY_NAME";
+export const GET_AULAS = "GET_AULAS";
 export const CLEAN_DETAIL = "CLEAN_DETAIL";
 export const POST_ALUMNO = "POST_ALUMNO";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
