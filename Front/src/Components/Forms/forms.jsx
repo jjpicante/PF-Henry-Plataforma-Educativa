@@ -84,8 +84,7 @@ function Form() {
 
   return (
     <>
-      <Navbar></Navbar>
-      <div className="Main">
+      <div className="MainAlumnos">
         <div className="formBox">
           <h1 className="formTitle">CREAR ALUMNO</h1>
 

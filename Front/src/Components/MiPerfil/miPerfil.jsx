@@ -5,14 +5,14 @@ import Navbar from "../NavBar/navBar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash, faPenToSquare, faCheck } from "@fortawesome/free-solid-svg-icons";
 import validate from "./validate";
-import { editAlumno } from "../../Redux/actions";
+import { cleanResponse, editAlumno } from "../../Redux/actions";
+import Swal from 'sweetalert2'
 
 export function MiPerfil() {
   const dispatch = useDispatch();
   const userData = useSelector((state) => state.userData);
   const response = useSelector((state) => state.editResponse);
   const currentusername = userData?.username;
-
   useEffect(() => {
     setvaloresOriginales({
       username: userData.username,
@@ -20,6 +20,8 @@ export function MiPerfil() {
       password: userData.password,
     });
   }, [userData]);
+
+  
   const [valoresOriginales, setvaloresOriginales] = useState({});
 
   //Username
@@ -108,10 +110,11 @@ export function MiPerfil() {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(editAlumno(currentusername, paraEditar(valoresOriginales, nuevosValores)));
-    if (response) {
-      window.alert(response);
-    }
+
+    dispatch(
+      editAlumno(currentusername, paraEditar(valoresOriginales, nuevosValores))
+    );
+
   };
 
   const hasErrors = () => {
@@ -123,7 +126,30 @@ export function MiPerfil() {
   const handleEdit = () => {
     setEditar(!editar);
   };
+console.log(response);
+  useEffect(() => {
+    if(response){
+      if (response === "Tus datos se modificaron con éxito") {
+        Swal.fire({
+          text: response,
+          icon:"success"
+        }
+        );
+      }else
+      Swal.fire({
+        text: response,
+        icon:"warning"
+      })
+    }
+  }, [response]);
 
+  useEffect(()=>{
+    return () => {
+      dispatch(cleanResponse())
+    }
+  },[])
+
+  
   return (
     <div>
       <Navbar />

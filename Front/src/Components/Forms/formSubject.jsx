@@ -1,17 +1,32 @@
-import "./form.css";
-
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { validate, validateSubmit } from "./validations";
-import Navbar from "../NavBar/navBar";
+import { useDispatch, useSelector } from "react-redux";
+import { getAulas } from "../../Redux/actions";
+import axios from "axios";
 
 function FormSubject() {
-  //Estados
   const [subjectData, setSubjectData] = useState({
-    subjectName: "",
+    namemateria: "",
+    anio: "",
+    temas: [],
   });
   const [errorMessage, setErrorMessage] = useState({
-    subjectName: "",
+    namemateria: "",
+    anio: "",
+    temas: [],
   });
+  const [newTema, setNewTema] = useState("");
+  const aula = useSelector((state) => state.aulas);
+  const dispatch = useDispatch();
+  console.log(subjectData);
+  console.log(aula);
+
+  useEffect(() => {
+    async function sync() {
+      const verify = await dispatch(getAulas());
+    }
+    sync();
+  }, []);
 
   const inputHandler = (ev) => {
     setSubjectData({
@@ -26,42 +41,69 @@ function FormSubject() {
     );
   };
 
-  const submitHandler = (ev) => {
-    ev.preventDefault();
+  const addTema = () => {
+    const newTemas = [...subjectData.temas];
+    newTemas.push({ tema: "" });
+    setSubjectData({ ...subjectData, temas: newTemas });
+    //!hay que cambiar esto para que se cree un nuevo input cada vez que agregamos una nueva materia
+    alert(
+      "tema agregado correctamente, si tuviste un error podras corregirlo en la seccion de materias"
+    );
+  };
 
-    if (validateSubmit(subjectData, errorMessage)) {
+  const updateTema = (index, value) => {
+    const newTemas = [...subjectData.temas];
+    newTemas[index] = { tema: value };
+    setSubjectData({ ...subjectData, temas: newTemas });
+  };
+
+  const submitHandler = async (ev) => {
+    ev.preventDefault();
+    const error = validateSubmit(subjectData, errorMessage);
+    console.log(error.namemateria);
+    if (Object.values(error).length === 0) {
       alert("The form has been filled successfully");
+      await axios.post("/Materias", subjectData);
     } else {
-      for (const property in subjectData) {
-        if (!subjectData[property])
-          setErrorMessage({
-            ...errorMessage,
-            [property]: "This field is required!",
-          });
-      }
-      alert(
-        "Theres been a mistake, take a look a the form. **All fields are required!**"
-      );
+      return error.namemateria || error.anio || error.temas;
     }
   };
 
   return (
     <>
-      <Navbar></Navbar>
-      <div className="Main">
+      <div className="MainMaterias">
         <div className="formBox">
-          <h1 className="formTitle">Add a subject</h1>
+          <h1 className="formTitle">Crear Materias</h1>
 
           <form onSubmit={submitHandler} autoComplete="off">
             <input
               type="text"
-              placeholder="Subject name"
-              name="subjectName"
+              placeholder="Nombre de la materia"
+              name="namemateria"
               onChange={inputHandler}
-              value={subjectData.subjectName}
             />
-            <p className="errorText">{errorMessage.subjectName}</p>
-
+            <p className="errorText">{errorMessage.namemateria}</p>
+            <input
+              type="text"
+              placeholder="Escribe los temas de la materia"
+              name="temas"
+              onChange={updateTema}
+            />
+            <input type="button" value="Agregar" onClick={addTema} />
+            <select name="anio" onChange={inputHandler} defaultValue="Seleciona el Año">
+              <option name="Seleciona el Año" value="Seleciona el Año">
+                Seleciona el Año
+              </option>
+              {aula !== undefined
+                ? aula.map((e) => {
+                    return (
+                      <option key={e.id} name="anio" value={e.anio}>
+                        {e.anio}
+                      </option>
+                    );
+                  })
+                : "Loading"}
+            </select>
             <input type="submit" />
           </form>
         </div>

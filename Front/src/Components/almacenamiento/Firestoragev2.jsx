@@ -42,6 +42,16 @@ const FireStorage = ({ visible, url }) => {
         });
       });
       console.log(respuesta, "hechoderecho");
+    }
+    if (archivo.type === "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet") {
+      console.log("ifEXCEL");
+      const fileRef = ref(storage, `Excel/${archivo.name + v4()}`);
+      const respuesta = await uploadBytes(fileRef, archivo).then(async (snapshot) => {
+        await getDownloadURL(snapshot.ref).then(async (url) => {
+          setFileList((prev) => [...prev, url]);
+        });
+      });
+      console.log(respuesta, "hechoexelecho");
     } else {
       console.log("else");
       console.log(archivo.type);
@@ -67,7 +77,6 @@ const FireStorage = ({ visible, url }) => {
   useEffect(() => {
     async function documentos() {
       const documentlist = await getDocs(collection(db, "archivos"));
-      console.log(documentlist.docs.map((doc) => doc.data()));
       setDocument(documentlist.docs.map((doc) => doc.data()));
     }
     documentos();

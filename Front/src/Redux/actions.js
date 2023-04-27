@@ -6,6 +6,7 @@ import {
   GET_MATERIAS_BY_NAME,
   GET_MATERIAS_BY_ANIO,
   CLEAN_DETAIL,
+  CLEAN_RESPONSE,
   POST_ALUMNO,
   EDIT_ALUMNO,
   LOGIN_SUCCESS,
@@ -16,6 +17,7 @@ import {
   VERIFY_USER_ERROR,
   GET_USER_DATA_GOOGLE,
   POST_PROFESOR,
+  GET_AULAS,
   RESET_PASSWORD,
 } from "./actionsTypes";
 import axios from "axios";
@@ -74,7 +76,7 @@ export const getProfesor = (username) => {
     try {
       const response = await axios.get(`/Profesores/getProfesor?username=${username}`);
       const profesor = response.data;
-      //console.log(profesor);
+      console.log(profesor);
       return profesor;
     } catch (error) {
       return dispatch({ type: "ERROR", payload: error });
@@ -169,10 +171,25 @@ export const getMateriasByAnio = (anio) => {
   };
 };
 
+export const getAulas = () => {
+  return async function (dispatch) {
+    const response = await axios.get("/Aulas");
+    const anio = response.data;
+    dispatch({ type: GET_AULAS, payload: anio.aulas });
+  };
+};
+
 export const cleanDetail = () => {
   return {
     type: CLEAN_DETAIL,
     payload: [],
+  };
+};
+
+export const cleanResponse = () => {
+  return {
+    type: CLEAN_RESPONSE,
+    payload: null,
   };
 };
 
