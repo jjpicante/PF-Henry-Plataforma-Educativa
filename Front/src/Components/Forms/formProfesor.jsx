@@ -152,8 +152,7 @@ function FormProfesor() {
 
   return (
     <>
-      <Navbar></Navbar>
-      <div className="Main">
+      <div className="MainProfesores">
         <div className="formBox">
           <h1 className="formTitle">CREAR PROFESOR</h1>
 

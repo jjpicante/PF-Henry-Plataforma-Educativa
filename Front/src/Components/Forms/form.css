@@ -1,4 +1,19 @@
-.Main {
+.MainProfesores {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 120vh;
+  background-color: rgb(6, 124, 124);
+}
+
+.MainAlumnos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 120vh;
+  background-color: rgb(6, 124, 124);
+}
+.MainMaterias {
   display: flex;
   justify-content: center;
   align-items: center;

@@ -15,12 +15,14 @@ import {
   VERIFY_USER_ERROR,
   GET_USER_DATA_GOOGLE,
   POST_PROFESOR,
+  GET_AULAS,
 } from "./actionsTypes";
 
 const initialState = {
   students: [],
   profesors: [],
-  materias: {},
+  materias: [],
+  aulas: [],
   pageCount: "",
   materiaById: [],
   userData: null,
@@ -60,12 +62,17 @@ export default function reducer(state = initialState, { type, payload }) {
     case GET_MATERIAS_BY_NAME:
       return {
         ...state,
-        materias: payload
+        materias: payload,
       };
     case GET_MATERIAS_BY_ANIO:
       return {
         ...state,
         materias: payload,
+      };
+    case GET_AULAS:
+      return {
+        ...state,
+        aulas: payload,
       };
     case CLEAN_DETAIL:
       return {
