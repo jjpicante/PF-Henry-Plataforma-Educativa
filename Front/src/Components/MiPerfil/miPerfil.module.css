@@ -16,3 +16,17 @@
     font-size: small;
     color: red
 }
+
+.botonChek{
+    width: 50px;
+    margin-left: 465px;
+}
+
+.botonVolver{
+    margin-left:20px
+}
+
+.conteinerbotones{
+    display: flex;
+    flex-direction: row;
+}

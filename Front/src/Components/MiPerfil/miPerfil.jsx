@@ -163,6 +163,9 @@ console.log(response);
               <p>Email: {email}</p>
               <p>Fecha de nacimiento: {userData?.datebirth.slice(0, 10)}</p>
               <p>Rol: {userData?.rol}</p>
+            <button type="button" onClick={() => handleEdit()}>
+            Editar datos
+          </button>
             </div>
           ) : (
             <form onSubmit={(e) => submitHandler(e)}>
@@ -231,16 +234,20 @@ console.log(response);
                 <label htmlFor={userData?.rol}>Rol: </label>
                 <input type="text" value={userData?.rol} disabled={true} />
               </div>
-              <button type="submit" disabled={hasErrors()}>
+              <div className={style.conteinerbotones}>
+          <button className={style.botonVolver} type="button" onClick={() => handleEdit()}>
+            Volver
+          </button>
+              <button className={style.botonChek} type="submit" disabled={hasErrors()}>
                 <FontAwesomeIcon icon={faCheck} />
               </button>
+              </div>
             </form>
           )}
-          <button type="button" onClick={() => handleEdit()}>
-            Editar datos
-          </button>
+          
         </div>
       </div>
     </div>
   );
 }
+
