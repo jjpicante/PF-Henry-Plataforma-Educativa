@@ -29,7 +29,7 @@ function Navbar() {
             </Link>
           </li>
           <li className={`${style.navItem} ${style.dropdown}`}>
-            <span className={style.miaula}>Aula</span>
+            <li className={style.miaula}>Aula</li>
             <ul className={style.dropdownContent}>
               <li>
                 <Link to="/alumnos" className={style.navLink}>

@@ -1,6 +1,7 @@
  import React, { useState } from 'react';
  import { useDispatch } from 'react-redux';
  import { getMateriasByName, getMaterias } from '../../Redux/actions';
+ import style from "./SearchBar.module.css"
 
 
  function SearchBar() {
@@ -30,7 +31,7 @@
 
    return (
      <div>
-       <input type="search" placeholder="Buscar materia" value={name} onChange={handleChange} onInput={handleInput}/>
+       <input className={style.input} type="search" placeholder="Buscar materia" value={name} onChange={handleChange} onInput={handleInput}/>
        <button onClick={(event) => { handleSubmit(event) }}>Buscar</button>
      </div>
    );
