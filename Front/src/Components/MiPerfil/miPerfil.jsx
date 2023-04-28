@@ -137,8 +137,7 @@ export function MiPerfil() {
   const handleEdit = () => {
     setEditar(!editar);
   };
-  console.log(response);
-  console.log(chekClick);
+ 
   useEffect(() => {
     if (response) {
       if (response === "Tus datos se modificaron con éxito") {
