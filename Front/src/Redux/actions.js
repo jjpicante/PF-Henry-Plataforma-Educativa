@@ -76,7 +76,7 @@ export const getProfesor = (username) => {
     try {
       const response = await axios.get(`/Profesores/getProfesor?username=${username}`);
       const profesor = response.data;
-      console.log(profesor);
+      //console.log(profesor);
       return profesor;
     } catch (error) {
       return dispatch({ type: "ERROR", payload: error });
