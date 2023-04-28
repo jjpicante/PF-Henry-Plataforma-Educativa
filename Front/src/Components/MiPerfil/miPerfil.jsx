@@ -26,6 +26,11 @@ export function MiPerfil() {
   //Username
   const [userName, setUserName] = useState(userData?.username);
   const [editUserName, setEditUserName] = useState(true);
+  const [chekClick, setcheckClick] = useState(true);
+
+  const handleCheckClick = () => {
+    setcheckClick(!chekClick)
+  }
 
   const handleChangeUserName = (e) => {
     setUserName(e.target.value);
@@ -126,6 +131,7 @@ export function MiPerfil() {
     setEditar(!editar);
   };
   console.log(response);
+  console.log(chekClick);
   useEffect(() => {
     if (response) {
       if (response === "Tus datos se modificaron con éxito") {
@@ -139,7 +145,7 @@ export function MiPerfil() {
           icon: "warning",
         });
     }
-  }, [response]);
+  }, [response, chekClick]);
 
   useEffect(() => {
     return () => {
@@ -243,6 +249,7 @@ export function MiPerfil() {
                   className={style.botonChek}
                   type="submit"
                   disabled={hasErrors()}
+                  onClick={() => handleCheckClick()}
                 >
                   <FontAwesomeIcon icon={faCheck} />
                 </button>
