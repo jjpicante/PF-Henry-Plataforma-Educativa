@@ -1,24 +1,27 @@
 .cards {
-    background-color: rgb(203, 211, 218);
-    display: flex;
-    border: solid black;
-    border-radius: 20px;
-    width: 450px;
-    height: 350px;
-    flex-direction: column;
-    margin: 20px;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
-  }
-  
-  .nombreMateria {
-    color:black;
-    text-decoration: none;
-    text-transform: capitalize;
-  }
-  
-  .cards:hover {
-    text-decoration: none;
-    border:groove
-  }
+  background-color: rgb(203, 211, 218);
+  display: flex;
+  border: solid black;
+  border-radius: 20px;
+  width: 450px;
+  height: 350px;
+  flex-direction: column;
+  margin: 20px;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  box-shadow: 0px 2px 5px rgba(255, 255, 255, 0.1);
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out, background-color 0.2s ease-out; 
+}
+
+.nombreMateria {
+  color: black;
+  text-decoration: none;
+  text-transform: capitalize;
+}
+
+.cards:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+  background-color: #bbe8ed; 
+}
