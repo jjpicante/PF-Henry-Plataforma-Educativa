@@ -8,7 +8,7 @@ import { getProfesor, getMateriasByAnio, editAlumno } from "../../../Redux/actio
 import { validate } from "./validations";
 import style from "./EditarProf.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
+import { faPenToSquare, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 
 export default function EditarProfesor() {
   const dispatch = useDispatch();
@@ -53,19 +53,21 @@ export default function EditarProfesor() {
 
   async function traerMaterias(renglon, anio) {
     const response = await axios.get(`http://localhost:3001/Materias/filtermateria?anio=${anio}`);
-    switch (renglon) {
-      case "anio1":
-        setMaterias1(response.data.map((elem) => elem.namemateria));
-        break;
-      case "anio2":
-        setMaterias2(response.data.map((elem) => elem.namemateria));
-        break;
-      default:
-        setMaterias3(response.data.map((elem) => elem.namemateria));
+    if (!response.data.message) {
+      switch (renglon) {
+        case "anio1":
+          setMaterias1(response.data.map((elem) => elem.namemateria));
+          break;
+        case "anio2":
+          setMaterias2(response.data.map((elem) => elem.namemateria));
+          break;
+        default:
+          setMaterias3(response.data.map((elem) => elem.namemateria));
+      }
     }
   }
 
-  const response = useSelector((state) => state.editResponse); //!BREAKPOINT
+  const response = useSelector((state) => state.editResponse);
 
   const inputHandler = (ev) => {
     setUsuario({
@@ -118,9 +120,11 @@ export default function EditarProfesor() {
         break;
       case "materia2":
         setDisabled({ ...disabled, materia2: false, anio2: false });
+        setUsuario({ ...usuario, anio2: "año", materia2: "materia" });
         break;
       case "materia3":
         setDisabled({ ...disabled, materia3: false, anio3: false });
+        setUsuario({ ...usuario, anio3: "año", materia3: "materia" });
         break;
       default:
         setDisabled({ ...disabled, [inputName]: false });
@@ -294,6 +298,111 @@ export default function EditarProfesor() {
             <FontAwesomeIcon className={style.editButton} icon={faPenToSquare} />
           </button>
         </section>
+
+        {/* RENGLON 2 ************************************************************* */}
+        <section>
+          <h4 className={style.campo}>Año 2</h4>
+          <select
+            className={style.text}
+            type="text"
+            name="anio2"
+            disabled={disabled.anio2}
+            onChange={(ev) => inputHandler(ev)}
+            value={usuario.anio2}
+          >
+            {["año", "1ro", "2do", "3ro", "4to", "5to", "6to"].map((i) => (
+              <option value={i} key={i}>
+                {i}
+              </option>
+            ))}
+          </select>
+        </section>
+
+        <section>
+          <h4 className={style.campo}>Materia 2</h4>
+          <select
+            className={style.text}
+            type="text"
+            name="materia2"
+            disabled={disabled.materia2}
+            onChange={(ev) => inputHandler(ev)}
+            value={usuario.materia2}
+          >
+            <option disabled={true}>materia</option>
+
+            {materias2.length ? (
+              materias2.map((i) => (
+                <option value={i} key={i}>
+                  {i}
+                </option>
+              ))
+            ) : (
+              <option>{usuario.materia2}</option>
+            )}
+          </select>{" "}
+          <button type="button" onClick={() => handleDisabled("materia2")}>
+            <FontAwesomeIcon className={style.editButton} icon={faPenToSquare} />
+          </button>
+          <button
+            type="button"
+            onClick={() => inputHandler({ target: { name: "anio2", value: "año" } })}
+          >
+            <FontAwesomeIcon className={style.editButton} icon={faTrashCan} />
+          </button>
+        </section>
+
+        {/* RENGLON 3 ************************************************************* */}
+        <section>
+          <h4 className={style.campo}>Año 3</h4>
+          <select
+            className={style.text}
+            type="text"
+            name="anio3"
+            disabled={disabled.anio3}
+            onChange={(ev) => inputHandler(ev)}
+            value={usuario.anio3}
+          >
+            {["año", "1ro", "2do", "3ro", "4to", "5to", "6to"].map((i) => (
+              <option value={i} key={i}>
+                {i}
+              </option>
+            ))}
+          </select>
+        </section>
+
+        <section>
+          <h4 className={style.campo}>Materia 3</h4>
+          <select
+            className={style.text}
+            type="text"
+            name="materia3"
+            disabled={disabled.materia3}
+            onChange={(ev) => inputHandler(ev)}
+            value={usuario.materia3}
+          >
+            <option disabled={true}>materia</option>
+
+            {materias3.length ? (
+              materias3.map((i) => (
+                <option value={i} key={i}>
+                  {i}
+                </option>
+              ))
+            ) : (
+              <option>{usuario.materia3}</option>
+            )}
+          </select>
+          <button type="button" onClick={() => handleDisabled("materia3")}>
+            <FontAwesomeIcon className={style.editButton} icon={faPenToSquare} />
+          </button>
+          <button
+            type="button"
+            onClick={() => inputHandler({ target: { name: "anio3", value: "año" } })}
+          >
+            <FontAwesomeIcon className={style.editButton} icon={faTrashCan} />
+          </button>
+        </section>
+        {/***************************************************************************** */}
 
         <section>
           <h4 className={style.campo}>Fecha de nacimiento</h4>
