@@ -9,6 +9,7 @@ import {
   CLEAN_RESPONSE,
   POST_ALUMNO,
   EDIT_ALUMNO,
+  EDIT_PROFESOR,
   LOGIN_SUCCESS,
   LOGIN_FAILED,
   LOGOUT_SUCCESS,
@@ -21,7 +22,7 @@ import {
   RESET_PASSWORD,
 } from "./actionsTypes";
 import axios from "axios";
-import { getFirestore, doc, getDoc } from "firebase/firestore";
+import Swal from "sweetalert2";
 
 export const getStudents = () => {
   return async function (dispatch) {
@@ -77,7 +78,7 @@ export const getProfesor = (username) => {
     try {
       const response = await axios.get(`/Profesores/getProfesor?username=${username}`);
       const profesor = response.data;
-      console.log(profesor);
+      //console.log(profesor);
       return profesor;
     } catch (error) {
       return dispatch({ type: "ERROR", payload: error });
@@ -120,6 +121,19 @@ export const editAlumno = (currentusername, changes) => {
   };
 };
 
+export const editProfesor = (currentusername, changes) => {
+  return (dispatch) => {
+    axios
+      .put(`/profesores/${currentusername}`, changes)
+      .then((response) => {
+        dispatch({ type: EDIT_PROFESOR, payload: response.data });
+      })
+      .catch((error) => {
+        dispatch({ type: EDIT_PROFESOR, payload: error.response.data.error });
+      });
+  };
+};
+
 export const getMaterias = (page) => {
   return async function (dispatch) {
     const response = await axios.get(`/Materias?page=` + page);
@@ -143,7 +157,10 @@ export const getMateriasByName = (name) => {
       if (result.data.materias.length > 0) {
         dispatch({ type: GET_MATERIAS_BY_NAME, payload: result.data.materias });
       } else {
-        window.alert("No hay materias con ese nombre");
+        Swal.fire({
+          text: "No hay materias con ese nombre",
+          icon: "warning",
+        });
       }
     } catch (error) {
       console.log(error);
@@ -286,10 +303,16 @@ export const resetPassword = (email, password) => {
       });
       console.log(response)
       dispatch({ type: RESET_PASSWORD });
-      window.alert("Se ha restablecido la contraseña");
+      Swal.fire({
+        text: "Se ha enviado un correo para restablecer la contraseña",
+        icon: "success",
+      });
     } catch (error) {
       console.log(error);
-      window.alert("No se pudo restablecer la contraseña");
+      Swal.fire({
+        text: "No se pudo enviar el correo para restablecer la contraseña",
+        icon: "warning",
+      });
     }
   };
 };

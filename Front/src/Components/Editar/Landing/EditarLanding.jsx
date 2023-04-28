@@ -51,8 +51,9 @@ export default function EditarUsuarios() {
   }, [filtros.Rol]);
 
   return (
-    <div className={style.container}>
+    <div>
       <Navbar />
+    <div className={style.container}>
       <h1 className="formTitle">EDITAR USUARIO</h1>
       <div className={style.fondo}>
         <select
@@ -95,6 +96,8 @@ export default function EditarUsuarios() {
           año={filtros.Año}
         />
       </div>
+    </div>
+
     </div>
   );
 }

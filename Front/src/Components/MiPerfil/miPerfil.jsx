@@ -5,7 +5,7 @@ import Navbar from "../NavBar/navBar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash, faPenToSquare, faCheck } from "@fortawesome/free-solid-svg-icons";
 import validate from "./validate";
-import { cleanResponse, editAlumno } from "../../Redux/actions";
+import { cleanResponse, editAlumno, editProfesor } from "../../Redux/actions";
 import Swal from "sweetalert2";
 
 export function MiPerfil() {
@@ -26,6 +26,11 @@ export function MiPerfil() {
   //Username
   const [userName, setUserName] = useState(userData?.username);
   const [editUserName, setEditUserName] = useState(true);
+  const [chekClick, setcheckClick] = useState(true);
+
+  const handleCheckClick = () => {
+    setcheckClick(!chekClick)
+  }
 
   const handleChangeUserName = (e) => {
     setUserName(e.target.value);
@@ -61,6 +66,7 @@ export function MiPerfil() {
   const handleTogglePassword = () => {
     setmostrarPass(!mostrarPass);
   };
+  
   const handleChangePassword = (e) => {
     setPassword(e.target.value);
     inputHandler(e);
@@ -109,10 +115,16 @@ export function MiPerfil() {
 
   const submitHandler = (e) => {
     e.preventDefault();
-
-    dispatch(
-      editAlumno(currentusername, paraEditar(valoresOriginales, nuevosValores))
-    );
+    if(userData.rol === "student"){
+      dispatch(
+        editAlumno(currentusername, paraEditar(valoresOriginales, nuevosValores))
+      );
+    }
+    if(userData.rol === "profesor"){
+      dispatch(
+        editProfesor(currentusername, paraEditar(valoresOriginales, nuevosValores))
+      );
+    }
 
   };
 
@@ -125,7 +137,7 @@ export function MiPerfil() {
   const handleEdit = () => {
     setEditar(!editar);
   };
-  console.log(response);
+ 
   useEffect(() => {
     if (response) {
       if (response === "Tus datos se modificaron con éxito") {
@@ -139,7 +151,7 @@ export function MiPerfil() {
           icon: "warning",
         });
     }
-  }, [response]);
+  }, [response, chekClick]);
 
   useEffect(() => {
     return () => {
@@ -243,6 +255,7 @@ export function MiPerfil() {
                   className={style.botonChek}
                   type="submit"
                   disabled={hasErrors()}
+                  onClick={() => handleCheckClick()}
                 >
                   <FontAwesomeIcon icon={faCheck} />
                 </button>
