@@ -6,9 +6,7 @@ const loginrouter = Router();
 
 loginrouter.post("/", async (req, res) => {
   const { email, password } = req.body;
-  console.log(req.body)
   const respuesta = await postLogin(email, password);
-  console.log(respuesta)
   if (!respuesta.error) return res.status(200).json(respuesta);
   return res.status(503).json(respuesta);
 });
