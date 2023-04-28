@@ -7,6 +7,7 @@ import axios from "axios";
 import Navbar from "../NavBar/navBar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import Swal from "sweetalert2";
 
 function Form() {
   const dispatch = useDispatch();
@@ -49,7 +50,10 @@ function Form() {
   const submitHandler = (ev) => {
     ev.preventDefault();
     dispatch(postAlumno(studentData));
-    alert("Alumno creado");
+    Swal.fire({
+      text: "Alumno creado",
+      icon: "success",
+    });
     setStudentData({
       name: "",
       apellido: "",

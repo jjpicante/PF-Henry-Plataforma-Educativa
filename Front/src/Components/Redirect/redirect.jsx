@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { auth } from "../../config/firebase";
 import { signOut, deleteUser } from "firebase/auth";
+import Swal from "sweetalert2";
 
 function Redirect() {
   const logout = async () => {
@@ -24,9 +25,10 @@ function Redirect() {
     const timeout = setTimeout(() => {
       // 👇️ redirects to an external URL
       window.location.replace("/login");
-      alert(
-        "No cuentas con las credenciales necesarias para ingresar a la ruta indicada, verifica que estes logeado correctamente"
-      );
+      Swal.fire({
+        text: "No cuentas con las credenciales necesarias para ingresar a la ruta indicada, verifica que estes logeado correctamente",
+        icon: "warning",
+      });
     }, 3000);
 
     return () => clearTimeout(timeout);

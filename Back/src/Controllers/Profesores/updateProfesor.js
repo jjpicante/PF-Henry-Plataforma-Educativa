@@ -23,7 +23,10 @@ const updateProfesor = async (currentUsername, changes) => {
 
     update.set(criteriosMinuscula);
     await update.save();
-    return update;
+    return {
+      alumno: update,
+      mensaje: "Tus datos se modificaron con éxito"
+    }
   } catch (error) {
     return { error: `Error al actualizar el Profesor ${currentUsername}` };
   }

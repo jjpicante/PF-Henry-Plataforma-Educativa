@@ -9,6 +9,7 @@ import {
   CLEAN_RESPONSE,
   POST_ALUMNO,
   EDIT_ALUMNO,
+  EDIT_PROFESOR,
   LOGIN_SUCCESS,
   LOGIN_FAILED,
   LOGOUT_SUCCESS,
@@ -49,6 +50,12 @@ export default function reducer(state = initialState, { type, payload }) {
         userData: payload?.alumno ? payload.alumno : state.userData,
         editResponse: payload?.mensaje ? payload.mensaje : payload,
       };
+    case EDIT_PROFESOR:
+      return {
+        ...state,
+        userData: payload?.alumno ? payload.alumno : state.userData,
+        editResponse: payload?.mensaje ? payload.mensaje : payload,
+      };  
     case POST_PROFESOR:
       return {
         ...state,
