@@ -3,6 +3,7 @@ import { validate, validateSubmit } from "./validations";
 import { useDispatch, useSelector } from "react-redux";
 import { getAulas } from "../../Redux/actions";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 function FormSubject() {
   const [subjectData, setSubjectData] = useState({
@@ -46,9 +47,10 @@ function FormSubject() {
     newTemas.push({ tema: "" });
     setSubjectData({ ...subjectData, temas: newTemas });
     //!hay que cambiar esto para que se cree un nuevo input cada vez que agregamos una nueva materia
-    alert(
-      "tema agregado correctamente, si tuviste un error podras corregirlo en la seccion de materias"
-    );
+    Swal.fire({
+      text: "Tema agregado correctamente, si tuviste un error podras corregirlo en la seccion de materias",
+      icon: "success",
+    });
   };
 
   const updateTema = (index, value) => {

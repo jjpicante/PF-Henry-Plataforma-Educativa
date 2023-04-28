@@ -22,6 +22,7 @@ import {
   RESET_PASSWORD,
 } from "./actionsTypes";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 export const getStudents = () => {
   return async function (dispatch) {
@@ -156,7 +157,10 @@ export const getMateriasByName = (name) => {
       if (result.data.materias.length > 0) {
         dispatch({ type: GET_MATERIAS_BY_NAME, payload: result.data.materias });
       } else {
-        window.alert("No hay materias con ese nombre");
+        Swal.fire({
+          text: "No hay materias con ese nombre",
+          icon: "warning",
+        });
       }
     } catch (error) {
       console.log(error);
@@ -294,10 +298,16 @@ export const resetPassword = (email) => {
     try {
       const response = await axios.post("/reset", { email });
       dispatch({ type: RESET_PASSWORD });
-      window.alert("Se ha enviado un correo para restablecer la contraseña");
+      Swal.fire({
+        text: "Se ha enviado un correo para restablecer la contraseña",
+        icon: "success",
+      });
     } catch (error) {
       console.log(error);
-      window.alert("No se pudo enviar el correo para restablecer la contraseña");
+      Swal.fire({
+        text: "No se pudo enviar el correo para restablecer la contraseña",
+        icon: "warning",
+      });
     }
   };
 };

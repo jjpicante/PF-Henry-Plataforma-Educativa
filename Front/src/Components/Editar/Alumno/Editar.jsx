@@ -9,6 +9,7 @@ import { validations } from "./validations";
 import style from "./Editar.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
+import Swal from "sweetalert2";
 
 export default function EditarUsuarios() {
   const dispatch = useDispatch();
@@ -75,7 +76,7 @@ export default function EditarUsuarios() {
     console.log("submit");
     dispatch(editAlumno(valoresOriginales.username, paraEditar(valoresOriginales, usuario)));
     if (response) {
-      window.alert(response);
+      Swal.fire(response);
     }
     navigate(-1);
   };
