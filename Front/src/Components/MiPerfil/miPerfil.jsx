@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash, faPenToSquare, faCheck } from "@fortawesome/free-solid-svg-icons";
 import validate from "./validate";
 import { cleanResponse, editAlumno } from "../../Redux/actions";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 
 export function MiPerfil() {
   const dispatch = useDispatch();
@@ -21,7 +21,6 @@ export function MiPerfil() {
     });
   }, [userData]);
 
-  
   const [valoresOriginales, setvaloresOriginales] = useState({});
 
   //Username
@@ -126,56 +125,54 @@ export function MiPerfil() {
   const handleEdit = () => {
     setEditar(!editar);
   };
-console.log(response);
+  console.log(response);
   useEffect(() => {
-    if(response){
+    if (response) {
       if (response === "Tus datos se modificaron con éxito") {
         Swal.fire({
           text: response,
-          icon:"success"
-        }
-        );
-      }else
-      Swal.fire({
-        text: response,
-        icon:"warning"
-      })
+          icon: "success",
+        });
+      } else
+        Swal.fire({
+          text: response,
+          icon: "warning",
+        });
     }
   }, [response]);
 
-  useEffect(()=>{
+  useEffect(() => {
     return () => {
-      dispatch(cleanResponse())
-    }
-  },[])
+      dispatch(cleanResponse());
+    };
+  }, []);
 
-  
   return (
     <div>
       <Navbar />
       <div className={style.container}>
         <div className={style.containerDatos}>
           {editar ? (
-            <div>
-              <p>Nombre: {userData?.name}</p>
-              <p>Apellido: {userData?.apellido}</p>
+            <div className={style.datosPrincipales}>
+              <p className={style.nombre}>Nombre: {userData?.name}</p>
+              <p className={style.nombre}>Apellido: {userData?.apellido}</p>
               <p>Usuario: {userName}</p>
               <p>Email: {email}</p>
               <p>Fecha de nacimiento: {userData?.datebirth.slice(0, 10)}</p>
               <p>Rol: {userData?.rol}</p>
-            <button type="button" onClick={() => handleEdit()}>
-            Editar datos
-          </button>
+              <button type="button" onClick={() => handleEdit()}>
+                Editar datos
+              </button>
             </div>
           ) : (
             <form onSubmit={(e) => submitHandler(e)}>
               <div>
                 <label htmlFor={userData?.name}>Nombre: </label>
-                <input type="text" value={userData?.name} disabled={true} />
+                <input className={style.nombre} type="text" value={userData?.name} disabled={true} />
               </div>
               <div>
                 <label htmlFor={userData?.apellido}>Apellido: </label>
-                <input type="text" value={userData?.apellido} disabled={true} />
+                <input className={style.nombre} type="text" value={userData?.apellido} disabled={true} />
               </div>
               <div>
                 <label htmlFor={userName}>Usuario: </label>
@@ -235,19 +232,25 @@ console.log(response);
                 <input type="text" value={userData?.rol} disabled={true} />
               </div>
               <div className={style.conteinerbotones}>
-          <button className={style.botonVolver} type="button" onClick={() => handleEdit()}>
-            Volver
-          </button>
-              <button className={style.botonChek} type="submit" disabled={hasErrors()}>
-                <FontAwesomeIcon icon={faCheck} />
-              </button>
+                <button
+                  className={style.botonVolver}
+                  type="button"
+                  onClick={() => handleEdit()}
+                >
+                  Volver
+                </button>
+                <button
+                  className={style.botonChek}
+                  type="submit"
+                  disabled={hasErrors()}
+                >
+                  <FontAwesomeIcon icon={faCheck} />
+                </button>
               </div>
             </form>
           )}
-          
         </div>
       </div>
     </div>
   );
 }
-

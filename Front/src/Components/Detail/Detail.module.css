@@ -1,5 +1,5 @@
 .fondo {
-    background-color: rgb(6, 124, 124);
+  background: linear-gradient(to bottom, #137078, #5bc5a7);
     width: 100%;
     height: 100%;
     position: absolute;
