@@ -117,6 +117,10 @@
 
 .palabra {
   text-transform: capitalize;
+  font-size: x-large;
+  margin: 5px;
+  padding-left: 2px;
+  padding-right: 2px;
 }
 
 /* Boton stripe */
