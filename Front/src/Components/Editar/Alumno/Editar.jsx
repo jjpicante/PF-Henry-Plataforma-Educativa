@@ -6,7 +6,7 @@ import axios from "axios";
 import Navbar from "../../NavBar/navBar";
 import { getStudent, editAlumno, cleanResponse } from "../../../Redux/actions";
 import { validations } from "./validations";
-import style from "./Editar.module.css";
+import style from "./EditarUsuarios.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import Swal from "sweetalert2";
@@ -160,8 +160,9 @@ const handleCheckClick = () => {
   }, []);
 
   return (
-    <div className={style.container}>
+    <div>
       <Navbar />
+    <div className={style.container}>
       <h1 className="formTitle">EDITAR USUARIO</h1>
       <form className={style.formulario} onSubmit={(ev) => submitHandler(ev)}>
         <section>
@@ -319,22 +320,25 @@ const handleCheckClick = () => {
             ))}
           </select>
         </section>
-
-        <button
-          /* className={style.submitButton} */ type="button"
-          onClick={() => {
-            navigate(-1);
-          }}
-        >
-          Volver
-        </button>
         <button 
           type="submit" 
           disabled={hasErrors()} 
           onClick={() => handleCheckClick()}>
           Confirmar Cambios
         </button>
+
+        <button
+          className={style.volverButton}  type="button"
+          onClick={() => {
+            navigate(-1);
+          }}
+        >
+          Volver
+        </button>
       </form>
+    </div>
     </div>
   );
 }
+
+
