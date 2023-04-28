@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Navbar from "../../NavBar/navBar";
-import { getStudent, editAlumno } from "../../../Redux/actions";
+import { getStudent, editAlumno, cleanResponse } from "../../../Redux/actions";
 import { validations } from "./validations";
 import style from "./Editar.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -53,42 +53,24 @@ export default function EditarUsuarios() {
     );
   };
 
-  //Habilita los inputs cuando se presiona en el ícono de editar
-  function handleDisabled(inputName) {
-    setDisabled({ ...disabled, [inputName]: false });
-  }
 
-  //Preparacion para Submit
-  //Funcion que verifica que propiedades cambiaron
-  const paraEditar = (valoresOriginales, usuario) => {
-    const propiedadesCambiadas = {};
+//Habilita los inputs cuando se presiona en el ícono de editar
+function handleDisabled(inputName) {
+  setDisabled({ ...disabled, [inputName]: false });
+}
 
-    for (const prop in usuario) {
-      if (valoresOriginales[prop] !== usuario[prop]) {
-        propiedadesCambiadas[prop] = usuario[prop];
-      }
-    }
-    return propiedadesCambiadas;
-  };
 
-  const submitHandler = (ev) => {
-    ev.preventDefault();
-    console.log("submit");
-    dispatch(editAlumno(valoresOriginales.username, paraEditar(valoresOriginales, usuario)));
-    if (response) {
-      Swal.fire(response);
-    }
-    navigate(-1);
-  };
 
-  //Bloquea el boton submit cuando no se introdujeron cambios, o cuando hay errores
-  function hasErrors() {
-    return (
-      Object.values(error).some((error) => error !== "") ||
-      Object.values(disabled).every((valor) => valor === true)
-    );
-  }
+console.log(response);
 
+
+const [chekClick, setcheckClick] = useState(true);
+console.log(chekClick); 
+
+const handleCheckClick = () => {
+  setcheckClick(!chekClick)
+}
+  
   useEffect(() => {
     async function getPaises() {
       const response = await axios.get("https://restcountries.com/v3.1/all");
@@ -97,11 +79,11 @@ export default function EditarUsuarios() {
     }
     getPaises();
   }, []);
-
+  
   useEffect(() => {
     async function fetchStudent() {
       const alumno = await dispatch(getStudent(username));
-
+      
       //Datos que podrán cambiar
       setUsuario({
         name: alumno.name,
@@ -114,7 +96,7 @@ export default function EditarUsuarios() {
         username: alumno.username,
         password: alumno.password,
       });
-
+      
       //Datos invariables
       setvaloresOriginales({
         name: alumno.name,
@@ -129,6 +111,52 @@ export default function EditarUsuarios() {
       });
     }
     fetchStudent();
+  }, []);
+
+  const paraEditar = (valoresOriginales, usuario) => {
+    const propiedadesCambiadas = {};
+    
+    for (const prop in usuario) {
+      if (valoresOriginales[prop] !== usuario[prop]) {
+        propiedadesCambiadas[prop] = usuario[prop];
+      }
+    }
+    return propiedadesCambiadas;
+  };
+  
+  const submitHandler = (ev) => {
+    ev.preventDefault();
+    console.log("submit");
+    dispatch(editAlumno(valoresOriginales.username, paraEditar(valoresOriginales, usuario)));
+  };
+  
+  function hasErrors() {
+    return (
+      Object.values(error).some((error) => error !== "") ||
+      Object.values(disabled).every((valor) => valor === true)
+      );
+  }
+
+  useEffect(() => {
+    if (response) {
+      if (response === "Tus datos se modificaron con éxito") {
+        Swal.fire({
+          text: response,
+          icon: "success",
+        });
+      } else
+        Swal.fire({
+          text: response,
+          icon: "warning",
+        });
+    }
+  }, [response, chekClick]);
+
+  //Borra el estado cuando se desmonta el componente
+  useEffect(() => {
+    return () => {
+      dispatch(cleanResponse());
+    };
   }, []);
 
   return (
@@ -290,9 +318,6 @@ export default function EditarUsuarios() {
               </option>
             ))}
           </select>
-          {/* <button type="button" onClick={() => handleDisabled("rol")}>
-            <FontAwesomeIcon className={style.editButton} icon={faPenToSquare} />
-          </button> */}
         </section>
 
         <button
@@ -303,7 +328,10 @@ export default function EditarUsuarios() {
         >
           Volver
         </button>
-        <button /* className={style.submitButton} */ type="submit" disabled={hasErrors()}>
+        <button 
+          type="submit" 
+          disabled={hasErrors()} 
+          onClick={() => handleCheckClick()}>
           Confirmar Cambios
         </button>
       </form>
