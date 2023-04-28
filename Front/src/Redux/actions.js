@@ -9,6 +9,7 @@ import {
   CLEAN_RESPONSE,
   POST_ALUMNO,
   EDIT_ALUMNO,
+  EDIT_ALUMNO2,
   EDIT_PROFESOR,
   LOGIN_SUCCESS,
   LOGIN_FAILED,
@@ -117,6 +118,19 @@ export const editAlumno = (currentusername, changes) => {
       })
       .catch((error) => {
         dispatch({ type: EDIT_ALUMNO, payload: error.response.data.error });
+      });
+  };
+};
+
+export const editAlumno2 = (currentusername, changes) => {
+  return (dispatch) => {
+    axios
+      .put(`/alumnos/${currentusername}`, changes)
+      .then((response) => {
+        dispatch({ type: EDIT_ALUMNO2, payload: response.data });
+      })
+      .catch((error) => {
+        dispatch({ type: EDIT_ALUMNO2, payload: error.response.data.error });
       });
   };
 };

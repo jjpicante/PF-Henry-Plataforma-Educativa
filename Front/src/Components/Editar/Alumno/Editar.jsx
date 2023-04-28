@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Navbar from "../../NavBar/navBar";
-import { getStudent, editAlumno, cleanResponse } from "../../../Redux/actions";
+import { getStudent, editAlumno2, cleanResponse } from "../../../Redux/actions";
 import { validations } from "./validations";
 import style from "./EditarUsuarios.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -127,7 +127,7 @@ const handleCheckClick = () => {
   const submitHandler = (ev) => {
     ev.preventDefault();
     console.log("submit");
-    dispatch(editAlumno(valoresOriginales.username, paraEditar(valoresOriginales, usuario)));
+    dispatch(editAlumno2(valoresOriginales.username, paraEditar(valoresOriginales, usuario)));
   };
   
   function hasErrors() {
