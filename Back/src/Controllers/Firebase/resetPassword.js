@@ -1,27 +1,34 @@
-const { sendPasswordResetEmail } = require('firebase/auth');
-const { auth } = require('../../config/firebase')
+const { auth } = require("../../config/firebase");
 const { Alumnos, Profesores } = require("../../db");
 
-const ResetPassword = async (email) => {
+const ResetPassword = async (email, newPassword) => {
   const alumno = await Alumnos.findOne({ where: { email: email } });
   if (alumno) {
     try {
-      await sendPasswordResetEmail(auth, email);
-      return { success: "Password reset email sent" };
+      const userRecord = await auth.getUserByEmail(email);
+      await auth.updateUser(userRecord.uid, {
+        password: newPassword,
+      });
+      await alumno.update({ password: newPassword });
+      return { success: "Password updated" };
     } catch (error) {
       console.error(error);
-      return { error: "Failed to send password reset email" };
+      return { error: "Failed to update password" };
     }
   }
 
   const profesor = await Profesores.findOne({ where: { email: email } })
   if (profesor) {
     try {
-      await sendPasswordResetEmail(auth, email);
-      return { success: "Password reset email sent" };
+      const userRecord = await auth.getUserByEmail(email);
+      await auth.updateUser(userRecord.uid, {
+        password: newPassword,
+      });
+      await profesor.update({ password: newPassword });
+      return { success: "Password updated" };
     } catch (error) {
       console.error(error);
-      return { error: "Failed to send password reset email" };
+      return { error: "Failed to update password" };
     }
   }
 

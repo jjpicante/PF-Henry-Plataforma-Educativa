@@ -21,6 +21,7 @@ import {
   RESET_PASSWORD,
 } from "./actionsTypes";
 import axios from "axios";
+import { getFirestore, doc, getDoc } from "firebase/firestore";
 
 export const getStudents = () => {
   return async function (dispatch) {
@@ -228,7 +229,8 @@ export const postlogin = (email, password) => {
         email,
         password,
       });
-      const userData = response.data;
+      const userData = response.data
+      console.log(response)
       dispatch({ type: LOGIN_SUCCESS, payload: userData });
       return userData;
     } catch (error) {
@@ -275,15 +277,19 @@ export const verifiedGoogleLogIn = (email) => async (dispatch) => {
   }
 };
 
-export const resetPassword = (email) => {
+export const resetPassword = (email, password) => {
   return async function (dispatch) {
     try {
-      const response = await axios.post("/reset", { email });
+      const response = await axios.post("/reset", {
+        email,
+        password,
+      });
+      console.log(response)
       dispatch({ type: RESET_PASSWORD });
-      window.alert("Se ha enviado un correo para restablecer la contraseña");
+      window.alert("Se ha restablecido la contraseña");
     } catch (error) {
       console.log(error);
-      window.alert("No se pudo enviar el correo para restablecer la contraseña");
+      window.alert("No se pudo restablecer la contraseña");
     }
   };
 };

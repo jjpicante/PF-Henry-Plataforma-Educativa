@@ -33,7 +33,7 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route element={<ProtectedRoutes allowedRoles={["student", "profesor", "admin"]} />}>
+        <Route element={<ProtectedRoutes allowedRoles={["student", "profesor", "admin", "alumno"]} />}>
           <Route exact path="/home" element={<HomeStudent />} />
           <Route exact path="/Materias" element={<Classroom />} />
           <Route exact path="/alumnos" element={<Alumnos />} />
