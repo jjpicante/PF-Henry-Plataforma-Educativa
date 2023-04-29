@@ -44,7 +44,7 @@ module.exports = (sequelize) => {
       },
       rol: {
         type: DataTypes.STRING,
-        defaultValue: "admin",
+        defaultValue: "student",
       },
       anio: {
         type: DataTypes.STRING,
