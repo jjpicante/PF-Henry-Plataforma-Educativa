@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import emailjs from '@emailjs/browser'
 import style from "./Contacto.module.css"
+import Swal from "sweetalert2";
 
 const Contacto = () => {
 
@@ -17,7 +18,10 @@ const Contacto = () => {
         emailjs.sendForm('service_umhpsx4', 'template_f767xpn', event.target, 'VWtdKw_LCsI0zG4ZK')
             .then(response => {
                 console.log(response);
-                window.alert('MENSAJE ENVIADO');
+                Swal.fire({
+                    text: 'MENSAJE ENVIADO',
+                    icon: "success",
+                  });
                 setInput({
                     user_name: '',
                     user_email: '',

@@ -50,7 +50,7 @@ const postAlumno = async (
     console.log("User created in Firebase Authentication:", user.uid);
 
     // Create a user document in Firestore to store additional user details
-    const role = "alumno"; // Set the user's role to "alumno"
+    const role = "student"; // Set the user's role to "alumno"
     await createUserDocument(user, name, role, email);
 
     // Associate the new user with the created `Alumnos` record

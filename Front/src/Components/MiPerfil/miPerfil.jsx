@@ -5,7 +5,7 @@ import Navbar from "../NavBar/navBar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash, faPenToSquare, faCheck } from "@fortawesome/free-solid-svg-icons";
 import validate from "./validate";
-import { cleanResponse, editAlumno } from "../../Redux/actions";
+import { cleanResponse, editAlumno, editProfesor } from "../../Redux/actions";
 import Swal from "sweetalert2";
 
 export function MiPerfil() {
@@ -26,6 +26,11 @@ export function MiPerfil() {
   //Username
   const [userName, setUserName] = useState(userData?.username);
   const [editUserName, setEditUserName] = useState(true);
+  const [chekClick, setcheckClick] = useState(true);
+
+  const handleCheckClick = () => {
+    setcheckClick(!chekClick)
+  }
 
   const handleChangeUserName = (e) => {
     setUserName(e.target.value);
@@ -61,6 +66,7 @@ export function MiPerfil() {
   const handleTogglePassword = () => {
     setmostrarPass(!mostrarPass);
   };
+  
   const handleChangePassword = (e) => {
     setPassword(e.target.value);
     inputHandler(e);
@@ -109,10 +115,16 @@ export function MiPerfil() {
 
   const submitHandler = (e) => {
     e.preventDefault();
-
-    dispatch(
-      editAlumno(currentusername, paraEditar(valoresOriginales, nuevosValores))
-    );
+    if(userData.rol === "student"){
+      dispatch(
+        editAlumno(currentusername, paraEditar(valoresOriginales, nuevosValores))
+      );
+    }
+    if(userData.rol === "profesor"){
+      dispatch(
+        editProfesor(currentusername, paraEditar(valoresOriginales, nuevosValores))
+      );
+    }
 
   };
 
@@ -125,7 +137,7 @@ export function MiPerfil() {
   const handleEdit = () => {
     setEditar(!editar);
   };
-  console.log(response);
+ 
   useEffect(() => {
     if (response) {
       if (response === "Tus datos se modificaron con éxito") {
@@ -139,7 +151,7 @@ export function MiPerfil() {
           icon: "warning",
         });
     }
-  }, [response]);
+  }, [response, chekClick]);
 
   useEffect(() => {
     return () => {
@@ -151,7 +163,7 @@ export function MiPerfil() {
     <div>
       <Navbar />
       <div className={style.container}>
-        <div className={style.containerDatos}>
+        <div className={style.formulario}>
           {editar ? (
             <div className={style.datosPrincipales}>
               <p className={style.nombre}>Nombre: {userData?.name}</p>
@@ -176,6 +188,9 @@ export function MiPerfil() {
               </div>
               <div>
                 <label htmlFor={userName}>Usuario: </label>
+                <button type="button" onClick={() => handleEditUserName()}>
+                  <FontAwesomeIcon icon={faPenToSquare} />
+                </button>
                 <input
                   type="text"
                   name="username"
@@ -183,13 +198,13 @@ export function MiPerfil() {
                   disabled={editUserName}
                   onChange={(e) => handleChangeUserName(e)}
                 />
-                <button type="button" onClick={() => handleEditUserName()}>
-                  <FontAwesomeIcon icon={faPenToSquare} />
-                </button>
                 <p className={style.error}>{error.username}</p>
               </div>
               <div>
                 <label htmlFor={email}>Email: </label>
+                <button type="button" onClick={() => handleEditEmail()}>
+                  <FontAwesomeIcon icon={faPenToSquare} />
+                </button>
                 <input
                   type="text"
                   name="email"
@@ -197,13 +212,16 @@ export function MiPerfil() {
                   disabled={editEmail}
                   onChange={(e) => handleChangeEmail(e)}
                 />
-                <button type="button" onClick={() => handleEditEmail()}>
-                  <FontAwesomeIcon icon={faPenToSquare} />
-                </button>
                 <p className={style.error}>{error.email}</p>
               </div>
               <div>
                 <label htmlFor={password}>Contraseña: </label>
+                <button type="button" onClick={() => handleTogglePassword()}>
+                  <FontAwesomeIcon icon={mostrarPass ? faEyeSlash : faEye} />
+                </button>
+                <button type="button" onClick={() => handleEditPassword()}>
+                  <FontAwesomeIcon icon={faPenToSquare} />
+                </button>
                 <input
                   type={mostrarPass ? "password" : "text"}
                   name="password"
@@ -211,12 +229,6 @@ export function MiPerfil() {
                   disabled={editPassword}
                   onChange={(e) => handleChangePassword(e)}
                 />
-                <button type="button" onClick={() => handleTogglePassword()}>
-                  <FontAwesomeIcon icon={mostrarPass ? faEyeSlash : faEye} />
-                </button>
-                <button type="button" onClick={() => handleEditPassword()}>
-                  <FontAwesomeIcon icon={faPenToSquare} />
-                </button>
                 <p className={style.error}>{error.password}</p>
               </div>
               <div>
@@ -243,6 +255,7 @@ export function MiPerfil() {
                   className={style.botonChek}
                   type="submit"
                   disabled={hasErrors()}
+                  onClick={() => handleCheckClick()}
                 >
                   <FontAwesomeIcon icon={faCheck} />
                 </button>

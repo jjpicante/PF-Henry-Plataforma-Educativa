@@ -11,7 +11,7 @@ const Classroom = () => {
   const asignatures = useSelector((state) => state.materias);
   const pageCount1 = useSelector((state) => state.pageCount);
 
-  const [pageNumber, setPageNumber] = useState(0);
+  //const [pageNumber, setPageNumber] = useState(0);
   const userData = useSelector((state) => state.userData);
   const anio = userData?.anio;
 

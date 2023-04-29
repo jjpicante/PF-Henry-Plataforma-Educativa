@@ -1,10 +1,11 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { storage, app, db } from "../../config/firebase";
+import { storage, /* app, */ db } from "../../config/firebase";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { doc, setDoc, collection, getDocs } from "firebase/firestore";
 import { v4 } from "uuid";
 import styles from "./FireStorage.module.css";
+import Swal from "sweetalert2";
 
 const FireStorage = ({ visible, url }) => {
   const [fileupload, setFileupload] = useState(null);
@@ -63,7 +64,10 @@ const FireStorage = ({ visible, url }) => {
     e.preventDefault();
     const nombreArchivo = e.target.nombre.value;
     if (!nombreArchivo) {
-      alert("Porfavor, introduza un nombre");
+      Swal.fire({
+        text: "Porfavor, introduza un nombre",
+        icon: "warning",
+      });
       return;
     }
     const filRef = doc(db, "archivos", nombreArchivo);
