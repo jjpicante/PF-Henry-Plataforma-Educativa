@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { validate } from "./validations";
 import { postProfesor } from "../../Redux/actions";
 import axios from "axios";
-import Navbar from "../NavBar/navBar";
+//import Navbar from "../NavBar/navBar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import Swal from "sweetalert2";

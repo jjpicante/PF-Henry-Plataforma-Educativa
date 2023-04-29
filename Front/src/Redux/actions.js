@@ -109,6 +109,7 @@ export const postProfesor = (form) => {
   };
 };
 
+//Para modificar datos de Mi Perfil
 export const editAlumno = (currentusername, changes) => {
   return (dispatch) => {
     axios
@@ -122,6 +123,7 @@ export const editAlumno = (currentusername, changes) => {
   };
 };
 
+//Para modificar datos desde el panel de Admin
 export const editAlumno2 = (currentusername, changes) => {
   return (dispatch) => {
     axios
@@ -135,6 +137,7 @@ export const editAlumno2 = (currentusername, changes) => {
   };
 };
 
+//Para modificar datos de Mi Perfil
 export const editProfesor = (currentusername, changes) => {
   return (dispatch) => {
     axios
@@ -144,6 +147,20 @@ export const editProfesor = (currentusername, changes) => {
       })
       .catch((error) => {
         dispatch({ type: EDIT_PROFESOR, payload: error.response.data.error });
+      });
+  };
+};
+
+//Para modificar datos desde el panel de Admin
+export const editProfesor2 = (currentusername, changes) => {
+  return (dispatch) => {
+    axios
+      .put(`/Profesores/${currentusername}`, changes)
+      .then((response) => {
+        dispatch({ type: EDIT_ALUMNO2, payload: response.data });
+      })
+      .catch((error) => {
+        dispatch({ type: EDIT_ALUMNO2, payload: error.response.data.error });
       });
   };
 };
@@ -260,8 +277,8 @@ export const postlogin = (email, password) => {
         email,
         password,
       });
-      const userData = response.data
-      console.log(response)
+      const userData = response.data;
+      console.log(response);
       dispatch({ type: LOGIN_SUCCESS, payload: userData });
       return userData;
     } catch (error) {
@@ -315,7 +332,7 @@ export const resetPassword = (email, password) => {
         email,
         password,
       });
-      console.log(response)
+      console.log(response);
       dispatch({ type: RESET_PASSWORD });
       Swal.fire({
         text: "Se ha enviado un correo para restablecer la contraseña",

@@ -6,7 +6,7 @@ import style from "./Detail.module.css";
 import Navbar from "../NavBar/navBar";
 import FireStorage from "../almacenamiento/Firestoragev2";
 import Disqus from "../Coments/disqus";
-import { faL } from "@fortawesome/free-solid-svg-icons";
+//import { faL } from "@fortawesome/free-solid-svg-icons";
 
 export default function Detail() {
   const [visible, setVisible] = useState(false);

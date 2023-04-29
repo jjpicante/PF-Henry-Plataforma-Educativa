@@ -4,11 +4,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Navbar from "../../NavBar/navBar";
-import { getProfesor, getMateriasByAnio, editAlumno } from "../../../Redux/actions";
+import { getProfesor, cleanResponse, editProfesor2 } from "../../../Redux/actions";
 import { validate } from "./validations";
 import style from "./EditarProf.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare, faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import Swal from "sweetalert2";
 
 export default function EditarProfesor() {
   const dispatch = useDispatch();
@@ -23,8 +24,11 @@ export default function EditarProfesor() {
   //Datos originales del usuario solicitado, que quedan invariables
   const [valoresOriginales, setvaloresOriginales] = useState({});
 
-  //Verifica si hubo por lo menos un cambio en alguno de los valores
+  //Verifica si hubo por lo menos un cambio en alguno de los valores para habilitar el Submit
   const [hasChanged, setHasChanged] = useState(false);
+
+  //Verifica cada vez que se submitea algo, para disparar la alerta correspondiente
+  const [chekClick, setcheckClick] = useState(true);
 
   const [error, setError] = useState({
     name: "",
@@ -169,19 +173,26 @@ export default function EditarProfesor() {
     const propiedadesCambiadas = {};
 
     for (const prop in usuario) {
-      if (valoresOriginales[prop] !== usuario[prop]) {
+      if (
+        valoresOriginales[prop] !== usuario[prop] ||
+        prop.includes("anio") ||
+        prop.includes("materia")
+      ) {
         propiedadesCambiadas[prop] = usuario[prop];
       }
     }
     return propiedadesCambiadas;
   };
 
+  const handleCheckClick = () => {
+    setcheckClick(!chekClick);
+  };
+
   const submitHandler = (ev) => {
     ev.preventDefault();
     console.log("submit");
-    console.log(paraEditar(valoresOriginales, usuario));
-    /* dispatch(editAlumno(valoresOriginales.username, paraEditar(valoresOriginales, usuario)));
-    if (response) {
+    dispatch(editProfesor2(valoresOriginales.username, paraEditar(valoresOriginales, usuario)));
+    /* if (response) {
       window.alert(response);
     }
     navigate(-1); */
@@ -189,10 +200,7 @@ export default function EditarProfesor() {
 
   //Bloquea el boton submit cuando no se introdujeron cambios, o cuando hay errores
   function hasErrors() {
-    return (
-      Object.values(error).some((error) => error !== "") || hasChanged === false
-      //Object.values(disabled).every((valor) => valor === true)
-    );
+    return Object.values(error).some((error) => error !== "") || hasChanged === false;
   }
 
   useEffect(() => {
@@ -245,6 +253,28 @@ export default function EditarProfesor() {
       });
     }
     fetchProfesor();
+  }, []);
+
+  useEffect(() => {
+    if (response) {
+      if (response === "Tus datos se modificaron con éxito") {
+        Swal.fire({
+          text: response,
+          icon: "success",
+        });
+      } else
+        Swal.fire({
+          text: response,
+          icon: "warning",
+        });
+    }
+  }, [response, chekClick]);
+
+  //Borra el estado cuando se desmonta el componente
+  useEffect(() => {
+    return () => {
+      dispatch(cleanResponse());
+    };
   }, []);
 
   return (
@@ -318,7 +348,14 @@ export default function EditarProfesor() {
 
             {materias1.length ? (
               materias1.map((i) => (
-                <option value={i} key={i}>
+                <option
+                  value={i}
+                  key={i}
+                  disabled={
+                    (usuario.anio2 === usuario.anio1 && usuario.materia2 === i) ||
+                    (usuario.anio3 === usuario.anio1 && usuario.materia3 === i)
+                  }
+                >
                   {i}
                 </option>
               ))
@@ -373,7 +410,14 @@ export default function EditarProfesor() {
 
             {materias2.length ? (
               materias2.map((i) => (
-                <option value={i} key={i}>
+                <option
+                  value={i}
+                  key={i}
+                  disabled={
+                    (usuario.anio1 === usuario.anio2 && usuario.materia1 === i) ||
+                    (usuario.anio3 === usuario.anio2 && usuario.materia3 === i)
+                  }
+                >
                   {i}
                 </option>
               ))
@@ -432,7 +476,14 @@ export default function EditarProfesor() {
 
             {materias3.length ? (
               materias3.map((i) => (
-                <option value={i} key={i}>
+                <option
+                  value={i}
+                  key={i}
+                  disabled={
+                    (usuario.anio1 === usuario.anio3 && usuario.materia1 === i) ||
+                    (usuario.anio2 === usuario.anio3 && usuario.materia2 === i)
+                  }
+                >
                   {i}
                 </option>
               ))
@@ -556,7 +607,7 @@ export default function EditarProfesor() {
         >
           Volver
         </button>
-        <button type="submit" disabled={hasErrors()}>
+        <button type="submit" disabled={hasErrors()} onClick={() => handleCheckClick()}>
           Confirmar Cambios
         </button>
       </form>
