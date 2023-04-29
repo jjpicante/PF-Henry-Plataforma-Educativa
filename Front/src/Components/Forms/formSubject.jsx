@@ -16,7 +16,7 @@ function FormSubject() {
     anio: "",
     temas: [],
   });
-  const [newTema, setNewTema] = useState("");
+  //const [newTema, setNewTema] = useState("");
   const aula = useSelector((state) => state.aulas);
   const dispatch = useDispatch();
   console.log(subjectData);
@@ -24,7 +24,7 @@ function FormSubject() {
 
   useEffect(() => {
     async function sync() {
-      const verify = await dispatch(getAulas());
+      /* const verify =  */ await dispatch(getAulas());
     }
     sync();
   }, []);
