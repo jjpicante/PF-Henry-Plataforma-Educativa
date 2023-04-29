@@ -5,18 +5,17 @@ const Items = ({ currentItems }) => {
   return (
     <>
       <div className={style.cardsContent}>
-        {currentItems.length === undefined
-          ? console.log("Loading...")
-          : currentItems?.map((elem) => {
-              return (
-                <CardAsignature
-                  key={elem.id}
-                  id={elem.id}
-                  name={elem.namemateria}
-                  year={elem.anio}
-                />
-              );
-            })}
+        {currentItems &&
+          currentItems?.map((elem) => {
+            return (
+              <CardAsignature
+                key={elem.id}
+                id={elem.id}
+                name={elem.namemateria}
+                year={elem.anio}
+              />
+            );
+          })}
       </div>
     </>
   );

@@ -43,7 +43,11 @@ const Classroom = () => {
           </button>
         </NavLink> */}
       </div>
-      <Paginate pageCount1={pageCount1} asignatures={asignatures}></Paginate>
+      <Paginate
+        pageCount1={pageCount1}
+        data={asignatures}
+        itemsPerPage={2}
+      ></Paginate>
     </div>
   );
 };

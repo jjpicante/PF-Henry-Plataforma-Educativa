@@ -9,7 +9,7 @@ const getAllMaterias = async (query) => {
     if (!Number.isNaN(PageN) && PageN > 0) {
       page = PageN;
     }
-    let size = 2;
+    let size = query.size;
 
     if (query.name && query.name !== undefined) {
       var materias = await Materias.findAll({
