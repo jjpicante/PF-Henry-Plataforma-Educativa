@@ -10,7 +10,14 @@ const postLogin = async (email, password) => {
     // Fetch user's role from Firestore
     const userDocRef = doc(db, "users", user.uid);
     const userData = (await getDoc(userDocRef)).data()
-    return userData;
+    if(userData && userData.email){
+      const datauser = await Promise.all([
+        Alumnos.findOne({ where: { email:userData.email } }),
+        Profesores.findOne({ where: { email:userData.email } }),
+      ]);
+      return datauser;
+    }
+    return userData
   } catch (firestoreError) {
     try {
       // Check if user exists in either the Alumnos or Profesores tables
