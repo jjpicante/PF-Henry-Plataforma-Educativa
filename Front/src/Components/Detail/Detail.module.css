@@ -1,33 +1,33 @@
 .fondo {
   background: linear-gradient(to bottom, #137078, #5bc5a7);
-    width: 100%;
-    height: 100%;
-    position: absolute;
-  }
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
 
-    .topDiv {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        padding-top: 1vh;
-      }
+.topDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 1vh;
+}
 
-  .materia{
-    background-color: rgb(203, 211, 218) ;
-    display:flex;
-    border: solid black;
-    border-radius: 20px;
-    width: 70%;
-    height: 150px;
-    flex-direction: column;
-    margin: 20px;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
-    }
-   
-    .nombreMateria {
-      text-decoration: none;
-      text-transform: capitalize;
-    }
+.materia {
+  background-color: rgb(203, 211, 218);
+  display: flex;
+  border: solid black;
+  border-radius: 20px;
+  width: 70%;
+  height: 150px;
+  flex-direction: column;
+  margin: 20px;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.nombreMateria {
+  text-decoration: none;
+  text-transform: capitalize;
+}
