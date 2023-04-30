@@ -48,6 +48,8 @@ const { Admin } = sequelize.models;
 const { Materias } = sequelize.models;
 const { Profesores } = sequelize.models;
 const { Meses } = sequelize.models;
+const { AlumnosDeBaja } = sequelize.models;
+const { ProfesoresDeBaja } = sequelize.models;
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);

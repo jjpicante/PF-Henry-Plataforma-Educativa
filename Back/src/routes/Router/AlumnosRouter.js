@@ -5,6 +5,7 @@ const { deleteAlumno } = require("../../Controllers/Alumnos/deleteAlumno");
 const { getAlumnos } = require("../../Controllers/Alumnos/getAlumno");
 const { filterAlumnos } = require("../../Controllers/Alumnos/alumnofilter");
 const { updateAlumno } = require("../../Controllers/Alumnos/updateAlumno");
+const { postAlumnoDeBaja } = require("../../Controllers/Alumnos/postAlumnoDeBaja")
 
 const alumnos = Router();
 
@@ -47,12 +48,32 @@ alumnos.post("/", async (req, res) => {
   if (!respuesta.error) return res.status(200).json(respuesta);
   return res.status(503).json(respuesta);
 });
+
+alumnos.post("/AlumnoDeBaja", async (req, res) => {
+  const { name, apellido, nacionalidad, datebirth, email, username, password, anio } = req.body;
+
+  const respuesta = await postAlumnoDeBaja(
+    name,
+    apellido,
+    nacionalidad,
+    datebirth,
+    email,
+    username,
+    password,
+    anio
+  );
+  if (respuesta) return res.status(200).json(respuesta);
+  return res.status(503).json(respuesta);
+});
+
+
 alumnos.delete("/:username", async (req, res) => {
   const { username } = req.params;
   const respuesta = await deleteAlumno(username.toLowerCase());
   if (!respuesta.error) return res.status(200).json(respuesta);
   return res.status(503).json(respuesta);
 });
+
 
 alumnos.put("/:currentusername", async (req, res) => {
   try {

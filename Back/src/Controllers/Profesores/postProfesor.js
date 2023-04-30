@@ -38,6 +38,9 @@ const postProfesor = async (
       password: password.toLowerCase(),
     };
 
+    console.log(newProfesor);
+
+
      // Crea el usuario en la Firebase Authentication
      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
      const user = userCredential.user;
@@ -48,7 +51,9 @@ const postProfesor = async (
      await createUserDocument(user, name, role, email);
 
      
+
     const profesordb = await Profesores.create(newProfesor);
+    
 
     //* --------------------------> Carga de Materia 1 <---------------------------
 
