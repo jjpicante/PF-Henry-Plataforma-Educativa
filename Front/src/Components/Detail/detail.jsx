@@ -27,7 +27,6 @@ export default function Detail() {
     }
   };
 
-
   const borrarDocumento = async (e) => {
     const nameDocument = e.target.value;
     await deleteDoc(doc(db, "archivos", nameDocument));
@@ -74,7 +73,6 @@ export default function Detail() {
                     <FireStorage visible={visible} url={location} name={e}></FireStorage>
                   </li>
 
-
                   {documentosDelTema.map((doc, index) => {
                     return (
                       <div className={style.containerdoc}>
@@ -108,7 +106,6 @@ export default function Detail() {
                           </div>
                         </nav>
                       </div>
-
                     );
                   })}
                 </>

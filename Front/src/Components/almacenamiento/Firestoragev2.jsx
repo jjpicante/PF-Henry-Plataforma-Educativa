@@ -97,22 +97,6 @@ const FireStorage = ({ visible, url, name }) => {
         <input type="text" name="nombre" placeholder="nombra tu archivo" className={styles.input} />
         <button className={styles.button}>Enviar </button>
       </form>
-      <div>
-        {document.map((e, index) => {
-          console.log(e.nombre);
-          return (
-            <a
-              key={index}
-              href={e.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.documentList}
-            >
-              {e.nombre !== undefined ? e.nombre : "HOLa"}
-            </a>
-          );
-        })}
-      </div>
     </>
   );
 };
