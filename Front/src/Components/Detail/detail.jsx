@@ -8,7 +8,6 @@ import style from "./Detail.module.css";
 import Navbar from "../NavBar/navBar";
 import FireStorage from "../almacenamiento/Firestoragev2";
 import Disqus from "../Coments/disqus";
-
 //import { faL } from "@fortawesome/free-solid-svg-icons";
 
 export default function Detail() {
@@ -27,6 +26,7 @@ export default function Detail() {
       setVisible(false);
     }
   };
+
 
   const borrarDocumento = async (e) => {
     const nameDocument = e.target.value;
@@ -73,6 +73,7 @@ export default function Detail() {
                     <FireStorage visible={visible} url={location} name={e}></FireStorage>
                   </li>
 
+
                   {documentosDelTema.map((doc, index) => {
                     return (
                       <div className={style.containerdoc}>
@@ -106,6 +107,7 @@ export default function Detail() {
                           </div>
                         </nav>
                       </div>
+
                     );
                   })}
                 </>
