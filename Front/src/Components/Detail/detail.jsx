@@ -1,20 +1,21 @@
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation, useParams, Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { storage, /* app, */ db } from "../../config/firebase";
-import { doc, setDoc, collection, getDocs } from "firebase/firestore";
+import { db } from "../../config/firebase";
+import { doc, collection, getDocs, deleteDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { getMateriasById, cleanDetail } from "../../Redux/actions";
 import style from "./Detail.module.css";
 import Navbar from "../NavBar/navBar";
+import Swal from "sweetalert2";
 import FireStorage from "../almacenamiento/Firestoragev2";
 import Disqus from "../Coments/disqus";
-import styles from "../almacenamiento/FireStorage.module.css";
 //import { faL } from "@fortawesome/free-solid-svg-icons";
 
 export default function Detail() {
   const [visible, setVisible] = useState(false);
   const [document, setDocument] = useState([]);
   const location = useLocation();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { id } = useParams();
   const materiaById = useSelector((state) => state.materiaById);
@@ -27,8 +28,14 @@ export default function Detail() {
     }
   };
 
-  const nametema = (name) => {
-    return name;
+  const borrarDocumento = async (e) => {
+    const nameDocument = e.target.value;
+    await deleteDoc(doc(db, "archivos", nameDocument));
+    Swal.fire({
+      text: `se a borrado correctamente el archivo: ${nameDocument}`,
+      icon: "success",
+    });
+    navigate(0);
   };
 
   useEffect(() => {
@@ -59,6 +66,7 @@ export default function Detail() {
           <ul>
             <h2>Temas</h2>
             {materiaById?.temas?.map((e, i) => {
+              console.log(document.filter((doc) => doc.verifyname === e));
               const documentosDelTema = document.filter((doc) => doc.verifyname === e);
               return (
                 <>
@@ -68,17 +76,40 @@ export default function Detail() {
                     </h1>
                     <FireStorage visible={visible} url={location} name={e}></FireStorage>
                   </li>
+
                   {documentosDelTema.map((doc, index) => {
                     return (
-                      <a
-                        key={index}
-                        href={doc.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={styles.documentList}
-                      >
-                        {doc.nombre !== undefined ? doc.nombre : "HOLa"}
-                      </a>
+                      <div className={style.containerdoc}>
+                        <a
+                          key={index}
+                          href={doc.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={style.documentList}
+                        >
+                          {doc.nombre !== undefined ? doc.nombre : "HOLa"}
+                        </a>
+                        <nav className={style.navbar}>
+                          <div className={style.navbarContainer}>
+                            <ul className={style.navList}>
+                              <li className={`${style.navItem} ${style.dropdown}`}>
+                                <div className={` ${style.customBtn} ${style.vertical}`}>...</div>
+                                <ul className={style.dropdownContent}>
+                                  <li>
+                                    <button
+                                      value={doc.nombre}
+                                      onClick={borrarDocumento}
+                                      className={style.navLink}
+                                    >
+                                      Delete
+                                    </button>
+                                  </li>
+                                </ul>
+                              </li>
+                            </ul>
+                          </div>
+                        </nav>
+                      </div>
                     );
                   })}
                 </>

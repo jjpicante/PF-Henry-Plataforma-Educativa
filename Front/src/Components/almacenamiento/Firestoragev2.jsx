@@ -6,10 +6,12 @@ import { doc, setDoc, collection, getDocs } from "firebase/firestore";
 import { v4 } from "uuid";
 import styles from "./FireStorage.module.css";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const FireStorage = ({ visible, url, name }) => {
   const [fileupload, setFileupload] = useState(null);
   const [fileList, setFileList] = useState("");
+  const navigate = useNavigate();
   // const [document, setDocument] = useState([]);
   console.log(name);
 
@@ -74,9 +76,7 @@ const FireStorage = ({ visible, url, name }) => {
     const filRef = doc(db, "archivos", nombreArchivo);
     await setDoc(filRef, { nombre: nombreArchivo, url: fileList, verifyname: name });
     console.log("User document created in Firestore:", fileupload.name);
-    //!una vez arreglado el tema de que al hacer f5 se te deslogue, esto se agrega
-    //!para que automaticamente te devuelva a la url en la que estes y asi se pueda ver el archivo
-    // window.location = url.pathname;
+    navigate(0);
   };
 
   // useEffect(() => {
@@ -97,21 +97,6 @@ const FireStorage = ({ visible, url, name }) => {
         <input type="text" name="nombre" placeholder="nombra tu archivo" className={styles.input} />
         <button className={styles.button}>Enviar </button>
       </form>
-      {/* <div>
-        {document.map((e, index) => {
-          return (
-            <a
-              key={index}
-              href={e.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.documentList}
-            >
-              {e.nombre !== undefined ? e.nombre : "HOLa"}
-            </a>
-          );
-        })}
-      </div> */}
     </>
   );
 };
