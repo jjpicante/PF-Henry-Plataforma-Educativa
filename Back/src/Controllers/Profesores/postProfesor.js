@@ -37,8 +37,9 @@ const postProfesor = async (
       username: username.toLowerCase(),
       password: password.toLowerCase(),
     };
-
+    console.log(newProfesor);
     const profesordb = await Profesores.create(newProfesor);
+    
 
     //* --------------------------> Carga de Materia 1 <---------------------------
 

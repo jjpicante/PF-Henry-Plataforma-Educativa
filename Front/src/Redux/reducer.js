@@ -19,6 +19,10 @@ import {
   POST_PROFESOR,
   GET_AULAS,
   RESET_PASSWORD,
+  POST_PROFESOR_DE_BAJA,
+  POST_ALUMNO_DE_BAJA,
+  DELETE_ALUMNO,
+  DELETE_PROFESOR,
 } from "./actionsTypes";
 
 const initialState = {
@@ -43,6 +47,24 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
       };
+    case POST_ALUMNO_DE_BAJA:
+      return {
+        ...state,
+      } 
+    case POST_PROFESOR_DE_BAJA:
+      return{
+        ...state,
+      }  
+    case DELETE_ALUMNO:
+      return{
+        ...state,
+        students: state.students.filter((alumno) => alumno.username !== payload.username),
+      }  
+    case DELETE_PROFESOR:
+      return{
+        ...state,
+        profesors: state.profesors.filter((profesor) => profesor.username !== payload.username),
+      }  
     case EDIT_ALUMNO:
       return {
         ...state,

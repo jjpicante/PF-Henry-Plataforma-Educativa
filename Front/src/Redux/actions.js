@@ -19,6 +19,10 @@ import {
   POST_PROFESOR,
   GET_AULAS,
   RESET_PASSWORD,
+  POST_PROFESOR_DE_BAJA,
+  POST_ALUMNO_DE_BAJA,
+  DELETE_ALUMNO,
+  DELETE_PROFESOR,
 } from "./actionsTypes";
 import axios from "axios";
 
@@ -93,6 +97,32 @@ export const postAlumno = (form) => {
   };
 };
 
+export const postAlumnoDeBaja = (payload) => {
+  return async function (dispatch) {
+    console.log("ACTIONNN",payload);
+     await axios.post("/Alumnos/AlumnoDeBaja", payload);
+    
+     dispatch({
+       type: POST_ALUMNO_DE_BAJA,
+     });
+  };
+};
+
+export const deleteAlumno = (username) => {
+  return async function (dispatch) {
+    try {
+      await axios.delete(`/Alumnos/${username}`, username);
+      console.log(username);
+      dispatch({
+        type: DELETE_ALUMNO,
+      });
+    }
+    catch (error) {
+      console.log(error);
+    }
+  }
+}
+
 export const postProfesor = (form) => {
   return async function (dispatch) {
     try {
@@ -105,6 +135,35 @@ export const postProfesor = (form) => {
     }
   };
 };
+
+export const postProfesorDeBaja = (payload) => {
+  return async function (dispatch) {
+    console.log("ACTIOn",payload);
+    try {
+      await axios.post("/Profesores/ProfesordeBaja", payload);
+      return dispatch({
+        type: POST_PROFESOR_DE_BAJA,
+      });
+    } catch (error) {
+      console.log("entro al catch");
+    }
+  };
+};
+
+export const deleteProfesor = (username) => {
+  return async function (dispatch) {
+    try {
+      await axios.delete(`/Profesores/${username}`, username);
+      console.log(username);
+      dispatch({
+        type: DELETE_PROFESOR,
+      });
+    }
+    catch (error) {
+      console.log(error);
+    }
+  }
+}
 
 export const editAlumno = (currentusername, changes) => {
   return (dispatch) => {
