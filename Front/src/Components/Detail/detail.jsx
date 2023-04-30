@@ -63,6 +63,7 @@ export default function Detail() {
           <ul>
             <h2>Temas</h2>
             {materiaById?.temas?.map((e, i) => {
+              console.log(document.filter((doc) => doc.verifyname === e));
               const documentosDelTema = document.filter((doc) => doc.verifyname === e);
               return (
                 <>
