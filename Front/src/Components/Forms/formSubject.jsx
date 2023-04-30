@@ -16,11 +16,11 @@ function FormSubject() {
     anio: "",
     temas: [],
   });
-  //const [newTema, setNewTema] = useState("");
+  const [newTema, setNewTema] = useState("");
   const aula = useSelector((state) => state.aulas);
   const dispatch = useDispatch();
+  console.log(newTema);
   console.log(subjectData);
-  console.log(aula);
 
   useEffect(() => {
     async function sync() {
@@ -44,7 +44,8 @@ function FormSubject() {
 
   const addTema = () => {
     const newTemas = [...subjectData.temas];
-    newTemas.push({ tema: "" });
+    console.log(newTemas);
+    newTemas.push(newTema);
     setSubjectData({ ...subjectData, temas: newTemas });
     //!hay que cambiar esto para que se cree un nuevo input cada vez que agregamos una nueva materia
     Swal.fire({
@@ -53,10 +54,16 @@ function FormSubject() {
     });
   };
 
-  const updateTema = (index, value) => {
+  const updateTema = (index) => {
     const newTemas = [...subjectData.temas];
-    newTemas[index] = { tema: value };
+    console.log(newTemas);
+    const nombre = index.target.name;
+    const target = index.target.value;
+    console.log(nombre, target);
+    newTemas[nombre] = { tema: target };
+    setNewTema(target);
     setSubjectData({ ...subjectData, temas: newTemas });
+    console.log("asd");
   };
 
   const submitHandler = async (ev) => {

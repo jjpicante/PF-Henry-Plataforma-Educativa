@@ -10,9 +10,10 @@ import Swal from "sweetalert2";
 const FireStorage = ({ visible, url, name }) => {
   const [fileupload, setFileupload] = useState(null);
   const [fileList, setFileList] = useState("");
-  const [document, setDocument] = useState([]);
-  console.log(url.pathname);
-  const fileslist = ref(storage, "PDF/");
+  // const [document, setDocument] = useState([]);
+  console.log(name);
+
+  console.log(fileupload);
 
   const upload = async (e) => {
     setFileupload(e.target.files[0]);
@@ -46,7 +47,7 @@ const FireStorage = ({ visible, url, name }) => {
     }
     if (archivo.type === "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet") {
       console.log("ifEXCEL");
-      const fileRef = ref(storage, `Excel/${archivo.name + v4()}`);
+      const fileRef = ref(storage, `Excel/${archivo.name}`);
       const respuesta = await uploadBytes(fileRef, archivo).then(async (snapshot) => {
         await getDownloadURL(snapshot.ref).then(async (url) => {
           setFileList((prev) => [...prev, url]);
@@ -78,13 +79,16 @@ const FireStorage = ({ visible, url, name }) => {
     // window.location = url.pathname;
   };
 
-  useEffect(() => {
-    async function documentos() {
-      const documentlist = await getDocs(collection(db, "archivos"));
-      setDocument(documentlist.docs.map((doc) => doc.data()));
-    }
-    documentos();
-  }, []);
+  // useEffect(() => {
+  //   async function documentos() {
+  //     const documentlist = await getDocs(collection(db, "archivos"));
+  //     setDocument(documentlist.docs.map((doc) => doc.data()));
+  //     console.log(documentlist.docs.map((doc) => doc.data()));
+  //   }
+  //   documentos();
+  // }, []);
+
+  function verify() {}
 
   return (
     <>
@@ -93,6 +97,22 @@ const FireStorage = ({ visible, url, name }) => {
         <input type="text" name="nombre" placeholder="nombra tu archivo" className={styles.input} />
         <button className={styles.button}>Enviar </button>
       </form>
+      <div>
+        {document.map((e, index) => {
+          console.log(e.nombre);
+          return (
+            <a
+              key={index}
+              href={e.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.documentList}
+            >
+              {e.nombre !== undefined ? e.nombre : "HOLa"}
+            </a>
+          );
+        })}
+      </div>
     </>
   );
 };
