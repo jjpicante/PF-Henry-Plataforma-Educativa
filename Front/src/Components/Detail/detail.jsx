@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { getMateriasById, cleanDetail } from "../../Redux/actions";
 import style from "./Detail.module.css";
 import Navbar from "../NavBar/navBar";
+import Swal from "sweetalert2";
 import FireStorage from "../almacenamiento/Firestoragev2";
 import Disqus from "../Coments/disqus";
 //import { faL } from "@fortawesome/free-solid-svg-icons";
@@ -30,7 +31,10 @@ export default function Detail() {
   const borrarDocumento = async (e) => {
     const nameDocument = e.target.value;
     await deleteDoc(doc(db, "archivos", nameDocument));
-    alert(`se a borrado correctamente el archivo: ${nameDocument}`);
+    Swal.fire({
+      text: `se a borrado correctamente el archivo: ${nameDocument}`,
+      icon: "success",
+    });
     navigate(0);
   };
 
