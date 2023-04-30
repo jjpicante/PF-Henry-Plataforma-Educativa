@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Navigate, Outlet } from "react-router-dom";
+import { /*  Navigate,  */ Outlet } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Redirect from "../Redirect/redirect";
 import Unauthorized from "../Redirect/unauthorized";
@@ -12,6 +12,7 @@ const ProtectedRoutes = ({ allowedRoles }) => {
     if (userData !== null) setIsLoading(false);
   }, [userData]);
 
+  console.log(userData.role);
   console.log(userData?.rol);
 
   if (isLoading)
@@ -29,7 +30,7 @@ const ProtectedRoutes = ({ allowedRoles }) => {
       </>
     );
 
-  return allowedRoles.find((rol) => rol === userData?.rol) ? (
+  return allowedRoles.find((rol) => rol === userData?.rol || userData?.role) ? (
     <Outlet />
   ) : (
     <Unauthorized />

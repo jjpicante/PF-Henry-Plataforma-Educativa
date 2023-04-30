@@ -9,6 +9,8 @@ import {
   CLEAN_RESPONSE,
   POST_ALUMNO,
   EDIT_ALUMNO,
+  EDIT_ALUMNO2,
+  EDIT_PROFESOR,
   LOGIN_SUCCESS,
   LOGIN_FAILED,
   LOGOUT_SUCCESS,
@@ -66,6 +68,17 @@ export default function reducer(state = initialState, { type, payload }) {
         profesors: state.profesors.filter((profesor) => profesor.username !== payload.username),
       }  
     case EDIT_ALUMNO:
+      return {
+        ...state,
+        userData: payload?.alumno ? payload.alumno : state.userData,
+        editResponse: payload?.mensaje ? payload.mensaje : payload,
+      };
+    case EDIT_ALUMNO2:
+      return {
+        ...state,
+        editResponse: payload?.mensaje ? payload.mensaje : payload,
+      };
+    case EDIT_PROFESOR:
       return {
         ...state,
         userData: payload?.alumno ? payload.alumno : state.userData,

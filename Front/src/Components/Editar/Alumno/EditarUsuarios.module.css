@@ -1,20 +1,24 @@
 .container {
-  background: linear-gradient(to bottom, #137078, #5bc5a7);
-  height: 1600px;
-}
-
-.formulario {
-  background-color: rgb(170, 175, 179);
   display: flex;
   flex-direction: column;
   align-items: center;
-  row-gap: 20px;
+  background: linear-gradient(to bottom, #137078, #5bc5a7);
+  height: 900px;
+}
+
+.formulario {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  width: 750px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, 0.3);
+  padding: 40px;
 }
 
 .formulario section {
   display: flex;
-  width: 40%;
-  height: 60px;
+  width: 80%;
   column-gap: 5%;
   align-items: center;
   justify-content: flex-end;
@@ -31,7 +35,12 @@
   scale: 120%;
 }
 
-/* .submitButton:hover {
-  background-color: red;
-  cursor: pointer;
-} */
+.volverButton{
+  margin-top:10px
+}
+
+.editButton:hover{
+  color: white
+}
+
+

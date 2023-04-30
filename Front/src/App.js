@@ -33,7 +33,9 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route element={<ProtectedRoutes allowedRoles={["student", "profesor", "admin"]} />}>
+
+        <Route element={<ProtectedRoutes allowedRoles={["student", "profesor", "admin", "alumno"]} />}>
+
           <Route exact path="/home" element={<HomeStudent />} />
           <Route exact path="/Materias" element={<Classroom />} />
           <Route exact path="/alumnos" element={<Alumnos />} />
@@ -44,16 +46,19 @@ function App() {
           <Route exact path="/Cursos" element={<Classroom />} />
         </Route>
 
-       
         {/* VOLVER A METER DENTRO DE ADMIN */}
-        <Route exact path="/editarLanding" element={<EditarLanding />} />
-        <Route exact path="/editarAlumno/:username" element={<Editar />} />
-        <Route exact path="/editarProfesor/:username" element={<EditarProfesor />} />
+
         {/* ************** */}
 
-
-        <Route element={<ProtectedRoutes allowedRoles={["admin"]} />}></Route>
-
+        <Route element={<ProtectedRoutes allowedRoles={["admin"]} />}>
+          <Route exact path="/editarLanding" element={<EditarLanding />} />
+          <Route exact path="/editarAlumno/:username" element={<Editar />} />
+          <Route
+            exact
+            path="/editarProfesor/:username"
+            element={<EditarProfesor />}
+          />
+        </Route>
 
         <Route element={<ProtectedRoutes allowedRoles={["student"]} />}>
           <Route exact path="/carrito" element={<Carrito />} />

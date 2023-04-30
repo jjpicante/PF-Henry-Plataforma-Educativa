@@ -3,6 +3,7 @@ import { validate, validateSubmit } from "./validations";
 import { useDispatch, useSelector } from "react-redux";
 import { getAulas } from "../../Redux/actions";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 function FormSubject() {
   const [subjectData, setSubjectData] = useState({
@@ -18,12 +19,12 @@ function FormSubject() {
   const [newTema, setNewTema] = useState("");
   const aula = useSelector((state) => state.aulas);
   const dispatch = useDispatch();
+  console.log(newTema);
   console.log(subjectData);
-  console.log(aula);
 
   useEffect(() => {
     async function sync() {
-      const verify = await dispatch(getAulas());
+      /* const verify =  */ await dispatch(getAulas());
     }
     sync();
   }, []);
@@ -43,18 +44,26 @@ function FormSubject() {
 
   const addTema = () => {
     const newTemas = [...subjectData.temas];
-    newTemas.push({ tema: "" });
+    console.log(newTemas);
+    newTemas.push(newTema);
     setSubjectData({ ...subjectData, temas: newTemas });
     //!hay que cambiar esto para que se cree un nuevo input cada vez que agregamos una nueva materia
-    alert(
-      "tema agregado correctamente, si tuviste un error podras corregirlo en la seccion de materias"
-    );
+    Swal.fire({
+      text: "Tema agregado correctamente, si tuviste un error podras corregirlo en la seccion de materias",
+      icon: "success",
+    });
   };
 
-  const updateTema = (index, value) => {
+  const updateTema = (index) => {
     const newTemas = [...subjectData.temas];
-    newTemas[index] = { tema: value };
+    console.log(newTemas);
+    const nombre = index.target.name;
+    const target = index.target.value;
+    console.log(nombre, target);
+    newTemas[nombre] = { tema: target };
+    setNewTema(target);
     setSubjectData({ ...subjectData, temas: newTemas });
+    console.log("asd");
   };
 
   const submitHandler = async (ev) => {

@@ -4,9 +4,9 @@ const { ResetPassword } = require("../../Controllers/Firebase/resetPassword");
 const resetRouter = Router();
 
 resetRouter.post("/", async (req, res) => {
-    const { email } = req.body
+    const { email, newpassword } = req.body
     console.log(req.body)
-    const response = await ResetPassword(email);
+    const response = await ResetPassword(email, newpassword);
     if (response.success) {
         return res.status(200).json({ message: "Password Reset Successful" });
     } else {

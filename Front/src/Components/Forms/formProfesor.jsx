@@ -4,9 +4,10 @@ import { useDispatch } from "react-redux";
 import { validate } from "./validations";
 import { postProfesor } from "../../Redux/actions";
 import axios from "axios";
-import Navbar from "../NavBar/navBar";
+//import Navbar from "../NavBar/navBar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import Swal from "sweetalert2";
 
 function FormProfesor() {
   const dispatch = useDispatch();
@@ -112,7 +113,10 @@ function FormProfesor() {
     ev.preventDefault();
     //console.log(profesorData);
     dispatch(postProfesor(profesorData));
-    alert("Profesor creado");
+    Swal.fire({
+      text: "Profesor creado",
+      icon: "success",
+    });
     setProfesorData({
       name: "",
       apellido: "",

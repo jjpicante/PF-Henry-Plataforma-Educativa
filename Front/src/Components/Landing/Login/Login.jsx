@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import "./Login.css";
 import { auth, googleprovider } from "../../../config/firebase";
-import { signInWithPopup, signOut } from "firebase/auth";
+import { signInWithPopup /* , signOut  */ } from "firebase/auth";
 import { useNavigate, Link } from "react-router-dom";
 import { postlogin, verifiedGoogleLogIn } from "../../../Redux/actions";
 
@@ -16,18 +16,18 @@ function Login() {
 
   const handleLogin = async (event) => {
     event.preventDefault();
-    
+
     //buscan en la base de datos si el usuario existe
     try {
       if (!email || !password) {
         setErrorMessage("Please enter both email and password");
         return;
       }
-      const response = await dispatch(postlogin(email,password))
+      const response = await dispatch(postlogin(email, password));
       if (response.error) {
         setErrorMessage("Invalid email or password");
       } else {
-        navigate("/home", {replace: true})
+        navigate("/home", { replace: true });
       }
     } catch (error) {
       setErrorMessage("Error al iniciar sesión");
@@ -40,8 +40,8 @@ function Login() {
     } catch (error) {
       console.log(error.message);
     }
-    dispatch(verifiedGoogleLogIn(auth.currentUser.email))
-    navigate("/Home", { replace: true })
+    dispatch(verifiedGoogleLogIn(auth.currentUser.email));
+    navigate("/Home", { replace: true });
   };
 
   return (
@@ -50,19 +50,11 @@ function Login() {
         <form className="form" onSubmit={handleLogin}>
           <h2>Iniciar Sesion</h2>
           <div className="user-box">
-            <input
-              type="text"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
+            <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
             <label>Email</label>
           </div>
           <div className="user-box">
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
+            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
             <label>Contraseña</label>
           </div>
           <button type="submit">Iniciar Sesion</button>

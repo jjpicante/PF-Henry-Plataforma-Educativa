@@ -1,17 +1,19 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { storage, app, db } from "../../config/firebase";
+import { storage, /* app, */ db } from "../../config/firebase";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { doc, setDoc, collection, getDocs } from "firebase/firestore";
 import { v4 } from "uuid";
 import styles from "./FireStorage.module.css";
+import Swal from "sweetalert2";
 
-const FireStorage = ({ visible, url }) => {
+const FireStorage = ({ visible, url, name }) => {
   const [fileupload, setFileupload] = useState(null);
   const [fileList, setFileList] = useState("");
-  const [document, setDocument] = useState([]);
-  console.log(url.pathname);
-  const fileslist = ref(storage, "PDF/");
+  // const [document, setDocument] = useState([]);
+  console.log(name);
+
+  console.log(fileupload);
 
   const upload = async (e) => {
     setFileupload(e.target.files[0]);
@@ -45,7 +47,7 @@ const FireStorage = ({ visible, url }) => {
     }
     if (archivo.type === "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet") {
       console.log("ifEXCEL");
-      const fileRef = ref(storage, `Excel/${archivo.name + v4()}`);
+      const fileRef = ref(storage, `Excel/${archivo.name}`);
       const respuesta = await uploadBytes(fileRef, archivo).then(async (snapshot) => {
         await getDownloadURL(snapshot.ref).then(async (url) => {
           setFileList((prev) => [...prev, url]);
@@ -63,24 +65,30 @@ const FireStorage = ({ visible, url }) => {
     e.preventDefault();
     const nombreArchivo = e.target.nombre.value;
     if (!nombreArchivo) {
-      alert("Porfavor, introduza un nombre");
+      Swal.fire({
+        text: "Porfavor, introduza un nombre",
+        icon: "warning",
+      });
       return;
     }
     const filRef = doc(db, "archivos", nombreArchivo);
-    await setDoc(filRef, { nombre: nombreArchivo, url: fileList });
+    await setDoc(filRef, { nombre: nombreArchivo, url: fileList, verifyname: name });
     console.log("User document created in Firestore:", fileupload.name);
     //!una vez arreglado el tema de que al hacer f5 se te deslogue, esto se agrega
     //!para que automaticamente te devuelva a la url en la que estes y asi se pueda ver el archivo
     // window.location = url.pathname;
   };
 
-  useEffect(() => {
-    async function documentos() {
-      const documentlist = await getDocs(collection(db, "archivos"));
-      setDocument(documentlist.docs.map((doc) => doc.data()));
-    }
-    documentos();
-  }, []);
+  // useEffect(() => {
+  //   async function documentos() {
+  //     const documentlist = await getDocs(collection(db, "archivos"));
+  //     setDocument(documentlist.docs.map((doc) => doc.data()));
+  //     console.log(documentlist.docs.map((doc) => doc.data()));
+  //   }
+  //   documentos();
+  // }, []);
+
+  function verify() {}
 
   return (
     <>
@@ -89,9 +97,8 @@ const FireStorage = ({ visible, url }) => {
         <input type="text" name="nombre" placeholder="nombra tu archivo" className={styles.input} />
         <button className={styles.button}>Enviar </button>
       </form>
-      <div>
+      {/* <div>
         {document.map((e, index) => {
-          console.log(e.nombre);
           return (
             <a
               key={index}
@@ -104,7 +111,7 @@ const FireStorage = ({ visible, url }) => {
             </a>
           );
         })}
-      </div>
+      </div> */}
     </>
   );
 };
