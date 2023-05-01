@@ -102,12 +102,12 @@ export const postAlumno = (form) => {
 
 export const postAlumnoDeBaja = (payload) => {
   return async function (dispatch) {
-    console.log("ACTIONNN",payload);
-     await axios.post("/Alumnos/AlumnoDeBaja", payload);
-    
-     dispatch({
-       type: POST_ALUMNO_DE_BAJA,
-     });
+    console.log("ACTIONNN", payload);
+    await axios.post("/Alumnos/AlumnoDeBaja", payload);
+
+    dispatch({
+      type: POST_ALUMNO_DE_BAJA,
+    });
   };
 };
 
@@ -119,12 +119,11 @@ export const deleteAlumno = (username) => {
       dispatch({
         type: DELETE_ALUMNO,
       });
-    }
-    catch (error) {
+    } catch (error) {
       console.log(error);
     }
-  }
-}
+  };
+};
 
 export const postProfesor = (form) => {
   return async function (dispatch) {
@@ -139,10 +138,9 @@ export const postProfesor = (form) => {
   };
 };
 
-
 export const postProfesorDeBaja = (payload) => {
   return async function (dispatch) {
-    console.log("ACTIOn",payload);
+    console.log("ACTIOn", payload);
     try {
       await axios.post("/Profesores/ProfesordeBaja", payload);
       return dispatch({
@@ -162,13 +160,11 @@ export const deleteProfesor = (username) => {
       dispatch({
         type: DELETE_PROFESOR,
       });
-    }
-    catch (error) {
+    } catch (error) {
       console.log(error);
     }
-  }
-}
-
+  };
+};
 
 //Para modificar datos de Mi Perfil
 export const editAlumno = (currentusername, changes) => {
@@ -230,6 +226,7 @@ export const getMaterias = (page) => {
   return async function (dispatch) {
     const response = await axios.get(`/Materias?page=` + page);
     const materias = response.data;
+    console.log(materias);
     dispatch({ type: GET_MATERIAS, payload: materias });
   };
 };
@@ -265,6 +262,7 @@ export const getMateriasByAnio = (anio) => {
     // try {
     const result = await axios.get(`/Materias/filtermateria?anio=${anio}`);
     const materiaByAnio = result.data;
+    console.log(materiaByAnio);
     dispatch({ type: GET_MATERIAS_BY_ANIO, payload: materiaByAnio });
     //console.log(materiaByAnio);
 

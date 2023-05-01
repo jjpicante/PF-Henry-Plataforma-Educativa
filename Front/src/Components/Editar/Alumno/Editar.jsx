@@ -10,6 +10,7 @@ import style from "./EditarUsuarios.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import Swal from "sweetalert2";
+import NavBarAdmin from "../../Admin/navbarAdMIN/NavBar";
 
 export default function EditarUsuarios() {
   const dispatch = useDispatch();
@@ -53,24 +54,20 @@ export default function EditarUsuarios() {
     );
   };
 
+  //Habilita los inputs cuando se presiona en el ícono de editar
+  function handleDisabled(inputName) {
+    setDisabled({ ...disabled, [inputName]: false });
+  }
 
-//Habilita los inputs cuando se presiona en el ícono de editar
-function handleDisabled(inputName) {
-  setDisabled({ ...disabled, [inputName]: false });
-}
+  console.log(response);
 
+  const [chekClick, setcheckClick] = useState(true);
+  console.log(chekClick);
 
+  const handleCheckClick = () => {
+    setcheckClick(!chekClick);
+  };
 
-console.log(response);
-
-
-const [chekClick, setcheckClick] = useState(true);
-console.log(chekClick); 
-
-const handleCheckClick = () => {
-  setcheckClick(!chekClick)
-}
-  
   useEffect(() => {
     async function getPaises() {
       const response = await axios.get("https://restcountries.com/v3.1/all");
@@ -79,11 +76,11 @@ const handleCheckClick = () => {
     }
     getPaises();
   }, []);
-  
+
   useEffect(() => {
     async function fetchStudent() {
       const alumno = await dispatch(getStudent(username));
-      
+
       //Datos que podrán cambiar
       setUsuario({
         name: alumno.name,
@@ -96,7 +93,7 @@ const handleCheckClick = () => {
         username: alumno.username,
         password: alumno.password,
       });
-      
+
       //Datos invariables
       setvaloresOriginales({
         name: alumno.name,
@@ -115,7 +112,7 @@ const handleCheckClick = () => {
 
   const paraEditar = (valoresOriginales, usuario) => {
     const propiedadesCambiadas = {};
-    
+
     for (const prop in usuario) {
       if (valoresOriginales[prop] !== usuario[prop]) {
         propiedadesCambiadas[prop] = usuario[prop];
@@ -123,18 +120,18 @@ const handleCheckClick = () => {
     }
     return propiedadesCambiadas;
   };
-  
+
   const submitHandler = (ev) => {
     ev.preventDefault();
     console.log("submit");
     dispatch(editAlumno2(valoresOriginales.username, paraEditar(valoresOriginales, usuario)));
   };
-  
+
   function hasErrors() {
     return (
       Object.values(error).some((error) => error !== "") ||
       Object.values(disabled).every((valor) => valor === true)
-      );
+    );
   }
 
   useEffect(() => {
@@ -161,184 +158,182 @@ const handleCheckClick = () => {
 
   return (
     <div>
-      <Navbar />
-    <div className={style.container}>
-      <h1 className="formTitle">EDITAR USUARIO</h1>
-      <form className={style.formulario} onSubmit={(ev) => submitHandler(ev)}>
-        <section>
-          <h4 className={style.campo}>Nombre</h4>
-          <input
-            className={style.text}
-            type="text"
-            name="name"
-            autoComplete="off"
-            disabled={disabled.name}
-            onChange={(ev) => inputHandler(ev)}
-            value={usuario.name}
-          />
-          <button type="button" onClick={() => handleDisabled("name")}>
-            <FontAwesomeIcon className={style.editButton} icon={faPenToSquare} />
-          </button>
-          <p className="errorText">{error.name}</p>
-        </section>
+      <div>
+        <NavBarAdmin />
+      </div>
+      <div className={style.container}>
+        <h1 className="formTitle">EDITAR USUARIO</h1>
+        <form className={style.formulario} onSubmit={(ev) => submitHandler(ev)}>
+          <section>
+            <h4 className={style.campo}>Nombre</h4>
+            <input
+              className={style.text}
+              type="text"
+              name="name"
+              autoComplete="off"
+              disabled={disabled.name}
+              onChange={(ev) => inputHandler(ev)}
+              value={usuario.name}
+            />
+            <button type="button" onClick={() => handleDisabled("name")}>
+              <FontAwesomeIcon className={style.editButton} icon={faPenToSquare} />
+            </button>
+            <p className="errorText">{error.name}</p>
+          </section>
 
-        <section>
-          <h4 className={style.campo}>Apellido</h4>
-          <input
-            className={style.text}
-            type="text"
-            name="apellido"
-            autoComplete="off"
-            disabled={disabled.apellido}
-            onChange={(ev) => inputHandler(ev)}
-            value={usuario.apellido}
-          />
-          <button type="button" onClick={() => handleDisabled("apellido")}>
-            <FontAwesomeIcon className={style.editButton} icon={faPenToSquare} />
-          </button>
-          <p className="errorText">{error.apellido}</p>
-        </section>
+          <section>
+            <h4 className={style.campo}>Apellido</h4>
+            <input
+              className={style.text}
+              type="text"
+              name="apellido"
+              autoComplete="off"
+              disabled={disabled.apellido}
+              onChange={(ev) => inputHandler(ev)}
+              value={usuario.apellido}
+            />
+            <button type="button" onClick={() => handleDisabled("apellido")}>
+              <FontAwesomeIcon className={style.editButton} icon={faPenToSquare} />
+            </button>
+            <p className="errorText">{error.apellido}</p>
+          </section>
 
-        <section>
-          <h4 className={style.campo}>Año</h4>
-          <select
-            className={style.text}
-            type="text"
-            name="anio"
-            disabled={disabled.anio}
-            onChange={(ev) => inputHandler(ev)}
-            value={usuario.anio}
-          >
-            {["1ro", "2do", "3ro", "4to", "5to", "6to"].map((i) => (
-              <option value={i} key={i}>
-                {i}
-              </option>
-            ))}
-          </select>
-          <button type="button" onClick={() => handleDisabled("anio")}>
-            <FontAwesomeIcon className={style.editButton} icon={faPenToSquare} />
-          </button>
-        </section>
-
-        <section>
-          <h4 className={style.campo}>Fecha de nacimiento</h4>
-          <input
-            className={style.text}
-            type="date"
-            name="datebirth"
-            disabled={disabled.datebirth}
-            value={usuario.datebirth}
-            onChange={(ev) => inputHandler(ev)}
-          />
-          <button type="button" onClick={() => handleDisabled("datebirth")}>
-            <FontAwesomeIcon className={style.editButton} icon={faPenToSquare} />
-          </button>
-        </section>
-
-        <section>
-          <h4 className={style.campo}>Nacionalidad</h4>
-          <select
-            className={style.text}
-            type="text"
-            name="nacionalidad"
-            disabled={disabled.nacionalidad}
-            onChange={(ev) => inputHandler(ev)}
-            value={
-              usuario.nacionalidad &&
-              usuario.nacionalidad[0].toUpperCase() + usuario.nacionalidad.slice(1)
-            }
-          >
-            {paises?.map((el, i) => {
-              return (
-                <option value={el} key={i}>
-                  {el}
+          <section>
+            <h4 className={style.campo}>Año</h4>
+            <select
+              className={style.text}
+              type="text"
+              name="anio"
+              disabled={disabled.anio}
+              onChange={(ev) => inputHandler(ev)}
+              value={usuario.anio}
+            >
+              {["1ro", "2do", "3ro", "4to", "5to", "6to"].map((i) => (
+                <option value={i} key={i}>
+                  {i}
                 </option>
-              );
-            })}
-          </select>
-          <button type="button" onClick={() => handleDisabled("nacionalidad")}>
-            <FontAwesomeIcon className={style.editButton} icon={faPenToSquare} />
+              ))}
+            </select>
+            <button type="button" onClick={() => handleDisabled("anio")}>
+              <FontAwesomeIcon className={style.editButton} icon={faPenToSquare} />
+            </button>
+          </section>
+
+          <section>
+            <h4 className={style.campo}>Fecha de nacimiento</h4>
+            <input
+              className={style.text}
+              type="date"
+              name="datebirth"
+              disabled={disabled.datebirth}
+              value={usuario.datebirth}
+              onChange={(ev) => inputHandler(ev)}
+            />
+            <button type="button" onClick={() => handleDisabled("datebirth")}>
+              <FontAwesomeIcon className={style.editButton} icon={faPenToSquare} />
+            </button>
+          </section>
+
+          <section>
+            <h4 className={style.campo}>Nacionalidad</h4>
+            <select
+              className={style.text}
+              type="text"
+              name="nacionalidad"
+              disabled={disabled.nacionalidad}
+              onChange={(ev) => inputHandler(ev)}
+              value={
+                usuario.nacionalidad &&
+                usuario.nacionalidad[0].toUpperCase() + usuario.nacionalidad.slice(1)
+              }
+            >
+              {paises?.map((el, i) => {
+                return (
+                  <option value={el} key={i}>
+                    {el}
+                  </option>
+                );
+              })}
+            </select>
+            <button type="button" onClick={() => handleDisabled("nacionalidad")}>
+              <FontAwesomeIcon className={style.editButton} icon={faPenToSquare} />
+            </button>
+          </section>
+
+          <section>
+            <h4 className={style.campo}>Username</h4>
+            <input
+              className={style.text}
+              type="text"
+              name="username"
+              autoComplete="off"
+              disabled={true}
+              //onChange={(ev) => inputHandler(ev)}
+              value={usuario.username}
+            />
+            <p className="errorText">{error.username}</p>
+          </section>
+
+          <section>
+            <h4 className={style.campo}>Email</h4>
+            <input
+              className={style.text}
+              type="text"
+              name="email"
+              autoComplete="off"
+              disabled={true}
+              //onChange={(ev) => inputHandler(ev)}
+              value={usuario.email}
+            />
+            <p className="errorText">{error.email}</p>
+          </section>
+
+          <section>
+            <h4 className={style.campo}>Password</h4>
+            <input
+              className={style.text}
+              type="text"
+              name="password"
+              autoComplete="off"
+              disabled={true}
+              //onChange={(ev) => inputHandler(ev)}
+              value={usuario.password}
+            />
+            <p className="errorText">{error.password}</p>
+          </section>
+
+          <section>
+            <h4 className={style.campo}>Rol</h4>
+            <select
+              className={style.text}
+              type="text"
+              name="rol"
+              disabled={true}
+              //onChange={(ev) => inputHandler(ev)}
+              value={usuario.rol}
+            >
+              {["admin", "profesor", "student"].map((i) => (
+                <option value={i} key={i}>
+                  {i}
+                </option>
+              ))}
+            </select>
+          </section>
+          <button type="submit" disabled={hasErrors()} onClick={() => handleCheckClick()}>
+            Confirmar Cambios
           </button>
-        </section>
 
-        <section>
-          <h4 className={style.campo}>Username</h4>
-          <input
-            className={style.text}
-            type="text"
-            name="username"
-            autoComplete="off"
-            disabled={true}
-            //onChange={(ev) => inputHandler(ev)}
-            value={usuario.username}
-          />
-          <p className="errorText">{error.username}</p>
-        </section>
-
-        <section>
-          <h4 className={style.campo}>Email</h4>
-          <input
-            className={style.text}
-            type="text"
-            name="email"
-            autoComplete="off"
-            disabled={true}
-            //onChange={(ev) => inputHandler(ev)}
-            value={usuario.email}
-          />
-          <p className="errorText">{error.email}</p>
-        </section>
-
-        <section>
-          <h4 className={style.campo}>Password</h4>
-          <input
-            className={style.text}
-            type="text"
-            name="password"
-            autoComplete="off"
-            disabled={true}
-            //onChange={(ev) => inputHandler(ev)}
-            value={usuario.password}
-          />
-          <p className="errorText">{error.password}</p>
-        </section>
-
-        <section>
-          <h4 className={style.campo}>Rol</h4>
-          <select
-            className={style.text}
-            type="text"
-            name="rol"
-            disabled={true}
-            //onChange={(ev) => inputHandler(ev)}
-            value={usuario.rol}
+          <button
+            className={style.volverButton}
+            type="button"
+            onClick={() => {
+              navigate(-1);
+            }}
           >
-            {["admin", "profesor", "student"].map((i) => (
-              <option value={i} key={i}>
-                {i}
-              </option>
-            ))}
-          </select>
-        </section>
-        <button 
-          type="submit" 
-          disabled={hasErrors()} 
-          onClick={() => handleCheckClick()}>
-          Confirmar Cambios
-        </button>
-
-        <button
-          className={style.volverButton}  type="button"
-          onClick={() => {
-            navigate(-1);
-          }}
-        >
-          Volver
-        </button>
-      </form>
-    </div>
+            Volver
+          </button>
+        </form>
+      </div>
     </div>
   );
 }
-
-
