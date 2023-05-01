@@ -1,7 +1,8 @@
 const { auth, db } = require("../../config/firebase");
 const { signInWithEmailAndPassword } = require("firebase/auth");
-const { Alumnos, Profesores } = require("../../db");
+const { Alumnos, Profesores, Admin } = require("../../db");
 const { doc, getDoc } = require("firebase/firestore");
+
 
 const postLogin = async (email, password) => {
   try {
@@ -24,21 +25,29 @@ const postLogin = async (email, password) => {
     }
     return userData;
   } catch (firestoreError) {
+    console.log(firestoreError)
     try {
       // Check if user exists in either the Alumnos or Profesores tables
-      const [dbUser, dbProfesor] = await Promise.all([
+      const [dbUser, dbProfesor, dbAdmin] = await Promise.all([
         Alumnos.findOne({ where: { email } }),
         Profesores.findOne({ where: { email } }),
+        Admin.findOne({ where: { email } })
       ]);
 
       if (dbUser && dbUser.password === password) {
         return dbUser;
       } else if (dbProfesor && dbProfesor.password === password) {
         return dbProfesor;
-      } else {
+      } else if (dbAdmin && dbAdmin.password === password) {
+        return dbAdmin;
+      }
+      else {
         return { error: "Invalid Credentials" };
       }
+
+
     } catch (error) {
+      console.log(error);
       // Check if the user is authenticated in Firebase
       const currentUser = auth.currentUser;
       if (currentUser && currentUser.email === email) {

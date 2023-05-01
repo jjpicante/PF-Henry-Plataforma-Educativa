@@ -26,7 +26,11 @@ function Login() {
       const response = await dispatch(postlogin(email, password));
       if (response.error) {
         setErrorMessage("Invalid email or password");
-      } else {
+      } 
+      if(response.rol === "admin"){
+        navigate("/admin", { replace: true });
+      }
+      else {
         navigate("/home", { replace: true });
       }
     } catch (error) {

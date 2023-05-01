@@ -417,7 +417,7 @@ function FormProfesor() {
                 <FontAwesomeIcon icon={mostrarPass ? faEyeSlash : faEye} />
               </button>
             </div>
-            <input type="submit" value="Crear alumno" disabled={hasErrors()} />
+            <input type="submit" value="Crear profesor" disabled={hasErrors()} />
           </form>
         </div>
       </div>
