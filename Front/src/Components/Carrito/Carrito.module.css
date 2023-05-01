@@ -18,10 +18,10 @@
   align-items: center;
 }
 
-.header svg {
+/* .header svg {
   scale: 200%;
   margin-left: 5%;
-}
+} */
 
 .carroPrecio {
   width: 33.33%;
@@ -140,11 +140,11 @@
   background-color: #0043a3;
 }
 
-.imgPagos{
+.imgPagos {
   height: 4rem;
 }
 
-.containerPagos{
+.containerPagos {
   display: flex;
-  padding-top: 1rem ;
+  padding-top: 1rem;
 }

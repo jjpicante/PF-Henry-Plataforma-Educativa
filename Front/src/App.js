@@ -13,6 +13,7 @@ import Alumnos from "./Components/Alumnos/alumnos";
 import Login from "./Components/Landing/Login/Login";
 import Caracteristicas from "./Components/Landing/Caracteristicas/Caracteristicas";
 import Contacto from "./Components/Landing/Contacto/Contacto";
+import Desarrolladores from "./Components/Landing/Desarrolladores/desarrolladores";
 import EditarLanding from "./Components/Editar/Landing/EditarLanding";
 import Editar from "./Components/Editar/Alumno/Editar";
 import EditarProfesor from "./Components/Editar/Profesor/EditarProf";
@@ -46,10 +47,6 @@ function App() {
           <Route exact path="/Cursos" element={<Classroom />} />
         </Route>
 
-        {/* VOLVER A METER DENTRO DE ADMIN */}
-
-        {/* ************** */}
-
         <Route element={<ProtectedRoutes allowedRoles={["admin"]} />}>
           <Route exact path="/Admin" element={<LandingAdmin />}></Route>
           <Route exact path="/editarUsuario" element={<EditarLanding />} />
@@ -77,6 +74,7 @@ function App() {
         {/* Hasta aqui */}
         <Route exact path="/sobreNosotros" element={<Caracteristicas />} />
         <Route exact path="/contacto" element={<Contacto />} />
+        <Route exact path="/desarrolladores" element={<Desarrolladores />} />
         <Route exact path="/login" element={<Login />} />
       </Routes>
     </div>
