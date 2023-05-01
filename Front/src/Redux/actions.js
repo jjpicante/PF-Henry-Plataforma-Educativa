@@ -337,7 +337,7 @@ export const postlogin = (email, password) => {
         password,
       });
       const userData = response.data;
-      console.log(response);
+      console.log(userData);
       dispatch({ type: LOGIN_SUCCESS, payload: userData });
       return userData;
     } catch (error) {
