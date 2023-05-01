@@ -5,7 +5,7 @@ const { deleteProfesor } = require("../../Controllers/Profesores/deleteProfesor"
 const { getProfesor } = require("../../Controllers/Profesores/getPofesor");
 const { filterProfesor } = require("../../Controllers/Profesores/filterProfesor");
 const { updateProfesor } = require("../../Controllers/Profesores/updateProfesor");
-const { postProfesorDeBaja } = require("../../Controllers/Profesores/postProfesorDeBaja"); 
+const { postProfesorDeBaja } = require("../../Controllers/Profesores/postProfesorDeBaja");
 
 const profesores = Router();
 
@@ -64,6 +64,7 @@ profesores.post("/", async (req, res) => {
     materia3
   );
   if (!respuesta.error) return res.status(200).json(respuesta);
+  console.log(respuesta);
   return res.status(503).json(respuesta);
 });
 
@@ -90,7 +91,7 @@ profesores.post("/ProfesorDeBaja", async (req, res) => {
     datebirth,
     nacionalidad,
     username,
-    password,
+    password
     // anio1,
     // materia1,
     // anio2,
@@ -101,7 +102,6 @@ profesores.post("/ProfesorDeBaja", async (req, res) => {
   if (!respuesta.error) return res.status(200).json(respuesta);
   return res.status(503).json(respuesta);
 });
-
 
 profesores.put("/:currentUsername", async (req, res) => {
   const { currentUsername } = req.params;

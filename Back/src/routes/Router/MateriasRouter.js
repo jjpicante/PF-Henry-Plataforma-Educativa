@@ -37,6 +37,7 @@ materias.post("/", async (req, res) => {
     return res.status(400).json({ message: "Faltan ingresar datos" });
   const respuesta = await postMateria(namemateria, anio, temas);
   if (!respuesta.error) return res.status(200).json(respuesta);
+  console.log(respuesta);
   return res.status(503).json(respuesta);
 });
 
