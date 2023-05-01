@@ -52,7 +52,6 @@ export default function EditarUsuarios() {
 
   return (
     <div>
-      <Navbar />
     <div className={style.container}>
       <h1 className="formTitle">EDITAR USUARIO</h1>
       <div className={style.fondo}>
