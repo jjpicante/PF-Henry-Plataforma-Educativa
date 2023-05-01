@@ -11,12 +11,15 @@ const postLogin = async (email, password) => {
     const userDocRef = doc(db, "users", user.uid);
     const userData = (await getDoc(userDocRef)).data();
     if (userData && userData.email) {
+      const admin = await Admin.findOne({ where: { email: userData.email } });
       const alumnodb = await Alumnos.findOne({ where: { email: userData.email } });
       const profesordb = await Profesores.findOne({ where: { email: userData.email } });
       if (alumnodb) {
         return alumnodb;
       } else if (profesordb) {
         return profesordb;
+      } else if (admin) {
+        return admin;
       }
     }
     return userData;
