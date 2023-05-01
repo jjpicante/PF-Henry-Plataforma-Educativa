@@ -13,6 +13,7 @@ import Alumnos from "./Components/Alumnos/alumnos";
 import Login from "./Components/Landing/Login/Login";
 import Caracteristicas from "./Components/Landing/Caracteristicas/Caracteristicas";
 import Contacto from "./Components/Landing/Contacto/Contacto";
+import Desarrolladores from "./Components/Landing/Desarrolladores/desarrolladores";
 import EditarLanding from "./Components/Editar/Landing/EditarLanding";
 import Editar from "./Components/Editar/Alumno/Editar";
 import EditarProfesor from "./Components/Editar/Profesor/EditarProf";
@@ -33,9 +34,9 @@ function App() {
   return (
     <div className="App">
       <Routes>
-
-        <Route element={<ProtectedRoutes allowedRoles={["student", "profesor", "admin", "alumno"]} />}>
-
+        <Route
+          element={<ProtectedRoutes allowedRoles={["student", "profesor", "admin", "alumno"]} />}
+        >
           <Route exact path="/home" element={<HomeStudent />} />
           <Route exact path="/Materias" element={<Classroom />} />
           <Route exact path="/alumnos" element={<Alumnos />} />
@@ -46,18 +47,10 @@ function App() {
           <Route exact path="/Cursos" element={<Classroom />} />
         </Route>
 
-        {/* VOLVER A METER DENTRO DE ADMIN */}
-
-        {/* ************** */}
-
         <Route element={<ProtectedRoutes allowedRoles={["admin"]} />}>
           <Route exact path="/editarLanding" element={<EditarLanding />} />
           <Route exact path="/editarAlumno/:username" element={<Editar />} />
-          <Route
-            exact
-            path="/editarProfesor/:username"
-            element={<EditarProfesor />}
-          />
+          <Route exact path="/editarProfesor/:username" element={<EditarProfesor />} />
         </Route>
 
         <Route element={<ProtectedRoutes allowedRoles={["student"]} />}>
@@ -83,6 +76,7 @@ function App() {
         {/* Hasta aqui */}
         <Route exact path="/sobreNosotros" element={<Caracteristicas />} />
         <Route exact path="/contacto" element={<Contacto />} />
+        <Route exact path="/desarrolladores" element={<Desarrolladores />} />
         <Route exact path="/login" element={<Login />} />
       </Routes>
     </div>
