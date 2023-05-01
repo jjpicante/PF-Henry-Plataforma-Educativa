@@ -1,5 +1,5 @@
 .container {
-  background-color: #f5f5f5be;
+  background: linear-gradient(to bottom, #5bc5a7, #137078);
   padding: 20px;
   height: 90vh;
   display: flex;
@@ -9,11 +9,11 @@
 }
 
 .link {
-  background-color: rgba(0, 255, 255, 0.216);
+  background-color: #5bc5a771;
   margin-bottom: 40px;
   padding: 10px;
   font-size: 18px;
-  color: #333;
+  color: #171717;
   text-decoration: none;
   text-align: center;
   border-radius: 5px;
@@ -25,7 +25,7 @@
 
 .link::before {
   content: "";
-  background-color: hsla(196, 61%, 58%, 0.75);
+  background-color: #137078bc;
   position: absolute;
   left: 0;
   bottom: 3px;

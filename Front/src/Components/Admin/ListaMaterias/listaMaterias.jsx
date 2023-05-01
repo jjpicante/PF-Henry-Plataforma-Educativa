@@ -40,7 +40,6 @@ const ListaMaterias = () => {
                       })}
                     </ul>
                   </div>
-                  <hr className={styles.alumnos}></hr>
                 </div>
               );
             })

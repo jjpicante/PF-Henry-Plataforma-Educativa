@@ -1,5 +1,5 @@
 .navbar {
-  background-color: #f5f5f5;
+  background-color: #003929;
   color: transparent;
   display: flex;
   box-shadow: 4px 4px 8px rgb(0, 0, 0);
@@ -11,7 +11,7 @@
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 1rem;
+  padding: 1.4rem;
 }
 
 .navList {
@@ -26,20 +26,20 @@
 }
 
 .navLink {
-  background-color: rgba(0, 255, 255, 0.216);
-  color: #333;
+  background-color: #003929;
+  color: #fffdfd;
   text-decoration: none;
   font-size: 1.2rem;
   font-weight: 500;
   padding: 1rem 0.5rem;
-  border-bottom: 6px solid transparent;
+  border: 6px solid transparent;
   transition: 0.5s;
 }
 
 .navLink:hover {
-  color: #333;
-  background-color: hsla(196, 61%, 58%, 0.574);
-  border-bottom-color: hsl(196, 61%, 58%);
+  color: #000000;
+  border-color: #5bc5a7;
+  background-color: #7ceacb;
 }
 
 .miaula {
