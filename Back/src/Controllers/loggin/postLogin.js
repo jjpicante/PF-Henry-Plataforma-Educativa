@@ -1,7 +1,7 @@
 const { auth, db } = require("../../config/firebase");
 const { signInWithEmailAndPassword } = require("firebase/auth");
 const { Alumnos, Profesores } = require("../../db");
-const { doc, getDoc } = require("firebase/firestore")
+const { doc, getDoc } = require("firebase/firestore");
 
 const postLogin = async (email, password) => {
   try {
@@ -9,15 +9,17 @@ const postLogin = async (email, password) => {
     const { user } = await signInWithEmailAndPassword(auth, email, password);
     // Fetch user's role from Firestore
     const userDocRef = doc(db, "users", user.uid);
-    const userData = (await getDoc(userDocRef)).data()
-    if(userData && userData.email){
-      const datauser = await Promise.all([
-        Alumnos.findOne({ where: { email:userData.email } }),
-        Profesores.findOne({ where: { email:userData.email } }),
-      ]);
-      return datauser;
+    const userData = (await getDoc(userDocRef)).data();
+    if (userData && userData.email) {
+      const alumnodb = await Alumnos.findOne({ where: { email: userData.email } });
+      const profesordb = await Profesores.findOne({ where: { email: userData.email } });
+      if (alumnodb) {
+        return alumnodb;
+      } else if (profesordb) {
+        return profesordb;
+      }
     }
-    return userData
+    return userData;
   } catch (firestoreError) {
     try {
       // Check if user exists in either the Alumnos or Profesores tables
