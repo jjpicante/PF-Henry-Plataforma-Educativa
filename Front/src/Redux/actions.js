@@ -102,12 +102,12 @@ export const postAlumno = (form) => {
 
 export const postAlumnoDeBaja = (payload) => {
   return async function (dispatch) {
-    console.log("ACTIONNN",payload);
-     await axios.post("/Alumnos/AlumnoDeBaja", payload);
-    
-     dispatch({
-       type: POST_ALUMNO_DE_BAJA,
-     });
+    console.log("ACTIONNN", payload);
+    await axios.post("/Alumnos/AlumnoDeBaja", payload);
+
+    dispatch({
+      type: POST_ALUMNO_DE_BAJA,
+    });
   };
 };
 
@@ -119,12 +119,11 @@ export const deleteAlumno = (username) => {
       dispatch({
         type: DELETE_ALUMNO,
       });
-    }
-    catch (error) {
+    } catch (error) {
       console.log(error);
     }
-  }
-}
+  };
+};
 
 export const postProfesor = (form) => {
   return async function (dispatch) {
@@ -139,10 +138,9 @@ export const postProfesor = (form) => {
   };
 };
 
-
 export const postProfesorDeBaja = (payload) => {
   return async function (dispatch) {
-    console.log("ACTIOn",payload);
+    console.log("ACTIOn", payload);
     try {
       await axios.post("/Profesores/ProfesordeBaja", payload);
       return dispatch({
@@ -162,13 +160,11 @@ export const deleteProfesor = (username) => {
       dispatch({
         type: DELETE_PROFESOR,
       });
-    }
-    catch (error) {
+    } catch (error) {
       console.log(error);
     }
-  }
-}
-
+  };
+};
 
 //Para modificar datos de Mi Perfil
 export const editAlumno = (currentusername, changes) => {
@@ -339,7 +335,7 @@ export const postlogin = (email, password) => {
         password,
       });
       const userData = response.data;
-      console.log(response);
+      console.log(userData);
       dispatch({ type: LOGIN_SUCCESS, payload: userData });
       return userData;
     } catch (error) {
