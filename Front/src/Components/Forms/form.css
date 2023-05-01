@@ -85,9 +85,9 @@ select {
   margin: 0;
 }
 
-section svg {
+/* section svg {
   scale: 300%;
-}
+} */
 
 section svg:hover {
   cursor: pointer;
