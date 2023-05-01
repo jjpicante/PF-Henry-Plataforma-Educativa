@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAulas } from "../../Redux/actions";
 import axios from "axios";
 import Swal from "sweetalert2";
+import NavBarAdmin from "../Admin/navbarAdMIN/NavBar";
 
 function FormSubject() {
   const [subjectData, setSubjectData] = useState({
@@ -80,6 +81,9 @@ function FormSubject() {
 
   return (
     <>
+      <div>
+        <NavBarAdmin />
+      </div>
       <div className="MainMaterias">
         <div className="formBox">
           <h1 className="formTitle">Crear Materias</h1>

@@ -100,6 +100,9 @@ const postLogin = async (email, password) => {
         dbProfesor.materias = materias;
 
         //console.log("20.25 ----> ", dbProfesor);
+
+        
+
         return dbProfesor;
       } else if (dbAdmin && dbAdmin.password === password) {
         return dbAdmin;

@@ -226,6 +226,7 @@ export const getMaterias = (page) => {
   return async function (dispatch) {
     const response = await axios.get(`/Materias?page=` + page);
     const materias = response.data;
+    console.log(materias);
     dispatch({ type: GET_MATERIAS, payload: materias });
   };
 };
@@ -261,6 +262,7 @@ export const getMateriasByAnio = (anio) => {
     // try {
     const result = await axios.get(`/Materias/filtermateria?anio=${anio}`);
     const materiaByAnio = result.data;
+    console.log(materiaByAnio);
     dispatch({ type: GET_MATERIAS_BY_ANIO, payload: materiaByAnio });
     //console.log(materiaByAnio);
 
