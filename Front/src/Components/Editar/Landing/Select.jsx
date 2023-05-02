@@ -9,7 +9,6 @@ import {
   deleteAlumno,
   deleteProfesor,
 } from "../../../Redux/actions";
-import styles from "./EditarLanding.module.css";
 import { Table, Button, Input } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import Swal from "sweetalert2";
@@ -64,10 +63,10 @@ export default function Select({ alumnos, profesores, año }) {
             password: "",
             anio: "",
           });
-          window.location.href = window.location.href;
         })
       })
     })
+
   };
   
 
@@ -93,7 +92,6 @@ export default function Select({ alumnos, profesores, año }) {
             username: "",
             password: "",
           });
-          window.location.href = window.location.href;
         })
       })
     })

@@ -31,6 +31,14 @@ export default function EditarUsuarios() {
     });
   };
 
+  const refreshHandler = () => {
+    setRenderUsers({
+      alumnos: alumnos,
+      profesores: profesores,
+    });
+    window.location.replace("");
+  };
+
   //Al cargarse por primera vez, trae todos los datos de la DB
   useEffect(() => {
     dispatch(getStudents());
@@ -41,21 +49,28 @@ export default function EditarUsuarios() {
   useEffect(() => {
     switch (filtros.Rol) {
       case "profesor":
-        setRenderUsers({ ...renderUsers, alumnos: null, profesores: profesores });
+        setRenderUsers({
+          ...renderUsers,
+          alumnos: null,
+          profesores: profesores,
+        });
         break;
       case "student":
         setRenderUsers({ ...renderUsers, alumnos: alumnos, profesores: null });
         break;
       default: //Mostrar Todos
-        setRenderUsers({ ...renderUsers, alumnos: alumnos, profesores: profesores });
+        setRenderUsers({
+          ...renderUsers,
+          alumnos: alumnos,
+          profesores: profesores,
+        });
     }
   }, [filtros.Rol]);
 
   return (
     <div>
-      <div>
-        <NavBarAdmin />
-      </div>
+
+      <Navbar />
       <div className={style.container}>
         <h1 className="formTitle">EDITAR USUARIO</h1>
         <div className={style.fondo}>
@@ -86,12 +101,27 @@ export default function EditarUsuarios() {
             <option value="Filtrar Año" disabled={true}>
               Filtrar Año
             </option>
+
+            {["Mostrar Todos", "1ro", "2do", "3ro", "4to", "5to", "6to"].map(
+              (i) => (
+                <option value={i} key={i}>
+                  {i}
+                </option>
+              )
+            )}
+          </select>
+          
+          <button className={style.button} onClick={() => refreshHandler()}>
+            Recargar datos
+          </button>
+
             {["Mostrar Todos", "1ro", "2do", "3ro", "4to", "5to", "6to"].map((i) => (
               <option value={i} key={i}>
                 {i}
               </option>
             ))}
           </select>
+
 
           <Select
             alumnos={renderUsers.alumnos}
