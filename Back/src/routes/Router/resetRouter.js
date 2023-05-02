@@ -1,16 +1,15 @@
 const { Router } = require("express");
-const { ResetPassword } = require("../../Controllers/Firebase/resetPassword");
+const { ForgotPassword } = require("../../Controllers/Firebase/forgotPassword");
 
 const resetRouter = Router();
 
 resetRouter.post("/", async (req, res) => {
-    const { email, newpassword } = req.body
-    console.log(req.body)
-    const response = await ResetPassword(email, newpassword);
+    const { email } = req.body
+    const response = await ForgotPassword(email);
     if (response.success) {
-        return res.status(200).json({ message: "Password Reset Successful" });
+        return res.status(200).json({ message: "Password Request Successful" });
     } else {
-        return res.status(503).json({ error: "Failed to Reset the Password" });
+        return res.status(503).json({ error: "Failed to Request the Password" });
     }
 });
 
