@@ -1,5 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
+import "./Unauthorized.css";
+import robotImage from "./BrokenRobot.png";
 
 const Unauthorized = () => {
   useEffect(() => {
@@ -12,10 +14,16 @@ const Unauthorized = () => {
   }, []);
 
   return (
-    <h1>
-      Estas intentado ingresar a una ruta a la cual no estas autorizado, seras
-      redirreccionado al home en 3 segundos...
-    </h1>
+    <div className="unauthorized-container">
+      <img
+        src={robotImage}
+        alt="Unauthorized robot"
+        className="unauthorized-image"
+      />
+      <h2 className="unauthorized-title">
+        Oops... No estás autorizado para ingresar aquí
+      </h2>
+    </div>
   );
 };
 

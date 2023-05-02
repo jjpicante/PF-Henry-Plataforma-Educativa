@@ -3,6 +3,7 @@ import { /*  Navigate,  */ Outlet } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Redirect from "../Redirect/redirect";
 import Unauthorized from "../Redirect/unauthorized";
+import Loading from "../Redirect/loading";
 
 const ProtectedRoutes = ({ allowedRoles }) => {
   const userData = useSelector((state) => state.userData);
@@ -12,20 +13,20 @@ const ProtectedRoutes = ({ allowedRoles }) => {
     if (userData !== null) setIsLoading(false);
   }, [userData]);
 
-  console.log(userData.role);
-  console.log(userData?.rol);
+  // console.log(userData.role);
+  // console.log(userData?.rol);
 
   if (isLoading)
     return (
       <>
-        <h1>Cargando</h1>
+        <Loading />
         <Redirect />
       </>
     );
   if (userData === false)
     return (
       <>
-        <h1>Credenciales invalidas</h1>
+        <h1>Oops...</h1>
         <Redirect />
       </>
     );
