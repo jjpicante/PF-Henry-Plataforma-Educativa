@@ -92,6 +92,23 @@
 .form .button:hover {
   background-color: #02c7d8;
 }
+.form .forgot-password {
+  margin-top: 20px;
+  color: #fff;
+  text-align: center;
+}
+
+.form .forgot-password a {
+  color: #02c7d8;
+  font-size: 14px;
+  text-decoration: none;
+  border-bottom: 1px solid #02c7d8;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.form .forgot-password a:hover {
+  border-color: #ffffff;
+}
 
 .botonOjo{
   background-color: transparent;

@@ -81,6 +81,7 @@ const postLogin = async (email, password) => {
           const parseado = elem.toJSON();
           return parseado.MateriaId;
         });
+        
 
         //Busco las materias según su Id
         const arreglo = profesorMaterias.map((elem) => {

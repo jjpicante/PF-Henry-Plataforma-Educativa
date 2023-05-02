@@ -51,7 +51,7 @@ function Login() {
       console.log(error.message);
     }
     dispatch(verifiedGoogleLogIn(auth.currentUser.email));
-    navigate("/Home", { replace: true });
+    navigate("/home", { replace: true });
   };
 
   return (
@@ -68,7 +68,7 @@ function Login() {
             />
           </div>
           <div>
-          <label className="email">Contraseña</label>
+            <label className="email">Contraseña</label>
             <button
               className="botonOjo"
               type="button"
@@ -87,13 +87,17 @@ function Login() {
           <button className="button" type="submit">
             Iniciar Sesion
           </button>
+          <br></br>
           <button className="button" onClick={googleHandler}>
             Iniciar Sesion con Google
           </button>
-          <br></br>
+          
+          <p style={{ color: "red" }}>{errorMessage}</p>
+          <div className="forgot-password">
+            <Link to="/reset-password">¿Olvidaste tu contraseña?</Link>
+          </div>
         </form>
-        <p style={{ color: "red" }}>{errorMessage}</p>
-        <Link to="/reset-password">¿Olvidaste tu contraseña?</Link>
+
       </div>
     </div>
   );
