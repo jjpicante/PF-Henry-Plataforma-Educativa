@@ -12,6 +12,9 @@ import {
 import styles from "./EditarLanding.module.css";
 import { Table, Button, Input } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
+import Swal from "sweetalert2";
+
+
 
 export default function Select({ alumnos, profesores, año }) {
   const dispatch = useDispatch();
@@ -36,48 +39,66 @@ export default function Select({ alumnos, profesores, año }) {
     password: "",
   });
 
+
+
   const handleDeleteAlumno = async (username) => {
     const alumno = await dispatch(getStudent(username));
-    console.log(alumno);
-    const confirmacion = window.confirm(`¿Está seguro de que desea eliminar al alumno ${alumno.name} ${alumno.apellido}?`);
-  if (confirmacion) {
-    dispatch(postAlumnoDeBaja(alumno));
-    dispatch(deleteAlumno(alumno.username));
-    alert("alumno eliminado");
-    setSelectedAlumno({
-      name: "",
-      apellido: "",
-      nacionalidad: "",
-      datebirth: "",
-      email: "",
-      username: "",
-      password: "",
-      anio: "",
-    });
-    window.location.reload();
-  }
+    Swal.fire({
+      text: `¿Está seguro de que desea eliminar al alumno ${alumno.name} ${alumno.apellido}?`,
+      icon: "warning",
+    }).then((result) => {
+      if (result.isConfirmed)
+        dispatch(postAlumnoDeBaja(alumno));
+      dispatch(deleteAlumno(alumno.username)).then(() => {
+        Swal.fire({
+          text: "Alumno Eliminado",
+          icon: "success",
+        }).then(() => {
+          setSelectedAlumno({
+            name: "",
+            apellido: "",
+            nacionalidad: "",
+            datebirth: "",
+            email: "",
+            username: "",
+            password: "",
+            anio: "",
+          });
+          window.location.href = window.location.href;
+        })
+      })
+    })
   };
+  
 
   const handleDeleteProfesor = async (username) => {
     const profesor = await dispatch(getProfesor(username));
-    console.log(profesor);
-    const confirmacion = window.confirm(`¿Está seguro de que desea eliminar al profesor ${profesor.name} ${profesor.apellido}?`);
-  if (confirmacion) {
-    dispatch(postProfesorDeBaja(profesor));
-    dispatch(deleteProfesor(profesor.username));
-    alert("profesor eliminado");
-    setSelectedProfesor({
-      name: "",
-      apellido: "",
-      email: "",
-      datebirth: "",
-      nacionalidad: "",
-      username: "",
-      password: "",
-    });
-    window.location.reload();
-  }
+    Swal.fire({
+      text: `¿Está seguro de que desea eliminar al profesor ${profesor.name} ${profesor.apellido}?`,
+      icon: "warning",
+    }).then((result) => {
+      if (result.isConfirmed)
+        dispatch(postProfesorDeBaja(profesor));
+      dispatch(deleteProfesor(profesor.username)).then(() => {
+        Swal.fire({
+          text: "Profesor Eliminado",
+          icon: "success",
+        }).then(() => {
+          setSelectedProfesor({
+            name: "",
+            apellido: "",
+            email: "",
+            datebirth: "",
+            nacionalidad: "",
+            username: "",
+            password: "",
+          });
+          window.location.href = window.location.href;
+        })
+      })
+    })
   };
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -297,11 +318,11 @@ export default function Select({ alumnos, profesores, año }) {
             onClick={
               record.rol === "student"
                 ? () => {
-                    handleDeleteAlumno(record.username);
-                  }
+                  handleDeleteAlumno(record.username);
+                }
                 : () => {
-                    handleDeleteProfesor(record.username);
-                  }
+                  handleDeleteProfesor(record.username);
+                }
             }
           >
             Eliminar
