@@ -1,5 +1,4 @@
 .navbar {
-  background-color: #292929;
   background: linear-gradient(to bottom, #000000, #292929);
   color: #fff;
   display: flex;
@@ -35,6 +34,7 @@
 }
 
 .navLink:hover {
+  color: #5bc5a7;
   border-bottom-color: #fff;
 }
 
