@@ -104,18 +104,13 @@ export default function Desarrolladores() {
               </svg>
               <p>pablo_salituri@live.com.ar</p>
             </div>
-            <p>Tengo 33 años y nací en Tandil, Argentina. </p>
+            <p>Que mira bobo</p>
             <p>
-              Convencido del valor del aprendizaje, siempre me he preocupado por formarme y adquirir
-              constantemente nuevas habilidades: Soy Técnico en Informática, Ingeniero Civil, y
-              futuro Full Stack Developer; además de contar con estudios en Inglés, Francés y
-              Alemán.
+              Que mira bobo
             </p>
 
             <p>
-              Disfruto mucho programar, y sobre todo la libertad que brinda poder hacer mi trabajo
-              desde cualquier sitio; lo que resulta ideal para alguien que ama viajar y conocer
-              lugares nuevos todo el tiempo.
+             Anda, anda palla bobo
             </p>
           </div>
         </section>
@@ -137,18 +132,13 @@ export default function Desarrolladores() {
               </svg>
               <p>pablo_salituri@live.com.ar</p>
             </div>
-            <p>Tengo 33 años y nací en Tandil, Argentina. </p>
+            <p>Que mira bobo</p>
             <p>
-              Convencido del valor del aprendizaje, siempre me he preocupado por formarme y adquirir
-              constantemente nuevas habilidades: Soy Técnico en Informática, Ingeniero Civil, y
-              futuro Full Stack Developer; además de contar con estudios en Inglés, Francés y
-              Alemán.
+              Que mira bobo
             </p>
 
             <p>
-              Disfruto mucho programar, y sobre todo la libertad que brinda poder hacer mi trabajo
-              desde cualquier sitio; lo que resulta ideal para alguien que ama viajar y conocer
-              lugares nuevos todo el tiempo.
+             Anda, anda palla bobo
             </p>
           </div>
         </section>
@@ -170,18 +160,13 @@ export default function Desarrolladores() {
               </svg>
               <p>pablo_salituri@live.com.ar</p>
             </div>
-            <p>Tengo 33 años y nací en Tandil, Argentina. </p>
+            <p>Que mira bobo</p>
             <p>
-              Convencido del valor del aprendizaje, siempre me he preocupado por formarme y adquirir
-              constantemente nuevas habilidades: Soy Técnico en Informática, Ingeniero Civil, y
-              futuro Full Stack Developer; además de contar con estudios en Inglés, Francés y
-              Alemán.
+              Que mira bobo
             </p>
 
             <p>
-              Disfruto mucho programar, y sobre todo la libertad que brinda poder hacer mi trabajo
-              desde cualquier sitio; lo que resulta ideal para alguien que ama viajar y conocer
-              lugares nuevos todo el tiempo.
+             Anda, anda palla bobo
             </p>
           </div>
         </section>
@@ -203,18 +188,13 @@ export default function Desarrolladores() {
               </svg>
               <p>pablo_salituri@live.com.ar</p>
             </div>
-            <p>Tengo 33 años y nací en Tandil, Argentina. </p>
+            <p>Que mira bobo</p>
             <p>
-              Convencido del valor del aprendizaje, siempre me he preocupado por formarme y adquirir
-              constantemente nuevas habilidades: Soy Técnico en Informática, Ingeniero Civil, y
-              futuro Full Stack Developer; además de contar con estudios en Inglés, Francés y
-              Alemán.
+              Que mira bobo
             </p>
 
             <p>
-              Disfruto mucho programar, y sobre todo la libertad que brinda poder hacer mi trabajo
-              desde cualquier sitio; lo que resulta ideal para alguien que ama viajar y conocer
-              lugares nuevos todo el tiempo.
+             Anda, anda palla bobo
             </p>
           </div>
         </section>
