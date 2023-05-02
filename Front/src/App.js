@@ -26,7 +26,7 @@ import Disqus from "./Components/Coments/disqus";
 import Firestoragev2 from "./Components/almacenamiento/Firestoragev2";
 import LandingAdmin from "./Components/Admin/Adminhome";
 import ListaMaterias from "./Components/Admin/ListaMaterias/listaMaterias";
-import ClassroomProf from "./Components/ClassroomProf/classroomProf";
+
 
 /* axios.defaults.baseURL = "https://servidor-plataformae2.onrender.com"; */
 axios.defaults.baseURL = "http://localhost:3001";
