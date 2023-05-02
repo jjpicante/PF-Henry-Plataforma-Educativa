@@ -1,33 +1,38 @@
 .container {
-    background-color: rgb(207, 207, 207);
+    background: linear-gradient(to bottom, #137078, #5bc5a7);
     position: absolute;
     width: 100%;
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
+.borde {
+    align-items: center;
+    background-color: white;
+    width: 750px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.volver{
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+
 .volver:hover {
-    background-color: black;
+    background-color: #3F51B5;
     color: white;
 }
 
-.titulo {
-    position: fixed;
-    left: 100px;
-    top: 70px
-}
-
-
-.form {
-    /* position: fixed;
-    top: 100px;
-    left: 600px; */
-    padding-top: 150px;
-    display: flex;
-    align-items: start;
-    padding-left: 100px;
-    justify-content: center;
-    size: 70px;
-}
 
 .titulo {
     color: rgb(24, 116, 170);
@@ -36,58 +41,59 @@
 
 .nombre {
     font-weight: bold;
-    font-style: italic;
 }
 
 .input1 {
-    background: transparent;
-    border: 2px solid black;
-
+    display: block;
+    width: 90%;
+    padding: 10px;
+    margin: 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.1);
 }
 
 .email {
     font-weight: bold;
-    font-style: italic;
 }
 
 .input2{
-    background: transparent;
-    border: 2px solid black;
-    margin-top: 30px;
+    display: block;
+    width: 90%;
+    padding: 10px;
+    margin: 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.1);
 }
 
 .mensaje{
     font-weight: bold;
-    font-style: italic;
-    position: fixed;
-    padding-left: 3px;
-    padding-top: 10px;
 }
 
 .input3{
-    background: transparent;
-    border: 2px solid black;
-    margin-top: 60px;
-    width: 800px;
-    height: 100px;
+    display: block;
+    width: 90%;
+    padding: 10px;
+    margin: 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.1);
 }
 
 .send{
-    margin-top: 30px;
-    width: 800px;
-    height: 20px;
-    background-color: rgb(189, 189, 189);
-    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 .send:hover{
-    background-color: rgb(126, 126, 126);
-}
-
-.borde{
-    border: 2px solid black;
-    width: 1000px;
-    height: 550px;
-    margin-top: 50px;
-    margin-left: 70px;
+    background-color: #3F51B5;
+    color: white;
 }
