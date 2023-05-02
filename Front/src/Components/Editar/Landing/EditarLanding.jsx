@@ -120,9 +120,7 @@ export default function EditarUsuarios() {
                 {i}
               </option>
             ))}
-          </select>
-
-
+          
           <Select
             alumnos={renderUsers.alumnos}
             profesores={renderUsers.profesores}
