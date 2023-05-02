@@ -30,6 +30,14 @@ export default function EditarUsuarios() {
     });
   };
 
+  const refreshHandler = () => {
+    setRenderUsers({
+      alumnos: alumnos,
+      profesores: profesores,
+    });
+    window.location.replace("");
+  };
+
   //Al cargarse por primera vez, trae todos los datos de la DB
   useEffect(() => {
     dispatch(getStudents());
@@ -40,64 +48,75 @@ export default function EditarUsuarios() {
   useEffect(() => {
     switch (filtros.Rol) {
       case "profesor":
-        setRenderUsers({ ...renderUsers, alumnos: null, profesores: profesores });
+        setRenderUsers({
+          ...renderUsers,
+          alumnos: null,
+          profesores: profesores,
+        });
         break;
       case "student":
         setRenderUsers({ ...renderUsers, alumnos: alumnos, profesores: null });
         break;
       default: //Mostrar Todos
-        setRenderUsers({ ...renderUsers, alumnos: alumnos, profesores: profesores });
+        setRenderUsers({
+          ...renderUsers,
+          alumnos: alumnos,
+          profesores: profesores,
+        });
     }
   }, [filtros.Rol]);
 
   return (
     <div>
       <Navbar />
-    <div className={style.container}>
-      <h1 className="formTitle">EDITAR USUARIO</h1>
-      <div className={style.fondo}>
-        <select
-          className={style.select}
-          type="text"
-          name="Rol"
-          onChange={(ev) => filterHandler(ev)}
-          value={filtros.Rol}
-        >
-          <option value="Filtrar Rol" disabled={true}>
-            Filtrar Rol
-          </option>
-          {["Mostrar todos", "profesor", "student"].map((i) => (
-            <option value={i} key={i}>
-              {i}
+      <div className={style.container}>
+        <h1 className="formTitle">EDITAR USUARIO</h1>
+        <div className={style.fondo}>
+          <select
+            className={style.select}
+            type="text"
+            name="Rol"
+            onChange={(ev) => filterHandler(ev)}
+            value={filtros.Rol}
+          >
+            <option value="Filtrar Rol" disabled={true}>
+              Filtrar Rol
             </option>
-          ))}
-        </select>
+            {["Mostrar todos", "profesor", "student"].map((i) => (
+              <option value={i} key={i}>
+                {i}
+              </option>
+            ))}
+          </select>
 
-        <select
-          className={style.select}
-          type="text"
-          name="Año"
-          onChange={(ev) => filterHandler(ev)}
-          value={filtros.Año}
-        >
-          <option value="Filtrar Año" disabled={true}>
-            Filtrar Año
-          </option>
-          {["Mostrar Todos", "1ro", "2do", "3ro", "4to", "5to", "6to"].map((i) => (
-            <option value={i} key={i}>
-              {i}
+          <select
+            className={style.select}
+            type="text"
+            name="Año"
+            onChange={(ev) => filterHandler(ev)}
+            value={filtros.Año}
+          >
+            <option value="Filtrar Año" disabled={true}>
+              Filtrar Año
             </option>
-          ))}
-        </select>
-
-        <Select
-          alumnos={renderUsers.alumnos}
-          profesores={renderUsers.profesores}
-          año={filtros.Año}
-        />
+            {["Mostrar Todos", "1ro", "2do", "3ro", "4to", "5to", "6to"].map(
+              (i) => (
+                <option value={i} key={i}>
+                  {i}
+                </option>
+              )
+            )}
+          </select>
+          <button className={style.button} onClick={() => refreshHandler()}>
+            Recargar datos
+          </button>
+          <Select
+            alumnos={renderUsers.alumnos}
+            profesores={renderUsers.profesores}
+            año={filtros.Año}
+          />
+        </div>
       </div>
-    </div>
-
     </div>
   );
 }

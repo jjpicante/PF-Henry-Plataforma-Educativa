@@ -9,7 +9,6 @@ import {
   deleteAlumno,
   deleteProfesor,
 } from "../../../Redux/actions";
-import styles from "./EditarLanding.module.css";
 import { Table, Button, Input } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 
@@ -53,7 +52,6 @@ export default function Select({ alumnos, profesores, año }) {
       password: "",
       anio: "",
     });
-    window.location.reload();
   };
 
   const handleDeleteProfesor = async (username) => {
@@ -72,7 +70,6 @@ export default function Select({ alumnos, profesores, año }) {
       username: "",
       password: "",
     });
-    window.location.reload();
   };
 
   useEffect(() => {
