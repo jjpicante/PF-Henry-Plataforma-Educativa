@@ -8,6 +8,7 @@ import Navbar from "../NavBar/navBar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import Swal from "sweetalert2";
+import NavBarAdmin from "../Admin/navbarAdMIN/NavBar";
 
 function Form() {
   const dispatch = useDispatch();
@@ -88,6 +89,9 @@ function Form() {
 
   return (
     <>
+      <div>
+        <NavBarAdmin />
+      </div>
       <div className="MainAlumnos">
         <div className="formBox">
           <h1 className="formTitle">CREAR ALUMNO</h1>

@@ -1,0 +1,50 @@
+.navbar {
+  background-color: #003929;
+  color: transparent;
+  display: flex;
+  box-shadow: 4px 4px 8px rgb(0, 0, 0);
+}
+
+.navbarContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.4rem;
+}
+
+.navList {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navItem {
+  margin: 0 2rem;
+}
+
+.navLink {
+  background-color: #003929;
+  color: #fffdfd;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 500;
+  padding: 1rem 0.5rem;
+  border: 6px solid transparent;
+  transition: 0.5s;
+}
+
+.navLink:hover {
+  color: #000000;
+  border-color: #5bc5a7;
+  background-color: #7ceacb;
+}
+
+.miaula {
+  position: relative;
+  font-size: larger;
+  cursor: pointer;
+  font-weight: 500;
+}

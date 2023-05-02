@@ -5,6 +5,7 @@ import Navbar from "../../NavBar/navBar";
 import { getStudents, getProfesors } from "../../../Redux/actions";
 import Select from "./Select.jsx";
 import style from "./EditarLanding.module.css";
+import NavBarAdmin from "../../Admin/navbarAdMIN/NavBar";
 
 export default function EditarUsuarios() {
   const dispatch = useDispatch();
@@ -68,6 +69,7 @@ export default function EditarUsuarios() {
 
   return (
     <div>
+
       <Navbar />
       <div className={style.container}>
         <h1 className="formTitle">EDITAR USUARIO</h1>
@@ -99,6 +101,7 @@ export default function EditarUsuarios() {
             <option value="Filtrar Año" disabled={true}>
               Filtrar Año
             </option>
+
             {["Mostrar Todos", "1ro", "2do", "3ro", "4to", "5to", "6to"].map(
               (i) => (
                 <option value={i} key={i}>
@@ -107,9 +110,19 @@ export default function EditarUsuarios() {
               )
             )}
           </select>
+          
           <button className={style.button} onClick={() => refreshHandler()}>
             Recargar datos
           </button>
+
+            {["Mostrar Todos", "1ro", "2do", "3ro", "4to", "5to", "6to"].map((i) => (
+              <option value={i} key={i}>
+                {i}
+              </option>
+            ))}
+          </select>
+
+
           <Select
             alumnos={renderUsers.alumnos}
             profesores={renderUsers.profesores}

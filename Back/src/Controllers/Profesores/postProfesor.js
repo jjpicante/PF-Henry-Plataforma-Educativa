@@ -1,5 +1,8 @@
 const { Op } = require("sequelize");
 const { Profesores, Materias, Aulas } = require("../../db");
+const { auth } = require("../../config/firebase");
+const { createUserWithEmailAndPassword } = require("firebase/auth");
+const { createUserDocument } = require("../Firebase/createUser");
 
 const postProfesor = async (
   name,
@@ -40,20 +43,16 @@ const postProfesor = async (
 
     console.log(newProfesor);
 
+    // Crea el usuario en la Firebase Authentication
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+    const user = userCredential.user;
+    console.log("User created in Firebase Authentication:", user.uid);
 
-     // Crea el usuario en la Firebase Authentication
-     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-     const user = userCredential.user;
-     console.log("User created in Firebase Authentication:", user.uid);
- 
-     // Crea el documento del usuario en la firestore
-     const role = "profesor"; // Set the user's role to "profesor"
-     await createUserDocument(user, name, role, email);
-
-     
+    // Crea el documento del usuario en la firestore
+    const role = "profesor"; // Set the user's role to "profesor"
+    await createUserDocument(user, name, role, email);
 
     const profesordb = await Profesores.create(newProfesor);
-    
 
     //* --------------------------> Carga de Materia 1 <---------------------------
 
@@ -119,6 +118,7 @@ const postProfesor = async (
 
     return { message: "Profesor creado con exito" };
   } catch (error) {
+    console.log(error);
     return { error: "No se pudo agregar el profesor solicitado" };
   }
 };

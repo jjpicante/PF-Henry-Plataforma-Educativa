@@ -13,8 +13,8 @@ const ProtectedRoutes = ({ allowedRoles }) => {
     if (userData !== null) setIsLoading(false);
   }, [userData]);
 
-  // console.log(userData.role);
-  // console.log(userData?.rol);
+
+  console.log(userData);
 
   if (isLoading)
     return (
@@ -31,11 +31,7 @@ const ProtectedRoutes = ({ allowedRoles }) => {
       </>
     );
 
-  return allowedRoles.find((rol) => rol === userData?.rol || userData?.role) ? (
-    <Outlet />
-  ) : (
-    <Unauthorized />
-  );
+  return allowedRoles.find((rol) => rol === userData?.rol) ? <Outlet /> : <Unauthorized />;
 };
 
 export default ProtectedRoutes;

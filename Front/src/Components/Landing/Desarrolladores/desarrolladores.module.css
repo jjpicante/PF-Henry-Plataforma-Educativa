@@ -1,0 +1,70 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(to bottom, #137078, #5bc5a7);
+  padding-top: 3vh;
+  padding-left: 3vw;
+  padding-right: 3vw;
+  font-size: 2.2vh;
+}
+
+.container p {
+  margin: 0;
+}
+
+.allIntegrantes {
+  column-gap: 1vw;
+  row-gap: 4vh;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.integrante {
+  background-color: rgba(153, 153, 153, 0.67);
+  padding: 1.2%;
+  border: 0.1em solid black;
+  border-radius: 1em;
+  width: 44%;
+  line-height: 4vh;
+  overflow: hidden;
+}
+
+.textos {
+  text-align: justify;
+  font-size: 1vw;
+}
+
+.mail {
+  display: flex;
+  align-items: center;
+  column-gap: 1vw;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+  font-size: 90%;
+}
+
+.nombre {
+  text-decoration: underline;
+  margin: 0;
+}
+
+.img {
+  width: 12vw;
+  border-radius: 0.7em;
+  float: left;
+  margin-right: 1.5vw;
+}
+
+.image {
+  width: 17vw;
+  border-radius: 0.7em;
+  float: left;
+  margin-right: 1.5vw;
+}
+
+.button {
+  width: 10vw;
+}

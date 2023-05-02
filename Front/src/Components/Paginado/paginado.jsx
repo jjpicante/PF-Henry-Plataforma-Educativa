@@ -1,12 +1,9 @@
 import ReactPaginate from "react-paginate";
 import { useEffect, useState } from "react";
 import Items from "./items";
-import { useDispatch } from "react-redux";
-import { getMaterias } from "../../Redux/actions";
 import style from "./Paginate.module.css";
 
 const Paginate = ({ data, pageCount1, itemsPerPage }) => {
-  const dispatch = useDispatch();
   const [pageNumber, setPageNumber] = useState(0);
   const [currentItems, setCurrentItems] = useState();
   const [pageCount, setPageCount] = useState(0);

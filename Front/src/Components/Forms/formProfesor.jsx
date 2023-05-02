@@ -8,6 +8,7 @@ import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import Swal from "sweetalert2";
+import NavBarAdmin from "../Admin/navbarAdMIN/NavBar";
 
 function FormProfesor() {
   const dispatch = useDispatch();
@@ -156,6 +157,9 @@ function FormProfesor() {
 
   return (
     <>
+      <div>
+        <NavBarAdmin />
+      </div>
       <div className="MainProfesores">
         <div className="formBox">
           <h1 className="formTitle">CREAR PROFESOR</h1>
@@ -417,7 +421,7 @@ function FormProfesor() {
                 <FontAwesomeIcon icon={mostrarPass ? faEyeSlash : faEye} />
               </button>
             </div>
-            <input type="submit" value="Crear alumno" disabled={hasErrors()} />
+            <input type="submit" value="Crear profesor" disabled={hasErrors()} />
           </form>
         </div>
       </div>

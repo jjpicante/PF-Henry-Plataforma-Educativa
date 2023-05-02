@@ -3,7 +3,12 @@ import { useState, useEffect } from "react";
 import style from "./miPerfil.module.css";
 import Navbar from "../NavBar/navBar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye, faEyeSlash, faPenToSquare, faCheck } from "@fortawesome/free-solid-svg-icons";
+import {
+  faEye,
+  faEyeSlash,
+  faPenToSquare,
+  faCheck,
+} from "@fortawesome/free-solid-svg-icons";
 import validate from "./validate";
 import { cleanResponse, editAlumno, editProfesor } from "../../Redux/actions";
 import Swal from "sweetalert2";
@@ -29,8 +34,8 @@ export function MiPerfil() {
   const [chekClick, setcheckClick] = useState(true);
 
   const handleCheckClick = () => {
-    setcheckClick(!chekClick)
-  }
+    setcheckClick(!chekClick);
+  };
 
   const handleChangeUserName = (e) => {
     setUserName(e.target.value);
@@ -66,7 +71,7 @@ export function MiPerfil() {
   const handleTogglePassword = () => {
     setmostrarPass(!mostrarPass);
   };
-  
+
   const handleChangePassword = (e) => {
     setPassword(e.target.value);
     inputHandler(e);
@@ -115,17 +120,22 @@ export function MiPerfil() {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    if(userData.rol === "student"){
+    if (userData.rol === "student") {
       dispatch(
-        editAlumno(currentusername, paraEditar(valoresOriginales, nuevosValores))
+        editAlumno(
+          currentusername,
+          paraEditar(valoresOriginales, nuevosValores)
+        )
       );
     }
-    if(userData.rol === "profesor"){
+    if (userData.rol === "profesor") {
       dispatch(
-        editProfesor(currentusername, paraEditar(valoresOriginales, nuevosValores))
+        editProfesor(
+          currentusername,
+          paraEditar(valoresOriginales, nuevosValores)
+        )
       );
     }
-
   };
 
   const hasErrors = () => {
@@ -137,7 +147,7 @@ export function MiPerfil() {
   const handleEdit = () => {
     setEditar(!editar);
   };
- 
+
   useEffect(() => {
     if (response) {
       if (response === "Tus datos se modificaron con éxito") {
@@ -172,7 +182,7 @@ export function MiPerfil() {
               <p>Email: {email}</p>
               <p>Fecha de nacimiento: {userData?.datebirth.slice(0, 10)}</p>
               <p>Rol: {userData?.rol}</p>
-              <button type="button" onClick={() => handleEdit()}>
+              <button className={style.button} type="button" onClick={() => handleEdit()}>
                 Editar datos
               </button>
             </div>
@@ -180,18 +190,29 @@ export function MiPerfil() {
             <form onSubmit={(e) => submitHandler(e)}>
               <div>
                 <label htmlFor={userData?.name}>Nombre: </label>
-                <input className={style.nombre} type="text" value={userData?.name} disabled={true} />
+                <input
+                  className={style.nombreForm}
+                  type="text"
+                  value={userData?.name}
+                  disabled={true}
+                />
               </div>
               <div>
                 <label htmlFor={userData?.apellido}>Apellido: </label>
-                <input className={style.nombre} type="text" value={userData?.apellido} disabled={true} />
+                <input
+                  className={style.nombreForm}
+                  type="text"
+                  value={userData?.apellido}
+                  disabled={true}
+                />
               </div>
               <div>
                 <label htmlFor={userName}>Usuario: </label>
-                <button type="button" onClick={() => handleEditUserName()}>
+                <button className={style.button} type="button" onClick={() => handleEditUserName()}>
                   <FontAwesomeIcon icon={faPenToSquare} />
                 </button>
                 <input
+                  className={style.input}
                   type="text"
                   name="username"
                   value={userName}
@@ -202,10 +223,11 @@ export function MiPerfil() {
               </div>
               <div>
                 <label htmlFor={email}>Email: </label>
-                <button type="button" onClick={() => handleEditEmail()}>
+                <button className={style.button} type="button" onClick={() => handleEditEmail()}>
                   <FontAwesomeIcon icon={faPenToSquare} />
                 </button>
                 <input
+                  className={style.input}
                   type="text"
                   name="email"
                   value={email}
@@ -216,13 +238,14 @@ export function MiPerfil() {
               </div>
               <div>
                 <label htmlFor={password}>Contraseña: </label>
-                <button type="button" onClick={() => handleTogglePassword()}>
+                <button className={style.button} type="button" onClick={() => handleTogglePassword()}>
                   <FontAwesomeIcon icon={mostrarPass ? faEyeSlash : faEye} />
                 </button>
-                <button type="button" onClick={() => handleEditPassword()}>
+                <button className={style.button} type="button" onClick={() => handleEditPassword()}>
                   <FontAwesomeIcon icon={faPenToSquare} />
                 </button>
                 <input
+                  className={style.input}
                   type={mostrarPass ? "password" : "text"}
                   name="password"
                   value={password}
@@ -233,15 +256,32 @@ export function MiPerfil() {
               </div>
               <div>
                 <label htmlFor={userData?.anio}>Año: </label>
-                <input type="text" value={userData?.anio} disabled={true} />
+                <input
+                  className={style.input}
+                  type="text"
+                  value={userData?.anio}
+                  disabled={true}
+                />
               </div>
               <div>
-                <label htmlFor={userData?.datebirth}>Fecha de nacimiento: </label>
-                <input type="text" value={userData?.datebirth.slice(0, 10)} disabled={true} />
+                <label htmlFor={userData?.datebirth}>
+                  Fecha de nacimiento:{" "}
+                </label>
+                <input
+                  className={style.input}
+                  type="text"
+                  value={userData?.datebirth.slice(0, 10)}
+                  disabled={true}
+                />
               </div>
               <div>
                 <label htmlFor={userData?.rol}>Rol: </label>
-                <input type="text" value={userData?.rol} disabled={true} />
+                <input
+                  className={style.input}
+                  type="text"
+                  value={userData?.rol}
+                  disabled={true}
+                />
               </div>
               <div className={style.conteinerbotones}>
                 <button
