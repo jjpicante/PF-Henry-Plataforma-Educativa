@@ -5,6 +5,8 @@ import { auth, googleprovider } from "../../../config/firebase";
 import { signInWithPopup /* , signOut  */ } from "firebase/auth";
 import { useNavigate, Link } from "react-router-dom";
 import { postlogin, verifiedGoogleLogIn } from "../../../Redux/actions";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 function Login() {
   const dispatch = useDispatch();
@@ -13,6 +15,11 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [mostrarPass, setmostrarPass] = useState(true);
+
+  const handleTogglePassword = () => {
+    setmostrarPass(!mostrarPass);
+  };
 
   const handleLogin = async (event) => {
     event.preventDefault();
@@ -26,11 +33,10 @@ function Login() {
       const response = await dispatch(postlogin(email, password));
       if (response.error) {
         setErrorMessage("Invalid email or password");
-      } 
-      if(response.rol === "admin"){
-        navigate("/admin", { replace: true });
       }
-      else {
+      if (response.rol === "admin") {
+        navigate("/admin", { replace: true });
+      } else {
         navigate("/home", { replace: true });
       }
     } catch (error) {
@@ -53,16 +59,37 @@ function Login() {
       <div id="login-box">
         <form className="form" onSubmit={handleLogin}>
           <h2>Iniciar Sesion</h2>
+          <label className="email">Email</label>
           <div className="user-box">
-            <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
-            <label>Email</label>
+            <input
+              type="text"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+          <div>
+          <label className="email">Contraseña</label>
+            <button
+              className="botonOjo"
+              type="button"
+              onClick={() => handleTogglePassword()}
+            >
+              <FontAwesomeIcon icon={mostrarPass ? faEyeSlash : faEye} />
+            </button>
           </div>
           <div className="user-box">
-            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-            <label>Contraseña</label>
+            <input
+              type={mostrarPass ? "password" : "text"}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
           </div>
-          <button type="submit">Iniciar Sesion</button>
-          <button onClick={googleHandler}>Iniciar Sesion con Google</button>
+          <button className="button" type="submit">
+            Iniciar Sesion
+          </button>
+          <button className="button" onClick={googleHandler}>
+            Iniciar Sesion con Google
+          </button>
           <br></br>
         </form>
         <p style={{ color: "red" }}>{errorMessage}</p>

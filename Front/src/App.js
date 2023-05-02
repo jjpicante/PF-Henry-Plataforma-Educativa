@@ -25,6 +25,7 @@ import Disqus from "./Components/Coments/disqus";
 import Firestoragev2 from "./Components/almacenamiento/Firestoragev2";
 import LandingAdmin from "./Components/Admin/Adminhome";
 import ListaMaterias from "./Components/Admin/ListaMaterias/listaMaterias";
+import ClassroomProf from "./Components/ClassroomProf/classroomProf";
 
 /* axios.defaults.baseURL = "https://servidor-plataformae2.onrender.com"; */
 axios.defaults.baseURL = "http://localhost:3001";
@@ -44,7 +45,7 @@ function App() {
           <Route exact path="/miPerfil" element={<MiPerfil />} />
         </Route>
         <Route element={<ProtectedRoutes allowedRoles={["profesor"]} />}>
-          <Route exact path="/Cursos" element={<Classroom />} />
+          <Route exact path="/Cursos" element={<ClassroomProf />} />
         </Route>
 
         <Route element={<ProtectedRoutes allowedRoles={["admin"]} />}>

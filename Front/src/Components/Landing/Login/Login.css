@@ -78,7 +78,7 @@
   letter-spacing: 4px;
 }
 
-.form button {
+.form .button {
   background-color: #03e8f483;
   color: #fff;
   border: none;
@@ -89,6 +89,21 @@
   transition: background-color 0.2s ease-in-out;
 }
 
-.form button:hover {
+.form .button:hover {
   background-color: #02c7d8;
+}
+
+.botonOjo{
+  background-color: transparent;
+  color:#03e8f483;
+  margin: 5px;
+}
+
+.botonOjo:hover{
+  background-color: transparent;
+  color: white
+}
+
+.email{
+  color: #02c7d8;
 }
