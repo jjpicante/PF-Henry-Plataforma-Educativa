@@ -7,7 +7,7 @@ const Landing = () => {
     <div className={style.container}>
       <div className={style.div1}>
         <h1 className={style.title}>Instituto Académico P.R.I.D.J</h1>
-        <h3 className={style.title2}>""Aprender, crecer, ser""</h3>
+        <h3 className={style.title2}>Aprender, crecer, ser</h3>
       </div>
 
       <nav className={style.links}>
