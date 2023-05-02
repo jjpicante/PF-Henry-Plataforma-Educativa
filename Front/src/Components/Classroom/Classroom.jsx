@@ -14,17 +14,13 @@ const Classroom = () => {
   //const [pageNumber, setPageNumber] = useState(0);
   const userData = useSelector((state) => state.userData);
   const anio = userData?.anio;
-
-  console.log(anio);
+  /* console.log(anio); */
 
   useEffect(() => {
     dispatch(getMateriasByAnio(anio));
   }, [dispatch]);
-
   return (
     <div className={style.fondo}>
-      {console.log("asignatures classroom ---> ", asignatures)}
-      {/* Iconos */}
       <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
@@ -33,21 +29,12 @@ const Classroom = () => {
       <div>
         <Navbar></Navbar>
       </div>
+
       <div className={style.topDiv}>
         <SearchBar></SearchBar>
-
-        {/* Boton agregativo */}
-        {/* <NavLink to="/formSubject">
-          <button type="submit" className={style.agregarBoton} title="Add subject">
-            {<i className="fa fa-plus"></i>}
-          </button>
-        </NavLink> */}
       </div>
-      <Paginate
-        pageCount1={pageCount1}
-        data={asignatures}
-        itemsPerPage={2}
-      ></Paginate>
+      {/* {console.log("asignatures classroom ---> ", asignatures)} */}
+      <Paginate pageCount1={pageCount1} data={asignatures} itemsPerPage={2}></Paginate>
     </div>
   );
 };
