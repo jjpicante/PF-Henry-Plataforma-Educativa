@@ -7,6 +7,7 @@ const ForgotPassword = async (email) => {
   if (alumno) {
     try {
       const password = alumno.password; // retrieve the user's password from your database
+      console.log(password)
       await sendPasswordByEmail(email, password);
       return { success: "Password sent" };
     } catch (error) {

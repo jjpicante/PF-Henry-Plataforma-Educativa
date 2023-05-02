@@ -11,12 +11,8 @@ const ResetPassword = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const response = await dispatch(resetPassword(email));
-    if (response.success) {
-      navigate("/login");
-    } else {
-      setError("Failed to request password");
-    }
+    dispatch(resetPassword(email));
+    navigate("/login")
   };
 
   return (
