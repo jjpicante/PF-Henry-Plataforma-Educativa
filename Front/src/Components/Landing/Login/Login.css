@@ -97,6 +97,12 @@
   background-color: transparent;
   color:#03e8f483;
   margin: 5px;
+  border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: color 0.3s;
 }
 
 .botonOjo:hover{
