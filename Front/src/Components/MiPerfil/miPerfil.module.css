@@ -75,7 +75,7 @@
     margin-top: 30px;
 }
 
-input[type="text"], input[type="password"] {
+.input[type="text"], input[type="password"] {
     display: block;
     width: 90%;
     padding: 10px;
@@ -92,13 +92,13 @@ label {
     margin-bottom: 10px;
 }
 
-form p {
+.form p {
     margin: 0;
     font-size: 14px;
-    color: red;
+    color: red
 }
 
-button {
+.button {
     border: none;
     border-radius: 5px;
     padding: 10px;
@@ -107,7 +107,7 @@ button {
     transition: background-color 0.3s;
 }
 
-button:hover {
+.button:hover {
     background-color: #3F51B5;
     color: white;
 }

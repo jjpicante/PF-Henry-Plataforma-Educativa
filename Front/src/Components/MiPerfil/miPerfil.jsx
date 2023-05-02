@@ -177,7 +177,7 @@ export function MiPerfil() {
               </button>
             </div>
           ) : (
-            <form onSubmit={(e) => submitHandler(e)}>
+            <form className={style.form} onSubmit={(e) => submitHandler(e)}>
               <div>
                 <label htmlFor={userData?.name}>Nombre: </label>
                 <input className={style.nombre} type="text" value={userData?.name} disabled={true} />
@@ -188,10 +188,11 @@ export function MiPerfil() {
               </div>
               <div>
                 <label htmlFor={userName}>Usuario: </label>
-                <button type="button" onClick={() => handleEditUserName()}>
+                <button className={style.button} type="button" onClick={() => handleEditUserName()}>
                   <FontAwesomeIcon icon={faPenToSquare} />
                 </button>
                 <input
+                  className={style.input}
                   type="text"
                   name="username"
                   value={userName}
@@ -202,10 +203,11 @@ export function MiPerfil() {
               </div>
               <div>
                 <label htmlFor={email}>Email: </label>
-                <button type="button" onClick={() => handleEditEmail()}>
+                <button className={style.button} type="button" onClick={() => handleEditEmail()}>
                   <FontAwesomeIcon icon={faPenToSquare} />
                 </button>
                 <input
+                  className={style.input}
                   type="text"
                   name="email"
                   value={email}
@@ -216,13 +218,14 @@ export function MiPerfil() {
               </div>
               <div>
                 <label htmlFor={password}>Contraseña: </label>
-                <button type="button" onClick={() => handleTogglePassword()}>
+                <button className={style.button} type="button" onClick={() => handleTogglePassword()}>
                   <FontAwesomeIcon icon={mostrarPass ? faEyeSlash : faEye} />
                 </button>
-                <button type="button" onClick={() => handleEditPassword()}>
+                <button className={style.button} type="button" onClick={() => handleEditPassword()}>
                   <FontAwesomeIcon icon={faPenToSquare} />
                 </button>
                 <input
+                  className={style.input}
                   type={mostrarPass ? "password" : "text"}
                   name="password"
                   value={password}
@@ -233,15 +236,15 @@ export function MiPerfil() {
               </div>
               <div>
                 <label htmlFor={userData?.anio}>Año: </label>
-                <input type="text" value={userData?.anio} disabled={true} />
+                <input className={style.input} type="text" value={userData?.anio} disabled={true} />
               </div>
               <div>
                 <label htmlFor={userData?.datebirth}>Fecha de nacimiento: </label>
-                <input type="text" value={userData?.datebirth.slice(0, 10)} disabled={true} />
+                <input className={style.input} type="text" value={userData?.datebirth.slice(0, 10)} disabled={true} />
               </div>
               <div>
                 <label htmlFor={userData?.rol}>Rol: </label>
-                <input type="text" value={userData?.rol} disabled={true} />
+                <input className={style.input} type="text" value={userData?.rol} disabled={true} />
               </div>
               <div className={style.conteinerbotones}>
                 <button
