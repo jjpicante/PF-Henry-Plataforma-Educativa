@@ -262,7 +262,7 @@ export const getMateriasByAnio = (anio) => {
     // try {
     const result = await axios.get(`/Materias/filtermateria?anio=${anio}`);
     const materiaByAnio = result.data;
-    console.log(materiaByAnio);
+    /* console.log(materiaByAnio); */
     dispatch({ type: GET_MATERIAS_BY_ANIO, payload: materiaByAnio });
     //console.log(materiaByAnio);
 
@@ -388,7 +388,7 @@ export const resetPassword = (email) => {
   return async function (dispatch) {
     try {
       const response = await axios.post("/reset", {
-        email
+        email,
       });
       console.log(response);
       dispatch({ type: RESET_PASSWORD });

@@ -15,7 +15,6 @@ const postLogin = async (email, password) => {
       const alumnodb = await Alumnos.findOne({ where: { email: userData.email } });
       const profedb = await Profesores.findOne({ where: { email: userData.email } });
       const profesordb = profedb.toJSON();
-      console.log("este", profesordb);
       if (profesordb) {
         // Traigo todas las materias que dicta el profesor
         const response = await ProfesoresMateria.findAll({
@@ -47,12 +46,12 @@ const postLogin = async (email, password) => {
         //Agrego las materias al profesor traido
         profesordb.materias = materias;
       }
-       console.log("qwert", profesordb); 
+      //console.log("qwert", profesordb);
       if (alumnodb) {
         return alumnodb;
       }
       if (profesordb) {
-       /*  console.log("entro"); */
+        /*  console.log("entro"); */
         return profesordb;
       }
       if (admin) {
@@ -69,7 +68,6 @@ const postLogin = async (email, password) => {
         Profesores.findOne({ where: { email } }),
         Admin.findOne({ where: { email } }),
       ]);
-      //!BREAKPOINT
       if (dbUser && dbUser.password === password) {
         return dbUser;
       } else if (dbProfesor && dbProfesor.password === password) {
@@ -102,10 +100,6 @@ const postLogin = async (email, password) => {
 
         //Agrego las materias al profesor traido
         dbProfesor.materias = materias;
-
-        //console.log("20.25 ----> ", dbProfesor);
-
-        
 
         return dbProfesor;
       } else if (dbAdmin && dbAdmin.password === password) {
