@@ -10,18 +10,19 @@ const ClassroomProf = () => {
   const userData = useSelector((state) => state.userData);
   console.log("userdata =>", userData);
 
-    
-
   return (
     <div className={style.fondo}>
       <div>
         <Navbar></Navbar>
       </div>
       <div className={style.topDiv}>
-      <CardAsignature
-      name= "matematica"
-      year= "1ro"
-      />
+        {userData.materias.map((elem) => 
+        <CardAsignature
+        id= {elem.id}
+        name= {elem.namemateria}
+        year= {elem.anio}
+        />)}
+      
 
       </div>
      

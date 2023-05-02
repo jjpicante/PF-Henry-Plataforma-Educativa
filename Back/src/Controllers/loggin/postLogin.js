@@ -13,8 +13,9 @@ const postLogin = async (email, password) => {
     if (userData && userData.email) {
       const admin = await Admin.findOne({ where: { email: userData.email } });
       const alumnodb = await Alumnos.findOne({ where: { email: userData.email } });
-      const profesordb = await Profesores.findOne({ where: { email: userData.email } });
-
+      const profedb = await Profesores.findOne({ where: { email: userData.email } });
+      const profesordb = profedb.toJSON();
+      console.log("este", profesordb);
       if (profesordb) {
         // Traigo todas las materias que dicta el profesor
         const response = await ProfesoresMateria.findAll({
@@ -46,12 +47,15 @@ const postLogin = async (email, password) => {
         //Agrego las materias al profesor traido
         profesordb.materias = materias;
       }
-      console.log(profesordb);
+       console.log("qwert", profesordb); 
       if (alumnodb) {
         return alumnodb;
-      } else if (profesordb) {
+      }
+      if (profesordb) {
+       /*  console.log("entro"); */
         return profesordb;
-      } else if (admin) {
+      }
+      if (admin) {
         return admin;
       }
     }
