@@ -75,20 +75,22 @@
     max-width: 500px;
   }
   
-  .button {
-    margin-top: 20px;
-    padding: 10px;
-    border-radius: 5px;
+  .button{
+    margin-left:20px;
+    background-color: #bdbdbd;
+    color: white;
     border: none;
-    background-color: #0070f3;
-    color: #fff;
+    border-radius: 5px;
+    padding: 5px 10px;
     font-size: 16px;
     cursor: pointer;
-  }
-  
-  .button:hover {
-    background-color: #0060df;
-  }
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: #3F51B5;
+    color: white;
+}
   
   .input:focus {
     outline: none;
