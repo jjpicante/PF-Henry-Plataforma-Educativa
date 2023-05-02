@@ -38,8 +38,9 @@ export default function Select({ alumnos, profesores, año }) {
 
   const handleDeleteAlumno = async (username) => {
     const alumno = await dispatch(getStudent(username));
-    //await setSelectedAlumno(alumno);
     console.log(alumno);
+    const confirmacion = window.confirm(`¿Está seguro de que desea eliminar al alumno ${alumno.name} ${alumno.apellido}?`);
+  if (confirmacion) {
     dispatch(postAlumnoDeBaja(alumno));
     dispatch(deleteAlumno(alumno.username));
     alert("alumno eliminado");
@@ -54,12 +55,14 @@ export default function Select({ alumnos, profesores, año }) {
       anio: "",
     });
     window.location.reload();
+  }
   };
 
   const handleDeleteProfesor = async (username) => {
     const profesor = await dispatch(getProfesor(username));
-    //await setSelectedAlumno(alumno);
     console.log(profesor);
+    const confirmacion = window.confirm(`¿Está seguro de que desea eliminar al profesor ${profesor.name} ${profesor.apellido}?`);
+  if (confirmacion) {
     dispatch(postProfesorDeBaja(profesor));
     dispatch(deleteProfesor(profesor.username));
     alert("profesor eliminado");
@@ -73,6 +76,7 @@ export default function Select({ alumnos, profesores, año }) {
       password: "",
     });
     window.location.reload();
+  }
   };
 
   useEffect(() => {

@@ -6,7 +6,12 @@ import { getStudents } from "../../Redux/actions";
 
 export default function Alumnos() {
   const dispatch = useDispatch();
-  const alumnos = useSelector((state) => state.students);
+  const allAlumnos = useSelector((state) => state.students);
+  const userData = useSelector((state) => state.userData);
+  const alumnos = allAlumnos?.filter((elem) => elem[0].anio === userData.anio)
+  console.log("UD", userData);
+  console.log("todos", allAlumnos);
+  console.log("filter", alumnos);
   alumnos.sort((a, b) =>
     a[0].apellido < b[0].apellido ? -1 : a[0].apellido > b[0].apellido ? 1 : 0
   );
