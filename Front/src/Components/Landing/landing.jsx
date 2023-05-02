@@ -18,9 +18,7 @@ const Landing = () => {
           <Link to="/contacto">
             <button className={style.link3}>Contacto</button>
           </Link>
-          <Link to="/desarrolladores">
-            <button /* className={style.link2} */>Desarrolladores</button>
-          </Link>
+         
         </div>
       </nav>
 
@@ -36,8 +34,7 @@ const Landing = () => {
           <Link to="/login">Acceder</Link>
         </button>
       </div>
-
-      <div></div>
+      <Link to="/desarrolladores" className={style.link4}>Desarrolladores</Link>
     </div>
   );
 };

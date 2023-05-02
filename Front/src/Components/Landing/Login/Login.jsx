@@ -26,10 +26,6 @@ function Login() {
 
     //buscan en la base de datos si el usuario existe
     try {
-      if (!email || !password) {
-        setErrorMessage("Please enter both email and password");
-        return;
-      }
       const response = await dispatch(postlogin(email, password));
       if (response.error) {
         setErrorMessage("Invalid email or password");
@@ -43,7 +39,7 @@ function Login() {
       setErrorMessage("Error al iniciar sesión");
     }
   };
-
+ 
   const googleHandler = async () => {
     try {
       await signInWithPopup(auth, googleprovider);

@@ -68,3 +68,11 @@
 .button {
   width: 10vw;
 }
+
+.link4 {
+  position: absolute;
+  bottom: 0;
+  left: 50%; /* Esto coloca el elemento en el centro horizontalmente /
+  transform: translateX(-50%); / Para ajustar el elemento al centro de la página */
+  color: black;
+}
