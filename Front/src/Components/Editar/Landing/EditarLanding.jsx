@@ -114,12 +114,6 @@ export default function EditarUsuarios() {
           <button className={style.button} onClick={() => refreshHandler()}>
             Recargar datos
           </button>
-
-            {["Mostrar Todos", "1ro", "2do", "3ro", "4to", "5to", "6to"].map((i) => (
-              <option value={i} key={i}>
-                {i}
-              </option>
-            ))}
           
           <Select
             alumnos={renderUsers.alumnos}
