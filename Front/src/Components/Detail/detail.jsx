@@ -160,62 +160,62 @@ export default function Detail() {
                           {i + 1}- {e}{" "}
                         </h3>
                         <FireStorage visible={visible} url={location} name={e}></FireStorage>
-                      </li>
 
-                      {documentosDelTema.map((doc, index) => {
-                        return (
-                          <div className={style.containerdoc}>
-                            <a
-                              key={index}
-                              href={doc.url}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className={style.documentList}
-                            >
-                              {doc.nombre !== undefined ? doc.nombre : "HOLa"}
-                            </a>
-                            <div
-                              className={
-                                confirmacion ? style.confirmacioncss : style.noConfirmacion
-                              }
-                            >
-                              <h1>Estas seguro de querer eliminar el archivo: {doc.nombre}</h1>
-                              <button
-                                value={doc.nombre}
-                                className={style.buttonsi}
-                                onClick={siBorrar}
+                        {documentosDelTema.map((doc, index) => {
+                          return (
+                            <div className={style.containerdoc}>
+                              <a
+                                key={index}
+                                href={doc.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className={style.documentList}
                               >
-                                Si
-                              </button>
-                              <button className={style.buttonno} onClick={noBorrar}>
-                                No
-                              </button>
-                            </div>
-                            <nav className={style.navbar}>
-                              <div className={style.navbarContainer}>
-                                <ul className={style.navList}>
-                                  <li className={`${style.navItem} ${style.dropdown}`}>
-                                    <div className={` ${style.customBtn} ${style.vertical}`}>
-                                      ...
-                                    </div>
-                                    <ul className={style.dropdownContent}>
-                                      <li>
-                                        <button
-                                          value={doc.nombre}
-                                          onClick={borrarDocumento}
-                                          className={style.navLink}
-                                        >
-                                          Delete
-                                        </button>
-                                      </li>
-                                    </ul>
-                                  </li>
-                                </ul>
+                                {doc.nombre !== undefined ? doc.nombre : "HOLa"}
+                              </a>
+                              <div
+                                className={
+                                  confirmacion ? style.confirmacioncss : style.noConfirmacion
+                                }
+                              >
+                                <h1>Estas seguro de querer eliminar el archivo: {doc.nombre}</h1>
+                                <button
+                                  value={doc.nombre}
+                                  className={style.buttonsi}
+                                  onClick={siBorrar}
+                                >
+                                  Si
+                                </button>
+                                <button className={style.buttonno} onClick={noBorrar}>
+                                  No
+                                </button>
                               </div>
-                            </nav>
-                          </div>
-                        );
-                      })}
+                              <nav className={style.navbar}>
+                                <div className={style.navbarContainer}>
+                                  <ul className={style.navList}>
+                                    <li className={`${style.navItem} ${style.dropdown}`}>
+                                      <div className={` ${style.customBtn} ${style.vertical}`}>
+                                        ...
+                                      </div>
+                                      <ul className={style.dropdownContent}>
+                                        <li>
+                                          <button
+                                            value={doc.nombre}
+                                            onClick={borrarDocumento}
+                                            className={style.navLink}
+                                          >
+                                            Delete
+                                          </button>
+                                        </li>
+                                      </ul>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </nav>
+                            </div>
+                          );
+                        })}
+                      </li>
                     </>
                   );
                 })}
