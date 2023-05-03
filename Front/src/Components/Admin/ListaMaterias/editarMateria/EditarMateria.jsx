@@ -131,7 +131,7 @@ export default function EditarMateria() {
               onChange={(ev) => inputHandler(ev)}
               value={asignaturas.name}
             />
-            <button type="button" onClick={() => handleDisabled("name")}>
+            <button className={style.button} type="button" onClick={() => handleDisabled("name")}>
               <FontAwesomeIcon className={style.editButton} icon={faPenToSquare} />
             </button>
             <p className="errorText">{error.name}</p>
@@ -153,7 +153,7 @@ export default function EditarMateria() {
                 </option>
               ))}
             </select>
-            <button type="button" onClick={() => handleDisabled("anio")}>
+            <button className={style.button} type="button" onClick={() => handleDisabled("anio")}>
               <FontAwesomeIcon className={style.editButton} icon={faPenToSquare} />
             </button>
           </section>
@@ -175,14 +175,14 @@ export default function EditarMateria() {
               );
             })}
 
-            <button type="button" onClick={() => handleDisabled("temas")}>
+            <button className={style.button} type="button" onClick={() => handleDisabled("temas")}>
               <FontAwesomeIcon className={style.editButton} icon={faPenToSquare} />
             </button>
           </section>
 
           <button
             type="submit"
-            className={hasErrors() ? style.disabledButtom : ""}
+            className={hasErrors() ? style.disabledButtom : style.button}
             disabled={hasErrors()}
             onClick={() => handleCheckClick()}
           >
@@ -190,7 +190,7 @@ export default function EditarMateria() {
           </button>
 
           <button
-            className={style.volverButton}
+            className={style.button}
             type="button"
             onClick={() => {
               navigate(-1);

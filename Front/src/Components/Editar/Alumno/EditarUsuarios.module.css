@@ -25,6 +25,21 @@
   margin: 0;
 }
 
+.button {
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 16px;
+  margin: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.button:hover {
+  background-color: #3f51b5;
+  color: white;
+}
+
 .text {
   width: 50%;
   height: 50%;
@@ -35,12 +50,10 @@
   scale: 120%;
 }
 
-.volverButton{
-  margin-top:10px
+.volverButton {
+  margin-top: 10px;
 }
 
-.editButton:hover{
-  color: white
+.editButton:hover {
+  color: white;
 }
-
-

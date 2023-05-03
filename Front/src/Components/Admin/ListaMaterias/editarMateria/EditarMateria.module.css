@@ -30,6 +30,21 @@
   margin: 0;
 }
 
+.button {
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 16px;
+  margin: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.button:hover {
+  background-color: #3f51b5;
+  color: white;
+}
+
 .text {
   width: 50%;
   height: 50%;
@@ -49,6 +64,11 @@
 }
 
 .disabledButtom {
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 16px;
+  margin: 10px;
   cursor: not-allowed;
   pointer-events: none;
 }
