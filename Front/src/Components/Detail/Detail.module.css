@@ -35,32 +35,47 @@
 
 .botones {
   /* background-color: cyan; */
+  border: 1px solid black;
+  border-radius: 1.5em;
+  margin-top: 4vh;
   height: 10vh;
-  width: 87%;
+  width: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
 }
 
+.botones h5 {
+  position: absolute;
+  right: 2vw;
+  margin-bottom: 5vh;
+}
+
 .alumnostemas {
   /* background-color: green; */
   position: absolute;
+  display: flex;
+  column-gap: 5vh;
   left: 50;
+}
+
+.editButton {
+  margin-right: 1vh;
 }
 
 .toggleOff {
   /* background-color: yellow; */
   height: 3.5vh;
   position: absolute;
-  right: 0;
+  right: 3.5vw;
 }
 
 .toggleOn {
   /* background-color: red; */
   height: 3.5vh;
   position: absolute;
-  right: 0;
+  right: 3.5vw;
 }
 
 .render {

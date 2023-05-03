@@ -11,7 +11,7 @@ import FireStorage from "../almacenamiento/Firestoragev2";
 import Disqus from "../Coments/disqus";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGraduationCap } from "@fortawesome/free-solid-svg-icons";
-//import { faBooks } from "@fortawesome/free-solid-svg-icons";
+import { faBook } from "@fortawesome/free-solid-svg-icons";
 //import { faL } from "@fortawesome/free-solid-svg-icons";
 
 export default function Detail() {
@@ -96,26 +96,26 @@ export default function Detail() {
             <h2>{materiaById?.anio}</h2>
           </div>
           <div className={style.botones}>
+            <h5>Cargar Temas</h5>
             <section className={style.alumnostemas}>
               <button type="button" onClick={() => handleVista("alumnos")}>
                 <FontAwesomeIcon className={style.editButton} icon={faGraduationCap} />
                 Ver Alumnos
               </button>
               <button type="button" onClick={() => handleVista("temas")}>
-                {/* <FontAwesomeIcon className={style.editButton} icon={faBooks} /> */}
+                <FontAwesomeIcon className={style.editButton} icon={faBook} />
                 Ver Temas
               </button>
             </section>
             <div hidden={visible === true || userData.rol !== "profesor"}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="160"
+                width="30"
                 height="160"
                 fill="currentColor"
                 class="bi bi-toggle-off"
                 viewBox="0 0 16 16"
                 className={style.toggleOff}
-                hidden={userData.rol !== "profesor" && visible === false}
                 onClick={activar}
               >
                 <path d="M11 4a4 4 0 0 1 0 8H8a4.992 4.992 0 0 0 2-4 4.992 4.992 0 0 0-2-4h3zm-6 8a4 4 0 1 1 0-8 4 4 0 0 1 0 8zM0 8a5 5 0 0 0 5 5h6a5 5 0 0 0 0-10H5a5 5 0 0 0-5 5z" />
@@ -124,7 +124,7 @@ export default function Detail() {
             <div hidden={visible === false || userData.rol !== "profesor"}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="160"
+                width="30"
                 height="160"
                 fill="currentColor"
                 class="bi bi-toggle-on"
