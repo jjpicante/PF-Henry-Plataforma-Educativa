@@ -98,19 +98,21 @@ export default function Detail() {
 
           {/* Renderizado condicional de Temas */}
           {vista === "temas" ? (
-            <ul>
+            <section className={style.render}>
               <h2>Temas</h2>
-              {materiaById?.temas?.map((e, i) => {
-                /* console.log(document.filter((doc) => doc.verifyname === e)); */
-                const documentosDelTema = document.filter((doc) => doc.verifyname === e);
-                return (
-                  <>
-                    <li key={i}>
-                      <h1>
-                        {i + 1}- {e}{" "}
-                      </h1>
-                      <FireStorage visible={visible} url={location} name={e}></FireStorage>
-                    </li>
+              <ul className={style.cards}>
+                {materiaById?.temas?.map((e, i) => {
+                  /* console.log(document.filter((doc) => doc.verifyname === e)); */
+                  const documentosDelTema = document.filter((doc) => doc.verifyname === e);
+                  return (
+                    <>
+                      <li key={i} className={style.card}>
+                        <h3>
+                          {i + 1}- {e}{" "}
+                        </h3>
+                        <FireStorage visible={visible} url={location} name={e}></FireStorage>
+                      </li>
+
 
                     {documentosDelTema.map((doc, index) => {
                       return (
@@ -151,6 +153,7 @@ export default function Detail() {
                 );
               })}
             </ul>
+
           ) : (
             /* Renderizado condicional de Alumnos */
             <ul>

@@ -39,15 +39,19 @@ function Login() {
       setErrorMessage("Error al iniciar sesión");
     }
   };
- 
+
   const googleHandler = async () => {
     try {
       await signInWithPopup(auth, googleprovider);
     } catch (error) {
       console.log(error.message);
     }
-    dispatch(verifiedGoogleLogIn(auth.currentUser.email));
-    navigate("/home", { replace: true });
+    const userData = await dispatch(
+      verifiedGoogleLogIn(auth.currentUser.email)
+    );
+    userData?.rol === "admin"
+      ? navigate("/admin", { replace: true })
+      : navigate("/home", { replace: true });
   };
 
   return (
@@ -87,13 +91,12 @@ function Login() {
           <button className="button" onClick={googleHandler}>
             Iniciar Sesion con Google
           </button>
-          
+
           <p style={{ color: "red" }}>{errorMessage}</p>
           <div className="forgot-password">
             <Link to="/reset-password">¿Olvidaste tu contraseña?</Link>
           </div>
         </form>
-
       </div>
     </div>
   );

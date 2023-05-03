@@ -55,7 +55,9 @@ export const getStudents = () => {
 export const getStudent = (username) => {
   return async function (dispatch) {
     try {
-      const response = await axios.get(`/alumnos/getAlumno?username=${username}`);
+      const response = await axios.get(
+        `/alumnos/getAlumno?username=${username}`
+      );
       const alumno = response.data;
       return alumno;
     } catch (error) {
@@ -83,7 +85,9 @@ export const getProfesors = () => {
 export const getProfesor = (username) => {
   return async function (dispatch) {
     try {
-      const response = await axios.get(`/Profesores/getProfesor?username=${username}`);
+      const response = await axios.get(
+        `/Profesores/getProfesor?username=${username}`
+      );
       const profesor = response.data;
       //console.log(profesor);
       return profesor;
@@ -421,6 +425,7 @@ export const verifiedGoogleLogIn = (email) => async (dispatch) => {
     });
     const userInfo = response.data;
     dispatch({ type: GET_USER_DATA_GOOGLE, payload: userInfo });
+    return userInfo;
   } catch (error) {
     dispatch({ type: GET_USER_DATA_GOOGLE, payload: false });
   }
