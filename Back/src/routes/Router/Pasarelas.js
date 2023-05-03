@@ -35,7 +35,9 @@ pasarela.post("/Pagar", function (req, res, next) {
 pasarela.post("/Notificacion", (req, res) => {
   console.log(req.body);
   const respuesta = checkpayment(req.body);
+  console.log(respuesta, "RESPUESTA DE LA FUNCIO NDENTRO DEL POST");
   if (!respuesta.error) res.status(200).json(respuesta);
+  console.log(respuesta.error, "ERROR DE LA RESPUESTA");
   res.status(503).json(respuesta.error);
 });
 

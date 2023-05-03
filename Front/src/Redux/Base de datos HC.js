@@ -3,7 +3,7 @@ export const students =
     [
         {
             "id": 1,
-            "Nombre": "Lucia",
+            "nombre": "Lucia",
             "Apellido": "Sanchez",
             "Nacionalidad": "Espaniola",
             "Fecha_nacimiento": "2005-09-14",
@@ -317,7 +317,7 @@ export const profesors =
 export const materias = [
     {
         "id": 1,
-        "nombre": "Matematica",
+        "namemateria": "Matematica",
         "anio": "1ro",
         "temas": [
             "Numeros naturales",
@@ -328,7 +328,7 @@ export const materias = [
     },
     {
         "id": 2,
-        "nombre": "Matematica",
+        "namemateria": "Matematica",
         "anio": "2do",
         "temas": [
             "Ecuaciones de primer grado",
@@ -339,7 +339,7 @@ export const materias = [
     },
     {
         "id": 3,
-        "nombre": "Matematica",
+        "namemateria": "Matematica",
         "anio": "3ro",
         "temas": [
             "Ecuaciones de segundo grado",
@@ -350,7 +350,7 @@ export const materias = [
     },
     {
         "id": 4,
-        "nombre": "Matematica",
+        "namemateria": "Matematica",
         "anio": "4to",
         "temas": [
             "Funciones",
@@ -361,7 +361,7 @@ export const materias = [
     },
     {
         "id": 5,
-        "nombre": "Matematica",
+        "namemateria": "Matematica",
         "anio": "5to",
         "temas": [
             "Derivadas",
@@ -372,7 +372,7 @@ export const materias = [
     },
     {
         "id": 6,
-        "nombre": "Matematica",
+        "namemateria": "Matematica",
         "anio": "6to",
         "temas": [
             "algebra lineal",
@@ -383,7 +383,7 @@ export const materias = [
     },
     {
         "id": 7,
-        "nombre": "Biologia",
+        "namemateria": "Biologia",
         "anio": "1ro",
         "temas": [
             "Introduccion a la biologia",
@@ -394,7 +394,7 @@ export const materias = [
     },
     {
         "id": 8,
-        "nombre": "Biologia",
+        "namemateria": "Biologia",
         "anio": "2do",
         "temas": [
             "Reproduccion celular",
@@ -405,7 +405,7 @@ export const materias = [
     },
     {
         "id": 9,
-        "nombre": "Biologia",
+        "namemateria": "Biologia",
         "anio": "3ro",
         "temas": [
             "Biodiversidad",
@@ -416,7 +416,7 @@ export const materias = [
     },
     {
         "id": 10,
-        "nombre": "Biologia",
+        "namemateria": "Biologia",
         "anio": "4to",
         "temas": [
             "Biologia molecular",
@@ -427,7 +427,7 @@ export const materias = [
     },
     {
         "id": 11,
-        "nombre": "Biologia",
+        "namemateria": "Biologia",
         "anio": "5to",
         "temas": [
             "Biologia celular avanzada",
@@ -438,7 +438,7 @@ export const materias = [
     },
     {
         "id": 12,
-        "nombre": "Biologia",
+        "namemateria": "Biologia",
         "anio": "6to",
         "temas": [
             "Biologia molecular avanzada",
@@ -449,7 +449,7 @@ export const materias = [
     },
     {
         "id": 13,
-        "nombre": "Historia",
+        "namemateria": "Historia",
         "anio": "1ro",
         "temas": [
             "Introduccion a la historia",
@@ -460,7 +460,7 @@ export const materias = [
     },
     {
         "id": 14,
-        "nombre": "Historia",
+        "namemateria": "Historia",
         "anio": "2do",
         "temas": [
             "El Renacimiento",
@@ -471,7 +471,7 @@ export const materias = [
     },
     {
         "id": 15,
-        "nombre": "Historia",
+        "namemateria": "Historia",
         "anio": "3ro",
         "temas": [
             "Revolucion francesa",
@@ -482,7 +482,7 @@ export const materias = [
     },
     {
         "id": 16,
-        "nombre": "Historia",
+        "namemateria": "Historia",
         "anio": "4to",
         "temas": [
             "Revolucion rusa",
@@ -493,7 +493,7 @@ export const materias = [
     },
     {
         "id": 17,
-        "nombre": "Historia",
+        "namemateria": "Historia",
         "anio": "5to",
         "temas": [
             "Descolonizacion",
@@ -504,7 +504,7 @@ export const materias = [
     },
     {
         "id": 18,
-        "nombre": "Historia",
+        "namemateria": "Historia",
         "anio": "6to",
         "temas": [
             "Historia economica y social contemporanea",
@@ -514,77 +514,77 @@ export const materias = [
         ]
     },
     {
-        "id": 19, "nombre": "Geografia", "anio": "1ro", "temas": ["Geografia fisica", "Geografia humana", "Geografia economica"]
+        "id": 19, "namemateria": "Geografia", "anio": "1ro", "temas": ["Geografia fisica", "Geografia humana", "Geografia economica"]
     },
     {
         "id": 20,
-        "nombre": "Geografia",
+        "namemateria": "Geografia",
         "anio": "2do",
         "temas": ["Climas y biomas", "Poblacion y migraciones", "Actividades economicas"]
     },
     {
         "id": 21,
-        "nombre": "Geografia",
+        "namemateria": "Geografia",
         "anio": "3ro",
         "temas": ["Recursos naturales", "Problemas ambientales", "Globalizacion"]
     },
     {
         "id": 22,
-        "nombre": "Geografia",
+        "namemateria": "Geografia",
         "anio": "4to",
         "temas": ["Desarrollo humano sostenible", "Geografia politica", "Geografia de Argentina"]
     },
     {
         "id": 23,
-        "nombre": "Geografia",
+        "namemateria": "Geografia",
         "anio": "5to",
         "temas": ["Geografia de America", "Geografia de Europa", "Geografia de Asia"]
     },
     {
         "id": 24,
-        "nombre": "Geografia",
+        "namemateria": "Geografia",
         "anio": "6to",
         "temas": ["Geografia de Oceania y Antartida", "Geografia de africa", "Geografia comparada"]
     },
     {
         "id": 25,
-        "nombre": "Educacion Tecnologica",
+        "namemateria": "Educacion Tecnologica",
         "anio": "1ro",
         "temas": ["Introduccion a la informatica", "Ofimatica", "Tecnologia digital y comunicacion"]
     },
     {
         "id": 26,
-        "nombre": "Educacion Tecnologica",
+        "namemateria": "Educacion Tecnologica",
         "anio": "2do",
         "temas": ["Programacion basica", "Diseño asistido por computadora", "Redes de computadoras"]
     },
     {
         "id": 27,
-        "nombre": "Educacion Tecnologica",
+        "namemateria": "Educacion Tecnologica",
         "anio": "3ro",
         "temas": ["Desarrollo web", "Sistemas operativos", "Bases de datos"]
     },
     {
         "id": 28,
-        "nombre": "Educacion Tecnologica",
+        "namemateria": "Educacion Tecnologica",
         "anio": "4to",
         "temas": ["Programacion avanzada", "Inteligencia artificial", "Seguridad informatica"]
     },
     {
         "id": 29,
-        "nombre": "Educacion Tecnologica",
+        "namemateria": "Educacion Tecnologica",
         "anio": "5to",
         "temas": ["Aplicaciones moviles", "Robotica", "Tecnologias emergentes"]
     },
     {
         "id": 30,
-        "nombre": "Educacion Tecnologica",
+        "namemateria": "Educacion Tecnologica",
         "anio": "6to",
         "temas": ["Gestion de proyectos tecnologicos", "Emprendimiento digital", "Innovacion y desarrollo tecnologico"]
     },
     {
         "id": 31,
-        "nombre": "Formacion etica y Ciudadana",
+        "namemateria": "Formacion etica y Ciudadana",
         "anio": "1ro",
         "temas": [
             "La identidad personal y social",
@@ -597,7 +597,7 @@ export const materias = [
     },
     {
         "id": 32,
-        "nombre": "Formacion etica y Ciudadana",
+        "namemateria": "Formacion etica y Ciudadana",
         "anio": "2do",
         "temas": [
             "El ser humano y la naturaleza",
@@ -610,7 +610,7 @@ export const materias = [
     },
     {
         "id": 33,
-        "nombre": "Formacion etica y Ciudadana",
+        "namemateria": "Formacion etica y Ciudadana",
         "anio": "3ro",
         "temas": [
             "La libertad y la responsabilidad personal y social",
@@ -623,7 +623,7 @@ export const materias = [
     },
     {
         "id": 34,
-        "nombre": "Formacion etica y Ciudadana",
+        "namemateria": "Formacion etica y Ciudadana",
         "anio": "4to",
         "temas": [
             "La dignidad humana y los derechos humanos",
@@ -636,7 +636,7 @@ export const materias = [
     },
     {
         "id": 35,
-        "nombre": "Formacion etica y Ciudadana",
+        "namemateria": "Formacion etica y Ciudadana",
         "anio": "5to",
         "temas": [
             "La dignidad humana y los derechos humanos",
@@ -649,7 +649,7 @@ export const materias = [
     },
     {
         "id": 36,
-        "nombre": "Formacion etica y Ciudadana",
+        "namemateria": "Formacion etica y Ciudadana",
         "anio": "6to",
         "temas": [
             "La libertad, la responsabilidad y la autonomia",
@@ -661,44 +661,44 @@ export const materias = [
         ]
     },
     {
-        "id": 37, "nombre": "Lengua y Literatura", "anio": "1ro", "temas": ["La comunicacion", "La lengua y los textos", "La literatura: generos y textos literarios"]
+        "id": 37, "namemateria": "Lengua y Literatura", "anio": "1ro", "temas": ["La comunicacion", "La lengua y los textos", "La literatura: generos y textos literarios"]
     },
     {
         "id": 38,
-        "nombre": "Lengua y Literatura",
+        "namemateria": "Lengua y Literatura",
         "anio": "2do",
         "temas": ["La lengua y la construccion del sentido", "La literatura: narrativa y poesia"]
     },
     {
         "id": 39,
-        "nombre": "Lengua y Literatura",
+        "namemateria": "Lengua y Literatura",
         "anio": "3ro",
         "temas": ["La lengua en el discurso periodistico", "La literatura: teatro y novela"]
     },
     {
         "id": 40,
-        "nombre": "Lengua y Literatura",
+        "namemateria": "Lengua y Literatura",
         "anio": "4to",
         "temas": ["La lengua y el discurso politico", "La literatura: la poesia en la sociedad"]
     },
     {
         "id": 41,
-        "nombre": "Lengua y Literatura",
+        "namemateria": "Lengua y Literatura",
         "anio": "5to",
         "temas": ["La lengua y los medios digitales", "La literatura: narrativa y novela"]
     },
     {
         "id": 42,
-        "nombre": "Lengua y Literatura",
+        "namemateria": "Lengua y Literatura",
         "anio": "6to",
         "temas": ["La lengua y los procesos de comunicacion complejos", "La literatura: textos literarios contemporaneos"]
     },
     {
-        "id": 43, "nombre": "Educacion Fisica", "anio": "1ro", "temas": ["Actividades fisicas recreativas y deportivas", "Habitos saludables", "Conocimiento y cuidado del cuerpo"]
+        "id": 43, "namemateria": "Educacion Fisica", "anio": "1ro", "temas": ["Actividades fisicas recreativas y deportivas", "Habitos saludables", "Conocimiento y cuidado del cuerpo"]
     },
     {
         "id": 44,
-        "nombre": "Educacion Fisica",
+        "namemateria": "Educacion Fisica",
         "anio": "2do",
         "temas": [
             "Actividades fisicas recreativas y deportivas",
@@ -710,7 +710,7 @@ export const materias = [
     },
     {
         "id": 45,
-        "nombre": "Educacion Fisica",
+        "namemateria": "Educacion Fisica",
         "anio": "3ro",
         "temas": [
             "Actividades fisicas recreativas y deportivas",
@@ -723,7 +723,7 @@ export const materias = [
     },
     {
         "id": 46,
-        "nombre": "Educacion Fisica",
+        "namemateria": "Educacion Fisica",
         "anio": "4to",
         "temas": [
             "Actividades fisicas recreativas y deportivas",
@@ -737,7 +737,7 @@ export const materias = [
     },
     {
         "id": 47,
-        "nombre": "Educacion Fisica",
+        "namemateria": "Educacion Fisica",
         "anio": "5to",
         "temas": [
             "Actividades fisicas recreativas y deportivas",
@@ -752,7 +752,7 @@ export const materias = [
     },
     {
         "id": 48,
-        "nombre": "Educacion Fisica",
+        "namemateria": "Educacion Fisica",
         "anio": "6to",
         "temas": [
             "Actividades fisicas recreativas y deportivas",

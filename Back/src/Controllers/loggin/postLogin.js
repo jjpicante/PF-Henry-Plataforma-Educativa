@@ -58,6 +58,7 @@ const postLogin = async (email, password) => {
         return admin;
       }
     }
+    console.log(userData);
     return userData;
   } catch (firestoreError) {
     console.log(firestoreError);
@@ -81,7 +82,6 @@ const postLogin = async (email, password) => {
           const parseado = elem.toJSON();
           return parseado.MateriaId;
         });
-        
 
         //Busco las materias según su Id
         const arreglo = profesorMaterias.map((elem) => {
@@ -100,8 +100,7 @@ const postLogin = async (email, password) => {
         });
 
         //Agrego las materias al profesor traido
-        dbProfesor.materias = materias;
-
+        dbProfesor.dataValues.materias = materias;
         return dbProfesor;
       } else if (dbAdmin && dbAdmin.password === password) {
         return dbAdmin;
