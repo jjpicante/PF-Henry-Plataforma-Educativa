@@ -10,7 +10,7 @@ import validate from "./validate";
 import { cleanResponse, editAlumno, editProfesor } from "../../Redux/actions";
 import Swal from "sweetalert2";
 import FireStorage from "../almacenamiento/Firestoragev2";
-
+import { SpinnerCircular } from "spinners-react";
 
 export function MiPerfil() {
   const dispatch = useDispatch();
@@ -180,14 +180,23 @@ export function MiPerfil() {
   return (
     <div>
       <Navbar />
+
       <div className={style.container}>
         <div className={style.formulario}>
           {editar ? (
             <div className={style.datosPrincipales}>
               <img
                 className={style.imgPerfil}
-                alt={imagenPerfil[0]?.nombre ? imagenPerfil[0].nombre : "loading"}
-                src={imagenPerfil[0]?.url ? imagenPerfil[0].url : "loading"}
+                alt={
+                  imagenPerfil[0]?.nombre
+                    ? imagenPerfil[0].nombre
+                    : "https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif?20151024034921"
+                }
+                src={
+                  imagenPerfil[0]?.url
+                    ? imagenPerfil[0].url
+                    : "https://upload.wikimedia.org/wikipedia/commons/b/bc/Unknown_person.jpg"
+                }
               ></img>
               <p className={style.nombre}>Nombre: {userData?.name}</p>
               <p className={style.nombre}>Apellido: {userData?.apellido}</p>
