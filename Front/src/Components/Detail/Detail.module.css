@@ -4,7 +4,6 @@
 
   height: 100%;
   position: relative;
-
 }
 
 .topDiv {
@@ -32,6 +31,36 @@
 .nombreMateria {
   text-decoration: none;
   text-transform: capitalize;
+}
+
+.botones {
+  /* background-color: cyan; */
+  height: 10vh;
+  width: 87%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.alumnostemas {
+  /* background-color: green; */
+  position: absolute;
+  left: 50;
+}
+
+.toggleOff {
+  /* background-color: yellow; */
+  height: 3.5vh;
+  position: absolute;
+  right: 0;
+}
+
+.toggleOn {
+  /* background-color: red; */
+  height: 3.5vh;
+  position: absolute;
+  right: 0;
 }
 
 .render {
