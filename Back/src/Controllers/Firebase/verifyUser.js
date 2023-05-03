@@ -6,7 +6,7 @@ const verifyUser = (req, res, next) => {
     req.user = user;
     next();
   } else {
-    res.redirect('http://localhost:3000/'); // replace '/login' with the path to your login page
+    res.redirect('https://pf-henry-plataforma-educativa.vercel.app/'); // replace '/login' with the path to your login page
   }
 }
 

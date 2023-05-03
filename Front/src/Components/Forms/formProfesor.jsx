@@ -56,7 +56,7 @@ function FormProfesor() {
   //* -------------------> Trae las materias dependiendo del año elegido <-------------------
 
   async function traerMaterias(renglon, anio) {
-    const response = await axios.get(`http://localhost:3001/Materias/filtermateria?anio=${anio}`);
+    const response = await axios.get(`/Materias/filtermateria?anio=${anio}`);
     switch (renglon) {
       case "anio1":
         setMaterias1(response.data.map((elem) => elem.namemateria));

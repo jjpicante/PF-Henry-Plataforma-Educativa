@@ -50,7 +50,7 @@ const ProductDisplayer = ({ mesesTotal, totalPagar, estadoDeCuenta }) => {
         text: error.data.message,
         icon: "warning",
       });
-      window.location.href = "http://localhost:3000/carrito";
+      window.location.href = "https://pf-henry-plataforma-educativa.vercel.app/carrito";
     }
   };
   return (
