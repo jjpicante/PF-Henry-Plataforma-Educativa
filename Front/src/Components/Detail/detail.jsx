@@ -76,24 +76,61 @@ export default function Detail() {
   return (
     <div className={style.fondo}>
       <Navbar />
-      <button className={style.button} hidden={userData.rol === "student"} onClick={activar}>
-        Editar Encendido/Apagado
-      </button>
+
       {materiaById ? (
         <div className={style.topDiv}>
           <div className={style.materia}>
             <h1 className={style.nombreMateria}>{materiaById?.namemateria}</h1>
             <h2>{materiaById?.anio}</h2>
           </div>
-          <div>
-            <button className={style.button} type="button" onClick={() => handleVista("alumnos")}>
-              <FontAwesomeIcon className={style.editButton} icon={faGraduationCap} />
-              Ver Alumnos
-            </button>
-            <button className={style.button} type="button" onClick={() => handleVista("temas")}>
-              {/* <FontAwesomeIcon className={style.editButton} icon={faBooks} /> */}
-              Ver Temas
-            </button>
+          <div className={style.botones}>
+            <section className={style.alumnostemas}>
+              <button type="button" onClick={() => handleVista("alumnos")}>
+                <FontAwesomeIcon className={style.editButton} icon={faGraduationCap} />
+                Ver Alumnos
+              </button>
+              <button type="button" onClick={() => handleVista("temas")}>
+                {/* <FontAwesomeIcon className={style.editButton} icon={faBooks} /> */}
+                Ver Temas
+              </button>
+            </section>
+            <div hidden={visible === true || userData.rol !== "profesor"}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="160"
+                height="160"
+                fill="currentColor"
+                class="bi bi-toggle-off"
+                viewBox="0 0 16 16"
+                className={style.toggleOff}
+                hidden={userData.rol !== "profesor" && visible === false}
+                onClick={activar}
+              >
+                <path d="M11 4a4 4 0 0 1 0 8H8a4.992 4.992 0 0 0 2-4 4.992 4.992 0 0 0-2-4h3zm-6 8a4 4 0 1 1 0-8 4 4 0 0 1 0 8zM0 8a5 5 0 0 0 5 5h6a5 5 0 0 0 0-10H5a5 5 0 0 0-5 5z" />
+              </svg>
+            </div>
+            <div hidden={visible === false || userData.rol !== "profesor"}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="160"
+                height="160"
+                fill="currentColor"
+                class="bi bi-toggle-on"
+                viewBox="0 0 16 16"
+                className={style.toggleOn}
+                onClick={activar}
+              >
+                <path d="M5 3a5 5 0 0 0 0 10h6a5 5 0 0 0 0-10H5zm6 9a4 4 0 1 1 0-8 4 4 0 0 1 0 8z" />
+              </svg>
+            </div>
+
+            {/* <button
+              className={style.encendido}
+              hidden={userData.rol === "student"}
+              onClick={activar}
+            >
+              Editar Encendido/Apagado
+            </button> */}
           </div>
 
           {/* Renderizado condicional de Temas */}
@@ -113,47 +150,48 @@ export default function Detail() {
                         <FireStorage visible={visible} url={location} name={e}></FireStorage>
                       </li>
 
-
-                    {documentosDelTema.map((doc, index) => {
-                      return (
-                        <div className={style.containerdoc}>
-                          <a
-                            key={index}
-                            href={doc.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={style.documentList}
-                          >
-                            {doc.nombre !== undefined ? doc.nombre : "HOLa"}
-                          </a>
-                          <nav className={style.navbar}>
-                            <div className={style.navbarContainer}>
-                              <ul className={style.navList}>
-                                <li className={`${style.navItem} ${style.dropdown}`}>
-                                  <div className={` ${style.customBtn} ${style.vertical}`}>...</div>
-                                  <ul className={style.dropdownContent}>
-                                    <li>
-                                      <button
-                                        value={doc.nombre}
-                                        onClick={borrarDocumento}
-                                        className={style.buttonli}
-                                      >
-                                        Delete
-                                      </button>
-                                    </li>
-                                  </ul>
-                                </li>
-                              </ul>
-                            </div>
-                          </nav>
-                        </div>
-                      );
-                    })}
-                  </>
-                );
-              })}
-            </ul>
-
+                      {documentosDelTema.map((doc, index) => {
+                        return (
+                          <div className={style.containerdoc}>
+                            <a
+                              key={index}
+                              href={doc.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className={style.documentList}
+                            >
+                              {doc.nombre !== undefined ? doc.nombre : "HOLa"}
+                            </a>
+                            <nav className={style.navbar}>
+                              <div className={style.navbarContainer}>
+                                <ul className={style.navList}>
+                                  <li className={`${style.navItem} ${style.dropdown}`}>
+                                    <div className={` ${style.customBtn} ${style.vertical}`}>
+                                      ...
+                                    </div>
+                                    <ul className={style.dropdownContent}>
+                                      <li>
+                                        <button
+                                          value={doc.nombre}
+                                          onClick={borrarDocumento}
+                                          className={style.navLink}
+                                        >
+                                          Delete
+                                        </button>
+                                      </li>
+                                    </ul>
+                                  </li>
+                                </ul>
+                              </div>
+                            </nav>
+                          </div>
+                        );
+                      })}
+                    </>
+                  );
+                })}
+              </ul>
+            </section>
           ) : (
             /* Renderizado condicional de Alumnos */
             <ul>
