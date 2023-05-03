@@ -3,14 +3,14 @@ import { useState, useEffect } from "react";
 import style from "./miPerfil.module.css";
 import Navbar from "../NavBar/navBar";
 import { db } from "../../config/firebase";
-import { doc, collection, getDocs, deleteDoc } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash, faPenToSquare, faCheck } from "@fortawesome/free-solid-svg-icons";
 import validate from "./validate";
 import { cleanResponse, editAlumno, editProfesor } from "../../Redux/actions";
 import Swal from "sweetalert2";
 import FireStorage from "../almacenamiento/Firestoragev2";
-import { v4 } from "uuid";
+
 
 export function MiPerfil() {
   const dispatch = useDispatch();

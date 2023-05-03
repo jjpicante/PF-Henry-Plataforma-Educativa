@@ -70,7 +70,6 @@ export const getProfesors = () => {
   return async function (dispatch) {
     try {
       const response = await axios.get("/Profesores");
-      const cantPaginas = response.data.pageCount;
       let profesores = response.data.profesor;
       return dispatch({
         type: GET_PROFESORS,
