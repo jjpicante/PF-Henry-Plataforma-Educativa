@@ -27,6 +27,7 @@ import Firestoragev2 from "./Components/almacenamiento/Firestoragev2";
 import LandingAdmin from "./Components/Admin/Adminhome";
 import ListaMaterias from "./Components/Admin/ListaMaterias/listaMaterias";
 import EditarMateria from "./Components/Admin/ListaMaterias/editarMateria/EditarMateria";
+import Tecnologías from "./Components/Landing/Tecnologias/Tecnologias";
 
 axios.defaults.baseURL = "https://plataforma-educativa-back.onrender.com";
 /* axios.defaults.baseURL = "http://localhost:3001"; */
@@ -77,6 +78,7 @@ function App() {
         <Route exact path="/sobreNosotros" element={<Caracteristicas />} />
         <Route exact path="/contacto" element={<Contacto />} />
         <Route exact path="/desarrolladores" element={<Desarrolladores />} />
+        <Route exact path="/tecnologias" element={<Tecnologías />} />
         <Route exact path="/login" element={<Login />} />
       </Routes>
     </div>
