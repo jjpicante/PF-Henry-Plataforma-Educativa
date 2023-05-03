@@ -149,7 +149,7 @@ label {
   color: red;
 }
 
-.button {
+button {
   border: none;
   border-radius: 5px;
   padding: 10px;
@@ -158,7 +158,7 @@ label {
   transition: background-color 0.3s;
 }
 
-.button:hover {
+button:hover {
   background-color: #3f51b5;
   color: white;
 }
