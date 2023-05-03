@@ -231,3 +231,50 @@
 .dropdownContent li a:hover {
   background-color: #1a191915;
 }
+
+.confirmacioncss {
+  background-color: white;
+  position: absolute;
+  border-radius: 30px;
+  left: 30%;
+  right: 20%;
+  width: 60%;
+  z-index: 9999;
+  box-shadow: 15px 15px 5px rgba(0, 0, 0, 0.2);
+}
+
+.noConfirmacion {
+  display: none;
+}
+
+.buttonsi {
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  width: 40%;
+  font-size: 16px;
+  margin: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.buttonsi:hover {
+  background-color: #3f51b5;
+  color: white;
+}
+
+.buttonno {
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  width: 40%;
+  font-size: 16px;
+  margin: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.buttonno:hover {
+  background-color: #3f51b5;
+  color: white;
+}
