@@ -1,6 +1,5 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import style from "./landing.module.css";
-// import 'bootstrap/dist/css/bootstrap.min.css'
 
 const Landing = () => {
   return (
@@ -45,9 +44,9 @@ const Landing = () => {
         <footer className={style.footer}>
 
 
-          <a className={style.a1}><a href="/sobreNosotros" className="nav-link px-2 text-body-secondary">Nosotros</a></a>
-          <a className={style.a2}><a href="/desarrolladores" className="nav-link px-2 text-body-secondary">Desarrolladores</a></a>
-          <a className={style.a3}><a href="/contacto" className="nav-link px-2 text-body-secondary">Contacto</a></a>
+          <a href="" className={style.a1}><a href="/sobreNosotros" className="nav-link px-2 text-body-secondary">Nosotros</a></a>
+          <a href="" className={style.a2}><a href="/desarrolladores" className="nav-link px-2 text-body-secondary">Desarrolladores</a></a>
+          <a href="" className={style.a3}><a href="/contacto" className="nav-link px-2 text-body-secondary">Contacto</a></a>
           
           <p className={style.footer2}>&copy; 2023 Grupo 05, Henry</p>
           
