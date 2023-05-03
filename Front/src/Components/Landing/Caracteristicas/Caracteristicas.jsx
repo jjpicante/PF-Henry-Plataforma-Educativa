@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import style from "./Caracteristicas.module.css";
+import { Link } from "react-router-dom";
 
 const Caracteristicas = () => {
   const [selected, setSelected] = useState("");
@@ -106,6 +107,9 @@ const Caracteristicas = () => {
           </section>
         </div>
       </div>
+      <Link to="/">
+        <button className={style.volver}>Volver</button>
+      </Link>
     </div>
   );
 };

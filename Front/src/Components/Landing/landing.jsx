@@ -39,7 +39,7 @@ const Landing = () => {
             <p className={style.p0}>Estamos emocionados de tenerte aquí y ser parte de tu viaje de aprendizaje. Nuestra plataforma está diseñada para brindarte una experiencia educativa enriquecedora y accesible desde cualquier lugar del mundo. Desde la comodidad de tu hogar o desde cualquier lugar que te encuentres, podrás conectarte con tus profesores y compañeros de clase en tiempo real.</p>
 
             <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-              <button type="button"> <Link to="/login">Acceder</Link></button>
+              <button type="button" className={style.acceder}> <Link to="/login">Acceder</Link></button>
             </div>
           </div>
         </div>
@@ -54,7 +54,7 @@ const Landing = () => {
         <footer className={style.footer}>
 
 
-          <a className={style.a1} href="/sobreNosotros" >Nosotros</a>
+          <a className={style.a1} href="/tecnologias" >Tecnologias</a>
           <a className={style.a2} href="/desarrolladores" >Desarrolladores</a>
           <a className={style.a3} href="/contacto" >Contacto</a>
 

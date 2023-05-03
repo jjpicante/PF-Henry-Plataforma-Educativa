@@ -1,0 +1,88 @@
+.container {
+    background: linear-gradient(to bottom, #137078, #5bc5a7);
+    min-height: 170vh;
+  }
+  
+  .menu {
+    background-color: rgba(53, 53, 53, 0.682);
+    position: absolute;
+    width: 20%;
+    height: 155vh;
+    font-size: 0.8vw;
+    color: white;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10vh;
+    margin-left: 2vw;
+  }
+  
+  .menu h2 {
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    margin-left: 2vw;
+    position: relative;
+    display: inline-flex;
+  }
+  
+  .menu:hover {
+    cursor: pointer;
+  }
+  
+  .menu h2::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0;
+    height: 2px;
+    background-color: white;
+    transition: width 0.5s ease-in-out;
+    flex-grow: 1;
+  }
+  
+  .menu h2:hover::after {
+    width: 100%;
+  }
+  
+  .seleccion {
+    position: absolute;
+    right: 18%;
+    width: 45%;
+    margin-top: 10vh;
+  }
+  
+  .card {
+    background-color: rgb(203, 211, 218);
+    border: 1px solid black;
+    border-radius: 20px;
+    padding: 2vh 3vw; /* Arriba y abajo / Izq. Der. */
+    margin: auto;
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+  
+  .card h2 {
+    text-decoration: underline;
+    margin-bottom: 3vh;
+    font-size: 1.8vw;
+  }
+  
+  .contenidos {
+    text-align: left;
+    font-size: 1vw;
+    line-height: 3.5vh;
+  }
+  
+  .reactLogo,
+  .reduxLogo,
+  .jsLogo,
+  .bootstrapLogo,
+  .GitHubLogo,
+  .sequelizeLogo,
+  .postgreSQLLogo,
+  .firebaseLogo{
+    height: 100px;
+  }
+
+  
