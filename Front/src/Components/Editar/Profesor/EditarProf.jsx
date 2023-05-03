@@ -4,7 +4,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Navbar from "../../NavBar/navBar";
-import { getProfesor, cleanResponse, editProfesor2 } from "../../../Redux/actions";
+import {
+  getProfesor,
+  cleanResponse,
+  editProfesor2,
+} from "../../../Redux/actions";
 import { validate } from "./validations";
 import style from "./EditarProf.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -69,7 +73,9 @@ export default function EditarProfesor() {
   //* -------------------> Trae las materias dependiendo del año elegido <-------------------
 
   async function traerMaterias(renglon, anio) {
-    const response = await axios.get(`http://localhost:3001/Materias/filtermateria?anio=${anio}`);
+    const response = await axios.get(
+      `http://localhost:3001/Materias/filtermateria?anio=${anio}`
+    );
     if (!response.data.message) {
       switch (renglon) {
         case "anio1":
@@ -98,7 +104,11 @@ export default function EditarProfesor() {
 
     //* -------------------> Si se cambia un año, en materia se reestablece "materia" por default <-------------------
 
-    if (ev.target.name === "anio1" || ev.target.name === "anio2" || ev.target.name === "anio3") {
+    if (
+      ev.target.name === "anio1" ||
+      ev.target.name === "anio2" ||
+      ev.target.name === "anio3"
+    ) {
       switch (ev.target.name) {
         case "anio1":
           setUsuario({
@@ -192,7 +202,12 @@ export default function EditarProfesor() {
   const submitHandler = (ev) => {
     ev.preventDefault();
     console.log("submit");
-    dispatch(editProfesor2(valoresOriginales.username, paraEditar(valoresOriginales, usuario)));
+    dispatch(
+      editProfesor2(
+        valoresOriginales.username,
+        paraEditar(valoresOriginales, usuario)
+      )
+    );
     /* if (response) {
       window.alert(response);
     }
@@ -201,7 +216,9 @@ export default function EditarProfesor() {
 
   //Bloquea el boton submit cuando no se introdujeron cambios, o cuando hay errores
   function hasErrors() {
-    return Object.values(error).some((error) => error !== "") || hasChanged === false;
+    return (
+      Object.values(error).some((error) => error !== "") || hasChanged === false
+    );
   }
 
   useEffect(() => {
@@ -226,9 +243,13 @@ export default function EditarProfesor() {
         anio1: profesor.Materias[0].anio,
         materia1: profesor.Materias[0].namemateria,
         anio2: profesor.Materias[1] ? profesor.Materias[1].anio : "año",
-        materia2: profesor.Materias[1] ? profesor.Materias[1].namemateria : "materia",
+        materia2: profesor.Materias[1]
+          ? profesor.Materias[1].namemateria
+          : "materia",
         anio3: profesor.Materias[2] ? profesor.Materias[2].anio : "año",
-        materia3: profesor.Materias[2] ? profesor.Materias[2].namemateria : "materia",
+        materia3: profesor.Materias[2]
+          ? profesor.Materias[2].namemateria
+          : "materia",
         rol: profesor.rol,
         email: profesor.email,
         username: profesor.username,
@@ -244,9 +265,13 @@ export default function EditarProfesor() {
         anio1: profesor.Materias[0].anio,
         materia1: profesor.Materias[0].namemateria,
         anio2: profesor.Materias[1] ? profesor.Materias[1].anio : "año",
-        materia2: profesor.Materias[1] ? profesor.Materias[1].namemateria : "materia",
+        materia2: profesor.Materias[1]
+          ? profesor.Materias[1].namemateria
+          : "materia",
         anio3: profesor.Materias[2] ? profesor.Materias[2].anio : "año",
-        materia3: profesor.Materias[2] ? profesor.Materias[2].namemateria : "materia",
+        materia3: profesor.Materias[2]
+          ? profesor.Materias[2].namemateria
+          : "materia",
         rol: profesor.rol,
         email: profesor.email,
         username: profesor.username,
@@ -280,347 +305,413 @@ export default function EditarProfesor() {
 
   return (
     <>
-      <div>
-        <NavBarAdmin />
-      </div>
-      <div className={style.container}>
-        <h1 className="formTitle">EDITAR PROFESOR</h1>
-        <form className={style.formulario} onSubmit={(ev) => submitHandler(ev)}>
-          <section>
-            <h4 className={style.campo}>Nombre</h4>
-            <input
-              className={style.text}
-              type="text"
-              name="name"
-              autoComplete="off"
-              disabled={disabled.name}
-              onChange={(ev) => inputHandler(ev)}
-              value={usuario.name}
-            />
-            <button type="button" onClick={() => handleDisabled("name")}>
-              <FontAwesomeIcon className={style.editButton} icon={faPenToSquare} />
-            </button>
-            <p className="errorText">{error.name}</p>
-          </section>
+      <NavBarAdmin />
 
-          <section>
-            <h4 className={style.campo}>Apellido</h4>
-            <input
-              className={style.text}
-              type="text"
-              name="apellido"
-              autoComplete="off"
-              disabled={disabled.apellido}
-              onChange={(ev) => inputHandler(ev)}
-              value={usuario.apellido}
-            />
-            <button type="button" onClick={() => handleDisabled("apellido")}>
-              <FontAwesomeIcon className={style.editButton} icon={faPenToSquare} />
-            </button>
-            <p className="errorText">{error.apellido}</p>
-          </section>
-          {/* RENGLON 1 ************************************************************* */}
-          <section>
-            <h4 className={style.campo}>Año 1</h4>
-            <select
-              className={style.text}
-              type="text"
-              name="anio1"
-              disabled={disabled.anio1}
-              onChange={(ev) => inputHandler(ev)}
-              value={usuario.anio1}
-            >
-              {["año", "1ro", "2do", "3ro", "4to", "5to", "6to"].map((i) => (
-                <option value={i} key={i}>
-                  {i}
-                </option>
-              ))}
-            </select>
-          </section>
-
-          <section>
-            <h4 className={style.campo}>Materia 1</h4>
-            <select
-              className={style.text}
-              type="text"
-              name="materia1"
-              disabled={disabled.materia1}
-              onChange={(ev) => inputHandler(ev)}
-              value={usuario.materia1}
-            >
-              <option disabled={true}>materia</option>
-
-              {materias1.length ? (
-                materias1.map((i) => (
-                  <option
-                    value={i}
-                    key={i}
-                    disabled={
-                      (usuario.anio2 === usuario.anio1 && usuario.materia2 === i) ||
-                      (usuario.anio3 === usuario.anio1 && usuario.materia3 === i)
-                    }
-                  >
-                    {i}
-                  </option>
-                ))
-              ) : (
-                <option>{usuario.materia1}</option>
-              )}
-            </select>
-            <button type="button" onClick={() => handleDisabled("materia1")}>
-              <FontAwesomeIcon className={style.editButton} icon={faPenToSquare} />
-            </button>
-            <button
-              type="button"
-              disabled={usuario.materia1 === "materia"}
-              onClick={() => {
-                inputHandler({ target: { name: "anio1", value: "año" } });
-                setDisabled({ ...disabled, anio1: true, materia1: true });
-              }}
-            >
-              <FontAwesomeIcon className={style.editButton} icon={faTrashCan} />
-            </button>
-          </section>
-          {/* RENGLON 2 ************************************************************* */}
-          <section>
-            <h4 className={style.campo}>Año 2</h4>
-            <select
-              className={style.text}
-              type="text"
-              name="anio2"
-              disabled={disabled.anio2}
-              onChange={(ev) => inputHandler(ev)}
-              value={usuario.anio2}
-            >
-              {["año", "1ro", "2do", "3ro", "4to", "5to", "6to"].map((i) => (
-                <option value={i} key={i}>
-                  {i}
-                </option>
-              ))}
-            </select>
-          </section>
-
-          <section>
-            <h4 className={style.campo}>Materia 2</h4>
-            <select
-              className={style.text}
-              type="text"
-              name="materia2"
-              disabled={disabled.materia2}
-              onChange={(ev) => inputHandler(ev)}
-              value={usuario.materia2}
-            >
-              <option disabled={true}>materia</option>
-
-              {materias2.length ? (
-                materias2.map((i) => (
-                  <option
-                    value={i}
-                    key={i}
-                    disabled={
-                      (usuario.anio1 === usuario.anio2 && usuario.materia1 === i) ||
-                      (usuario.anio3 === usuario.anio2 && usuario.materia3 === i)
-                    }
-                  >
-                    {i}
-                  </option>
-                ))
-              ) : (
-                <option>{usuario.materia2}</option>
-              )}
-            </select>
-            <button
-              type="button"
-              disabled={usuario.materia1 === "materia"}
-              onClick={() => handleDisabled("materia2")}
-            >
-              <FontAwesomeIcon className={style.editButton} icon={faPenToSquare} />
-            </button>
-            <button
-              type="button"
-              disabled={usuario.materia2 === "materia"}
-              onClick={() => {
-                inputHandler({ target: { name: "anio2", value: "año" } });
-                setDisabled({ ...disabled, anio2: true, materia2: true });
-              }}
-            >
-              <FontAwesomeIcon className={style.editButton} icon={faTrashCan} />
-            </button>
-          </section>
-          {/* RENGLON 3 ************************************************************* */}
-          <section>
-            <h4 className={style.campo}>Año 3</h4>
-            <select
-              className={style.text}
-              type="text"
-              name="anio3"
-              disabled={disabled.anio3}
-              onChange={(ev) => inputHandler(ev)}
-              value={usuario.anio3}
-            >
-              {["año", "1ro", "2do", "3ro", "4to", "5to", "6to"].map((i) => (
-                <option value={i} key={i}>
-                  {i}
-                </option>
-              ))}
-            </select>
-          </section>
-
-          <section>
-            <h4 className={style.campo}>Materia 3</h4>
-            <select
-              className={style.text}
-              type="text"
-              name="materia3"
-              disabled={disabled.materia3}
-              onChange={(ev) => inputHandler(ev)}
-              value={usuario.materia3}
-            >
-              <option disabled={true}>materia</option>
-
-              {materias3.length ? (
-                materias3.map((i) => (
-                  <option
-                    value={i}
-                    key={i}
-                    disabled={
-                      (usuario.anio1 === usuario.anio3 && usuario.materia1 === i) ||
-                      (usuario.anio2 === usuario.anio3 && usuario.materia2 === i)
-                    }
-                  >
-                    {i}
-                  </option>
-                ))
-              ) : (
-                <option>{usuario.materia3}</option>
-              )}
-            </select>
-            <button
-              type="button"
-              disabled={usuario.materia1 === "materia" || usuario.materia2 === "materia"}
-              onClick={() => handleDisabled("materia3")}
-            >
-              <FontAwesomeIcon className={style.editButton} icon={faPenToSquare} />
-            </button>
-            <button
-              type="button"
-              disabled={usuario.materia3 === "materia"}
-              onClick={() => {
-                inputHandler({ target: { name: "anio3", value: "año" } });
-                setDisabled({ ...disabled, anio3: true, materia3: true });
-              }}
-            >
-              <FontAwesomeIcon className={style.editButton} icon={faTrashCan} />
-            </button>
-          </section>
-          <p className="errorText">{error.anio3}</p>
-          {/***************************************************************************** */}
-          <section>
-            <h4 className={style.campo}>Fecha de nacimiento</h4>
-            <input
-              className={style.text}
-              type="date"
-              name="datebirth"
-              disabled={disabled.datebirth}
-              value={usuario.datebirth}
-              onChange={(ev) => inputHandler(ev)}
-            />
-            <button type="button" onClick={() => handleDisabled("datebirth")}>
-              <FontAwesomeIcon className={style.editButton} icon={faPenToSquare} />
-            </button>
-          </section>
-
-          <section>
-            <h4 className={style.campo}>Nacionalidad</h4>
-            <select
-              className={style.text}
-              type="text"
-              name="nacionalidad"
-              disabled={disabled.nacionalidad}
-              onChange={(ev) => inputHandler(ev)}
-              value={
-                usuario.nacionalidad &&
-                usuario.nacionalidad[0].toUpperCase() + usuario.nacionalidad.slice(1)
-              }
-            >
-              {paises?.map((el, i) => {
-                return (
-                  <option value={el} key={i}>
-                    {el}
-                  </option>
-                );
-              })}
-            </select>
-            <button type="button" onClick={() => handleDisabled("nacionalidad")}>
-              <FontAwesomeIcon className={style.editButton} icon={faPenToSquare} />
-            </button>
-          </section>
-
-          <section>
-            <h4 className={style.campo}>Username</h4>
-            <input
-              className={style.text}
-              type="text"
-              name="username"
-              autoComplete="off"
-              disabled={true}
-              value={usuario.username}
-            />
-          </section>
-
-          <section>
-            <h4 className={style.campo}>Email</h4>
-            <input
-              className={style.text}
-              type="text"
-              name="email"
-              autoComplete="off"
-              disabled={true}
-              value={usuario.email}
-            />
-          </section>
-
-          <section>
-            <h4 className={style.campo}>Password</h4>
-            <input
-              className={style.text}
-              type="text"
-              name="password"
-              autoComplete="off"
-              disabled={true}
-              value={usuario.password}
-            />
-          </section>
-
-          <section>
-            <h4 className={style.campo}>Rol</h4>
-            <select
-              className={style.text}
-              type="text"
-              name="rol"
-              disabled={true}
-              value={usuario.rol}
-            >
-              {["admin", "profesor", "student"].map((i) => (
-                <option value={i} key={i}>
-                  {i}
-                </option>
-              ))}
-            </select>
-          </section>
-
-          <button
-            type="button"
-            onClick={() => {
-              navigate(-1);
-            }}
+      <div className={style.fullcontainer}>
+        <div className={style.container}>
+          <h1 className="formTitle">EDITAR PROFESOR</h1>
+          <form
+            className={style.formulario}
+            onSubmit={(ev) => submitHandler(ev)}
           >
-            Volver
-          </button>
-          <button type="submit" disabled={hasErrors()} onClick={() => handleCheckClick()}>
-            Confirmar Cambios
-          </button>
-        </form>
+            <section>
+              <h4 className={style.campo}>Nombre</h4>
+              <input
+                className={style.text}
+                type="text"
+                name="name"
+                autoComplete="off"
+                disabled={disabled.name}
+                onChange={(ev) => inputHandler(ev)}
+                value={usuario.name}
+              />
+              <button
+                className={style.editButton}
+                type="button"
+                onClick={() => handleDisabled("name")}
+              >
+                <FontAwesomeIcon
+                  className={style.editIcon}
+                  icon={faPenToSquare}
+                />
+              </button>
+              <p className="errorText">{error.name}</p>
+            </section>
+
+            <section>
+              <h4 className={style.campo}>Apellido</h4>
+              <input
+                className={style.text}
+                type="text"
+                name="apellido"
+                autoComplete="off"
+                disabled={disabled.apellido}
+                onChange={(ev) => inputHandler(ev)}
+                value={usuario.apellido}
+              />
+              <button
+                className={style.editButton}
+                type="button"
+                onClick={() => handleDisabled("apellido")}
+              >
+                <FontAwesomeIcon
+                  className={style.editIcon}
+                  icon={faPenToSquare}
+                />
+              </button>
+              <p className="errorText">{error.apellido}</p>
+            </section>
+            {/* RENGLON 1 ************************************************************* */}
+            <section>
+              <h4 className={style.campo}>Año 1</h4>
+              <select
+                className={style.text}
+                type="text"
+                name="anio1"
+                disabled={disabled.anio1}
+                onChange={(ev) => inputHandler(ev)}
+                value={usuario.anio1}
+              >
+                {["año", "1ro", "2do", "3ro", "4to", "5to", "6to"].map((i) => (
+                  <option value={i} key={i}>
+                    {i}
+                  </option>
+                ))}
+              </select>
+            </section>
+
+            <section>
+              <h4 className={style.campo}>Materia 1</h4>
+              <select
+                className={style.text}
+                type="text"
+                name="materia1"
+                disabled={disabled.materia1}
+                onChange={(ev) => inputHandler(ev)}
+                value={usuario.materia1}
+              >
+                <option disabled={true}>materia</option>
+
+                {materias1.length ? (
+                  materias1.map((i) => (
+                    <option
+                      value={i}
+                      key={i}
+                      disabled={
+                        (usuario.anio2 === usuario.anio1 &&
+                          usuario.materia2 === i) ||
+                        (usuario.anio3 === usuario.anio1 &&
+                          usuario.materia3 === i)
+                      }
+                    >
+                      {i}
+                    </option>
+                  ))
+                ) : (
+                  <option>{usuario.materia1}</option>
+                )}
+              </select>
+              <button
+                className={style.editButton}
+                type="button"
+                onClick={() => handleDisabled("materia1")}
+              >
+                <FontAwesomeIcon
+                  className={style.editIcon}
+                  icon={faPenToSquare}
+                />
+              </button>
+              <button
+                type="button"
+                className={style.editButton}
+                disabled={usuario.materia1 === "materia"}
+                onClick={() => {
+                  inputHandler({ target: { name: "anio1", value: "año" } });
+                  setDisabled({ ...disabled, anio1: true, materia1: true });
+                }}
+              >
+                <FontAwesomeIcon className={style.editIcon} icon={faTrashCan} />
+              </button>
+            </section>
+            {/* RENGLON 2 ************************************************************* */}
+            <section>
+              <h4 className={style.campo}>Año 2</h4>
+              <select
+                className={style.text}
+                type="text"
+                name="anio2"
+                disabled={disabled.anio2}
+                onChange={(ev) => inputHandler(ev)}
+                value={usuario.anio2}
+              >
+                {["año", "1ro", "2do", "3ro", "4to", "5to", "6to"].map((i) => (
+                  <option value={i} key={i}>
+                    {i}
+                  </option>
+                ))}
+              </select>
+            </section>
+
+            <section>
+              <h4 className={style.campo}>Materia 2</h4>
+              <select
+                className={style.text}
+                type="text"
+                name="materia2"
+                disabled={disabled.materia2}
+                onChange={(ev) => inputHandler(ev)}
+                value={usuario.materia2}
+              >
+                <option disabled={true}>materia</option>
+
+                {materias2.length ? (
+                  materias2.map((i) => (
+                    <option
+                      value={i}
+                      key={i}
+                      disabled={
+                        (usuario.anio1 === usuario.anio2 &&
+                          usuario.materia1 === i) ||
+                        (usuario.anio3 === usuario.anio2 &&
+                          usuario.materia3 === i)
+                      }
+                    >
+                      {i}
+                    </option>
+                  ))
+                ) : (
+                  <option>{usuario.materia2}</option>
+                )}
+              </select>
+              <button
+                type="button"
+                className={style.editButton}
+                disabled={usuario.materia1 === "materia"}
+                onClick={() => handleDisabled("materia2")}
+              >
+                <FontAwesomeIcon
+                  className={style.editIcon}
+                  icon={faPenToSquare}
+                />
+              </button>
+              <button
+                type="button"
+                className={style.editButton}
+                disabled={usuario.materia2 === "materia"}
+                onClick={() => {
+                  inputHandler({ target: { name: "anio2", value: "año" } });
+                  setDisabled({ ...disabled, anio2: true, materia2: true });
+                }}
+              >
+                <FontAwesomeIcon className={style.editIcon} icon={faTrashCan} />
+              </button>
+            </section>
+            {/* RENGLON 3 ************************************************************* */}
+            <section>
+              <h4 className={style.campo}>Año 3</h4>
+              <select
+                className={style.text}
+                type="text"
+                name="anio3"
+                disabled={disabled.anio3}
+                onChange={(ev) => inputHandler(ev)}
+                value={usuario.anio3}
+              >
+                {["año", "1ro", "2do", "3ro", "4to", "5to", "6to"].map((i) => (
+                  <option value={i} key={i}>
+                    {i}
+                  </option>
+                ))}
+              </select>
+            </section>
+
+            <section>
+              <h4 className={style.campo}>Materia 3</h4>
+              <select
+                className={style.text}
+                type="text"
+                name="materia3"
+                disabled={disabled.materia3}
+                onChange={(ev) => inputHandler(ev)}
+                value={usuario.materia3}
+              >
+                <option disabled={true}>materia</option>
+
+                {materias3.length ? (
+                  materias3.map((i) => (
+                    <option
+                      value={i}
+                      key={i}
+                      disabled={
+                        (usuario.anio1 === usuario.anio3 &&
+                          usuario.materia1 === i) ||
+                        (usuario.anio2 === usuario.anio3 &&
+                          usuario.materia2 === i)
+                      }
+                    >
+                      {i}
+                    </option>
+                  ))
+                ) : (
+                  <option>{usuario.materia3}</option>
+                )}
+              </select>
+              <button
+                type="button"
+                className={style.editButton}
+                disabled={
+                  usuario.materia1 === "materia" ||
+                  usuario.materia2 === "materia"
+                }
+                onClick={() => handleDisabled("materia3")}
+              >
+                <FontAwesomeIcon
+                  className={style.editIcon}
+                  icon={faPenToSquare}
+                />
+              </button>
+              <button
+                type="button"
+                className={style.editButton}
+                disabled={usuario.materia3 === "materia"}
+                onClick={() => {
+                  inputHandler({ target: { name: "anio3", value: "año" } });
+                  setDisabled({ ...disabled, anio3: true, materia3: true });
+                }}
+              >
+                <FontAwesomeIcon className={style.editIcon} icon={faTrashCan} />
+              </button>
+            </section>
+            <p className="errorText">{error.anio3}</p>
+            {/***************************************************************************** */}
+            <section>
+              <h4 className={style.campo}>Fecha de nacimiento</h4>
+              <input
+                className={style.text}
+                type="date"
+                name="datebirth"
+                disabled={disabled.datebirth}
+                value={usuario.datebirth}
+                onChange={(ev) => inputHandler(ev)}
+              />
+              <button
+                className={style.editButton}
+                type="button"
+                onClick={() => handleDisabled("datebirth")}
+              >
+                <FontAwesomeIcon
+                  className={style.editIcon}
+                  icon={faPenToSquare}
+                />
+              </button>
+            </section>
+
+            <section>
+              <h4 className={style.campo}>Nacionalidad</h4>
+              <select
+                className={style.text}
+                type="text"
+                name="nacionalidad"
+                disabled={disabled.nacionalidad}
+                onChange={(ev) => inputHandler(ev)}
+                value={
+                  usuario.nacionalidad &&
+                  usuario.nacionalidad[0].toUpperCase() +
+                    usuario.nacionalidad.slice(1)
+                }
+              >
+                {paises?.map((el, i) => {
+                  return (
+                    <option value={el} key={i}>
+                      {el}
+                    </option>
+                  );
+                })}
+              </select>
+              <button
+                type="button"
+                className={style.editButton}
+                onClick={() => handleDisabled("nacionalidad")}
+              >
+                <FontAwesomeIcon
+                  className={style.editIcon}
+                  icon={faPenToSquare}
+                />
+              </button>
+            </section>
+
+            <section>
+              <h4 className={style.campo}>Username</h4>
+              <input
+                className={style.text}
+                type="text"
+                name="username"
+                autoComplete="off"
+                disabled={true}
+                value={usuario.username}
+              />
+            </section>
+
+            <section>
+              <h4 className={style.campo}>Email</h4>
+              <input
+                className={style.text}
+                type="text"
+                name="email"
+                autoComplete="off"
+                disabled={true}
+                value={usuario.email}
+              />
+            </section>
+
+            <section>
+              <h4 className={style.campo}>Password</h4>
+              <input
+                className={style.text}
+                type="text"
+                name="password"
+                autoComplete="off"
+                disabled={true}
+                value={usuario.password}
+              />
+            </section>
+
+            <section>
+              <h4 className={style.campo}>Rol</h4>
+              <select
+                className={style.text}
+                type="text"
+                name="rol"
+                disabled={true}
+                value={usuario.rol}
+              >
+                {["admin", "profesor", "student"].map((i) => (
+                  <option value={i} key={i}>
+                    {i}
+                  </option>
+                ))}
+              </select>
+            </section>
+
+            <button
+              type="button"
+              className={style.volverButton}
+              onClick={() => {
+                navigate(-1);
+              }}
+            >
+              Volver
+            </button>
+            <button
+              type="submit"
+              className={style.confirmarButton}
+              disabled={hasErrors()}
+              onClick={() => handleCheckClick()}
+            >
+              Confirmar Cambios
+            </button>
+          </form>
+        </div>
       </div>
     </>
   );
