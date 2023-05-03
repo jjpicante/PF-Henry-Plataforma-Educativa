@@ -21,15 +21,20 @@ function Redirect() {
   };
   useEffect(() => {
     logout();
-    deleteUserFromFirebase();
     const timeout = setTimeout(() => {
-      // 👇️ redirects to an external URL
-      window.location.replace("/login");
       Swal.fire({
         text: "No cuentas con las credenciales necesarias para ingresar a la ruta indicada, verifica que estes logeado correctamente",
         icon: "warning",
+        showCancelButton: false,
+        confirmButtonColor: "#3085d6",
+        confirmButtonText: "OK",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          deleteUserFromFirebase();
+          window.location.replace("/login");
+        }
       });
-    }, 3000);
+    }, 2000);
 
     return () => clearTimeout(timeout);
   }, []);
