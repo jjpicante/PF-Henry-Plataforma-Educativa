@@ -10,7 +10,7 @@ const googleVerifier = async (email) => {
   const admin = await Admin.findOne({
     where: { email },
   });
-  console.log(admin)
+  console.log(admin);
   console.log(alumno);
   console.log(profesor);
   if (!alumno && !profesor && !admin) {
@@ -18,7 +18,7 @@ const googleVerifier = async (email) => {
       "No esta registrado en la base de datos, por favor contacte con la intitucion educativa"
     );
   }
-  if(admin)return admin;
+  if (admin) return admin;
   if (alumno) return alumno;
   if (profesor) return profesor;
 };
