@@ -69,7 +69,7 @@ export default function EditarProfesor() {
   //* -------------------> Trae las materias dependiendo del año elegido <-------------------
 
   async function traerMaterias(renglon, anio) {
-    const response = await axios.get(`http://localhost:3001/Materias/filtermateria?anio=${anio}`);
+    const response = await axios.get(`/Materias/filtermateria?anio=${anio}`);
     if (!response.data.message) {
       switch (renglon) {
         case "anio1":

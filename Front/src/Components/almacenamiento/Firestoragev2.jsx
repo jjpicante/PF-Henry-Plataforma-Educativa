@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { storage, /* app, */ db } from "../../config/firebase";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import {
@@ -7,7 +7,6 @@ import {
   setDoc,
   collection,
   getDocs,
-  getDoc,
   query,
   where,
   updateDoc,
@@ -17,7 +16,7 @@ import styles from "./FireStorage.module.css";
 import Swal from "sweetalert2";
 import { useLocation, useNavigate } from "react-router-dom";
 
-const FireStorage = ({ visible, url, name }) => {
+const FireStorage = ({ visible, name }) => {
   const [fileupload, setFileupload] = useState(null);
   const [buttonV, setButtonV] = useState(false);
   const [fileList, setFileList] = useState("");

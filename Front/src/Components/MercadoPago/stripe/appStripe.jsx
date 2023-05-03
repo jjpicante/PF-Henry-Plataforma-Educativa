@@ -58,7 +58,7 @@ const CheckautForm = () => {
               text: "Pago realizado con éxito",
               icon: "success",
             });
-            window.location.href = "http://localhost:3000/carrito";
+            window.location.href = "https://pf-henry-plataforma-educativa.vercel.app/carrito";
           }
         } else 
         Swal.fire({
@@ -74,7 +74,7 @@ const CheckautForm = () => {
         window.localStorage.removeItem("mes");
         window.localStorage.removeItem("total");
         window.alert("El pago no se realizó");
-        window.location.href = "http://localhost:3000/carrito";
+        window.location.href = "https://pf-henry-plataforma-educativa.vercel.app/carrito";
       }
     }
     setIsLoading(false);

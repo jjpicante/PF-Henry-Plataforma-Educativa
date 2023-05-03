@@ -1,4 +1,3 @@
-//Regex
 const specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
 const emailRegex = /\S+@\S+\.\S+/;
 const numbers = /\d/;

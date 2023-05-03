@@ -53,12 +53,12 @@ const Landing = () => {
 
         <footer className={style.footer}>
 
-
           <a className={style.a1} href="/tecnologias" >Tecnologias</a>
           <a className={style.a2} href="/desarrolladores" >Desarrolladores</a>
           <a className={style.a3} href="/contacto" >Contacto</a>
 
           <p className={style.p4}>Gracias por elegir nuestra plataforma para tu aprendizaje en línea. Estamos ansiosos de comenzar este viaje juntos. ¡Bienvenido(a) a nuestra comunidad educativa en línea!</p>
+
 
           <p className={style.footer2}>&copy; 2023 Grupo 05, Henry</p>
 
