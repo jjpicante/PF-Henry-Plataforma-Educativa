@@ -89,10 +89,9 @@ const HomeStudent = () => {
 
       <div className={style.container2}>
         <div className={style.title}>
-          <h1 className={style.nombre}>Hola, {nombre}!</h1>
+          {userData?.rol === "student" ? <h1 className={style.nombre}>Hola, {nombre}!</h1> : <h1 className={style.nombre}>Hola, profe {nombre}!</h1>}
         </div>
-
-        {/* <div className={style.p}><p>Calendario</p></div> */}
+         {/* <div className={style.p}><p>Calendario</p></div> */}
         <div className={style.calendar}>
           <Calendar
             onChange={onChange}
