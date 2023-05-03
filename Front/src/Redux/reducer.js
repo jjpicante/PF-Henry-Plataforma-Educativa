@@ -25,15 +25,19 @@ import {
   POST_ALUMNO_DE_BAJA,
   DELETE_ALUMNO,
   DELETE_PROFESOR,
+  DELETE_MATERIAS,
+  GET_MATERIAS_ADMIN,
 } from "./actionsTypes";
 
 const initialState = {
   students: [],
   profesors: [],
   materias: [],
+  materiasAdmin: [],
   aulas: [],
   pageCount: "",
   materiaById: [],
+
   userData: null,
   editResponse: null,
 };
@@ -52,21 +56,21 @@ export default function reducer(state = initialState, { type, payload }) {
     case POST_ALUMNO_DE_BAJA:
       return {
         ...state,
-      } 
+      };
     case POST_PROFESOR_DE_BAJA:
-      return{
+      return {
         ...state,
-      }  
+      };
     case DELETE_ALUMNO:
-      return{
+      return {
         ...state,
         students: state.students.filter((alumno) => alumno.username !== payload.username),
-      }  
+      };
     case DELETE_PROFESOR:
-      return{
+      return {
         ...state,
         profesors: state.profesors.filter((profesor) => profesor.username !== payload.username),
-      }  
+      };
     case EDIT_ALUMNO:
       return {
         ...state,
@@ -93,6 +97,12 @@ export default function reducer(state = initialState, { type, payload }) {
         ...state,
         profesors: payload,
       };
+    case GET_MATERIAS_ADMIN:
+      return {
+        ...state,
+        materiasAdmin: payload.materias,
+        pageCount: payload.pageCount,
+      };
     case GET_MATERIAS:
       return {
         ...state,
@@ -113,6 +123,10 @@ export default function reducer(state = initialState, { type, payload }) {
       return {
         ...state,
         materias: payload,
+      };
+    case DELETE_MATERIAS:
+      return {
+        ...state,
       };
     case GET_AULAS:
       return {

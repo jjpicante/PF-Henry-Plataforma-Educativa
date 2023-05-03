@@ -25,6 +25,7 @@ import Disqus from "./Components/Coments/disqus";
 import Firestoragev2 from "./Components/almacenamiento/Firestoragev2";
 import LandingAdmin from "./Components/Admin/Adminhome";
 import ListaMaterias from "./Components/Admin/ListaMaterias/listaMaterias";
+import EditarMateria from "./Components/Admin/ListaMaterias/editarMateria/EditarMateria";
 
 /* axios.defaults.baseURL = "https://servidor-plataformae2.onrender.com"; */
 axios.defaults.baseURL = "http://localhost:3001";
@@ -57,6 +58,7 @@ function App() {
           <Route exact path="/editarLanding" element={<EditarLanding />} />
           <Route exact path="/editarAlumno/:username" element={<Editar />} />
           <Route exact path="/editarProfesor/:username" element={<EditarProfesor />} />
+          <Route exact path="/EditarMateria/:id" element={<EditarMateria />}></Route>
         </Route>
 
         <Route element={<ProtectedRoutes allowedRoles={["student"]} />}>

@@ -72,9 +72,17 @@ function FormSubject() {
     const error = validateSubmit(subjectData, errorMessage);
     console.log(error.namemateria);
     if (Object.values(error).length === 0) {
-      alert("The form has been filled successfully");
       await axios.post("/Materias", subjectData);
+      Swal.fire({
+        text: "Materia Creada Exitosamente",
+        icon: "success",
+        timer: 3000,
+      });
     } else {
+      Swal.fire({
+        text: "Porfavor verifica los datos",
+        icon: "warning",
+      });
       return error.namemateria || error.anio || error.temas;
     }
   };

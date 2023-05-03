@@ -2,11 +2,15 @@ import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import style from "./miPerfil.module.css";
 import Navbar from "../NavBar/navBar";
+import { db } from "../../config/firebase";
+import { doc, collection, getDocs, deleteDoc } from "firebase/firestore";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash, faPenToSquare, faCheck } from "@fortawesome/free-solid-svg-icons";
 import validate from "./validate";
 import { cleanResponse, editAlumno, editProfesor } from "../../Redux/actions";
 import Swal from "sweetalert2";
+import FireStorage from "../almacenamiento/Firestoragev2";
+import { v4 } from "uuid";
 
 export function MiPerfil() {
   const dispatch = useDispatch();
@@ -29,8 +33,8 @@ export function MiPerfil() {
   const [chekClick, setcheckClick] = useState(true);
 
   const handleCheckClick = () => {
-    setcheckClick(!chekClick)
-  }
+    setcheckClick(!chekClick);
+  };
 
   const handleChangeUserName = (e) => {
     setUserName(e.target.value);
@@ -66,7 +70,7 @@ export function MiPerfil() {
   const handleTogglePassword = () => {
     setmostrarPass(!mostrarPass);
   };
-  
+
   const handleChangePassword = (e) => {
     setPassword(e.target.value);
     inputHandler(e);
@@ -115,17 +119,12 @@ export function MiPerfil() {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    if(userData.rol === "student"){
-      dispatch(
-        editAlumno(currentusername, paraEditar(valoresOriginales, nuevosValores))
-      );
+    if (userData.rol === "student") {
+      dispatch(editAlumno(currentusername, paraEditar(valoresOriginales, nuevosValores)));
     }
-    if(userData.rol === "profesor"){
-      dispatch(
-        editProfesor(currentusername, paraEditar(valoresOriginales, nuevosValores))
-      );
+    if (userData.rol === "profesor") {
+      dispatch(editProfesor(currentusername, paraEditar(valoresOriginales, nuevosValores)));
     }
-
   };
 
   const hasErrors = () => {
@@ -137,7 +136,7 @@ export function MiPerfil() {
   const handleEdit = () => {
     setEditar(!editar);
   };
- 
+
   useEffect(() => {
     if (response) {
       if (response === "Tus datos se modificaron con éxito") {
@@ -153,11 +152,30 @@ export function MiPerfil() {
     }
   }, [response, chekClick]);
 
+  const [document, setDocument] = useState([]);
+  const [visible, setVisible] = useState(false);
+  const imagenPerfil = document.filter((e) => e.verifyname === email);
+  console.log(imagenPerfil);
+  useEffect(() => {
+    async function documentos() {
+      const documentlist = await getDocs(collection(db, "imagenes"));
+      setDocument(documentlist.docs.map((doc) => doc.data()));
+    }
+    documentos();
+  }, []);
   useEffect(() => {
     return () => {
       dispatch(cleanResponse());
     };
   }, []);
+
+  const showImage = () => {
+    if (visible === false) {
+      setVisible(true);
+    } else {
+      setVisible(false);
+    }
+  };
 
   return (
     <div>
@@ -166,6 +184,11 @@ export function MiPerfil() {
         <div className={style.formulario}>
           {editar ? (
             <div className={style.datosPrincipales}>
+              <img
+                className={style.imgPerfil}
+                alt={imagenPerfil[0]?.nombre ? imagenPerfil[0].nombre : "loading"}
+                src={imagenPerfil[0]?.url ? imagenPerfil[0].url : "loading"}
+              ></img>
               <p className={style.nombre}>Nombre: {userData?.name}</p>
               <p className={style.nombre}>Apellido: {userData?.apellido}</p>
               <p>Usuario: {userName}</p>
@@ -177,90 +200,102 @@ export function MiPerfil() {
               </button>
             </div>
           ) : (
-            <form onSubmit={(e) => submitHandler(e)}>
-              <div>
-                <label htmlFor={userData?.name}>Nombre: </label>
-                <input className={style.nombre} type="text" value={userData?.name} disabled={true} />
-              </div>
-              <div>
-                <label htmlFor={userData?.apellido}>Apellido: </label>
-                <input className={style.nombre} type="text" value={userData?.apellido} disabled={true} />
-              </div>
-              <div>
-                <label htmlFor={userName}>Usuario: </label>
-                <button type="button" onClick={() => handleEditUserName()}>
-                  <FontAwesomeIcon icon={faPenToSquare} />
-                </button>
-                <input
-                  type="text"
-                  name="username"
-                  value={userName}
-                  disabled={editUserName}
-                  onChange={(e) => handleChangeUserName(e)}
-                />
-                <p className={style.error}>{error.username}</p>
-              </div>
-              <div>
-                <label htmlFor={email}>Email: </label>
-                <button type="button" onClick={() => handleEditEmail()}>
-                  <FontAwesomeIcon icon={faPenToSquare} />
-                </button>
-                <input
-                  type="text"
-                  name="email"
-                  value={email}
-                  disabled={editEmail}
-                  onChange={(e) => handleChangeEmail(e)}
-                />
-                <p className={style.error}>{error.email}</p>
-              </div>
-              <div>
-                <label htmlFor={password}>Contraseña: </label>
-                <button type="button" onClick={() => handleTogglePassword()}>
-                  <FontAwesomeIcon icon={mostrarPass ? faEyeSlash : faEye} />
-                </button>
-                <button type="button" onClick={() => handleEditPassword()}>
-                  <FontAwesomeIcon icon={faPenToSquare} />
-                </button>
-                <input
-                  type={mostrarPass ? "password" : "text"}
-                  name="password"
-                  value={password}
-                  disabled={editPassword}
-                  onChange={(e) => handleChangePassword(e)}
-                />
-                <p className={style.error}>{error.password}</p>
-              </div>
-              <div>
-                <label htmlFor={userData?.anio}>Año: </label>
-                <input type="text" value={userData?.anio} disabled={true} />
-              </div>
-              <div>
-                <label htmlFor={userData?.datebirth}>Fecha de nacimiento: </label>
-                <input type="text" value={userData?.datebirth.slice(0, 10)} disabled={true} />
-              </div>
-              <div>
-                <label htmlFor={userData?.rol}>Rol: </label>
-                <input type="text" value={userData?.rol} disabled={true} />
-              </div>
-              <div className={style.conteinerbotones}>
-                <button
-                  className={style.botonVolver}
-                  type="button"
-                  onClick={() => handleEdit()}
-                >
-                  Volver
-                </button>
-                <button
-                  className={style.botonChek}
-                  type="submit"
-                  disabled={hasErrors()}
-                  onClick={() => handleCheckClick()}
-                >
-                  <FontAwesomeIcon icon={faCheck} />
-                </button>
-              </div>
-            </form>
+            <div>
+              <FireStorage visible={visible} name={email} />
+              <button onClick={showImage} className={style.buttonEditar}>
+                Editar Foto
+              </button>
+              <form onSubmit={(e) => submitHandler(e)}>
+                <div>
+                  <label htmlFor={userData?.name}>Nombre: </label>
+                  <input
+                    className={style.nombre}
+                    type="text"
+                    value={userData?.name}
+                    disabled={true}
+                  />
+                </div>
+                <div>
+                  <label htmlFor={userData?.apellido}>Apellido: </label>
+                  <input
+                    className={style.nombre}
+                    type="text"
+                    value={userData?.apellido}
+                    disabled={true}
+                  />
+                </div>
+                <div>
+                  <label htmlFor={userName}>Usuario: </label>
+                  <button type="button" onClick={() => handleEditUserName()}>
+                    <FontAwesomeIcon icon={faPenToSquare} />
+                  </button>
+                  <input
+                    type="text"
+                    name="username"
+                    value={userName}
+                    disabled={editUserName}
+                    onChange={(e) => handleChangeUserName(e)}
+                  />
+                  <p className={style.error}>{error.username}</p>
+                </div>
+                <div>
+                  <label htmlFor={email}>Email: </label>
+                  <button type="button" onClick={() => handleEditEmail()}>
+                    <FontAwesomeIcon icon={faPenToSquare} />
+                  </button>
+                  <input
+                    type="text"
+                    name="email"
+                    value={email}
+                    disabled={editEmail}
+                    onChange={(e) => handleChangeEmail(e)}
+                  />
+                  <p className={style.error}>{error.email}</p>
+                </div>
+                <div>
+                  <label htmlFor={password}>Contraseña: </label>
+                  <button type="button" onClick={() => handleTogglePassword()}>
+                    <FontAwesomeIcon icon={mostrarPass ? faEyeSlash : faEye} />
+                  </button>
+                  <button type="button" onClick={() => handleEditPassword()}>
+                    <FontAwesomeIcon icon={faPenToSquare} />
+                  </button>
+                  <input
+                    type={mostrarPass ? "password" : "text"}
+                    name="password"
+                    value={password}
+                    disabled={editPassword}
+                    onChange={(e) => handleChangePassword(e)}
+                  />
+                  <p className={style.error}>{error.password}</p>
+                </div>
+                <div>
+                  <label htmlFor={userData?.anio}>Año: </label>
+                  <input type="text" value={userData?.anio} disabled={true} />
+                </div>
+                <div>
+                  <label htmlFor={userData?.datebirth}>Fecha de nacimiento: </label>
+                  <input type="text" value={userData?.datebirth.slice(0, 10)} disabled={true} />
+                </div>
+                <div>
+                  <label htmlFor={userData?.rol}>Rol: </label>
+                  <input type="text" value={userData?.rol} disabled={true} />
+                </div>
+                <div className={style.conteinerbotones}>
+                  <button className={style.botonVolver} type="button" onClick={() => handleEdit()}>
+                    Volver
+                  </button>
+                  <button
+                    className={style.botonChek}
+                    type="submit"
+                    disabled={hasErrors()}
+                    onClick={() => handleCheckClick()}
+                  >
+                    <FontAwesomeIcon icon={faCheck} />
+                  </button>
+                </div>
+              </form>
+            </div>
           )}
         </div>
       </div>
