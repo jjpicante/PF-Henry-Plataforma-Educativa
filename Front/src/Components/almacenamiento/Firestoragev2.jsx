@@ -141,7 +141,13 @@ const FireStorage = ({ visible, url, name }) => {
     <>
       <form onSubmit={submitHandler} className={visible === true ? styles.form : styles.none}>
         <input type="file" onChange={upload} className={styles.input} />
-        <input type="text" name="nombre" placeholder="nombra tu archivo" className={styles.input} />
+        <input
+          type="text"
+          autocomplete="off"
+          name="nombre"
+          placeholder="nombra tu archivo"
+          className={styles.input}
+        />
         <button className={buttonV ? styles.button : styles.disabledButton}>Subir </button>
       </form>
     </>

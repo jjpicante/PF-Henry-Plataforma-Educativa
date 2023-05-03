@@ -17,7 +17,7 @@ import { faGraduationCap } from "@fortawesome/free-solid-svg-icons";
 export default function Detail() {
   const [visible, setVisible] = useState(false);
   const [document, setDocument] = useState([]);
-  const [vista, setVista] = useState("alumnos");
+  const [vista, setVista] = useState("temas");
   const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -173,6 +173,7 @@ export default function Detail() {
                               >
                                 {doc.nombre !== undefined ? doc.nombre : "HOLa"}
                               </a>
+
                               <div
                                 className={
                                   confirmacion ? style.confirmacioncss : style.noConfirmacion
@@ -190,6 +191,7 @@ export default function Detail() {
                                   No
                                 </button>
                               </div>
+
                               <nav className={style.navbar}>
                                 <div className={style.navbarContainer}>
                                   <ul className={style.navList}>
