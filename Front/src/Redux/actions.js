@@ -304,7 +304,7 @@ export const getMateriasByAnio = (anio) => {
     // try {
     const result = await axios.get(`/Materias/filtermateria?anio=${anio}`);
     const materiaByAnio = result.data;
-    console.log(materiaByAnio);
+    /* console.log(materiaByAnio); */
     dispatch({ type: GET_MATERIAS_BY_ANIO, payload: materiaByAnio });
     //console.log(materiaByAnio);
 
@@ -379,7 +379,7 @@ export const postlogin = (email, password) => {
         password,
       });
       const userData = response.data;
-      console.log(response);
+      console.log(userData);
       dispatch({ type: LOGIN_SUCCESS, payload: userData });
       return userData;
     } catch (error) {
@@ -426,23 +426,22 @@ export const verifiedGoogleLogIn = (email) => async (dispatch) => {
   }
 };
 
-export const resetPassword = (email, password) => {
+export const resetPassword = (email) => {
   return async function (dispatch) {
     try {
       const response = await axios.post("/reset", {
         email,
-        password,
       });
       console.log(response);
       dispatch({ type: RESET_PASSWORD });
       Swal.fire({
-        text: "Se ha enviado un correo para restablecer la contraseña",
+        text: "Se ha enviado un correo para recuperar la contraseña",
         icon: "success",
       });
     } catch (error) {
       console.log(error);
       Swal.fire({
-        text: "No se pudo enviar el correo para restablecer la contraseña",
+        text: "No se pudo enviar el correo para recuperar la contraseña",
         icon: "warning",
       });
     }

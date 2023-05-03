@@ -1,0 +1,20 @@
+.unauthorized-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.unauthorized-image {
+  width: 200px;
+  height: 200px;
+}
+
+.unauthorized-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-top: 1rem;
+  text-align: center;
+  color: whitesmoke;
+}

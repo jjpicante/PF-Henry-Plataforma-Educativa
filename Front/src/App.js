@@ -5,6 +5,7 @@ import HomeStudent from "./Components/Home/homeStudent";
 import Form from "./Components/Forms/forms";
 import FormProfesor from "./Components/Forms/formProfesor";
 import Classroom from "./Components/Classroom/Classroom";
+import ClassroomProf from "./Components/ClassroomProf/classroomProf";
 import FormSubject from "./Components/Forms/formSubject";
 import Detail from "./Components/Detail/detail";
 import Carrito from "./Components/Carrito/carrito";
@@ -27,6 +28,7 @@ import LandingAdmin from "./Components/Admin/Adminhome";
 import ListaMaterias from "./Components/Admin/ListaMaterias/listaMaterias";
 import EditarMateria from "./Components/Admin/ListaMaterias/editarMateria/EditarMateria";
 
+
 /* axios.defaults.baseURL = "https://servidor-plataformae2.onrender.com"; */
 axios.defaults.baseURL = "http://localhost:3001";
 axios.defaults.baseURL = "http://localhost:3001";
@@ -45,7 +47,7 @@ function App() {
           <Route exact path="/miPerfil" element={<MiPerfil />} />
         </Route>
         <Route element={<ProtectedRoutes allowedRoles={["profesor"]} />}>
-          <Route exact path="/Cursos" element={<Classroom />} />
+          <Route exact path="/Cursos" element={<ClassroomProf />} />
         </Route>
 
         <Route element={<ProtectedRoutes allowedRoles={["admin"]} />}>

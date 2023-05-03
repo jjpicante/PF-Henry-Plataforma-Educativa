@@ -7,7 +7,7 @@ const Landing = () => {
     <div className={style.container}>
       <div className={style.div1}>
         <h1 className={style.title}>Instituto Académico P.R.I.D.J</h1>
-        <h3 className={style.title2}>""Aprender, crecer, ser""</h3>
+        <h3 className={style.title2}>Aprender, crecer, ser</h3>
       </div>
 
       <nav className={style.links}>
@@ -18,9 +18,7 @@ const Landing = () => {
           <Link to="/contacto">
             <button className={style.link3}>Contacto</button>
           </Link>
-          <Link to="/desarrolladores">
-            <button /* className={style.link2} */>Desarrolladores</button>
-          </Link>
+         
         </div>
       </nav>
 
@@ -36,8 +34,7 @@ const Landing = () => {
           <Link to="/login">Acceder</Link>
         </button>
       </div>
-
-      <div></div>
+      <Link to="/desarrolladores" className={style.link4}>Desarrolladores</Link>
     </div>
   );
 };
