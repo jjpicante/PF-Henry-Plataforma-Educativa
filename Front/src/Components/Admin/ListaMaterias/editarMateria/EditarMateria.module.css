@@ -3,7 +3,8 @@
   flex-direction: column;
   align-items: center;
   background: linear-gradient(to bottom, #137078, #5bc5a7);
-  height: 900px;
+  height: 850px;
+  justify-content: flex-start;
 }
 
 .formulario {
@@ -14,6 +15,10 @@
   border-radius: 20px;
   box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, 0.3);
   padding: 40px;
+}
+
+.title {
+  margin-top: 8%;
 }
 
 .formulario section {
@@ -56,4 +61,14 @@
 
 .editButton:hover {
   color: white;
+}
+
+.disabledButtom {
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 16px;
+  margin: 10px;
+  cursor: not-allowed;
+  pointer-events: none;
 }

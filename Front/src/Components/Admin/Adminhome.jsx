@@ -7,7 +7,7 @@ const LandingAdmin = () => {
   return (
     <div>
       <div>
-        <NavBarAdmin></NavBarAdmin>
+        <NavBarAdmin />
       </div>
       <div className={styles.container}>
         <Link to="/editarUsuario" className={styles.link}>

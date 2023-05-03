@@ -76,7 +76,7 @@ export default function Detail() {
   return (
     <div className={style.fondo}>
       <Navbar />
-      <button hidden={userData.rol === "student"} onClick={activar}>
+      <button className={style.button} hidden={userData.rol === "student"} onClick={activar}>
         Editar Encendido/Apagado
       </button>
       {materiaById ? (
@@ -86,11 +86,11 @@ export default function Detail() {
             <h2>{materiaById?.anio}</h2>
           </div>
           <div>
-            <button type="button" onClick={() => handleVista("alumnos")}>
+            <button className={style.button} type="button" onClick={() => handleVista("alumnos")}>
               <FontAwesomeIcon className={style.editButton} icon={faGraduationCap} />
               Ver Alumnos
             </button>
-            <button type="button" onClick={() => handleVista("temas")}>
+            <button className={style.button} type="button" onClick={() => handleVista("temas")}>
               {/* <FontAwesomeIcon className={style.editButton} icon={faBooks} /> */}
               Ver Temas
             </button>
@@ -113,48 +113,47 @@ export default function Detail() {
                         <FireStorage visible={visible} url={location} name={e}></FireStorage>
                       </li>
 
-                      {documentosDelTema.map((doc, index) => {
-                        return (
-                          <div className={style.containerdoc}>
-                            <a
-                              key={index}
-                              href={doc.url}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className={style.documentList}
-                            >
-                              {doc.nombre !== undefined ? doc.nombre : "HOLa"}
-                            </a>
-                            <nav className={style.navbar}>
-                              <div className={style.navbarContainer}>
-                                <ul className={style.navList}>
-                                  <li className={`${style.navItem} ${style.dropdown}`}>
-                                    <div className={` ${style.customBtn} ${style.vertical}`}>
-                                      ...
-                                    </div>
-                                    <ul className={style.dropdownContent}>
-                                      <li>
-                                        <button
-                                          value={doc.nombre}
-                                          onClick={borrarDocumento}
-                                          className={style.navLink}
-                                        >
-                                          Delete
-                                        </button>
-                                      </li>
-                                    </ul>
-                                  </li>
-                                </ul>
-                              </div>
-                            </nav>
-                          </div>
-                        );
-                      })}
-                    </>
-                  );
-                })}
-              </ul>
-            </section>
+
+                    {documentosDelTema.map((doc, index) => {
+                      return (
+                        <div className={style.containerdoc}>
+                          <a
+                            key={index}
+                            href={doc.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={style.documentList}
+                          >
+                            {doc.nombre !== undefined ? doc.nombre : "HOLa"}
+                          </a>
+                          <nav className={style.navbar}>
+                            <div className={style.navbarContainer}>
+                              <ul className={style.navList}>
+                                <li className={`${style.navItem} ${style.dropdown}`}>
+                                  <div className={` ${style.customBtn} ${style.vertical}`}>...</div>
+                                  <ul className={style.dropdownContent}>
+                                    <li>
+                                      <button
+                                        value={doc.nombre}
+                                        onClick={borrarDocumento}
+                                        className={style.buttonli}
+                                      >
+                                        Delete
+                                      </button>
+                                    </li>
+                                  </ul>
+                                </li>
+                              </ul>
+                            </div>
+                          </nav>
+                        </div>
+                      );
+                    })}
+                  </>
+                );
+              })}
+            </ul>
+
           ) : (
             /* Renderizado condicional de Alumnos */
             <ul>

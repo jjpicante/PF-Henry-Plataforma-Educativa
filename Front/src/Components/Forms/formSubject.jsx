@@ -72,9 +72,17 @@ function FormSubject() {
     const error = validateSubmit(subjectData, errorMessage);
     console.log(error.namemateria);
     if (Object.values(error).length === 0) {
-      alert("The form has been filled successfully");
       await axios.post("/Materias", subjectData);
+      Swal.fire({
+        text: "Materia Creada Exitosamente",
+        icon: "success",
+        timer: 3000,
+      });
     } else {
+      Swal.fire({
+        text: "Porfavor verifica los datos",
+        icon: "warning",
+      });
       return error.namemateria || error.anio || error.temas;
     }
   };
@@ -90,6 +98,7 @@ function FormSubject() {
 
           <form onSubmit={submitHandler} autoComplete="off">
             <input
+              className="text"
               type="text"
               placeholder="Nombre de la materia"
               name="namemateria"
@@ -97,12 +106,13 @@ function FormSubject() {
             />
             <p className="errorText">{errorMessage.namemateria}</p>
             <input
+              className="text"
               type="text"
               placeholder="Escribe los temas de la materia"
               name="temas"
               onChange={updateTema}
             />
-            <input type="button" value="Agregar" onClick={addTema} />
+            <input className="buttonform" type="button" value="Agregar" onClick={addTema} />
             <select name="anio" onChange={inputHandler} defaultValue="Seleciona el Año">
               <option name="Seleciona el Año" value="Seleciona el Año">
                 Seleciona el Año
@@ -117,7 +127,7 @@ function FormSubject() {
                   })
                 : "Loading"}
             </select>
-            <input type="submit" />
+            <input classname="buttonform" type="submit" value="Crear Materia" />
           </form>
         </div>
       </div>

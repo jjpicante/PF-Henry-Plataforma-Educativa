@@ -25,6 +25,8 @@ import {
   POST_ALUMNO_DE_BAJA,
   DELETE_ALUMNO,
   DELETE_PROFESOR,
+  DELETE_MATERIAS,
+  GET_MATERIAS_ADMIN,
 } from "./actionsTypes";
 import axios from "axios";
 import Swal from "sweetalert2";
@@ -223,6 +225,46 @@ export const editProfesor2 = (currentusername, changes) => {
       .catch((error) => {
         dispatch({ type: EDIT_ALUMNO2, payload: error.response.data.error });
       });
+  };
+};
+
+export const editMateria = (id, changes) => {
+  return async function (dispatch) {
+    try {
+      console.log(changes);
+      const response = axios.put("/materias/" + id, changes);
+      const cambios = response.data;
+      dispatch({ type: "EDIT_MATERIAS", payload: cambios });
+    } catch (err) {
+      console.log(err);
+      return dispatch({ type: "EDIT_MATERIAS", payload: err });
+    }
+  };
+};
+
+export const deleteMateria = (id) => {
+  return async function (dispatch) {
+    try {
+      const response = await axios.delete("/Materias/" + id);
+      const deleteMateria = response.data;
+      console.log(deleteMateria);
+      return dispatch({
+        type: DELETE_MATERIAS,
+        payload: deleteMateria,
+      });
+    } catch (err) {
+      console.log(err);
+      return dispatch({ type: "ERROR", payload: err });
+    }
+  };
+};
+
+export const getMateriasAdmin = (page) => {
+  return async function (dispatch) {
+    const response = await axios.get("/Materias/Admin?page=" + page);
+    const materias = response.data;
+    console.log(materias);
+    dispatch({ type: GET_MATERIAS_ADMIN, payload: materias });
   };
 };
 

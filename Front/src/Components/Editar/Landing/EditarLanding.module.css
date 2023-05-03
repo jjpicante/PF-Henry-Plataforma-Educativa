@@ -2,9 +2,10 @@
 .container {
   display: flex;
   flex-direction: column;
-  background: linear-gradient(to bottom, #137078, #5bc5a7);
+  background: linear-gradient(to bottom, #5bc5a7, #137078);
   height: 100vh;
   align-items: center;
+  justify-content: flex-start;
 }
 
 /* Estilos para el fondo del componente */
@@ -14,7 +15,6 @@
   border-radius: 10px;
   box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, 0.3);
   padding: 40px;
-  margin-top: 20px;
 }
 
 /* Estilos para los selectores */
@@ -31,10 +31,9 @@
 
 /* Estilos para el título */
 .formTitle {
-  margin-top: 20px;
   font-size: 2rem;
-  color: white;
   text-align: center;
+  margin-top: 3%;
 }
 
 /* Estilos para el contenedor de los botones */

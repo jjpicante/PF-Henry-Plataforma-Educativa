@@ -5,11 +5,17 @@ const { filterMateria } = require("../../Controllers/Materias/filterMateria");
 const { postMateria } = require("../../Controllers/Materias/postMateria");
 const { updateMaterias } = require("../../Controllers/Materias/updateMateria");
 const { deleteMateria } = require("../../Controllers/Materias/deleteMateria");
+const { getAllMateriasAdmin } = require("../../Controllers/Admin/AdmingetAllMateria");
 
 const materias = Router();
 
 materias.get("/", async (req, res) => {
   const respuesta = await getAllMaterias(req.query);
+  if (!respuesta.error) return res.status(200).json(respuesta);
+  return res.status(503).json(respuesta);
+});
+materias.get("/Admin", async (req, res) => {
+  const respuesta = await getAllMateriasAdmin(req.query);
   if (!respuesta.error) return res.status(200).json(respuesta);
   return res.status(503).json(respuesta);
 });
@@ -51,6 +57,7 @@ materias.put("/:id", async (req, res) => {
     return res.status(400).json({ message: "No se ingresaron modificaciones a realizar" });
 
   const respuesta = await updateMaterias(id, changes);
+  console.log(respuesta);
   if (!respuesta.error) return res.status(200).json(respuesta);
   return res.status(503).json(respuesta);
 });

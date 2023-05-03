@@ -69,10 +69,9 @@ export default function EditarUsuarios() {
 
   return (
     <div>
-
-      <Navbar />
+      <NavBarAdmin />
       <div className={style.container}>
-        <h1 className="formTitle">EDITAR USUARIO</h1>
+        <h1 className={style.formTitle}>EDITAR USUARIO</h1>
         <div className={style.fondo}>
           <select
             className={style.select}
@@ -102,19 +101,17 @@ export default function EditarUsuarios() {
               Filtrar Año
             </option>
 
-            {["Mostrar Todos", "1ro", "2do", "3ro", "4to", "5to", "6to"].map(
-              (i) => (
-                <option value={i} key={i}>
-                  {i}
-                </option>
-              )
-            )}
+            {["Mostrar Todos", "1ro", "2do", "3ro", "4to", "5to", "6to"].map((i) => (
+              <option value={i} key={i}>
+                {i}
+              </option>
+            ))}
           </select>
-          
+
           <button className={style.button} onClick={() => refreshHandler()}>
             Recargar datos
           </button>
-          
+
           <Select
             alumnos={renderUsers.alumnos}
             profesores={renderUsers.profesores}

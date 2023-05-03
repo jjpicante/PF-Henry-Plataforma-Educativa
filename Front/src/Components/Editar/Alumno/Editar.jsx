@@ -20,6 +20,7 @@ export default function EditarUsuarios() {
 
   //Datos del usuario solicitado, que podrán cambiarse
   const [usuario, setUsuario] = useState({});
+  console.log(usuario);
 
   //Datos originales del usuario solicitado, que quedan invariables
   const [valoresOriginales, setvaloresOriginales] = useState({});
