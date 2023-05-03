@@ -4,6 +4,7 @@ import styles from "./desarrolladores.module.css";
 import Pablo from "./Pablo.jpg";
 import Ingrid from "./Ingrid.jpg";
 import Juan from "./Juan.jpg";
+import Dylan from "./Dylan.jpg"
 import compañero from "./compañero.jpg";
 
 export default function Desarrolladores() {
@@ -180,9 +181,9 @@ export default function Desarrolladores() {
           </div>
         </section>
         <section className={styles.integrante}>
-          <img className={styles.img} src={compañero} alt="compañero" />
+          <img className={styles.img} src={Dylan} alt="Dylan" />
           <div className={styles.textos}>
-            <h3 className={styles.nombre}>Meñi</h3>
+            <h3 className={styles.nombre}>Dylan Maldonado</h3>
             <div className={styles.mail}>
               <svg
                 className={styles.sobre}
@@ -195,12 +196,22 @@ export default function Desarrolladores() {
               >
                 <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z" />
               </svg>
-              <p>pablo_salituri@live.com.ar</p>
+              <p>dylanmaldonado22@hotmail.com</p>
             </div>
-            <p>Que mira bobo</p>
-            <p>Que mira bobo</p>
+            <p>Tengo 25 años. Soy de Pinamar, Buenos Aires, Argentina.</p>
+            <p>
+              Soy un apasionado de la programación y el aprendizaje
+            en diversos campos también estoy altamente interesado en la educación
+            continua y la mejora constante.
+              He estudiado inglés y actualmente estoy tomando un curso de radiolocutor aficionado,
+            lo que me ha permitido desarrollar mis habilidades de comunicación y expresión en diversos formatos.
+            </p>
 
-            <p>Anda, anda palla bobo</p>
+            <p>
+              En general, me considero una persona curiosa, creativa y comprometida con el éxito en todo lo que hago.
+            Estoy ansioso por seguir desarrollando mis habilidades en el campo de la tecnología y
+            contribuir al éxito de cualquier equipo o empresa en la que me encuentre.
+             </p>
           </div>
         </section>
       </div>
