@@ -40,19 +40,19 @@ const ItemsAdmin = ({ currentItems }) => {
                       <li className={`${style.navItem} ${style.dropdown}`}>
                         <div className={` ${style.customBtn} ${style.vertical}`}>...</div>
                         <ul className={style.dropdownContent}>
-                          <li>
-                            <button value={e.id} onClick={borrarmateria} className={style.navLink}>
+                          <div>
+                            <button value={e.id} onClick={borrarmateria} className={style.button}>
                               Delete
                             </button>
-                          </li>
+                          </div>
 
-                          <li>
+                          <div>
                             <Link to={`/EditarMateria/${e.id}`}>
-                              <button value={e.id} className={style.navLink}>
+                              <button value={e.id} className={style.button}>
                                 Editar
                               </button>
                             </Link>
-                          </li>
+                          </div>
                         </ul>
                       </li>
                     </ul>
