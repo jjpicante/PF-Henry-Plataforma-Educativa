@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { auth } from "../../config/firebase";
 import { signOut, deleteUser } from "firebase/auth";
+import Swal from "sweetalert2";
 
 function Redirect() {
   const logout = async () => {
@@ -20,11 +21,20 @@ function Redirect() {
   };
   useEffect(() => {
     logout();
-    deleteUserFromFirebase();
     const timeout = setTimeout(() => {
-      // 👇️ redirects to an external URL
-      window.location.replace("http://localhost:3000");
-    }, 3000);
+      Swal.fire({
+        text: "No cuentas con las credenciales necesarias para ingresar a la ruta indicada, verifica que estes logeado correctamente",
+        icon: "warning",
+        showCancelButton: false,
+        confirmButtonColor: "#3085d6",
+        confirmButtonText: "OK",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          deleteUserFromFirebase();
+          window.location.replace("/login");
+        }
+      });
+    }, 2000);
 
     return () => clearTimeout(timeout);
   }, []);

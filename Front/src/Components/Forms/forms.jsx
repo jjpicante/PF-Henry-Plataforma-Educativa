@@ -7,7 +7,8 @@ import axios from "axios";
 import Navbar from "../NavBar/navBar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-const URL = "https://restcountries.com/v3.1/all";
+import Swal from "sweetalert2";
+import NavBarAdmin from "../Admin/navbarAdMIN/NavBar";
 
 function Form() {
   const dispatch = useDispatch();
@@ -50,7 +51,10 @@ function Form() {
   const submitHandler = (ev) => {
     ev.preventDefault();
     dispatch(postAlumno(studentData));
-    alert("Alumno creado");
+    Swal.fire({
+      text: "Alumno creado",
+      icon: "success",
+    });
     setStudentData({
       name: "",
       apellido: "",
@@ -85,8 +89,10 @@ function Form() {
 
   return (
     <>
-      <Navbar></Navbar>
-      <div className="Main">
+      <div>
+        <NavBarAdmin />
+      </div>
+      <div className="MainAlumnos">
         <div className="formBox">
           <h1 className="formTitle">CREAR ALUMNO</h1>
 

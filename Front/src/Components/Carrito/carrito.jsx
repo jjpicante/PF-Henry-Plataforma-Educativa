@@ -1,16 +1,23 @@
 import Navbar from "../NavBar/navBar";
 import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import styles from "./Carrito.module.css";
 import axios from "axios";
 import ProductDisplayer from "../MercadoPago/mercadopago2/productDisplayer";
 import { Link } from "react-router-dom";
-import AppStripe from "../MercadoPago/stripe/appStripe";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 
-const URL = "http://localhost:3001/Meses?username=juanperez";
+
 
 const Carrito = () => {
   const storagedCartas = JSON.parse(localStorage.getItem("mes") || "[]");
   const storagedTotal = JSON.parse(localStorage.getItem("total") || 0);
+  const userData = useSelector((state) => state.userData)
+  const userName = userData?.username
+  const URL = `http://localhost:3001/Meses?username=${userName}`;
+  
+  console.log("UD =>",userName);
 
   const [mesesTotal, setmesesTotal] = useState(storagedCartas);
   const [totalPagar, setTotalPagar] = useState(storagedTotal);
@@ -61,23 +68,6 @@ const Carrito = () => {
     <>
       <Navbar />
       <div className={styles.carrito}>
-        <div className={styles.header}>
-          <h2>Cuotas</h2>
-          {/* Icono carrito */}
-          <section className={styles.carroPrecio}>
-            <h3>${totalPagar}</h3>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="currentColor"
-              className="bi bi-cart4"
-              viewBox="0 0 16 16"
-            >
-              <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
-            </svg>
-          </section>
-        </div>
         <div className={styles.container}>
           <div>
             <ul className={styles.cartas}>
@@ -106,6 +96,7 @@ const Carrito = () => {
           </div>
           <div className={styles.detallePago}>
             <h1>Total</h1>
+            <h3><FontAwesomeIcon icon={faCartShopping} /> {totalPagar} </h3>
             <div className={styles.containerMesesTotal}>
               {mesesTotal?.map((carta, i) => (
                 <p className={styles.palabraTotal} key={i}>

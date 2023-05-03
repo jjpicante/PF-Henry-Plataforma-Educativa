@@ -1,45 +1,124 @@
-const { auth, googleProvider } = require('../../config/firebase');
-const { signInWithEmailAndPassword, signInWithPopup, signOut } = require("firebase/auth");
-const { Alumnos } = require("../../db");
+const { auth, db } = require("../../config/firebase");
+const { signInWithEmailAndPassword } = require("firebase/auth");
+const { Alumnos, Profesores, Admin, Materias, ProfesoresMateria } = require("../../db");
+const { doc, getDoc } = require("firebase/firestore");
 
 const postLogin = async (email, password) => {
   try {
-    // Check if user exists in Firestore
-    const firestoreUser = await auth.getUserByEmail(email);
-    
-    // If user exists in Firestore, authenticate with email and password
-    await signInWithEmailAndPassword(auth, email, password);
+    // Authenticate user with email and password
+    const { user } = await signInWithEmailAndPassword(auth, email, password);
+    // Fetch user's role from Firestore
+    const userDocRef = doc(db, "users", user.uid);
+    const userData = (await getDoc(userDocRef)).data();
+    if (userData && userData.email) {
+      const admin = await Admin.findOne({ where: { email: userData.email } });
+      const alumnodb = await Alumnos.findOne({ where: { email: userData.email } });
+      const profedb = await Profesores.findOne({ where: { email: userData.email } });
+      const profesordb = profedb.toJSON();
+      if (profesordb) {
+        // Traigo todas las materias que dicta el profesor
+        const response = await ProfesoresMateria.findAll({
+          where: { ProfesoreId: profesordb.id },
+        });
 
-    return firestoreUser;
-  } catch (firestoreError) {
-    try {
-      // If user does not exist in Firestore, check if user exists in the Alumnos table
-      const dbUser = await Alumnos.findOne({ where: { email: email } });
-      if (!dbUser) {
-        return { error: "User not found" };
+        //Obtengo los Id's de esas materias
+        const profesorMaterias = response.map((elem) => {
+          const parseado = elem.toJSON();
+          return parseado.MateriaId;
+        });
+
+        //Busco las materias según su Id
+        const arreglo = profesorMaterias.map((elem) => {
+          const respuesta = Materias.findOne({
+            where: { id: elem },
+          });
+          return respuesta;
+        });
+
+        const resolvedArreglo = await Promise.all(arreglo);
+
+        // Parseo los resultados
+        const materias = resolvedArreglo.map((elem) => {
+          const parseado = elem.toJSON();
+          return parseado;
+        });
+
+        //Agrego las materias al profesor traido
+        profesordb.materias = materias;
       }
+      //console.log("qwert", profesordb);
+      if (alumnodb) {
+        return alumnodb;
+      }
+      if (profesordb) {
+        /*  console.log("entro"); */
+        return profesordb;
+      }
+      if (admin) {
+        return admin;
+      }
+    }
+    return userData;
+  } catch (firestoreError) {
+    console.log(firestoreError);
+    try {
+      // Check if user exists in either the Alumnos or Profesores tables
+      const [dbUser, dbProfesor, dbAdmin] = await Promise.all([
+        Alumnos.findOne({ where: { email } }),
+        Profesores.findOne({ where: { email } }),
+        Admin.findOne({ where: { email } }),
+      ]);
+      if (dbUser && dbUser.password === password) {
+        return dbUser;
+      } else if (dbProfesor && dbProfesor.password === password) {
+        // Traigo todas las materias que dicta el profesor
+        const response = await ProfesoresMateria.findAll({
+          where: { ProfesoreId: dbProfesor.id },
+        });
 
-      return dbUser;
-    } catch (dbError) {
-      return { error: "Error logging in" };
+        //Obtengo los Id's de esas materias
+        const profesorMaterias = response.map((elem) => {
+          const parseado = elem.toJSON();
+          return parseado.MateriaId;
+        });
+        
+
+        //Busco las materias según su Id
+        const arreglo = profesorMaterias.map((elem) => {
+          const respuesta = Materias.findOne({
+            where: { id: elem },
+          });
+          return respuesta;
+        });
+
+        const resolvedArreglo = await Promise.all(arreglo);
+
+        // Parseo los resultados
+        const materias = resolvedArreglo.map((elem) => {
+          const parseado = elem.toJSON();
+          return parseado;
+        });
+
+        //Agrego las materias al profesor traido
+        dbProfesor.materias = materias;
+
+        return dbProfesor;
+      } else if (dbAdmin && dbAdmin.password === password) {
+        return dbAdmin;
+      } else {
+        return { error: "Invalid Credentials" };
+      }
+    } catch (error) {
+      console.log(error);
+      // Check if the user is authenticated in Firebase
+      const currentUser = auth.currentUser;
+      if (currentUser && currentUser.email === email) {
+        return currentUser;
+      } else {
+        return { error: "Error Logging In" };
+      }
     }
   }
 };
 
-const loginGoogle = async (Idcliente) => {
-  try {
-    //obtener datos del usuario por idcliente y devolverlos
-  } catch (error) {
-    return { error: "Algo Fallo. Contacte con un administrador" }
-  }
-}
-
-const logOut = async () => {
-  try {
-    await signOut(auth);
-  } catch (error) {
-    return { error: "Algo Fallo. Contacte con un administrador" }
-  }
-}
-
-module.exports = { postLogin, loginGoogle, logOut };
+module.exports = { postLogin };

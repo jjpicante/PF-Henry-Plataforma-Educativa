@@ -1,26 +1,26 @@
 .container {
-  background-image: url(https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80);
+  background-image: url("./Lapices.jpg");
   width: 100%;
   height: 100%;
   position: absolute;
 }
 
-.div1{
-background: rgb(6, 124, 124);
-padding: 2px;
-border: white solid 2px;
+.div1 {
+  background: rgb(6, 124, 124);
+  padding: 2px;
+  border: white solid 2px;
 }
 
-.title{
+.title {
   color: white;
 }
 
-.title2{
-font-style: italic;
-color: white;
+.title2 {
+  font-style: italic;
+  color: white;
 }
 
-.div2{
+.div2 {
   position: fixed;
   top: 200px;
   right: 100px;
@@ -32,13 +32,22 @@ color: white;
   background-color: rgb(248, 248, 248);
 }
 
-.img{
+.libro{
+  position: fixed;
+  top: 35px;
+  right: 650px;
+  color: white;
+  width: 40px;
+  height: 40px;
+}
+
+.img {
   height: 110px;
   justify-content: center;
   border-radius: 10px;
 }
 
-.acceder{
+.acceder {
   position: fixed;
   right: 165px;
   top: 420px;
@@ -52,20 +61,20 @@ color: white;
   color: black;
 }
 
-.acceder:hover{
-  background: rgb(6, 124, 124) ;
+.acceder:hover {
+  background: rgb(6, 124, 124);
   color: white;
 }
 
-.img2{
+.img2 {
   height: 300px;
-position: fixed;
-left: 100px;
-border-radius: 5px;
+  position: fixed;
+  left: 100px;
+  border-radius: 5px;
 
 }
 
-.links{
+.links {
   background-color: rgb(4, 67, 108);
   padding: 19px;
   border: white solid 2px;
@@ -73,7 +82,7 @@ border-radius: 5px;
 
 
 
-.link2{
+.link2 {
   position: fixed;
   top: 140px;
   left: 100px;
@@ -83,12 +92,12 @@ border-radius: 5px;
   border: white solid 2px;
 }
 
-.link2:hover{
+.link2:hover {
   background: white;
   color: black;
 }
 
-.link3{
+.link3 {
   position: fixed;
   top: 140px;
   left: 400px;
@@ -98,7 +107,98 @@ border-radius: 5px;
   border: white solid 2px;
 }
 
-.link3:hover{
+.link3:hover {
   background: white;
   color: black;
+}
+
+
+.divFooter {
+  background-color: #f5f5f5;
+  padding: 10px;
+  padding-bottom: 100%;
+  padding-left: 20%;
+  margin-top: 660px;
+}
+
+/* .footer{
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  margin-left: -100px;
+  color: black;
+  
+} */
+
+/* .footer {
+  position: absolute;
+  bottom: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  text-align: center;
+  padding: 10px 0;
+  background-color: beige;
+} */
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  
+}
+
+.footer2 {
+  position: absolute;
+  bottom: 0;
+  left: 58%;
+  transform: translateX(-50%);
+  margin-left: -100px;
+  color: black;
+  /* background-color: beige; 
+  margin-top: 20px;
+  text-align: center; */
+}
+
+/* .a1,
+.a2,
+.a3 {
+  text-align: center;
+} */
+
+.a1 {
+  color: white;
+  text-decoration: none;
+  
+  /* margin: 10px; */
+}
+
+.a1:hover {
+  text-decoration: underline;
+}
+
+.a2 {
+  color: white;
+  text-decoration: none;
+  margin-right: 90px;
+  margin-left: 100px; 
+  /* margin: 10px; */
+}
+
+.a2:hover {
+  text-decoration: underline;
+}
+
+.a3 {
+  color: white;
+  text-decoration: none;
+  margin-right: 20%;
+  /* margin: 10px; */
+}
+
+.a3:hover {
+  text-decoration: underline;
 }

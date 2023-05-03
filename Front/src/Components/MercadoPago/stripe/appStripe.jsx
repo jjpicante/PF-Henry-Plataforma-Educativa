@@ -5,15 +5,19 @@ import { SpinnerCircular } from "spinners-react";
 import axios from "axios";
 import Navbar from "../../NavBar/navBar";
 import styles from "./checkautForm.module.css";
+import { useSelector } from "react-redux";
+import Swal from "sweetalert2";
 
 const stripePromise = loadStripe(
   "pk_test_51MyKKFEMrSvIo5TelOcFEibdaZGoqsotLAFMfxk0OKMH5LbzMT4f432EWC6FSzkFTQaG3OgHg6ab3mawUDAJY4jQ00w05gfSKy"
 );
 const CheckautForm = () => {
   const storagedCartas = JSON.parse(localStorage.getItem("mes") || "[]");
-  const storagedUsername = JSON.parse(localStorage.getItem("username") || "[]");
+  /* const storagedUsername =  */ JSON.parse(localStorage.getItem("username") || "[]");
   const storagedTotal = JSON.parse(localStorage.getItem("total") || 0);
   const [isLoading, setIsLoading] = useState(false);
+  const userData = useSelector((state)=> state.userData)
+  const userName = userData.username
   const stripe = useStripe();
   const element = useElements();
   const pagado = {};
@@ -48,12 +52,19 @@ const CheckautForm = () => {
 
         console.log(check);
         if (check.paymentIntent) {
-          const respuesta = await axios.put(`/Meses/juanperez`, pagado);
+          const respuesta = await axios.put(`/Meses/${userName}`, pagado);
           if (respuesta) {
-            window.alert("Pago realizado con éxito");
+            Swal.fire({
+              text: "Pago realizado con éxito",
+              icon: "success",
+            });
             window.location.href = "http://localhost:3000/carrito";
           }
-        } else window.alert("El pago no se realizó");
+        } else 
+        Swal.fire({
+          text: "El pago no se realizó",
+          icon: "warning",
+        })
 
         element.getElement(CardElement).clear();
         window.localStorage.removeItem("mes");

@@ -1,9 +1,24 @@
-.Main {
+.MainProfesores {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 120vh;
+  background: linear-gradient(to bottom, #5bc5a7, #137078);
+}
+
+.MainAlumnos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 120vh;
+  background: linear-gradient(to bottom, #5bc5a7, #137078);
+}
+.MainMaterias {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: rgb(6, 124, 124);
+  background: linear-gradient(to bottom, #5bc5a7, #137078);
 }
 
 .formBox {
@@ -54,8 +69,29 @@ form {
   width: 100%;
 }
 
+.selected {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  height: 40px;
+  margin-bottom: 10px;
+  padding: 10px;
+  width: 100%;
+  background-color: rgb(144, 218, 192);
+}
+
 select {
   cursor: pointer;
+  margin: 0;
+}
+
+/* section svg {
+  scale: 300%;
+} */
+
+section svg:hover {
+  cursor: pointer;
+  color: rgb(193, 0, 0);
 }
 
 input[type="submit"] {
@@ -88,6 +124,32 @@ input[type="submit"]:disabled {
 }
 
 .renglones {
+  width: 97%;
   display: flex;
-  column-gap: 3%;
+  align-items: baseline;
+  column-gap: 5%;
+}
+
+.text:disabled {
+  width: 97%;
+  display: flex;
+  align-items: baseline;
+  column-gap: 5%;
+  background-color: rgb(215, 215, 215);
+  cursor: default;
+}
+
+.buttonform {
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 16px;
+  margin: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.buttonform:hover {
+  background-color: #3f51b5;
+  color: white;
 }

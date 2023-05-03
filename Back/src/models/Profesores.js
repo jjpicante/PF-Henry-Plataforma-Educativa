@@ -21,15 +21,16 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      nacionalidad: {
+      email: {
         type: DataTypes.STRING,
         allowNull: false,
+        unique:true
       },
       datebirth: {
         type: DataTypes.DATE,
         allowNull: false,
       },
-      email: {
+      nacionalidad: {
         type: DataTypes.STRING,
         allowNull: false,
       },

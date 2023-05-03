@@ -1,34 +1,43 @@
 import ReactPaginate from "react-paginate";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Items from "./items";
-import { useDispatch } from "react-redux";
-import { getMaterias } from "../../Redux/actions";
 import style from "./Paginate.module.css";
 
-const Paginate = ({ asignatures, pageCount1 }) => {
-  const dispatch = useDispatch();
+const Paginate = ({ data, pageCount1, itemsPerPage }) => {
   const [pageNumber, setPageNumber] = useState(0);
+  const [currentItems, setCurrentItems] = useState();
+  const [pageCount, setPageCount] = useState(0);
+  const [itemOffSet, setItemOffset] = useState(0);
 
-  const handleChange = (selectedPage) => {
-    setPageNumber(selectedPage);
-    dispatch(getMaterias(selectedPage));
+  useEffect(() => {
+    if (data) {
+      const endOffset = itemOffSet + itemsPerPage;
+      setCurrentItems(data.slice(itemOffSet, endOffset));
+      setPageCount(Math.ceil(data.length / itemsPerPage));
+    }
+  }, [data, itemOffSet, itemsPerPage]);
+
+  const handleChange = (ev) => {
+    const newOffset = (ev.selected * itemsPerPage) % data.length;
+    setItemOffset(newOffset);
+    setPageNumber(ev.selected);
   };
 
   return (
     <>
-      {/* {console.log("-------->", asignatures)} */}
       <ReactPaginate
-        className={`${style.pagination} pagination`}
+        className={style.pagination}
         activeClassName={style.active}
         previousLabel={"🢀"}
         nextLabel={"🢂"}
         breakLabel={"..."}
-        pageCount={pageCount1}
+        pageCount={pageCount}
         marginPagesDisplayed={2}
         pageRangeDisplayed={5}
-        onPageChange={(selectedPage) => handleChange(selectedPage.selected)}
+        onPageChange={handleChange}
+        forcePage={pageNumber}
       />
-      <Items currentItems={asignatures} />
+      <Items currentItems={currentItems} />
     </>
   );
 };

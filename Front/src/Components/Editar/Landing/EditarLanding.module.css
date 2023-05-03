@@ -1,0 +1,91 @@
+/* Estilos para el contenedor principal */
+.container {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(to bottom, #5bc5a7, #137078);
+  height: 100vh;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+/* Estilos para el fondo del componente */
+.fondo {
+  background-color: white;
+  width: 750px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, 0.3);
+  padding: 40px;
+}
+
+/* Estilos para los selectores */
+.select {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para el título */
+.formTitle {
+  font-size: 2rem;
+  text-align: center;
+  margin-top: 3%;
+}
+
+/* Estilos para el contenedor de los botones */
+.conteinerbotones {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+/* Estilos para el botón de volver */
+.botonVolver {
+  margin-left: 20px;
+  background-color: #bdbdbd;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+/* Estilos para el botón de selección */
+.Select button {
+  background-color: #137078;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+/* Boton de recarga de datos */
+.button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.Select button:hover {
+  background-color: #5bc5a7;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  color: #5bc5a7;
+}

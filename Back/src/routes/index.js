@@ -9,6 +9,7 @@ const meses = require("./Router/MesesRouter");
 const pasarela = require("./Router/Pasarelas");
 const logoutRouter = require("./Router/logoutRouter");
 const { verifyUser } = require("../Controllers/Firebase/verifyUser");
+const resetRouter = require("./Router/resetRouter");
 
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
@@ -27,5 +28,6 @@ router.use("/Logout", logoutRouter);
 router.use("/Aulas", aula);
 router.use("/Meses", meses);
 router.use("/", pasarela);
+router.use("/reset", resetRouter)
 
 module.exports = router;

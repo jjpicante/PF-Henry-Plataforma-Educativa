@@ -2,7 +2,7 @@ require("dotenv").config();
 const { Sequelize } = require("sequelize");
 const fs = require("fs");
 const path = require("path");
-const { DB_USER, DB_PASSWORD, DB_HOST, /* DB_DEPLOY */ } = process.env;
+const { DB_USER, DB_PASSWORD, DB_HOST /* DB_DEPLOY */ } = process.env;
 
 const sequelize = new Sequelize(
   `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/plataformaE` /* DB_DEPLOY */,
@@ -42,6 +42,8 @@ const { Admin } = sequelize.models;
 const { Materias } = sequelize.models;
 const { Profesores } = sequelize.models;
 const { Meses } = sequelize.models;
+const { AlumnosDeBaja } = sequelize.models;
+const { ProfesoresDeBaja } = sequelize.models;
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
