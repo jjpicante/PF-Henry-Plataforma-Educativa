@@ -178,7 +178,7 @@ export function MiPerfil() {
   };
 
   return (
-    <div>
+    <div className={style.divTotal}>
       <Navbar />
 
       <div className={style.container}>
