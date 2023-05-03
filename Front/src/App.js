@@ -28,10 +28,8 @@ import LandingAdmin from "./Components/Admin/Adminhome";
 import ListaMaterias from "./Components/Admin/ListaMaterias/listaMaterias";
 import EditarMateria from "./Components/Admin/ListaMaterias/editarMateria/EditarMateria";
 
-
-/* axios.defaults.baseURL = "https://servidor-plataformae2.onrender.com"; */
-axios.defaults.baseURL = "http://localhost:3001";
-axios.defaults.baseURL = "http://localhost:3001";
+axios.defaults.baseURL = "https://plataforma-educativa-back.onrender.com";
+/* axios.defaults.baseURL = "http://localhost:3001"; */
 
 function App() {
   return (
