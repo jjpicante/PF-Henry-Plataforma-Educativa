@@ -1,9 +1,8 @@
 .fondo {
   background: linear-gradient(to bottom, #137078, #5bc5a7);
   width: 100%;
-  height: 2600px;
-  position: absolute;
-
+  height: 100%;
+  position: relative;
 }
 
 .topDiv {
@@ -31,6 +30,41 @@
 .nombreMateria {
   text-decoration: none;
   text-transform: capitalize;
+}
+
+.render {
+  /* background-color: beige; */
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+}
+
+.cards {
+  /* background-color: green; */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  width: 100%;
+  row-gap: 5vh;
+  padding: 0;
+}
+
+.card {
+  background-color: rgb(203, 211, 218);
+  list-style-type: none;
+  border: 1px solid black;
+  border-radius: 20px;
+  font-size: 0.95vw;
+  width: 28%;
+  padding: 1vw;
+}
+
+.card:hover {
+  background-color: #bbe8ed;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
 }
 
 .containerdoc {
@@ -137,4 +171,3 @@
 .dropdownContent li a:hover {
   background-color: #1a191915;
 }
-
