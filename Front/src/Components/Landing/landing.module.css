@@ -1,11 +1,98 @@
 .container {
-  background-image: url("./Lapices.jpg");
-  width: 100%;
-  height: 100%;
-  position: absolute;
+   /* background-image: url("./Lapices.jpg");  */
+  /* background-image: url("https://plus.unsplash.com/premium_photo-1675490806341-78afd4f8dd9e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"); */
+  background-image: linear-gradient(to bottom, rgb(6,124,124), rgb(173, 173, 173)); 
+  min-height: 100vh;
+  
 }
 
-.div1 {
+.header {
+  padding: 30px;
+}
+
+.h1{
+  color: white ;
+  margin-top: 2%;
+  margin-bottom: 5%;
+  font-size: 60px;
+}
+
+.libro{
+  color: white;
+  width: 40px;
+  height: 40px;
+}
+
+.link2{
+  margin-right: 50%;
+  background: transparent;
+  color: white;
+  padding: 10px;
+  border: white solid 2px;
+}
+
+
+.link3{
+  background: transparent;
+  color: white;
+  padding: 10px;
+  border: white solid 2px;
+}
+
+.container2{
+  border: 2px solid rgb(4, 4, 80);
+  padding: 40px;
+}
+
+.h2{
+  font-style: italic;
+  margin: 2%;
+  color: rgb(4, 4, 80);
+}
+
+.img{
+  height: 200px;
+  justify-content: center;
+  border-radius: 10px;
+  margin-bottom: 2% ;
+}
+
+.p0{
+  font-size:x-large;
+  color: rgb(4, 4, 80);
+  font-style: oblique;
+}
+
+.divFooter {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer {
+  margin-top: auto;
+  text-align: center;
+  margin-top: 2%;
+}
+
+.a1,
+.a2,
+.a3 {
+  margin: 10%;
+  margin-bottom: 20%;
+  color: grey;
+  text-decoration: underline;
+}
+
+.p4{
+  margin: 1%;
+  color: grey;
+}
+
+.footer2{
+  color: grey;
+}
+
+/* .div1 {
   background: rgb(6, 124, 124);
   padding: 2px;
   border: white solid 2px;
@@ -119,7 +206,7 @@
   padding-bottom: 100%;
   padding-left: 20%;
   margin-top: 660px;
-}
+} */
 
 /* .footer{
   position: absolute;
@@ -143,7 +230,7 @@
   background-color: beige;
 } */
 
-.footer {
+/* .footer {
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -158,10 +245,8 @@
   transform: translateX(-50%);
   margin-left: -100px;
   color: black;
-  /* background-color: beige; 
-  margin-top: 20px;
-  text-align: center; */
-}
+ 
+} */
 
 /* .a1,
 .a2,
@@ -169,11 +254,10 @@
   text-align: center;
 } */
 
-.a1 {
+/* .a1 {
   color: white;
   text-decoration: none;
   
-  /* margin: 10px; */
 }
 
 .a1:hover {
@@ -185,7 +269,7 @@
   text-decoration: none;
   margin-right: 90px;
   margin-left: 100px; 
-  /* margin: 10px; */
+  
 }
 
 .a2:hover {
@@ -196,9 +280,9 @@
   color: white;
   text-decoration: none;
   margin-right: 20%;
-  /* margin: 10px; */
+
 }
 
 .a3:hover {
   text-decoration: underline;
-}
+} */
