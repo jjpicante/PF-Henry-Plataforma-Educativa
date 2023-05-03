@@ -27,7 +27,18 @@
 }
 
 .buttonEditar {
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
   margin-bottom: 1em;
+}
+
+.buttonEditar:hover {
+  background-color: #3f51b5;
+  color: white;
 }
 
 .imgPerfil {

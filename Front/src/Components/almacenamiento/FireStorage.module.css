@@ -3,8 +3,14 @@
 }
 
 .disabledButton {
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 16px;
+  transition: background-color 0.3s;
+  margin-bottom: 1em;
   cursor: not-allowed;
-  background-color: rgb(229, 229, 229) !important;
+  background-color: rgb(162, 162, 162) !important;
   pointer-events: none;
 }
 
@@ -26,19 +32,18 @@
 }
 
 .button {
-  margin: 10px;
-  padding: 10px;
   border: none;
   border-radius: 5px;
-  background-color: #007bff;
-  color: #fff;
+  padding: 10px;
   font-size: 16px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: background-color 0.3s;
+  margin-bottom: 1em;
 }
 
 .button:hover {
-  background-color: #0056b3;
+  background-color: #3f51b5;
+  color: white;
 }
 
 .documentList {

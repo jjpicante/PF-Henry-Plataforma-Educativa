@@ -76,7 +76,7 @@ export default function Detail() {
   return (
     <div className={style.fondo}>
       <Navbar />
-      <button hidden={userData.rol === "student"} onClick={activar}>
+      <button className={style.button} hidden={userData.rol === "student"} onClick={activar}>
         Editar Encendido/Apagado
       </button>
       {materiaById ? (
@@ -86,11 +86,11 @@ export default function Detail() {
             <h2>{materiaById?.anio}</h2>
           </div>
           <div>
-            <button type="button" onClick={() => handleVista("alumnos")}>
+            <button className={style.button} type="button" onClick={() => handleVista("alumnos")}>
               <FontAwesomeIcon className={style.editButton} icon={faGraduationCap} />
               Ver Alumnos
             </button>
-            <button type="button" onClick={() => handleVista("temas")}>
+            <button className={style.button} type="button" onClick={() => handleVista("temas")}>
               {/* <FontAwesomeIcon className={style.editButton} icon={faBooks} /> */}
               Ver Temas
             </button>
@@ -134,7 +134,7 @@ export default function Detail() {
                                       <button
                                         value={doc.nombre}
                                         onClick={borrarDocumento}
-                                        className={style.navLink}
+                                        className={style.buttonli}
                                       >
                                         Delete
                                       </button>
