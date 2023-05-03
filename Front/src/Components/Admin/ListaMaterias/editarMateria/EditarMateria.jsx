@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
-import axios from "axios";
+import NavBarAdmin from "../../navbarAdMIN/NavBar";
 import {
   getStudent,
   editAlumno2,
@@ -11,7 +11,7 @@ import {
   getAulas,
   editMateria,
 } from "../../../../Redux/actions";
-import { validations } from "./validations";
+
 import style from "./EditarMateria.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
@@ -114,8 +114,11 @@ export default function EditarMateria() {
 
   return (
     <div>
+      <div>
+        <NavBarAdmin></NavBarAdmin>
+      </div>
       <div className={style.container}>
-        <h1 className="formTitle">EDITAR USUARIO</h1>
+        <h1 className={style.title}>EDITAR USUARIO</h1>
         <form className={style.formulario} onSubmit={(ev) => submitHandler(ev)}>
           <section>
             <h4 className={style.campo}>Nombre</h4>
