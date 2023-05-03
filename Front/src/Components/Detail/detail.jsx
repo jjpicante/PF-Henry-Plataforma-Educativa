@@ -47,7 +47,15 @@ export default function Detail() {
     else setVista("temas");
   }
 
+  const [confirmacion, setConfirmacion] = useState(false);
   const borrarDocumento = async (e) => {
+    if (confirmacion === false) {
+      setConfirmacion(true);
+    } else {
+      setConfirmacion(false);
+    }
+  };
+  const siBorrar = async (e) => {
     const nameDocument = e.target.value;
     await deleteDoc(doc(db, "archivos", nameDocument));
     Swal.fire({
@@ -55,6 +63,10 @@ export default function Detail() {
       icon: "success",
     });
     navigate(0);
+  };
+
+  const noBorrar = (e) => {
+    setConfirmacion(false);
   };
 
   useEffect(() => {
@@ -162,6 +174,23 @@ export default function Detail() {
                             >
                               {doc.nombre !== undefined ? doc.nombre : "HOLa"}
                             </a>
+                            <div
+                              className={
+                                confirmacion ? style.confirmacioncss : style.noConfirmacion
+                              }
+                            >
+                              <h1>Estas seguro de querer eliminar el archivo: {doc.nombre}</h1>
+                              <button
+                                value={doc.nombre}
+                                className={style.buttonsi}
+                                onClick={siBorrar}
+                              >
+                                Si
+                              </button>
+                              <button className={style.buttonno} onClick={noBorrar}>
+                                No
+                              </button>
+                            </div>
                             <nav className={style.navbar}>
                               <div className={style.navbarContainer}>
                                 <ul className={style.navList}>
