@@ -65,6 +65,13 @@
   margin-right: 1.5vw;
 }
 
+.imagen {
+  width: 22vw;
+  border-radius: 0.7em;
+  float: left;
+  margin-right: 1.5vw;
+}
+
 .button {
   width: 10vw;
 }
