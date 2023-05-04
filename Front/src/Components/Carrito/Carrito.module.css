@@ -62,8 +62,8 @@
   font-size: x-large;
   margin: 10px;
   padding: 8px;
-  width: 140%;
-  height: 30px;
+  width: 160%;
+  height: 45px;
   border: none;
   box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.1);
   border-radius: 20px;
@@ -71,6 +71,7 @@
   display: flex;
   align-items: center;
   flex-direction: row;
+  margin-left: 150px;
 }
 
 .checkbox {
@@ -148,4 +149,5 @@
 .containerPagos {
   display: flex;
   padding-top: 1rem;
+  justify-content: center;
 }
