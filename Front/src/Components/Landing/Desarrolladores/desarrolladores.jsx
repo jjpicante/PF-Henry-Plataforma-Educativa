@@ -98,7 +98,7 @@ export default function Desarrolladores() {
           </div>
         </section>
         <section className={styles.integrante}>
-          <img className={styles.img} src={Juan} alt="Juan" />
+          <img className={styles.image} src={Juan} alt="Juan" />
           <div className={styles.textos}>
             <h3 className={styles.nombre}>Juan Fiorovic</h3>
             <div className={styles.mail}>
