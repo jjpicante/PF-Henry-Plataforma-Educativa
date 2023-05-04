@@ -311,8 +311,8 @@ function FormProfesor() {
               {/* icono eliminar */}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
+                width="45"
+                height="45"
                 fill="currentColor"
                 className="bi bi-x-circle-fill"
                 viewBox="0 0 16 16"
@@ -378,8 +378,8 @@ function FormProfesor() {
               </select>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
+                width="45"
+                height="45"
                 fill="currentColor"
                 className="bi bi-x-circle-fill"
                 viewBox="0 0 16 16"
