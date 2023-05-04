@@ -6,6 +6,10 @@
   position: relative;
 }
 
+.txtAlumnos{
+  text-transform: capitalize;
+}
+
 .topDiv {
   display: flex;
   justify-content: center;

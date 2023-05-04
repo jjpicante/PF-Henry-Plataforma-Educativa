@@ -230,7 +230,7 @@ export default function Detail() {
               {/* {console.log(alumnos)} */}
               {alumnos?.map((alumno, i) => {
                 return (
-                  <h1 key={i}>
+                  <h1 className={style.txtAlumnos} key={i}>
                     {i + 1}- {alumno[0].apellido}, {alumno[0].name}
                   </h1>
                 );
