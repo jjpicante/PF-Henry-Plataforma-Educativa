@@ -88,6 +88,7 @@ const Tecnologías = () => {
                     </section>
                 </div>
 
+               
                 <div className={style.card} hidden={selected !== "Sequelize"}>
                     <h2>Sequelize</h2>
                     <section className={style.contenidos}>
@@ -96,35 +97,33 @@ const Tecnologías = () => {
                             Sequelize proporciona una interfaz sencilla y fácil de usar para definir modelos, realizar consultas y realizar operaciones CRUD en la base de datos.
                         </p>
                     </section>
-
-                    <div className={style.card} hidden={selected !== "PostgreSQL"}>
-                        <h2>PostgreSQL</h2>
-                        <section className={style.contenidos}>
-                            <p>
-                                PostgreSQL es un sistema de gestión de bases de datos relacional (RDBMS) de código abierto que permite a los desarrolladores crear y administrar bases de datos relacionales.
-                            </p>
-                        </section>
-
-                        <div className={style.card} hidden={selected !== "Firebase"}>
-                            <h2>Firebase</h2>
-                            <section className={style.contenidos}>
-                                <p>
-                                    Firebase es una plataforma digital diseñada para facilitar el desarrollo de aplicaciones web y móviles de calidad de una forma rápida y eficiente,
-                                    con el objetivo de mejorar el rendimiento de las mismas a través de la implementación de sus distintos módulos que harán que la aplicación sea mucho más manejable y
-                                    segura.
-                                </p>
-                            </section>
-                        </div>
-
-                    </div>
-
                 </div>
+
+                <div className={style.card} hidden={selected !== "PostgreSQL"}>
+                    <h2>PostgreSQL</h2>
+                    <section className={style.contenidos}>
+                        <p>
+                            PostgreSQL es un sistema de gestión de bases de datos relacional (RDBMS) de código abierto que permite a los desarrolladores crear y administrar bases de datos relacionales.
+                        </p>
+                    </section>
+                </div>
+
+                <div className={style.card} hidden={selected !== "Firebase"}>
+                    <h2>Firebase</h2>
+                    <section className={style.contenidos}>
+                        <p>
+                            Firebase es una plataforma digital diseñada para facilitar el desarrollo de aplicaciones web y móviles de calidad de una forma rápida y eficiente,
+                            con el objetivo de mejorar el rendimiento de las mismas a través de la implementación de sus distintos módulos que harán que la aplicación sea mucho más manejable y
+                            segura.
+                        </p>
+                    </section>
+                </div>
+
             </div>
 
             <Link to="/">
                 <button className={style.volver}>Volver</button>
             </Link>
-
 
         </div>
     );
