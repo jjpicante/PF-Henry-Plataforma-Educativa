@@ -1,13 +1,14 @@
 .container {
     background: linear-gradient(to bottom, #137078, #5bc5a7);
-    min-height: 170vh;
+    /* min-height: 170vh; */
+    height: 1600px;
   }
   
   .menu {
     background-color: rgba(53, 53, 53, 0.682);
     position: absolute;
     width: 20%;
-    height: 155vh;
+    height: 1500px;
     font-size: 0.8vw;
     color: white;
     text-align: left;
