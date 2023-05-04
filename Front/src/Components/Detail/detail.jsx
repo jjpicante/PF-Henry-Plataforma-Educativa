@@ -96,7 +96,7 @@ export default function Detail() {
             <h2>{materiaById?.anio}</h2>
           </div>
           <div className={style.botones}>
-            <h5>Cargar Temas</h5>
+            <h5 hidden={userData.rol !== "profesor"}>Cargar Temas</h5>
             <section className={style.alumnostemas}>
               <button type="button" onClick={() => handleVista("alumnos")}>
                 <FontAwesomeIcon className={style.editButton} icon={faGraduationCap} />
