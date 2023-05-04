@@ -55,9 +55,7 @@ export const getStudents = () => {
 export const getStudent = (username) => {
   return async function (dispatch) {
     try {
-      const response = await axios.get(
-        `/alumnos/getAlumno?username=${username}`
-      );
+      const response = await axios.get(`/alumnos/getAlumno?username=${username}`);
       const alumno = response.data;
       return alumno;
     } catch (error) {
@@ -84,9 +82,7 @@ export const getProfesors = () => {
 export const getProfesor = (username) => {
   return async function (dispatch) {
     try {
-      const response = await axios.get(
-        `/Profesores/getProfesor?username=${username}`
-      );
+      const response = await axios.get(`/Profesores/getProfesor?username=${username}`);
       const profesor = response.data;
       //console.log(profesor);
       return profesor;
@@ -284,10 +280,10 @@ export const getMateriasById = (id) => {
   };
 };
 
-export const getMateriasByName = (name) => {
+export const getMateriasByName = (name, anio) => {
   return async function (dispatch) {
     try {
-      const result = await axios.get(`/Materias?name=${name}`);
+      const result = await axios.get(`/Materias?name=${name}&anio=${anio}`);
       if (result.data.materias.length > 0) {
         dispatch({ type: GET_MATERIAS_BY_NAME, payload: result.data.materias });
       } else {
