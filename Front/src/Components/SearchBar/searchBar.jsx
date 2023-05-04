@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getMateriasByName, getMaterias } from "../../Redux/actions";
+import { getMateriasByName, getMaterias, getMateriasByAnio } from "../../Redux/actions";
 import style from "./SearchBar.module.css";
 
 function SearchBar() {
@@ -25,7 +25,7 @@ function SearchBar() {
 
   const handleInput = (event) => {
     if (event.target.value === "") {
-      dispatch(getMaterias());
+      dispatch(getMateriasByAnio(userData.anio));
     }
   };
 
