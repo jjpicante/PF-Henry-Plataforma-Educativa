@@ -8,16 +8,14 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 
-
-
 const Carrito = () => {
   const storagedCartas = JSON.parse(localStorage.getItem("mes") || "[]");
   const storagedTotal = JSON.parse(localStorage.getItem("total") || 0);
-  const userData = useSelector((state) => state.userData)
-  const userName = userData?.username
+  const userData = useSelector((state) => state.userData);
+  const userName = userData?.username;
   const URL = `/Meses?username=${userName}`;
-  
-  console.log("UD =>",userName);
+
+  console.log("UD =>", userName);
 
   const [mesesTotal, setmesesTotal] = useState(storagedCartas);
   const [totalPagar, setTotalPagar] = useState(storagedTotal);
@@ -96,7 +94,9 @@ const Carrito = () => {
           </div>
           <div className={styles.detallePago}>
             <h1>Total</h1>
-            <h3><FontAwesomeIcon icon={faCartShopping} /> {totalPagar} </h3>
+            <h3>
+              <FontAwesomeIcon icon={faCartShopping} /> {totalPagar}{" "}
+            </h3>
             <div className={styles.containerMesesTotal}>
               {mesesTotal?.map((carta, i) => (
                 <p className={styles.palabraTotal} key={i}>
@@ -106,12 +106,12 @@ const Carrito = () => {
             </div>
             <hr />
             <div className={styles.containerPagos}>
-              <ProductDisplayer
+              {/* <ProductDisplayer
                 className={styles.imgPagos}
                 mesesTotal={mesesTotal}
                 estadoDeCuenta={estadoDeCuenta}
                 totalPagar={precio}
-              />
+              /> */}
               <div>
                 <img
                   className={styles.imgPagos}

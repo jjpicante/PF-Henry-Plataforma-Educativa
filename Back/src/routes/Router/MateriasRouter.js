@@ -30,9 +30,11 @@ materias.get("/getmateria/:id", async (req, res) => {
 
 materias.get("/filtermateria", async (req, res) => {
   const criterios = req.query;
+  console.log(criterios);
   if (Object.keys(criterios).length === 0)
     return res.status(400).json({ message: "Faltan ingresar datos" });
   const respuesta = await filterMateria(criterios);
+  console.log(respuesta);
   if (!respuesta.error) return res.status(200).json(respuesta);
   return res.status(503).json(respuesta);
 });

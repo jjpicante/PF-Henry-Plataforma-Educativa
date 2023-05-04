@@ -3,6 +3,7 @@ const { Op } = require("sequelize");
 
 const getAllMaterias = async (query) => {
   try {
+    console.log(query);
     const PageN = Number.parseInt(query.page) || 0;
 
     let page = 0;
@@ -11,9 +12,9 @@ const getAllMaterias = async (query) => {
     }
     let size = 2;
 
-    if (query.name && query.name !== undefined) {
+    if (query.name && query.name !== undefined && query.anio) {
       var materias = await Materias.findAll({
-        where: { namemateria: { [Op.iLike]: `%${query.name}%` } },
+        where: { namemateria: { [Op.iLike]: `%${query.name}%` }, anio: query.anio },
         include: {
           all: true,
         },
