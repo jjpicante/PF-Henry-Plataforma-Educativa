@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   background: linear-gradient(to bottom, #5bc5a7, #137078);
-  height: 100vh;
+  height: 240vh;
   align-items: center;
   justify-content: flex-start;
 }
